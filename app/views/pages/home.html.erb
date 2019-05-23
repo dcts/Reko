@@ -1,2 +1,114 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1>Reko Backend Controlpanel</h1>
+
+  <!-- USERS -->
+  <h2>User</h2>
+  <table class="table table-sm">
+    <tr>
+      <th></th>
+      <th>description</th>
+      <th>link (optional)</th>
+    </tr>
+    <tr>
+      <td>✅</td>
+      <td>I can list all users</td>
+      <td><%= link_to "list users", users_path %></td>
+    </tr>
+    <tr>
+      <td>✅</td>
+      <td>I can create a new user</td>
+      <td>seed or terminal...</td>
+    </tr>
+    <tr>
+      <td>✅</td>
+      <td>I can edit credentials</td>
+      <td>devise...</td>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can upload an image</td>
+      <td></td>
+    </tr>
+  </table>
+  <br>
+
+  <!-- LISTS -->
+  <h2>List</h2>
+  <table class="table table-sm">
+    <tr>
+      <th></th>
+      <th>description</th>
+      <th>link (optional)</th>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can see all created lists</td>
+      <td><%#= link_to "list users", users_path %></td>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can create a new list</td>
+      <td><%#= link_to "list users", users_path %></td>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can add rekos to a given list and provide my name</td>
+      <td><%#= link_to "create user", new_user_path %></td>
+    </tr>
+  </table>
+  <br>
+
+  <!-- REKOS  -->
+  <h2>Rekos</h2>
+  <table class="table table-sm">
+    <tr>
+      <th></th>
+      <th>description</th>
+      <th>link (optional)</th>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can list all Rekos</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can create a new reko</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can list all Rekos belonging to a specific user</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can list all Rekos given by a specific user</td>
+      <td></td>
+    </tr>
+  </table>
+  <br>
+
+  <!-- MOVIES  -->
+  <h2>Movies</h2>
+  <table class="table table-sm">
+    <tr>
+      <th></th>
+      <th>description</th>
+      <th>link (optional)</th>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can list all recommended movies sorted by popularity</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can search for movies via API call and store them persistently in the database</td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+
+
