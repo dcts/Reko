@@ -1,1 +1,14 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+# Reko
+
+- Friends know best
+- Backend Controlpanel
+
+
+```bash
+rails new \
+  --database postgresql \
+  --webpack \
+  -m https://raw.githubusercontent.com/lewagon/rails-templates/master/devise.rb \
+  --skip-active-storage \
+  reko
+```
