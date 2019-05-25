@@ -28,3 +28,8 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
+
+# ADD RENAME GEM (to rename rails application properly)
+# why? -> it wont let you create a model with the same name
+# as your apps name. And we need "reko" as model
+gem 'rename'

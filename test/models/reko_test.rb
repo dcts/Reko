@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RekooTest < ActiveSupport::TestCase
+class RekoTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

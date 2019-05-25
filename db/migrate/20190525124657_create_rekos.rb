@@ -1,6 +1,6 @@
-class CreateRekoos < ActiveRecord::Migration[5.2]
+class CreateRekos < ActiveRecord::Migration[5.2]
   def change
-    create_table :rekoos do |t|
+    create_table :rekos do |t|
       t.references :list, foreign_key: true
       t.references :recommendable, polymorphic: true, index: true
 
