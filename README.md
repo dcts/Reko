@@ -23,5 +23,6 @@ rails g model podcast title
 rails g model audiobook title
 rails g model reko list:references creator_name # reko already taken?!?!
 
-
+# generate controllers
+rails g controller lists
 ```
