@@ -1,0 +1,46 @@
+<div class="container">
+  <h1><%= @list.title %></h1>
+  <table class="table table-sm">
+    <tr>
+      <th>id</th>
+      <td><%= @list.id %></td>
+    </tr>
+    <tr>
+      <th>owner_id</th>
+      <td><%= @list.owner.id %></td>
+    </tr>
+    <tr>
+      <th>owner_name</th>
+      <td><%= @list.owner.first_name %></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><%= @list.title %></td>
+    </tr>
+    <tr>
+      <th>visitor_token</th>
+      <td><%= @list.visitor_token %></td>
+    </tr>
+    <tr>
+      <th>owner_token</th>
+      <td><%= @list.owner_token %></td>
+    </tr>
+    <tr>
+      <th>rekos</th>
+      <td><%= @list.rekos.size %></td>
+    </tr>
+    <tr>
+      <th>created_at</th>
+      <td><%= @list.created_at %></td>
+    </tr>
+    <tr>
+      <th>updated_at</th>
+      <td><%= @list.updated_at %></td>
+    </tr>
+  </table>
+  <br>
+  <h1>Rekos on this List</h1>
+  <%= render partial: "rekos/table_rekos", locals: { rekos: @list.rekos } %>
+  <%= render partial: "lists/bttn_back_to_lists" %>
+  <%= render partial: "pages/bttn_back_to_dashboard" %>
+</div>

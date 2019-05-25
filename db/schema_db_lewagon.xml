@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="779" y="414" name="ICEBOX[users]">
+</datatypes><table x="779" y="414" name="[AFTER MVP]users (logged in)">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -83,13 +83,13 @@
 <part>id</part>
 </key>
 </table>
-<table x="466" y="44" name="lists">
+<table x="440" y="37" name="lists">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="owner_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="ICEBOX[users]" row="id" />
+<default>NULL</default><relation table="[AFTER MVP]users (logged in)" row="id" />
 <relation table="temp_users" row="id" />
 </row>
 <row name="title" null="1" autoincrement="0">
@@ -105,7 +105,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="233" y="105" name="rekos">
+<table x="224" y="128" name="rekos">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -118,11 +118,7 @@
 <default>NULL</default></row>
 <row name="creator_id(optional)" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="ICEBOX[users]" row="id" />
-</row>
-<row name="visitor_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="[ICEBOX]visitors" row="id" />
+<default>NULL</default><relation table="[AFTER MVP]users (logged in)" row="id" />
 </row>
 <row name="content_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -145,7 +141,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="582" y="456" name="[ICEBOX]visitors">
+<table x="780" y="285" name="[ICEBOX]visitors">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -163,7 +159,7 @@
 </key>
 <comment>table to store the name of the visitor such that when he comes back to the website his firstname is already accesible? (ICEBOX)</comment>
 </table>
-<table x="663.6666666865349" y="51" name="temp_users">
+<table x="663" y="51" name="temp_users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>

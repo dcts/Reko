@@ -14,7 +14,7 @@
     </tr>
     <% @lists.each do |list| %>
       <tr>
-        <td><%= list.id %></td>
+        <td><%= link_to "#{list.id}", list_path(list) %></td>
         <td><%= list.owner.id %></td>
         <td><%= list.owner.first_name %></td>
         <td><%= list.title %></td>
@@ -26,4 +26,6 @@
       </tr>
     <% end %>
   </table>
+  <%= render 'pages/bttn_back_to_dashboard' %>
+
 </div>
