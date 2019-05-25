@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="530" y="146" name="Users">
+</datatypes><table x="779" y="414" name="[AFTER MVP]users (logged in)">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -57,14 +57,11 @@
 <row name="password" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
-<row name="token" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="54" y="122" name="movies">
+<table x="46" y="141" name="movies">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -75,7 +72,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="48" y="225" name="podcasts">
+<table x="37" y="227" name="podcasts">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -86,21 +83,43 @@
 <part>id</part>
 </key>
 </table>
-<table x="291" y="107" name="rekos">
+<table x="440" y="37" name="lists">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="asker_id" null="1" autoincrement="0">
+<row name="owner_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Users" row="id" />
+<default>NULL</default><relation table="[AFTER MVP]users (logged in)" row="id" />
+<relation table="temp_users" row="id" />
 </row>
-<row name="teller_id [ICEBOX]" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Users" row="id" />
-</row>
-<row name="teller_name" null="1" autoincrement="0">
+<row name="title" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
+<row name="visitor_token" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<row name="owner_token" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="224" y="128" name="rekos">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="list_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="lists" row="id" />
+</row>
+<row name="creator_name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="creator_id(optional)" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="[AFTER MVP]users (logged in)" row="id" />
+</row>
 <row name="content_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="movies" row="id" />
@@ -111,7 +130,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="37" y="320" name="audiobooks">
+<table x="27" y="315" name="audiobooks">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -122,18 +141,34 @@
 <part>id</part>
 </key>
 </table>
-<table x="350" y="303" name="Tags">
+<table x="780" y="285" name="[ICEBOX]visitors">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Users" row="id" />
-</row>
 <row name="name" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
-<default>NULL</default><comment>ENUM</comment>
-</row>
+<default>NULL</default></row>
+<row name="device_info" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<row name="browser_info" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>table to store the name of the visitor such that when he comes back to the website his firstname is already accesible? (ICEBOX)</comment>
+</table>
+<table x="663" y="51" name="temp_users">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="first_name" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>

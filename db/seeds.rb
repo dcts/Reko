@@ -1,77 +1,33 @@
-puts "\n\n----------\nSEEDING DATABASE! (running SEED.RB file)!"
-# Reset Database
-puts "deleting all database entries (rekos, movies, podcasts, audiobooks, lists, users"
-Reko.delete_all
-Movie.delete_all
-Podcast.delete_all
-Audiobook.delete_all
-List.delete_all
-User.delete_all
+# require helper functions
+# use the following when you want to require helper methods inside the rails console
+# > require_relative 'db/seeds_helper'
+require_relative 'seeds_helper'
 
-# Create Users
-puts "creating users"
-users = []
-users << User.new(password: "123456", first_name: 'Allan', last_name: 'Holmes', email: 'allan.homes@me.com')
-users << User.new(password: "123456", first_name: 'Assunta', last_name: 'Waldorf', email: 'sunti@mail.com')
-users << User.new(password: "123456", first_name: 'Thilo', last_name: 'Somthing', email: 'thiloooo@reko.com')
-users << User.new(password: "123456", first_name: 'Thomas', last_name: 'Starzynski', email: 'thommy-star@hotmail.com')
-users.each { |user| user.save! }
+# display message to console
+welcome_message
 
-# Create a list for each user
-puts "creating a list for each user"
-User.all.each do |user|
-  list = List.new(title: "#{user.first_name} list")
-  list.owner = user
-  list.save!
-end
+# RESET DATABASE
+reset_database
 
-# CREATE CONTENT
-# create some movies
-puts "creating movies"
-movie_titles = ["Three Random Strangers", "Breaking Bad", "Some Documentary", "Scarface"]
-movie_titles.each do |movie_title|
-  Movie.create!(title: movie_title)
-  print "*"
-end
-puts " done!"
+# CREATE USERS
+create_user(password: "123456", first_name: 'Allan',   last_name: 'Holmes',     email: 'allan.homes@me.com')
+create_user(password: "123456", first_name: 'Assunta', last_name: 'Waldorf',    email: 'sunti@mail.com')
+create_user(password: "123456", first_name: 'Thilo',   last_name: 'Somthing',   email: 'thiloooo@reko.com')
+create_user(password: "123456", first_name: 'Thomas',  last_name: 'Starzynski', email: 'thommy-star@hotmail.com')
 
-# create some podcasts
-puts "creating podcasts"
-podcast_titles = ["best podcast ever", "crypto podcast", "podcast nr 3", "Tim Ferris"]
-podcast_titles.each do |podcast_title|
-  Podcast.create!(title: podcast_title)
-  print "*"
-end
-puts " done!"
+# POPULATE PLACEHOLDER CONTENT
+create_movies(["Breaking Bad", "Some Documentary", "Scarface"])
+create_podcasts(["best podcast ever", "crypto podcast", "podcast nr 3", "Tim Ferris"])
+create_audiobooks(["Homo Deus", "21 Lessons for the 21st Century"])
 
-# create some audiobooks
-puts "creating audiobooks"
-audiobook_titles = ["Sapiens", "Homo Deus", "The Magic Of Thinking Big", "21 Lessons for the 21st Century"]
-audiobook_titles.each do |audiobook_title|
-  Audiobook.create!(title: audiobook_title)
-  print "*"
-end
-puts " done!"
+# CREATE REKOS
+# rekos for thomas from allan
+asker = User.where(first_name: "Thomas")[0] # asker
+create_reko(asker, "Allan", Movie.new(title: "Three Random Strangers"))
+create_reko(asker, "Allan", Audiobook.new(title: "The Magic Of Thinking Big"))
+# rekos for allan from thomas
+asker = User.where(first_name: "Allan")[0]
+create_reko(asker, "Thomas", Audiobook.new(title: "Sapiens"))
 
-# Create rekos and add them to a specific list!
-# REKO FROM ALLAN TO THOMAS
-puts "creating rekos"
-r = Reko.new(creator_name: "Allan")
-r.list = List.where(title: "Thomas list").first
-r.content = Audiobook.where(title: "The Magic Of Thinking Big").first
-r.save!
-print "*"
-
-r = Reko.new(creator_name: "Allan")
-r.list = List.where(title: "Thomas list").first
-r.content = Movie.where(title: "Three Random Strangers").first
-r.save!
-print "*"
-
-r = Reko.new(creator_name: "Thomas")
-r.list = List.where(title: "Allan list").first
-r.content = Audiobook.where(title: "Sapiens").first
-r.save!
-print "*"
-
-
+# dispaly end message to console
+end_message
