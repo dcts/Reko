@@ -41,9 +41,14 @@
       <th>link (optional)</th>
     </tr>
     <tr>
-      <td>❌</td>
+      <td>✅</td>
       <td>I can see all created lists</td>
-      <td><%#= link_to "list users", users_path %></td>
+      <td><%= link_to "list lists", lists_path %></td>
+    </tr>
+    <tr>
+      <td>✅</td>
+      <td>I can see one single list with all rekos on it</td>
+      <td><%= link_to "example (random)", list_path(List.all.sample) %></td>
     </tr>
     <tr>
       <td>❌</td>
@@ -89,8 +94,8 @@
   </table>
   <br>
 
-  <!-- MOVIES  -->
-  <h2>Movies</h2>
+  <!-- CONTENT (Movies)  -->
+  <h2>Content (Movies)</h2>
   <table class="table table-sm">
     <tr>
       <th></th>
@@ -99,7 +104,7 @@
     </tr>
     <tr>
       <td>❌</td>
-      <td>I can list all recommended movies sorted by popularity</td>
+      <td>I can list all recommended movies/podcasts/audiobooks sorted by popularity</td>
       <td></td>
     </tr>
     <tr>
