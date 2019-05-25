@@ -46,13 +46,13 @@ ActiveRecord::Schema.define(version: 2019_05_25_124657) do
 
   create_table "rekos", force: :cascade do |t|
     t.bigint "list_id"
-    t.string "recommendable_type"
-    t.bigint "recommendable_id"
+    t.string "content_type"
+    t.bigint "content_id"
     t.string "creator_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["content_type", "content_id"], name: "index_rekos_on_content_type_and_content_id"
     t.index ["list_id"], name: "index_rekos_on_list_id"
-    t.index ["recommendable_type", "recommendable_id"], name: "index_rekos_on_recommendable_type_and_recommendable_id"
   end
 
   create_table "users", force: :cascade do |t|

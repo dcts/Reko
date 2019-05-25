@@ -58,19 +58,19 @@ puts " done!"
 puts "creating rekos"
 r = Reko.new(creator_name: "Allan")
 r.list = List.where(title: "Thomas list").first
-r.recommendable = Audiobook.where(title: "The Magic Of Thinking Big").first
+r.content = Audiobook.where(title: "The Magic Of Thinking Big").first
 r.save!
 print "*"
 
 r = Reko.new(creator_name: "Allan")
 r.list = List.where(title: "Thomas list").first
-r.recommendable = Movie.where(title: "Three Random Strangers").first
+r.content = Movie.where(title: "Three Random Strangers").first
 r.save!
 print "*"
 
 r = Reko.new(creator_name: "Thomas")
 r.list = List.where(title: "Allan list").first
-r.recommendable = Audiobook.where(title: "Sapiens").first
+r.content = Audiobook.where(title: "Sapiens").first
 r.save!
 print "*"
 
