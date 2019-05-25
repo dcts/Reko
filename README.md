@@ -25,4 +25,5 @@ rails g model reko list:references creator_name # reko already taken?!?!
 
 # generate controllers
 rails g controller lists
+rails g controller rekos
 ```

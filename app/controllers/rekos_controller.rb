@@ -1,0 +1,2 @@
+class RekosController < ApplicationController
+end
