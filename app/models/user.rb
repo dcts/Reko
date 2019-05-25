@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :lists
+
+  def to_s
+    "#{first_name} #{last_name}"
+  end
 end
