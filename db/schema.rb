@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_23_202136) do
+ActiveRecord::Schema.define(version: 2019_05_23_222743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lists", force: :cascade do |t|
+    t.string "owner_token"
+    t.string "visitor_token"
+    t.string "token"
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "podcasts", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rekoos", force: :cascade do |t|
+    t.bigint "list_id"
+    t.string "recommendable_type"
+    t.bigint "recommendable_id"
+    t.string "creator_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_rekoos_on_list_id"
+    t.index ["recommendable_type", "recommendable_id"], name: "index_rekoos_on_recommendable_type_and_recommendable_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,4 +63,6 @@ ActiveRecord::Schema.define(version: 2019_05_23_202136) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "lists", "users"
+  add_foreign_key "rekoos", "lists"
 end
