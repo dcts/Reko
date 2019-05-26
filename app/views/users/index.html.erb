@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <h1>All Users</h1>
   <table class="table table-sm">
     <tr>
@@ -7,7 +7,10 @@
       <th>first name</th>
       <th>last name</th>
       <th>email</th>
-      <th>admin</th>
+      <th>encrypted_password</th>
+      <th>created_at</th>
+      <th>updated_at</th>
+      <th colspan="3">admin</th>
     </tr>
 
 
@@ -18,6 +21,9 @@
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
+        <td><%= user.encrypted_password %></td>
+        <td><%= user.created_at %></td>
+        <td><%= user.updated_at %></td>
         <td style="letter-spacing: 3px;">
           <%= link_to ('<i class="far fa-eye"></i>').html_safe, users_path %>
           <%= link_to ('<i class="fas fa-pencil-alt"></i>').html_safe, users_path %>
