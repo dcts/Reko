@@ -51,9 +51,9 @@
       <td><%= link_to "show user (random)", user_path(User.all.sample) %></td>
     </tr>
     <tr>
-      <td>❌</td>
+      <td>✅</td>
       <td>I can visit the reko-inbox of a given user if I have his token</td>
-      <td><%#= link_to "create user", new_user_path %></td>
+      <td><%= link_to "show inbox (random user)", inbox_path(User.all.sample.token) %></td>
     </tr>
     <tr>
       <td>❌</td>
