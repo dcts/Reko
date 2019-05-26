@@ -7,8 +7,5 @@ Rails.application.routes.draw do
   # define landing page (at the moment the backend control panel)
   root to: 'pages#home'
   # rekos_routes
-  get '/rekos', to: "rekos#index_all"
-  resources :users, only: [] do
-    resources :rekos, only: [:index]
-  end
+  resources :rekos, only: [:index]
 end
