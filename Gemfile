@@ -33,3 +33,7 @@ end
 # why? -> it wont let you create a model with the same name
 # as your apps name. And we need "reko" as model
 gem 'rename'
+
+# ADD JSON and OPEN-URI gem to make API requests (not needed?)
+# gem 'json'
+# gem 'open-uri'
