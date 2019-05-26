@@ -1,3 +1,4 @@
+
 <table class="table table-sm">
   <tr>
     <th>id</th>
@@ -19,6 +20,33 @@
       <td><%= reko.content_type %></td>
       <td><%= reko.content_id %></td>
       <td><%= reko.content.to_s %></td>
+      <td><%= reko.created_at %></td>
+      <td><%= reko.updated_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<!-- THIS PARTIAL NEEDS A PARAMETER "rekos", WHICH IS AN ARRAY OF REKO INSTANCES -->
+<table class="table table-sm">
+  <tr>
+    <th>id</th>
+    <th>asker_id</th>
+    <th>asker_id</th>
+    <th>content_id</th>
+    <th>content_type</th>
+    <th>content_title</th>
+    <th>created_at</th>
+    <th>updated_at</th>
+  </tr>
+  <% rekos.each do |reko| %>
+    <tr>
+      <td><%= reko.id %></td>
+      <td><%= reko.asker.id %></td>
+      <td><%= reko.teller_name %></td>
+      <td><%= reko.content_id %></td>
+      <td><%= reko.content_type %></td>
+      <td><%= reko.content.title %></td>
       <td><%= reko.created_at %></td>
       <td><%= reko.updated_at %></td>
     </tr>
