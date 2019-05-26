@@ -18,6 +18,8 @@ class CreateRekos < ActiveRecord::Migration[5.2]
 
       # STATE (unseen / )
       t.column :status, :integer, default: 0
+
+      t.timestamps
     end
   end
 end
