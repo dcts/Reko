@@ -1,2 +1,40 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <h1>User <%= "#{@user.first_name} #{@user.last_name}"%></h1>
+  <table class="table table-sm">
+    <tr>
+      <th>id</th>
+      <td><%= @user.id %></td>
+    </tr>
+    <tr>
+      <th>first_name</th>
+      <td><%= @user.first_name %></td>
+    </tr>
+    <tr>
+      <th>last_name</th>
+      <td><%= @user.first_name %></td>
+    </tr>
+    <tr>
+      <th>token</th>
+      <td><%= @user.token %></td>
+    </tr>
+    <tr>
+      <th>rekos_received</th>
+      <td><%= @user.rekos_received.size %></td>
+    </tr>
+    <tr>
+      <th>created_at</th>
+      <td><%= @user.created_at %></td>
+    </tr>
+    <tr>
+      <th>updated_at</th>
+      <td><%= @user.updated_at %></td>
+    </tr>
+  </table>
+
+  <br>
+  <h1>Reko-Inbox</h1>
+  <%= render partial: "rekos/table_rekos", locals: { rekos: @user.rekos_received, hide_asker: true } %>
+  <%= render partial: "users/bttn_back_to_users" %>
+  <%= render partial: "pages/bttn_back_to_dashboard" %>
+
+</div>

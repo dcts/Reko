@@ -1,10 +1,18 @@
-<!-- THIS PARTIAL NEEDS A PARAMETER "rekos", WHICH IS AN ARRAY OF REKO INSTANCES -->
+<!--
+  THIS PARTIAL NEEDS TWO PARAMETERS
+  "rekos", WHICH IS AN ARRAY OF REKO INSTANCES
+  "hide_asker", WHICH IS A BOOLEAN TO NOT SHOW THE ASKER
+-->
 <table class="table table-sm">
   <tr>
     <th>id</th>
-    <th>creator_name</th>
-    <th>content_id</th>
+    <% unless hide_asker %>
+      <th>asker_id</th>
+      <th>asker_name</th>
+    <% end %>
+    <th>teller_name</th>
     <th>content_type</th>
+    <th>content_id</th>
     <th>content_title</th>
     <th>created_at</th>
     <th>updated_at</th>
@@ -12,10 +20,14 @@
   <% rekos.each do |reko| %>
     <tr>
       <td><%= reko.id %></td>
-      <td><%= reko.creator_name %></td>
-      <td><%= reko.content_id %></td>
+      <% unless hide_asker %>
+        <td><%= link_to reko.asker.id, user_path(reko.asker) %></td>
+        <td><%= reko.asker.first_name %></td>
+      <% end %>
+      <td><%= reko.teller_name %></td>
       <td><%= reko.content_type %></td>
-      <td><%= reko.content.title %></td>
+      <td><%= reko.content_id %></td>
+      <td><%= reko.content.to_s %></td>
       <td><%= reko.created_at %></td>
       <td><%= reko.updated_at %></td>
     </tr>

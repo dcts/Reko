@@ -12,7 +12,7 @@
     <tr>
       <td>✅</td>
       <td>I can list all users</td>
-      <td><%= link_to "list users", users_path %></td>
+      <td><%= link_to "all users", users_path %></td>
     </tr>
     <tr>
       <td>✅</td>
@@ -32,37 +32,6 @@
   </table>
   <br>
 
-  <!-- LISTS -->
-  <h2>List</h2>
-  <table class="table table-sm">
-    <tr>
-      <th></th>
-      <th>description</th>
-      <th>link (optional)</th>
-    </tr>
-    <tr>
-      <td>✅</td>
-      <td>I can see all created lists</td>
-      <td><%= link_to "list lists", lists_path %></td>
-    </tr>
-    <tr>
-      <td>✅</td>
-      <td>I can see one single list with all rekos on it</td>
-      <td><%= link_to "example (random)", list_path(List.all.sample) %></td>
-    </tr>
-    <tr>
-      <td>❌</td>
-      <td>I can create a new list</td>
-      <td><%#= link_to "list users", users_path %></td>
-    </tr>
-    <tr>
-      <td>❌</td>
-      <td>I can add rekos to a given list and provide my name</td>
-      <td><%#= link_to "create user", new_user_path %></td>
-    </tr>
-  </table>
-  <br>
-
   <!-- REKOS  -->
   <h2>Rekos</h2>
   <table class="table table-sm">
@@ -72,24 +41,24 @@
       <th>link (optional)</th>
     </tr>
     <tr>
-      <td>❌</td>
+      <td>✅</td>
       <td>I can list all Rekos</td>
-      <td></td>
+      <td><%= link_to "all rekos", rekos_path %></td>
+    </tr>
+    <tr>
+      <td>✅</td>
+      <td>I can list all rekos that a given user has recieved</td>
+      <td><%= link_to "show user (random)", user_path(User.all.sample) %></td>
     </tr>
     <tr>
       <td>❌</td>
-      <td>I can create a new reko</td>
-      <td></td>
+      <td>I can visit the reko-inbox of a given user if I have his token</td>
+      <td><%#= link_to "create user", new_user_path %></td>
     </tr>
     <tr>
       <td>❌</td>
-      <td>I can list all Rekos belonging to a specific user</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>❌</td>
-      <td>I can list all Rekos given by a specific user</td>
-      <td></td>
+      <td>I can create a reko for a given user if I have his token</td>
+      <td><%#= link_to "create user", new_user_path %></td>
     </tr>
   </table>
   <br>
@@ -104,12 +73,22 @@
     </tr>
     <tr>
       <td>❌</td>
-      <td>I can list all recommended movies/podcasts/audiobooks sorted by popularity</td>
+      <td>I can list all recommended movies (and sort them by popularity)</td>
       <td></td>
     </tr>
     <tr>
       <td>❌</td>
-      <td>I can search for movies via API call and store them persistently in the database</td>
+      <td>I can list all recommended podcasts (and sort them by popularity)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can list all recommended audiobooks (and sort them by popularity)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>❌</td>
+      <td>I can search for movies/podcasts/audiobooks via ITunes API call and store them in the database with the click of a button</td>
       <td></td>
     </tr>
   </table>
