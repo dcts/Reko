@@ -1,8 +1,15 @@
+<!--
+  THIS PARTIAL NEEDS TWO PARAMETERS
+  "rekos", WHICH IS AN ARRAY OF REKO INSTANCES
+  "hide_asker", WHICH IS A BOOLEAN TO NOT SHOW THE ASKER
+-->
 <table class="table table-sm">
   <tr>
     <th>id</th>
-    <th>asker_id</th>
-    <th>asker_name</th>
+    <% unless hide_asker %>
+      <th>asker_id</th>
+      <th>asker_name</th>
+    <% end %>
     <th>teller_name</th>
     <th>content_type</th>
     <th>content_id</th>
@@ -13,8 +20,10 @@
   <% rekos.each do |reko| %>
     <tr>
       <td><%= reko.id %></td>
-      <td><%= link_to reko.asker.id, user_path(reko.asker) %></td>
-      <td><%= reko.asker.first_name %></td>
+      <% unless hide_asker %>
+        <td><%= link_to reko.asker.id, user_path(reko.asker) %></td>
+        <td><%= reko.asker.first_name %></td>
+      <% end %>
       <td><%= reko.teller_name %></td>
       <td><%= reko.content_type %></td>
       <td><%= reko.content_id %></td>

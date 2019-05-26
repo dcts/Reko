@@ -33,8 +33,7 @@
 
   <br>
   <h1>Reko-Inbox</h1>
-
-  <%= render partial: "rekos/table_rekos", locals: { rekos: @user.rekos_received } %>
+  <%= render partial: "rekos/table_rekos", locals: { rekos: @user.rekos_received, hide_asker: true } %>
   <%= render partial: "users/bttn_back_to_users" %>
   <%= render partial: "pages/bttn_back_to_dashboard" %>
 

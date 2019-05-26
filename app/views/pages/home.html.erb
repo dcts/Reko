@@ -12,7 +12,7 @@
     <tr>
       <td>✅</td>
       <td>I can list all users</td>
-      <td><%= link_to "list users", users_path %></td>
+      <td><%= link_to "all users", users_path %></td>
     </tr>
     <tr>
       <td>✅</td>
@@ -41,14 +41,14 @@
       <th>link (optional)</th>
     </tr>
     <tr>
-      <td>❌</td>
+      <td>✅</td>
       <td>I can list all Rekos</td>
-      <td></td>
+      <td><%= link_to "all rekos", rekos_path %></td>
     </tr>
     <tr>
-      <td>❌</td>
+      <td>✅</td>
       <td>I can list all rekos that a given user has recieved</td>
-      <td><%#= link_to "list users", users_path %></td>
+      <td><%= link_to "show user (random)", user_path(User.all.sample) %></td>
     </tr>
     <tr>
       <td>❌</td>
