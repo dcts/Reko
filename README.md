@@ -29,3 +29,23 @@ rails g controller rekos
 rails g controller inbox
 
 ```
+
+
+ITUNES API
+```ruby
+# MOVIES / DOCUMENTARIES
+data["results"][0]["kind"] # => "feature-movie"
+data["results"][0]["wrapperType"] # => "track"
+
+if data["results"][0]["primaryGenreName"] == "Documentary"
+
+data["results"][0]["trackName"]              # title
+data["results"][0]["trackId"].to_i           # itunes_id
+data["results"][0]["artworkUrl100"]          # image_url
+data["results"][0]["releaseDate"][0..3].to_i # year
+
+# DOCUMENTARIES
+data["results"][0]["kind"] # => "song"
+data["results"][0]["kind"] # => "song"
+
+```
