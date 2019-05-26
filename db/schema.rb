@@ -55,8 +55,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_124657) do
     t.string "teller_name"
     t.string "content_type"
     t.bigint "content_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["asker_id"], name: "index_rekos_on_asker_id"
     t.index ["content_type", "content_id"], name: "index_rekos_on_content_type_and_content_id"
   end
