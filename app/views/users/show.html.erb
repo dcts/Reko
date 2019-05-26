@@ -15,7 +15,7 @@
     </tr>
     <tr>
       <th>token</th>
-      <td><%= @user.token %></td>
+      <td><%= link_to @user.token, inbox_path(@user.token) %></td>
     </tr>
     <tr>
       <th>rekos_received</th>
