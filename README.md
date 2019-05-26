@@ -2,6 +2,7 @@
 
 - Friends know best
 - Backend Controlpanel
+- [Wiki page](https://github.com/dcts/reko/wiki)
 
 
 ```bash
