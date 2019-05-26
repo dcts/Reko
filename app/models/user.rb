@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # has_many :rekos
-  has_many :received_rekos, inverse_of: :asker, class_name: "Reko", foreign_key: "asker_id"
-  # has_many :given_rekos, inverse_of: :teller, class_name: "Reko", foreign_key: "reller_id"
+  has_many :rekos_received, inverse_of: :asker, class_name: "Reko", foreign_key: "asker_id"
+  # has_many :rekos_given, inverse_of: :teller, class_name: "Reko", foreign_key: "reller_id"
 
   before_create :generate_tokens # url tokens
   validates :token, uniqueness: true
