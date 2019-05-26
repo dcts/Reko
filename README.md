@@ -17,6 +17,9 @@ rails new \
 rails g model movie title
 rails g model podcast title
 rails g model audiobook title
+rails g model serie title
+rails g model documentary title
+
 
 # generate controllers
 rails g controller users

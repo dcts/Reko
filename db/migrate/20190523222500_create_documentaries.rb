@@ -1,10 +1,10 @@
-class CreatePodcasts < ActiveRecord::Migration[5.2]
+class CreateDocumentaries < ActiveRecord::Migration[5.2]
   def change
-    create_table :podcasts do |t|
+    create_table :documentaries do |t|
       t.integer :itunes_id
       t.string :image_url
       t.string :title
-      t.string :episode
+      t.integer :year
 
       t.timestamps
     end
