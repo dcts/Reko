@@ -4,6 +4,7 @@ class CreateSeries < ActiveRecord::Migration[5.2]
       t.integer :itunes_id
       t.string :image_url
       t.string :title
+      t.integer :year
       t.integer :season
 
       t.timestamps

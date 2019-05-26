@@ -4,6 +4,7 @@ class CreateDocumentaries < ActiveRecord::Migration[5.2]
       t.integer :itunes_id
       t.string :image_url
       t.string :title
+      t.integer :year
 
       t.timestamps
     end

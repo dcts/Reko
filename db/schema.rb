@@ -16,32 +16,59 @@ ActiveRecord::Schema.define(version: 2019_05_25_124657) do
   enable_extension "plpgsql"
 
   create_table "audiobooks", force: :cascade do |t|
+    t.integer "itunes_id"
+    t.string "image_url"
     t.string "title"
+    t.string "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "documentaries", force: :cascade do |t|
+    t.integer "itunes_id"
+    t.string "image_url"
+    t.string "title"
+    t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "movies", force: :cascade do |t|
+    t.integer "itunes_id"
+    t.string "image_url"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "podcasts", force: :cascade do |t|
+    t.integer "itunes_id"
+    t.string "image_url"
     t.string "title"
+    t.string "episode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "rekos", force: :cascade do |t|
     t.bigint "asker_id"
+    t.string "teller_name"
     t.string "content_type"
     t.bigint "content_id"
-    t.string "teller_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["asker_id"], name: "index_rekos_on_asker_id"
     t.index ["content_type", "content_id"], name: "index_rekos_on_content_type_and_content_id"
+  end
+
+  create_table "series", force: :cascade do |t|
+    t.integer "itunes_id"
+    t.string "image_url"
+    t.string "title"
+    t.integer "year"
+    t.integer "season"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
