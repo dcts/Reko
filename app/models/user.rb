@@ -11,6 +11,12 @@ class User < ApplicationRecord
   before_create :generate_tokens # url tokens
   validates :token, uniqueness: true
 
+  def self.token_hashmap
+    token_hashmap = {}
+    all.each { |user| token_hashmap[user.token] = user.id }
+    token_hashmap
+  end
+
   def to_s
     "#{first_name} #{last_name}"
   end

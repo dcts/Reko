@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # rekos_routes
   resources :rekos, only: [:index]
+
+  get '/inboxes/:token', to: "inboxes#show", as: "inbox"
 end
