@@ -16,7 +16,8 @@ class CreateRekos < ActiveRecord::Migration[5.2]
       # read more here: https://guides.rubyonrails.org/association_basics.html#polymorphic-associations
       t.references :content, polymorphic: true, index: true
 
-      t.timestamps
+      # STATE (unseen / )
+      t.column :status, :integer, default: 0
     end
   end
 end

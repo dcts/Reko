@@ -8,6 +8,9 @@ class Reko < ApplicationRecord
   # belongs_to :teller, class_name: "User", foreign_key: "teller_id"
   belongs_to :content, polymorphic: true
 
+  # STATUS of the reko
+  enum status: { open: 0, rejected: 1, consumed: 2 }
+
   def self.display
     all.map { |x| x.to_s }.each { |x| puts x }
   end
