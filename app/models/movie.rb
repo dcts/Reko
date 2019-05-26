@@ -2,6 +2,6 @@ class Movie < ApplicationRecord
   has_many :rekos, as: :content
 
   def to_s
-    "#{title} (#{year})"
+    "#{title} (#{year})" # year in brackets
   end
 end
