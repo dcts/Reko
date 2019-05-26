@@ -15,10 +15,13 @@ create_user(password: "123456", first_name: 'Assunta', last_name: 'Waldorf',    
 create_user(password: "123456", first_name: 'Thilo',   last_name: 'Somthing',   email: 'thiloooo@reko.com')
 create_user(password: "123456", first_name: 'Thomas',  last_name: 'Starzynski', email: 'thommy-star@hotmail.com')
 
-# POPULATE PLACEHOLDER CONTENT
-create_movies(["Breaking Bad", "Some Documentary", "Scarface"])
-create_podcasts(["best podcast ever", "crypto podcast", "podcast nr 3", "Tim Ferris"])
-create_audiobooks(["Homo Deus", "21 Lessons for the 21st Century"])
+# OLD SEED FILE!
+# create_movies(["Breaking Bad", "Some Documentary", "Scarface"])
+# create_podcasts(["best podcast ever", "crypto podcast", "podcast nr 3", "Tim Ferris"])
+# create_audiobooks(["Homo Deus", "21 Lessons for the 21st Century"])
+
+# CREATE ONE MOVIE
+
 
 # CREATE REKOS
 # rekos for thomas from allan
