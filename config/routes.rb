@@ -5,6 +5,4 @@ Rails.application.routes.draw do
   get '/users', to: "users#index"
   # define landing page (at the moment the backend control panel)
   root to: 'pages#home'
-  # list routes
-  resources :lists, only: [:index, :show]
 end
