@@ -1,37 +1,37 @@
 <!--
   THIS PARTIAL NEEDS TWO PARAMETERS
   "rekos", WHICH IS AN ARRAY OF REKO INSTANCES
-  "hide_asker", WHICH IS A BOOLEAN TO NOT SHOW THE ASKER
+  "hide_receiver", WHICH IS A BOOLEAN TO NOT SHOW THE receiver
 -->
 <table class="table table-sm">
   <tr>
     <th></th>
     <th>id</th>
-    <% unless hide_asker %>
-      <th>asker_id</th>
-      <th>asker_name</th>
+    <% unless hide_receiver %>
+      <th>receiver_id</th>
+      <th>receiver_name</th>
     <% end %>
-    <th>teller_name</th>
-    <th>content_type</th>
-    <th>content_id</th>
-    <th>content_title</th>
+    <th>sender_name</th>
+    <th>recommendable_type</th>
+    <th>recommendable_id</th>
+    <th>recommendable_title</th>
     <th>status</th>
     <th>created_at</th>
     <th>updated_at</th>
   </tr>
   <% rekos.each do |reko| %>
     <tr>
-      <td><img src="<%= reko.content.image_url %>" alt=""></td>
-      <%#= image_tag reko.content.url(:large), :style => "border: 1px solid red" %>
+      <td><img src="<%= reko.recommendable.image_url %>" alt=""></td>
+      <%#= image_tag reko.recommendable.url(:large), :style => "border: 1px solid red" %>
       <td><%= reko.id %></td>
-      <% unless hide_asker %>
-        <td><%= link_to reko.asker.id, user_path(reko.asker) %></td>
-        <td><%= reko.asker.first_name %></td>
+      <% unless hide_receiver %>
+        <td><%= link_to reko.receiver.id, user_path(reko.receiver) %></td>
+        <td><%= reko.receiver.first_name %></td>
       <% end %>
-      <td><%= reko.teller_name %></td>
-      <td><%= reko.content_type %></td>
-      <td><%= reko.content_id %></td>
-      <td><%= reko.content.to_s %></td>
+      <td><%= reko.sender_name %></td>
+      <td><%= reko.recommendable_type %></td>
+      <td><%= reko.recommendable_id %></td>
+      <td><%= reko.recommendable.to_s %></td>
       <td><%= reko.status %></td>
       <td><%= reko.created_at %></td>
       <td><%= reko.updated_at %></td>
