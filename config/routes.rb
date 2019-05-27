@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :rekos, only: [:index]
 
   get '/inboxes/:token', to: "inboxes#show", as: "inbox"
+
+  resources :contents, only: [:index]
 end

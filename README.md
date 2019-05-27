@@ -28,6 +28,7 @@ rails g model documentary title
 rails g controller users
 rails g controller rekos
 rails g controller inbox
+rails g controller content
 
 ```
 
