@@ -12,27 +12,27 @@
       <th>link (optional)</th>
     </tr>
     <tr>
-      <td>❌✅</td>
+      <td>✅</td>
       <td>I can list all users</td>
       <td><%= link_to "all users", admins_users_path %></td>
     </tr>
     <tr>
-      <td>❌✅</td>
+      <td>✅</td>
       <td>I can list all rekos</td>
       <td><%= link_to "all rekos", admins_rekos_path %></td>
     </tr>
     <tr>
-      <td>❌✅</td>
+      <td>✅</td>
       <td>I can list the rekos of a single user</td>
-      <td>...</td>
+      <td><%= link_to "random user's rekos", admins_user_path(User.all.sample) %></td>
     </tr>
     <tr>
-      <td>❌✅</td>
+      <td>✅</td>
       <td>I can list all recommendables (movies) alphabetically and see how often they got recommended</td>
       <td><%= link_to "all recommendables", admins_recommendables_path %></td>
     </tr>
     <tr>
-      <td>❌✅</td>
+      <td>✅</td>
       <td>I can list all preferences (movie + documentary) and see how often they got selected</td>
       <td><%= link_to "all preferences", admins_preferences_path %></td>
     </tr>

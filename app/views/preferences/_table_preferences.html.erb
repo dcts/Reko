@@ -1,0 +1,22 @@
+<!--
+  THIS PARTIAL NEEDS ONE PARAMETER
+  "preferences", WHICH IS AN ARRAY OF PREFERENCE INSTANCES
+-->
+<table class="table table-sm">
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>count</th>
+    <th>created_at</th>
+    <th>updated_at</th>
+  </tr>
+  <% preferences.each do |preference| %>
+    <tr>
+      <td><%= preference.id %></td>
+      <td><%= preference.name %></td>
+      <td><%= preference.users.size %></td>
+      <td><%= preference.created_at %></td>
+      <td><%= preference.updated_at %></td>
+    </tr>
+  <% end %>
+</table>
