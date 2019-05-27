@@ -1,7 +1,7 @@
 <h1>Reko</h1>
 <h3>Home for all your recommendations.</h3>
 
-<%= form_tag(controller: "beta_applicants", action: "create", method: "post") do %>
-  <%= text_field_tag :email, nil, placeholder: 'Email', id: "email" %>
-  <%= submit_tag 'Apply' %>
-<% end -%>
+<%= render 'sign_in_modal' %>
+<%= render 'beta_applicants/new' %>
+
+<p class="btn btn-primary" data-toggle="modal" data-target="#signInModal">MEMBER SIGN IN</p>
