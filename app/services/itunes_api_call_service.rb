@@ -3,7 +3,7 @@ require 'open-uri'
 
 class ItunesApiCallService
   def initialize(search_term)
-    @base_url = "https://itunes.apple.com/search?limit=15&term="
+    @base_url = "https://itunes.apple.com/search?limit=15&media=tvShow&entity=tvSeason&term="
     @search_term = search_term
     @result = nil
   end
@@ -31,6 +31,7 @@ class ItunesApiCallService
     url = @base_url + normalize(@search_term)
     data = JSON.parse(open(url).read)
     results = data["results"]
+    binding.pry
     # result_count = data["resultCount"] # not needed
   end
 
@@ -39,7 +40,7 @@ class ItunesApiCallService
   end
 
   # evaluates it the result is of interest ()
-  def evaluate(result_object)
+  def evaluate_type(result_object)
 
   end
 
@@ -49,6 +50,12 @@ class ItunesApiCallService
 
   def documentary?(result_object)
     result_object["primaryGenreName"] == "Documentary"
+  end
+
+  def build_instance(result_object)
+    kind = result_object["kind"]
+    genre = result_object["primaryGenreName"]
+    # if kind == "feature-movie"
   end
 
   def buildMovie(attr)

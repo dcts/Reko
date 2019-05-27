@@ -44,8 +44,24 @@ data["results"][0]["trackId"].to_i           # itunes_id
 data["results"][0]["artworkUrl100"]          # image_url
 data["results"][0]["releaseDate"][0..3].to_i # year
 
-# DOCUMENTARIES
-data["results"][0]["kind"] # => "song"
-data["results"][0]["kind"] # => "song"
+# SERIES
+data["results"][0]["wrapperType"] # => "collection"
+data["results"][0]["collectionType"] # => "TV Season"
+
+data["results"][0]["artistName"] # title
+data["results"][0]["collectionName"] # grab the "Season X" out and put it in the title
+data["results"][0]["collectionId"] # itunes_id
+data["results"][0]["collectionId"] # itunes_id
+data["results"][0]["artworkUrl100"] # image_url
+data["results"][0]["releaseDate"][0..3].to_i # year
+
+
+
+# AUDIOBOOKS
+
+
+
+# PODCASTS
+
 
 ```

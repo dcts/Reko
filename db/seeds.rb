@@ -4,24 +4,24 @@
 require_relative 'seeds_helper'
 require_relative '../app/services/itunes_api_call_service'
 
-api_service = ItunesApiCallService.new("Three Identical Strangers")
+api_service = ItunesApiCallService.new("Prison Break")
 m = api_service.call
 m.save!
-api_service = ItunesApiCallService.new("Scarface")
-m = api_service.call
-m.save!
-api_service = ItunesApiCallService.new("Big lebowski")
-m = api_service.call
-m.save!
-api_service = ItunesApiCallService.new("Bourne")
-m = api_service.call
-m.save!
-api_service = ItunesApiCallService.new("Matrix")
-m = api_service.call
-m.save!
-api_service = ItunesApiCallService.new("Lion King")
-m = api_service.call
-m.save!
+# api_service = ItunesApiCallService.new("Scarface")
+# m = api_service.call
+# m.save!
+# api_service = ItunesApiCallService.new("Big lebowski")
+# m = api_service.call
+# m.save!
+# api_service = ItunesApiCallService.new("Bourne")
+# m = api_service.call
+# m.save!
+# api_service = ItunesApiCallService.new("Matrix")
+# m = api_service.call
+# m.save!
+# api_service = ItunesApiCallService.new("Lion King")
+# m = api_service.call
+# m.save!
 
 
 
