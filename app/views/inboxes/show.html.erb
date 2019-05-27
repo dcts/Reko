@@ -1,3 +1,6 @@
+<!--
+  DELETE THIS FILE? (thomas)
+-->
 <div class="container">
   <h1>Welcome, this is the Inbox of your fellow friend <%= "#{@user.first_name} #{@user.last_name}" %></h1>
   <%= render partial: "rekos/table_rekos", locals: { rekos: @user.rekos_received, hide_asker: true } %>
