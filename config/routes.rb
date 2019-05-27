@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
 
   # ALL THE ROUTES
+  get '/admins/', to: "admins#home"
   get '/admins/users', to: "admins#users"
   get '/admins/rekos', to: "admins#rekos"
   get '/admins/recommendables', to: "admins#recommendables"

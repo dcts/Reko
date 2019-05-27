@@ -1,24 +1,28 @@
 class AdminsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:users] #, :rekos, :recommendables, :preferences, :beta_applicants]
+  skip_before_action :authenticate_user!, only: [:home, :users, :rekos, :recommendables, :preferences, :beta_applicants]
   # if you are an admin, you can see all tables
 
-  def users
-    @users = User.all
+  def home
+    # @
   end
 
-  # def rekos
+  def users
+    @users = "working"
+  end
 
-  # end
+  def rekos
+    @rekos = "working"
+  end
 
-  # def recommendables
+  def recommendables
+    @recommendables = "working"
+  end
 
-  # end
+  def preferences
+    @preferences = "working"
+  end
 
-  # def preferences
-  #   @prefernces = Preference.all
-  # end
-
-  # def beta_applicants
-
-  # end
+  def beta_applicants
+    @beta_applicants = "working"
+  end
 end
