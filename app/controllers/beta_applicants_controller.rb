@@ -1,0 +1,2 @@
+class BetaApplicantsController < ApplicationController
+end

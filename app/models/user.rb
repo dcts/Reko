@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :rekos_received, inverse_of: :receiver, class_name: "Reko", foreign_key: "receiver_id"
   # has_many :rekos_given, inverse_of: :teller, class_name: "Reko", foreign_key: "reller_id"
   has_many :user_preferences
-  has_many :preference, through: :user_preferences
+  has_many :preferences, through: :user_preferences
 
   before_create :generate_tokens # url tokens
   validates :token, uniqueness: true
