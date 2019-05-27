@@ -36,14 +36,6 @@ def create_rekos_for_each_user(n)
   end
 end
 
-def create_reko(receiver, sender, content)
-  r = Reko.new(sender_name: sender)
-  r.receiver = receiver
-  r.content = content
-  r.save!
-  puts "creating #{r.to_s}"
-end
-
 # save recommendables (array) array to DB
 def save_recommendables(recommendables)
   recommendables.each do |recommendable|
