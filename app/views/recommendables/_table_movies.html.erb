@@ -7,7 +7,8 @@
     <th></th>
     <th>id</th>
     <th>title</th>
-    <th>year</th>
+    <th>genre</th>
+    <th>times recommended</th>
     <th>created_at</th>
     <th>updated_at</th>
   </tr>
@@ -16,7 +17,8 @@
       <td><img src="<%= movie.image_url %>" alt="" style="height:100px"></td>
       <td><%= movie.id %></td>
       <td><%= movie.title %></td>
-      <td><%= movie.year %></td>
+      <td><%= movie.genre %></td>
+      <td><%= movie.rekos.size %></td>
       <td><%= movie.created_at %></td>
       <td><%= movie.updated_at %></td>
     </tr>

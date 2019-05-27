@@ -1,36 +1,39 @@
-<div class="container-fluid">
-  <h1>All Users</h1>
-  <table class="table table-sm">
-    <tr>
-      <th></th> <!-- PLACEHOLDER FOR PROFILE AVATAR -->
-      <th>id</th>
-      <th>first name</th>
-      <th>last name</th>
-      <th>email</th>
-      <th>rekos_received</th>
-      <th>token</th>
-      <th>created_at</th>
-      <th>updated_at</th>
-      <!-- <th colspan="3">admin</th> -->
-    </tr>
+<!--
+  THIS PARTIAL TAKES ONE INPUT PARAMETER
+  "users" which is an array of user instances
+  renders a table where each row is a user!
+-->
+<table class="table table-sm">
+  <tr>
+    <th></th> <!-- PLACEHOLDER FOR PROFILE AVATAR -->
+    <th>id</th>
+    <th>first name</th>
+    <th>last name</th>
+    <th>email</th>
+    <th>rekos_received</th>
+    <th>token</th>
+    <th>created_at</th>
+    <th>updated_at</th>
+    <!-- <th colspan="3">admin</th> -->
+  </tr>
 
-    <% users.each do |user| %>
-      <tr>
-        <td><%#= image_tag user.image_url, alt: "Le Wagon", height: 50, style: "border-radius: 50%;" %></td>
-        <td><%= link_to user.id, user_path(user) %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.rekos_received.size %></td>
-        <td><%= user.token %></td>
-        <td><%= user.created_at %></td>
-        <td><%= user.updated_at %></td>
-        <!-- <td style="letter-spacing: 3px;"> -->
-          <%#= link_to ('<i class="far fa-eye"></i>').html_safe, users_path %>
-          <%#= link_to ('<i class="fas fa-pencil-alt"></i>').html_safe, users_path %>
-          <%#= link_to ('<i class="fas fa-trash-alt"></i>').html_safe, users_path(user), method: :delete %>
-        <!-- </td> -->
-      </tr>
-    <% end %>
-  </table>
-</div>
+  <% users.each do |user| %>
+    <tr>
+      <td><%#= image_tag user.image_url, alt: "Le Wagon", height: 50, style: "border-radius: 50%;" %></td>
+      <td><%= link_to user.id, admins_user_path(user) %></td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.rekos_received.size %></td>
+      <td><%= user.token %></td>
+      <td><%= user.created_at %></td>
+      <td><%= user.updated_at %></td>
+      <!-- <td style="letter-spacing: 3px;"> -->
+        <%#= link_to ('<i class="far fa-eye"></i>').html_safe, users_path %>
+        <%#= link_to ('<i class="fas fa-pencil-alt"></i>').html_safe, users_path %>
+        <%#= link_to ('<i class="fas fa-trash-alt"></i>').html_safe, users_path(user), method: :delete %>
+      <!-- </td> -->
+    </tr>
+  <% end %>
+</table>
+

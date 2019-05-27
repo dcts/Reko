@@ -1,3 +1,7 @@
 <%= render partial: "navbar" %>
-<%= render partial: "users/table_users", locals: {users: @users } %>
+
+<div class="container-fluid">
+  <h1>Users</h1>
+  <%= render partial: "users/table_users", locals: {users: @users } %>
+</div>
 

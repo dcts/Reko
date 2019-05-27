@@ -12,9 +12,9 @@ create_user(password: "123456", first_name: 'Allan',   last_name: 'Holmes',     
 create_user(password: "123456", first_name: 'Assunta', last_name: 'Waldorf',    email: 'sunti@mail.com')
 create_user(password: "123456", first_name: 'Thilo',   last_name: 'Somthing',   email: 'thiloooo@reko.com')
 create_user(password: "123456", first_name: 'Thomas',  last_name: 'Starzynski', email: 'thommy-star@hotmail.com')
-create_user(password: "123456", first_name: 'rand_user1',  last_name: 'qwer', email: 'ra2@ra.com')
-create_user(password: "123456", first_name: 'rand_user2',  last_name: 'qwer', email: 'ra3@ra.com')
-create_user(password: "123456", first_name: 'rand_user3',  last_name: 'qwer', email: 'ra4@ra.com')
+create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: Faker::Name.last_name, email: Faker::Internet.email)
+create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: Faker::Name.last_name, email: Faker::Internet.email)
+create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: Faker::Name.last_name, email: Faker::Internet.email)
 
 # CREATE PREFERENCE (CATEGORIES) (only 2 for the moment)
 create_preferences(["Movies", "Documentaries"])

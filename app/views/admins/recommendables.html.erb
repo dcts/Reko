@@ -2,5 +2,7 @@
 
 <div class="container">
   <h1>Recommendables</h1>
-  <h1><%= @recommendables %></h1>
+
+  <h2>Movies</h2>
+  <%= render partial: "recommendables/table_movies", locals: { movies: @movies } %>
 </div>
