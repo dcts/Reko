@@ -14,7 +14,16 @@ Rails.application.routes.draw do
   # rekos_routes
   resources :rekos, only: [:index]
 
-  get '/inboxes/:token', to: "inboxes#show", as: "inbox"
 
-  resources :contents, only: [:index]
+  # ALL THE ROUTES
+  get '/admins/', to: "admins#home"
+  get '/admins/users', to: "admins#users"
+  get '/admins/rekos', to: "admins#rekos"
+  get '/admins/recommendables', to: "admins#recommendables"
+  get '/admins/preferences', to: "admins#preferences"
+  get '/admins/beta_applicants', to: "admins#beta_applicants"
+
+
+
+
 end
