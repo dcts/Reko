@@ -14,7 +14,6 @@
     <type label="Single precision" length="0" sql="FLOAT" quote=""/>
     <type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
   </group>
-
   <group label="Character" color="rgb(255,200,200)">
     <type label="Char" length="1" sql="CHAR" quote="'"/>
     <type label="Varchar" length="1" sql="VARCHAR" re="CHARACTER VARYING" quote="'"/>
@@ -22,7 +21,6 @@
     <type label="Binary" length="1" sql="BYTEA" quote="'"/>
     <type label="Boolean" length="0" sql="BOOLEAN" quote="'"/>
   </group>
-
   <group label="Date &amp; Time" color="rgb(200,255,200)">
     <type label="Date" length="0" sql="DATE" quote="'"/>
     <type label="Time" length="1" sql="TIME" quote="'"/>
@@ -32,7 +30,6 @@
     <type label="Timestamp w/ TZ" length="0" sql="TIMESTAMP WITH TIME ZONE" quote="'"/>
     <type label="Timestamp wo/ TZ" length="0" sql="TIMESTAMP WITHOUT TIME ZONE" quote="'"/>
   </group>
-
   <group label="Miscellaneous" color="rgb(200,200,255)">
     <type label="XML" length="1" sql="XML" quote="'"/>
     <type label="Bit" length="1" sql="BIT" quote="'"/>
@@ -41,7 +38,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="508" y="36" name="users">
+</datatypes><table x="491" y="50" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -64,7 +61,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="43" y="32" name="movies">
+<table x="76" y="46" name="movies">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -77,17 +74,14 @@
 <row name="title" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
-<row name="year" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="genre [ENUM]" null="1" autoincrement="0">
+<row name="genre" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="7" y="610" name="Podcasts">
+<table x="206" y="509" name="Podcasts">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -110,7 +104,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="268" y="43" name="rekos">
+<table x="255" y="50" name="rekos">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -126,11 +120,7 @@
 <default>NULL</default></row>
 <row name="recommendable_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="series" row="id" />
-<relation table="movies" row="id" />
-<relation table="Documentaries" row="id" />
-<relation table="Audiobooks" row="id" />
-<relation table="Podcasts" row="id" />
+<default>NULL</default><relation table="movies" row="id" />
 </row>
 <row name="status" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -140,7 +130,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="22" y="609" name="Audiobooks">
+<table x="48" y="508" name="Audiobooks">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -160,7 +150,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="46" y="237" name="series">
+<table x="343" y="510" name="series">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -183,52 +173,28 @@
 <part>id</part>
 </key>
 </table>
-<table x="187" y="607" name="Documentaries">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="itunes_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="image_url" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="title" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="year" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="357" y="615" name="Customs[ICEBX]">
-<row name="id" null="1" autoincrement="1">
+<table x="456" y="510" name="Customs">
+<row name="id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="title" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>id</part>
 </key>
 </table>
-<table x="889" y="39" name="preferences">
+<table x="732" y="209" name="preferences">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="name [string]" null="1" autoincrement="0">
+<row name="name" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="654" y="38" name="user_preferences">
+<table x="644" y="52" name="user_preferences">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -244,7 +210,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="431" y="323" name="beta_applicants">
+<table x="455" y="263" name="beta_applicants">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
