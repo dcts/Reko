@@ -14,10 +14,10 @@ class ItunesApiCallService
     results.each do |result_object|
       content = nil
       content = build_movie(result_object) if movie?(result_object)
-      content = build_documentary(result_object) if documentary?(result_object)
-      content = build_serie(result_object) if serie?(result_object)
-      content = build_audiobook(result_object) if audiobook?(result_object)
-      content = build_podcast(result_object) if podcast?(result_object)
+      # content = build_documentary(result_object) if documentary?(result_object)
+      # content = build_serie(result_object) if serie?(result_object)
+      # content = build_audiobook(result_object) if audiobook?(result_object)
+      # content = build_podcast(result_object) if podcast?(result_object)
       content_arr << content unless content.nil?
     end
     content_arr
@@ -77,45 +77,45 @@ class ItunesApiCallService
       title: attr["trackName"],
       itunes_id: attr["trackId"].to_i,
       image_url: resize(attr["artworkUrl100"]),
-      year: attr["releaseDate"][0..3].to_i
+      # year: attr["releaseDate"][0..3].to_i
     )
   end
 
-  def build_documentary(attr)
-    Documentary.new(
-      title: attr["trackName"],
-      itunes_id: attr["trackId"].to_i,
-      image_url: resize(attr["artworkUrl100"]),
-      year: attr["releaseDate"][0..3].to_i
-    )
-  end
+  # def build_documentary(attr)
+  #   Documentary.new(
+  #     title: attr["trackName"],
+  #     itunes_id: attr["trackId"].to_i,
+  #     image_url: resize(attr["artworkUrl100"]),
+  #     year: attr["releaseDate"][0..3].to_i
+  #   )
+  # end
 
-  def build_serie(attr)
-    Serie.new(
-      title: attr["trackName"],
-      itunes_id: attr["trackId"].to_i,
-      image_url: resize(attr["artworkUrl100"]),
-      year: attr["releaseDate"][0..3].to_i
-    )
-  end
+  # def build_serie(attr)
+  #   Serie.new(
+  #     title: attr["trackName"],
+  #     itunes_id: attr["trackId"].to_i,
+  #     image_url: resize(attr["artworkUrl100"]),
+  #     year: attr["releaseDate"][0..3].to_i
+  #   )
+  # end
 
-  def build_audiobook(attr)
-    Audiobook.new(
-      title: attr["trackName"],
-      itunes_id: attr["trackId"].to_i,
-      image_url: resize(attr["artworkUrl100"]),
-      author: "attr[]"
-    )
-  end
+  # def build_audiobook(attr)
+  #   Audiobook.new(
+  #     title: attr["trackName"],
+  #     itunes_id: attr["trackId"].to_i,
+  #     image_url: resize(attr["artworkUrl100"]),
+  #     author: "attr[]"
+  #   )
+  # end
 
-  def build_podcast(attr)
-    Podcast.new(
-      title: attr["trackName"],
-      itunes_id: attr["trackId"].to_i,
-      image_url: resize(attr["artworkUrl100"]),
-      author: "attr[]"
-    )
-  end
+  # def build_podcast(attr)
+  #   Podcast.new(
+  #     title: attr["trackName"],
+  #     itunes_id: attr["trackId"].to_i,
+  #     image_url: resize(attr["artworkUrl100"]),
+  #     author: "attr[]"
+  #   )
+  # end
 
   def resize(url)
     url.gsub("100x100bb.jpg", "400x400bb.jpg")

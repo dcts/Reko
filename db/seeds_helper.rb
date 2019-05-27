@@ -7,12 +7,10 @@ def end_message
 end
 
 def reset_database
-  puts "deleting all database entries (rekos, movies, podcasts, audiobooks, users"
+  puts "deleting all database entries (rekos, movies, users"
   # ordering of the delete operations matters!
   Reko.delete_all
   Movie.delete_all
-  Podcast.delete_all
-  Audiobook.delete_all
   User.delete_all
 end
 

@@ -1,0 +1,2 @@
+class BetaApplicant < ApplicationRecord
+end

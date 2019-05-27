@@ -2,12 +2,51 @@
 # use the following when you want to require helper methods inside the rails console
 # > require_relative 'db/seeds_helper'
 require_relative 'seeds_helper'
-require_relative '../app/services/itunes_api_call_service'
+# require_relative '../app/services/itunes_api_call_service'
 
-Movie.delete_all
-Documentary.delete_all
-puts "deleted movies and documentaries"
+# Movie.delete_all
+# Documentary.delete_all
+# puts "deleted movies and documentaries"
 
+
+
+
+# api_service = ItunesApiCallService.new("Scarface")
+# m = api_service.call
+# m.save!
+# api_service = ItunesApiCallService.new("Big lebowski")
+# m = api_service.call
+# m.save!
+# api_service = ItunesApiCallService.new("Bourne")
+# m = api_service.call
+# m.save!
+# api_service = ItunesApiCallService.new("Matrix")
+# m = api_service.call
+# m.save!
+# api_service = ItunesApiCallService.new("Lion King")
+# m = api_service.call
+# m.save!
+
+# puts "END!"
+
+# display message to console
+welcome_message
+
+# RESET DATABASE
+reset_database
+
+# CREATE USERS
+create_user(password: "123456", first_name: 'Allan',   last_name: 'Holmes',     email: 'allan.homes@me.com')
+create_user(password: "123456", first_name: 'Assunta', last_name: 'Waldorf',    email: 'sunti@mail.com')
+create_user(password: "123456", first_name: 'Thilo',   last_name: 'Somthing',   email: 'thiloooo@reko.com')
+create_user(password: "123456", first_name: 'Thomas',  last_name: 'Starzynski', email: 'thommy-star@hotmail.com')
+
+# OLD SEED FILE!
+# create_movies(["Breaking Bad", "Some Documentary", "Scarface"])
+# create_podcasts(["best podcast ever", "crypto podcast", "podcast nr 3", "Tim Ferris"])
+# create_audiobooks(["Homo Deus", "21 Lessons for the 21st Century"])
+
+# SEED API FOR MOVIES
 keywords = [
   "Blackfish",
   "Strangers",
@@ -33,48 +72,6 @@ keywords.each do |search_term|
   content = ItunesApiCallService.new(search_term).call
   save_content_arr(content)
 end
-
-
-# api_service = ItunesApiCallService.new("Scarface")
-# m = api_service.call
-# m.save!
-# api_service = ItunesApiCallService.new("Big lebowski")
-# m = api_service.call
-# m.save!
-# api_service = ItunesApiCallService.new("Bourne")
-# m = api_service.call
-# m.save!
-# api_service = ItunesApiCallService.new("Matrix")
-# m = api_service.call
-# m.save!
-# api_service = ItunesApiCallService.new("Lion King")
-# m = api_service.call
-# m.save!
-
-
-
-
-puts "END!"
-
-# # display message to console
-# welcome_message
-
-# # RESET DATABASE
-# reset_database
-
-# # CREATE USERS
-# create_user(password: "123456", first_name: 'Allan',   last_name: 'Holmes',     email: 'allan.homes@me.com')
-# create_user(password: "123456", first_name: 'Assunta', last_name: 'Waldorf',    email: 'sunti@mail.com')
-# create_user(password: "123456", first_name: 'Thilo',   last_name: 'Somthing',   email: 'thiloooo@reko.com')
-# create_user(password: "123456", first_name: 'Thomas',  last_name: 'Starzynski', email: 'thommy-star@hotmail.com')
-
-# # OLD SEED FILE!
-# # create_movies(["Breaking Bad", "Some Documentary", "Scarface"])
-# # create_podcasts(["best podcast ever", "crypto podcast", "podcast nr 3", "Tim Ferris"])
-# # create_audiobooks(["Homo Deus", "21 Lessons for the 21st Century"])
-
-# # CREATE ONE MOVIE
-
 
 # # CREATE REKOS
 # # rekos for thomas from allan
