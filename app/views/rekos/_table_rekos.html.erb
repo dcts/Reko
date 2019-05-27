@@ -5,6 +5,7 @@
 -->
 <table class="table table-sm">
   <tr>
+    <th></th>
     <th>id</th>
     <% unless hide_asker %>
       <th>asker_id</th>
@@ -14,11 +15,14 @@
     <th>content_type</th>
     <th>content_id</th>
     <th>content_title</th>
+    <th>status</th>
     <th>created_at</th>
     <th>updated_at</th>
   </tr>
   <% rekos.each do |reko| %>
     <tr>
+      <td><img src="<%= reko.content.image_url %>" alt=""></td>
+      <%#= image_tag reko.content.url(:large), :style => "border: 1px solid red" %>
       <td><%= reko.id %></td>
       <% unless hide_asker %>
         <td><%= link_to reko.asker.id, user_path(reko.asker) %></td>
@@ -28,6 +32,7 @@
       <td><%= reko.content_type %></td>
       <td><%= reko.content_id %></td>
       <td><%= reko.content.to_s %></td>
+      <td><%= reko.status %></td>
       <td><%= reko.created_at %></td>
       <td><%= reko.updated_at %></td>
     </tr>
