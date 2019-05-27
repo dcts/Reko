@@ -10,25 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_25_124657) do
+ActiveRecord::Schema.define(version: 2019_05_27_161914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "audiobooks", force: :cascade do |t|
-    t.integer "itunes_id"
-    t.string "image_url"
-    t.string "title"
-    t.string "author"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "documentaries", force: :cascade do |t|
-    t.integer "itunes_id"
-    t.string "image_url"
-    t.string "title"
-    t.integer "year"
+  create_table "beta_applicants", force: :cascade do |t|
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,39 +25,36 @@ ActiveRecord::Schema.define(version: 2019_05_25_124657) do
     t.integer "itunes_id"
     t.string "image_url"
     t.string "title"
+    t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "podcasts", force: :cascade do |t|
-    t.integer "itunes_id"
-    t.string "image_url"
-    t.string "title"
-    t.string "episode"
+  create_table "preferences", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "rekos", force: :cascade do |t|
-    t.bigint "asker_id"
-    t.string "teller_name"
-    t.string "content_type"
-    t.bigint "content_id"
+    t.bigint "receiver_id"
+    t.string "sender_name"
+    t.string "recommendable_type"
+    t.bigint "recommendable_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["asker_id"], name: "index_rekos_on_asker_id"
-    t.index ["content_type", "content_id"], name: "index_rekos_on_content_type_and_content_id"
+    t.index ["receiver_id"], name: "index_rekos_on_receiver_id"
+    t.index ["recommendable_type", "recommendable_id"], name: "index_rekos_on_recommendable_type_and_recommendable_id"
   end
 
-  create_table "series", force: :cascade do |t|
-    t.integer "itunes_id"
-    t.string "image_url"
-    t.string "title"
-    t.integer "year"
-    t.integer "season"
+  create_table "user_preferences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "preference_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["preference_id"], name: "index_user_preferences_on_preference_id"
+    t.index ["user_id"], name: "index_user_preferences_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,5 +72,5 @@ ActiveRecord::Schema.define(version: 2019_05_25_124657) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "rekos", "users", column: "asker_id"
+  add_foreign_key "rekos", "users", column: "receiver_id"
 end
