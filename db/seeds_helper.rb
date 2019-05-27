@@ -19,52 +19,35 @@ def create_user(attr)
   User.create!(attr)
 end
 
-# creates movie instances from an array of titles and saves them
-def create_movies(movie_titles)
-  print "creating movies     "
-  movie_titles.each do |movie_title|
-    Movie.create!(title: movie_title)
-    print "*"
-  end
-  puts " done!"
-end
-
-# creates podcast instances from an array of titles and saves them
-def create_podcasts(podcast_titles)
-  print "creating podcasts   "
-  podcast_titles.each do |podcast_title|
-    Podcast.create!(title: podcast_title)
-    print "*"
-  end
-  puts " done!"
-end
-
-# creates audiobook instances from an array of titles and saves them
-def create_audiobooks(audiobook_titles)
-  print "creating audiobooks "
-  audiobook_titles.each do |audiobook_title|
-    Audiobook.create!(title: audiobook_title)
-    print "*"
-  end
-  puts " done!"
-end
-
 # CREATE REKO METHOD
-# asker  : user-instance
-# teller : name of the teller (teller_name) as string
-# content: instance of a movie / podcast or audiobook
-def create_reko(asker, teller, content)
-  r = Reko.new(teller_name: teller)
-  r.asker = asker
+# receiver : user-instance
+# sender   : name of the sender (sender_name) as string
+# content  : instance of a movie / podcast or audiobook
+def create_rekos_for_each_user(n)
+  User.all.each do |user|
+    n.times do
+      Reko.create!(
+        receiver: user,
+        sender_name: Faker::Name.first_name,
+        recommendable: Movie.all.sample
+      )
+      puts "creating #{Reko.last.to_s}"
+    end
+  end
+end
+
+def create_reko(receiver, sender, content)
+  r = Reko.new(sender_name: sender)
+  r.receiver = receiver
   r.content = content
   r.save!
   puts "creating #{r.to_s}"
 end
 
-# SAVE contents array
-def save_content_arr(content_arr)
-  content_arr.each do |content|
-    content.save!
-    puts "saving #{content.title} (#{content.class})"
+# save recommendables (array) array to DB
+def save_recommendables(recommendables)
+  recommendables.each do |recommendable|
+    recommendable.save!
+    puts "saving #{recommendable.title}"
   end
 end
