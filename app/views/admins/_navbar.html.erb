@@ -27,6 +27,30 @@
         </li>
       <% else %>
         <li class="nav-item">
+          <%= link_to "DASHBOARD", admins_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link">|</span>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Users", admins_users_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Rekos", admins_rekos_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Recommendables", admins_recommendables_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Preferences", admins_preferences_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Beta-Applicants", admins_beta_applicants_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link">|</span>
+        </li>
+        <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
