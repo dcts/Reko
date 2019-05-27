@@ -32,7 +32,7 @@ class ItunesApiCallService
 
   # spaces inside a search term need to be subsituted with "+"
   def normalize(search_term)
-    search_term.chomp.gsub(" ", "+")
+    search_term.chomp.tr(" ", "+")
   end
 
   # checks if the result_json returned by the itunes API is a movie
