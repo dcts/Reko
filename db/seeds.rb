@@ -1,35 +1,7 @@
-# require helper functions
-# use the following when you want to require helper methods inside the rails console
-# > require_relative 'db/seeds_helper'
-require_relative 'seeds_helper'
-# require_relative '../app/services/itunes_api_call_service'
+# require helper functions located in same directory
+require_relative 'seeds_helper' # in console run this: $ require_relative 'db/seeds_helper'
 
-# Movie.delete_all
-# Documentary.delete_all
-# puts "deleted movies and documentaries"
-
-
-
-
-# api_service = ItunesApiCallService.new("Scarface")
-# m = api_service.call
-# m.save!
-# api_service = ItunesApiCallService.new("Big lebowski")
-# m = api_service.call
-# m.save!
-# api_service = ItunesApiCallService.new("Bourne")
-# m = api_service.call
-# m.save!
-# api_service = ItunesApiCallService.new("Matrix")
-# m = api_service.call
-# m.save!
-# api_service = ItunesApiCallService.new("Lion King")
-# m = api_service.call
-# m.save!
-
-# puts "END!"
-
-# display message to console
+# WELCOME
 welcome_message
 
 # RESET DATABASE
@@ -41,12 +13,8 @@ create_user(password: "123456", first_name: 'Assunta', last_name: 'Waldorf',    
 create_user(password: "123456", first_name: 'Thilo',   last_name: 'Somthing',   email: 'thiloooo@reko.com')
 create_user(password: "123456", first_name: 'Thomas',  last_name: 'Starzynski', email: 'thommy-star@hotmail.com')
 
-# OLD SEED FILE!
-# create_movies(["Breaking Bad", "Some Documentary", "Scarface"])
-# create_podcasts(["best podcast ever", "crypto podcast", "podcast nr 3", "Tim Ferris"])
-# create_audiobooks(["Homo Deus", "21 Lessons for the 21st Century"])
-
-# SEED API FOR MOVIES
+# POPULATE RECOMMENDABLE
+# seed itunes API for movies (documentaries included)
 keywords = [
   "Blackfish",
   "Strangers",
@@ -68,19 +36,13 @@ keywords = [
   "Die Hard",
 ]
 
-keywords.each do |search_term|
-  content = ItunesApiCallService.new(search_term).call
-  save_content_arr(content)
+keywords.each do |keyword|
+  recommendables = ItunesApiCallService.new(keyword).call
+  save_recommendables(recommendables)
 end
 
-# # CREATE REKOS
-# # rekos for thomas from allan
-# asker = User.where(first_name: "Thomas")[0] # asker
-# create_reko(asker, "Allan", Movie.new(title: "Three Random Strangers"))
-# create_reko(asker, "Allan", Audiobook.new(title: "The Magic Of Thinking Big"))
-# # rekos for allan from thomas
-# asker = User.where(first_name: "Allan")[0]
-# create_reko(asker, "Thomas", Audiobook.new(title: "Sapiens"))
+# CREATE RANDOM REKOS (n = number of rekos per user)
+create_rekos_for_each_user(10)
 
 # # dispaly end message to console
-# end_message
+end_message
