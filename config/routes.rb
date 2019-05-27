@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show] # get '/users/:id', to: "users#show", as: "user"
   # define landing page (at the moment the backend control panel)
   root to: 'pages#home'
+
+  # beta applicants route
+  resources :beta_applicants, only: [:create]
+
   # rekos_routes
   resources :rekos, only: [:index]
 
