@@ -7,7 +7,7 @@ class AdminsController < ApplicationController
   end
 
   def users
-    @users = "working"
+    @users = User.all
   end
 
   def rekos
