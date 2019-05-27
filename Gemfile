@@ -34,6 +34,9 @@ end
 # as your apps name. And we need "reko" as model
 gem 'rename'
 
+# ADD FAKER for fake seed data
+gem 'faker'
+
 # ADD JSON and OPEN-URI gem to make API requests (not needed?)
 # gem 'json'
 # gem 'open-uri'
