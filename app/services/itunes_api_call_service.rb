@@ -3,22 +3,24 @@ require 'open-uri'
 
 class ItunesApiCallService
   def initialize(search_term)
-    @base_url = "https://itunes.apple.com/search?limit=15&media=tvShow&entity=tvSeason&term="
+    @base_url = "https://itunes.apple.com/search?limit=15&term="
     @search_term = search_term
     @result = nil
   end
 
   def call
+    content_arr = []
     results = fetch
     results.each do |result_object|
-      return buildMovie(result_object) if movie?(result_object)
+      content = nil
+      content = build_movie(result_object) if movie?(result_object)
+      content = build_documentary(result_object) if documentary?(result_object)
+      content = build_serie(result_object) if serie?(result_object)
+      content = build_audiobook(result_object) if audiobook?(result_object)
+      content = build_podcast(result_object) if podcast?(result_object)
+      content_arr << content unless content.nil?
     end
-    # content_arr = [] # array with instances of movie / documentary / podcast / audiobook etc.
-    # # url = 'https://api.github.com/users/ssaunier'
-    # # user_serialized = open(url).read
-    # # user = JSON.parse(user_serialized)
-    # # puts "#{user['name']} - #{user['bio']}"
-    # content_arr << extract(results[0])
+    content_arr
   end
 
   def url
@@ -31,7 +33,7 @@ class ItunesApiCallService
     url = @base_url + normalize(@search_term)
     data = JSON.parse(open(url).read)
     results = data["results"]
-    binding.pry
+    # binding.pry
     # result_count = data["resultCount"] # not needed
   end
 
@@ -45,29 +47,78 @@ class ItunesApiCallService
   end
 
   def movie?(result_object)
-    result_object["kind"] == "feature-movie"
+    result_object["kind"] == "feature-movie" && result_object["primaryGenreName"] != "Documentary"
   end
 
   def documentary?(result_object)
-    result_object["primaryGenreName"] == "Documentary"
+    result_object["kind"] == "feature-movie" && result_object["primaryGenreName"] == "Documentary"
   end
 
-  def build_instance(result_object)
-    kind = result_object["kind"]
-    genre = result_object["primaryGenreName"]
-    # if kind == "feature-movie"
+  def serie?(result_object)
+    false
   end
 
-  def buildMovie(attr)
+  def audiobook?(result_object)
+    false
+  end
+
+  def podcast?(result_object)
+    false
+  end
+
+  # def build_instance(result_object)
+  #   kind = result_object["kind"]
+  #   genre = result_object["primaryGenreName"]
+  #   # if kind == "feature-movie"
+  # end
+
+  def build_movie(attr)
     Movie.new(
       title: attr["trackName"],
       itunes_id: attr["trackId"].to_i,
-      image_url: resize(attr["artworkUrl100"], 400),
-      year: attr["releaseDate"][0..3].to_i)
+      image_url: resize(attr["artworkUrl100"]),
+      year: attr["releaseDate"][0..3].to_i
+    )
   end
 
-  def resize(url, target_size)
-    url.gsub("100x100bb.jpg", "#{target_size}x#{target_size}bb.jpg")
+  def build_documentary(attr)
+    Documentary.new(
+      title: attr["trackName"],
+      itunes_id: attr["trackId"].to_i,
+      image_url: resize(attr["artworkUrl100"]),
+      year: attr["releaseDate"][0..3].to_i
+    )
+  end
+
+  def build_serie(attr)
+    Serie.new(
+      title: attr["trackName"],
+      itunes_id: attr["trackId"].to_i,
+      image_url: resize(attr["artworkUrl100"]),
+      year: attr["releaseDate"][0..3].to_i
+    )
+  end
+
+  def build_audiobook(attr)
+    Audiobook.new(
+      title: attr["trackName"],
+      itunes_id: attr["trackId"].to_i,
+      image_url: resize(attr["artworkUrl100"]),
+      author: "attr[]"
+    )
+  end
+
+  def build_podcast(attr)
+    Podcast.new(
+      title: attr["trackName"],
+      itunes_id: attr["trackId"].to_i,
+      image_url: resize(attr["artworkUrl100"]),
+      author: "attr[]"
+    )
+  end
+
+  def resize(url)
+    url.gsub("100x100bb.jpg", "400x400bb.jpg")
   end
 end
 

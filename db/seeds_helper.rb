@@ -63,3 +63,10 @@ def create_reko(asker, teller, content)
   puts "creating #{r.to_s}"
 end
 
+# SAVE contents array
+def save_content_arr(content_arr)
+  content_arr.each do |content|
+    content.save!
+    puts "saving #{content.title} (#{content.class})"
+  end
+end

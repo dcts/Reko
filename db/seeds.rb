@@ -4,9 +4,37 @@
 require_relative 'seeds_helper'
 require_relative '../app/services/itunes_api_call_service'
 
-api_service = ItunesApiCallService.new("Prison Break")
-m = api_service.call
-m.save!
+Movie.delete_all
+Documentary.delete_all
+puts "deleted movies and documentaries"
+
+keywords = [
+  "Blackfish",
+  "Strangers",
+  "Supersize me",
+  "inside Job",
+  "Evolution",
+  "After Passion",
+  "Aladdin",
+  "Avengers",
+  "Black Panther",
+  "Matrix",
+  "Harry Potter",
+  "Spotlight",
+  "Star Wars",
+  "Godfather",
+  "Logan",
+  "Gravity",
+  "Spider Man",
+  "Die Hard",
+]
+
+keywords.each do |search_term|
+  content = ItunesApiCallService.new(search_term).call
+  save_content_arr(content)
+end
+
+
 # api_service = ItunesApiCallService.new("Scarface")
 # m = api_service.call
 # m.save!
