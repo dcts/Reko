@@ -1,0 +1,24 @@
+<!--
+  THIS PARTIAL NEEDS ONE PARAMETERS
+  "movies", WHICH IS AN ARRAY OF MOVIE INSTANCES
+-->
+<table class="table table-sm">
+  <tr>
+    <th></th>
+    <th>id</th>
+    <th>title</th>
+    <th>year</th>
+    <th>created_at</th>
+    <th>updated_at</th>
+  </tr>
+  <% movies.each do |movie| %>
+    <tr>
+      <td><img src="<%= movie.image_url %>" alt="" style="height:100px"></td>
+      <td><%= movie.id %></td>
+      <td><%= movie.title %></td>
+      <td><%= movie.year %></td>
+      <td><%= movie.created_at %></td>
+      <td><%= movie.updated_at %></td>
+    </tr>
+  <% end %>
+</table>
