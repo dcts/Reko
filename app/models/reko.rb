@@ -8,6 +8,8 @@ class Reko < ApplicationRecord
   # belongs_to :sender, class_name: "User", foreign_key: "sender_id"
   belongs_to :recommendable, polymorphic: true
 
+  validates :sender_name, length: { minimum: 2 }
+
   # STATUS of the reko
   enum status: { open: 0, done: 1, rejected: 2 }
 
