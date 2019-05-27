@@ -2,5 +2,6 @@
 
 <div class="container-fluid">
   <h1>Rekos</h1>
+  <h4>(<%= @rekos.size %> Rekos)</h4>
   <%= render partial: "rekos/table_rekos", locals: { rekos: @rekos, hide_receiver: false } %>
 </div>
