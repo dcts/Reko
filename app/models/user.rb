@@ -13,12 +13,15 @@ class User < ApplicationRecord
   before_create :generate_tokens # url tokens
   validates :token, uniqueness: true
 
+  # Class method that returns a hash with key=token and value=user_id
+  # -> needed to check if a link exists in the inboxes controller
   def self.token_hashmap
     token_hashmap = {}
     all.each { |user| token_hashmap[user.token] = user.id }
     token_hashmap
   end
 
+  # custom "to_string" method
   def to_s
     "#{first_name} #{last_name}"
   end
