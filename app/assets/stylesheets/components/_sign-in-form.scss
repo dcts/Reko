@@ -1,0 +1,17 @@
+body {
+  background-color:  gray;
+}
+
+.welcome-message {
+  margin: 44px;
+  color: white;
+}
+
+.signin-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
