@@ -20,7 +20,10 @@ create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: 
 create_preferences(["Movies", "Documentaries"])
 
 # CREATE RANDOM USER PREFERENCES
-create_user_preferences
+user_preferences = %w( Movies Series)
+user_preferences.each do |user_preference|
+  Preference.create!(name: user_preference)
+end
 
 # POPULATE RECOMMENDABLE
 # seed itunes API for movies (documentaries included)
