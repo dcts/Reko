@@ -1,7 +1,17 @@
-<h1>Reko</h1>
-<h3>Home for all your recommendations.</h3>
 
-<%= render 'sign_in_modal' %>
-<%= render 'beta_applicants/new' %>
 
+<div class="landing-wrapper">
+  <div class="logo-landing">
+  </div>
+  <h2>Home for all your recommendations.</h2>
+    <h1 style="color:#6966F6">Congrats!!</h1>
+    <%= button_to "BETA INVITE UNLOCKED", new_user_registration_path, :id => "beta-button-large", :method => :get %>
+</div>
+
+
+
+<%#= render 'sign_in_modal' %>
+<%#= render 'beta_applicants/new' %>
+<!--
 <p class="btn btn-primary" data-toggle="modal" data-target="#signInModal">MEMBER SIGN IN</p>
+ -->

@@ -1,0 +1,32 @@
+
+.landing-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-landing {
+  background-image: url("logo.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100px;
+  width: 200px;
+  margin-top: 100px;
+  min-height: 100%;
+}
+
+#beta-button-large {
+  background-color: #6966F6;
+  width: 260px;
+  height: 65px;
+  color: white;
+  font-size: 17px;
+  border-radius: 42px;
+  letter-spacing: 1px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
