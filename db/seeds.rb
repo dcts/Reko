@@ -17,10 +17,10 @@ create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: 
 create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: Faker::Name.last_name, email: Faker::Internet.email)
 
 # CREATE PREFERENCE (CATEGORIES) (only 2 for the moment)
-create_preferences(["Movies", "Documentaries"])
+# create_preferences(["Movies", "Documentaries"])
 
 # CREATE RANDOM USER PREFERENCES
-user_preferences = %w( Movies Series)
+user_preferences = %w( Movies Documentaries)
 user_preferences.each do |user_preference|
   Preference.create!(name: user_preference)
 end
