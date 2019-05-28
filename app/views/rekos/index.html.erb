@@ -12,23 +12,27 @@
   </div>
 </div>
 
-
-<div class="movie-list">
-  <h2>MOVIES</h2>
-  <% @movies.each do |reko| %>
-    <div>
-      <p><%= reko[:reko].recommendable.title %></p>
-      <span><i class="fas fa-user"></i></span>
-      <% reko[:sender_names].each do |name| %>
-        <span><%= name %> </span>
-      <% end %>
-    </div>
-    <div>
-      <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120">
-    </div>
-  <% end %>
-</div>
-
+<%if @movies.size > 0 %>
+  <div class="movie-list">
+    <h2>MOVIES</h2>
+    <% @movies.each do |reko| %>
+      <div>
+        <p><%= reko[:reko].recommendable.title %></p>
+        <span><i class="fas fa-user"></i></span>
+        <% reko[:sender_names].each do |name| %>
+          <span><%= name %> </span>
+        <% end %>
+      </div>
+      <div>
+        <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120">
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="empty-reko-list">
+    Your list is currently empty :(
+  </div>
+<%end %>
 
 <!-- TEST JS COPY TO CLIPBOARD -->
 
