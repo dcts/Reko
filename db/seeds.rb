@@ -49,8 +49,11 @@ keywords.each do |keyword|
   save_recommendables(recommendables)
 end
 
-# CREATE RANDOM REKOS (n = number of rekos per user)
+# CREATE RANDOM REKOS (argument = number of rekos per user)
 create_rekos_for_each_user(10)
+
+# CREATE RANDOM BETA APPLICANTS (just mail needed) (argument = number of applicants)
+create_beta_applicants(20)
 
 # # dispaly end message to console
 end_message

@@ -28,6 +28,6 @@ class AdminsController < ApplicationController
   end
 
   def beta_applicants
-    @beta_applicants = UserPreference.all
+    @beta_applicants = BetaApplicant.all
   end
 end

@@ -72,3 +72,10 @@ def save_recommendables(recommendables)
     puts "saving #{recommendable.title}"
   end
 end
+
+def create_beta_applicants(n)
+  n.times do
+    BetaApplicant.create!(email: Faker::Internet.email)
+    puts "creating fake beta applicant #{BetaApplicant.last.email}"
+  end
+end
