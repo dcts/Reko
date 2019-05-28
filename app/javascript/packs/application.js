@@ -1,1 +1,7 @@
-import "bootstrap";
+
+// import "bootstrap";
+import { copyLink } from "../components/copylink";
+copyLink();
+
+
+
