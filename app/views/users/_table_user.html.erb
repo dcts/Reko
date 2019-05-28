@@ -1,0 +1,44 @@
+<!--
+  THIS PARTIAL TAKES ONE INPUT PARAMETER:
+  "user", which is an instance of a user
+  renders a table of ONE USER (row = instance parameters)!
+ -->
+<table class="table table-sm">
+  <tr>
+    <th>id</th>
+    <td><%= user.id %></td>
+  </tr>
+  <tr>
+    <th>first_name</th>
+    <td><%= user.first_name %></td>
+  </tr>
+  <tr>
+    <th>last_name</th>
+    <td><%= user.last_name %></td>
+  </tr>
+  <tr>
+    <th>token</th>
+    <td><%= user.token %></td>
+  </tr>
+  <tr>
+    <th>rekos_received</th>
+    <td><%= user.rekos_received.size %></td>
+  </tr>
+  <tr>
+    <th>preferences</th>
+    <td>
+      <% user.preferences.each do |preference| %>
+        <%= "#{preference.to_s} " %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>created_at</th>
+    <td><%= user.created_at %></td>
+  </tr>
+  <tr>
+    <th>updated_at</th>
+    <td><%= user.updated_at %></td>
+  </tr>
+</table>
+

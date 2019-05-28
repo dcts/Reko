@@ -2,5 +2,6 @@
 
 <div class="container">
   <h1>Beta Applicants List</h1>
-  <h1><%= @beta_applicants %></h1>
+  <h4>(<%= @beta_applicants.size %> Beta Applicants)</h4>
+  <%= render partial: "beta_applicants/table_beta_applicants", locals: { beta_applicants: @beta_applicants } %>
 </div>

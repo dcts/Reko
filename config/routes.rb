@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # ALL THE ROUTES
   get '/admins/', to: "admins#home"
   get '/admins/users', to: "admins#users"
+  get '/admins/users/:id', to: "admins#user", as: "admins_user"
   get '/admins/rekos', to: "admins#rekos"
   get '/admins/recommendables', to: "admins#recommendables"
   get '/admins/preferences', to: "admins#preferences"

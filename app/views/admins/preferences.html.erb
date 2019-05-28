@@ -2,5 +2,6 @@
 
 <div class="container">
   <h1>Preferences</h1>
-  <h1><%= @preferences %></h1>
+  <h4>(<%= @preferences.size %> Preferences)</h4>
+  <%= render partial: "preferences/table_preferences", locals: { preferences: @preferences } %>
 </div>

@@ -1,6 +1,8 @@
 <%= render partial: "navbar" %>
 
-<div class="container">
+<div class="container-fluid">
   <h1>Users</h1>
-  <h1><%= @users %></h1>
+  <h4>(<%= @users.size %> Users)</h4>
+  <%= render partial: "users/table_users", locals: {users: @users } %>
 </div>
+

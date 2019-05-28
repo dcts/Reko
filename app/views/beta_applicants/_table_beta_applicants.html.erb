@@ -1,0 +1,20 @@
+<!--
+  THIS PARTIAL TAKES ONE PARAMETER AS ARGUMENT
+  "beta_applicants", which is an array of table_applicant instances!
+-->
+<table class="table table-sm">
+  <tr>
+    <th>id</th>
+    <th>email</th>
+    <th>created_at</th>
+    <th>updated_at</th>
+  </tr>
+  <% beta_applicants.each do |beta_applicant| %>
+    <tr>
+      <td><%= beta_applicant.id %></td>
+      <td><%= beta_applicant.email %></td>
+      <td><%= beta_applicant.created_at %></td>
+      <td><%= beta_applicant.updated_at %></td>
+    </tr>
+  <% end %>
+</table>
