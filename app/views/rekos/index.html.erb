@@ -1,0 +1,35 @@
+
+<div class="inbox-title">
+  <h2> <i class="fas fa-user"></i><%= current_user.first_name %></h2>
+</div>
+
+<%#= link_to "Add new reko", new_reko_path(token: current_user.token)  %>
+
+<div>
+  <h2>YOUR LINK:</h2>
+  <div>
+    <button class="js-copy btn btn-primary">DISPLAY LINK HERE</button>
+  </div>
+</div>
+
+
+<div class="movie-list">
+  <h2>MOVIES</h2>
+  <% @movies.each do |reko| %>
+    <div>
+      <p><%= reko[:reko].recommendable.title %></p>
+      <span><i class="fas fa-user"></i></span>
+      <% reko[:sender_names].each do |name| %>
+        <span><%= name %> </span>
+      <% end %>
+    </div>
+    <div>
+      <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120">
+    </div>
+  <% end %>
+</div>
+
+
+<!-- TEST JS COPY TO CLIPBOARD -->
+
+
