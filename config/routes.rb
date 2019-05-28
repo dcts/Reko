@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   # rekos_routes
   resources :rekos, only: [:index]
 
+  resources :users, only: [:show] do
+    resources :user_preferences, only: [:new, :create, :show]
+    end
+
 
   # ALL THE ROUTES
   get '/admins/', to: "admins#home"
