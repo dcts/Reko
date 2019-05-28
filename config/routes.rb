@@ -12,14 +12,17 @@ Rails.application.routes.draw do
   resources :beta_applicants, only: [:create]
 
   # rekos_routes
-  resources :rekos, only: [:index]
+  resources :rekos, only: [:index, :new]
+  get '/rekos/new/invalid_token', to: "rekos#invalid_token", as: "invalid_token"
+
+
 
   resources :users, only: [:show] do
-    resources :user_preferences, only: [:new, :create, :show]
-    end
+    resources :user_preferences, only: [:new, :create]
+  end
 
+  # ALL THE ADMIN ROUTES
 
-  # ALL THE ROUTES
   get '/admins/', to: "admins#home"
   get '/admins/users', to: "admins#users"
   get '/admins/users/:id', to: "admins#user", as: "admins_user"
@@ -27,8 +30,5 @@ Rails.application.routes.draw do
   get '/admins/recommendables', to: "admins#recommendables"
   get '/admins/preferences', to: "admins#preferences"
   get '/admins/beta_applicants', to: "admins#beta_applicants"
-
-
-
 
 end
