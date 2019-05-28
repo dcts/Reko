@@ -12,6 +12,15 @@ create_user(password: "123456", first_name: 'Allan',   last_name: 'Holmes',     
 create_user(password: "123456", first_name: 'Assunta', last_name: 'Waldorf',    email: 'sunti@mail.com')
 create_user(password: "123456", first_name: 'Thilo',   last_name: 'Somthing',   email: 'thiloooo@reko.com')
 create_user(password: "123456", first_name: 'Thomas',  last_name: 'Starzynski', email: 'thommy-star@hotmail.com')
+create_user(password: "123456", first_name: 'rand_user1',  last_name: 'qwer', email: 'ra2@ra.com')
+create_user(password: "123456", first_name: 'rand_user2',  last_name: 'qwer', email: 'ra3@ra.com')
+create_user(password: "123456", first_name: 'rand_user3',  last_name: 'qwer', email: 'ra4@ra.com')
+
+# CREATE PREFERENCE (CATEGORIES) (only 2 for the moment)
+create_preferences(["Movies", "Documentaries"])
+
+# CREATE RANDOM USER PREFERENCES
+create_user_preferences
 
 # POPULATE RECOMMENDABLE
 # seed itunes API for movies (documentaries included)
@@ -35,7 +44,6 @@ keywords = [
   "Spider Man",
   "Die Hard",
 ]
-
 keywords.each do |keyword|
   recommendables = ItunesApiCallService.new(keyword).call
   save_recommendables(recommendables)
