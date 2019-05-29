@@ -10,8 +10,10 @@ body {
 .background-container {
   width: 100%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
-
 
 .master-container {
   display: flex;
@@ -23,21 +25,20 @@ body {
 .paper-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border-top-left-radius: 55px;
+  border-radius: 55px 5px 5px 5px;
   background-color: white;
   padding: 12px 12px 50px 12px;
-  width: 100%;
-
+  width: 96%;
 }
 
-@media (max-width: 750px) {
+
+@media (min-width: 750px) {
   .master-wrapper {
   max-width: 750px;
   }
 
   .paper-wrapper {
-  max-width: 750px;
+  max-width: 300px;
   }
 
 }
