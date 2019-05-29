@@ -1,5 +1,4 @@
 <h2>Sign up for beta</h2>
-
 <%= form_tag(controller: "beta_applicants", action: "create", method: "post") do %>
   <%= text_field_tag :email, nil, placeholder: 'Email', id: "email" %>
   <%= submit_tag 'Apply' %>

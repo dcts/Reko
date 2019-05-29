@@ -6,6 +6,14 @@ body {
   background-color: white;
 }
 
+a {
+  text-decoration: none;
+  }
+
+a:hover {
+  text-decoration: none;
+  }
+
 h1 {
   font-weight: 500;
   font-size: 30px;
@@ -18,5 +26,18 @@ h2 {
   font-size: 22px;
   color: #5E5E5E;
 }
+
+.t-large {
+  font-size: 22px;
+}
+
+.t-medium {
+  font-size: 15px;
+}
+
+.t-small {
+  font-size: 11px;
+}
+
 
 

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # get 'users/:id/rekos', to: 'rekos#index', as: "current_user"
   # beta applicants route
-  resources :beta_applicants, only: [:create]
+  resources :beta_applicants, only: [:new, :create]
 
   # rekos_routes
   resources :rekos, only: [:index, :new, :destroy]

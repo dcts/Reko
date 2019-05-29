@@ -1,10 +1,45 @@
 
-.beta-button-large {
-  width: 260px;
-  height: 65px;
-  color: white;
-  font-size: 17px;
+
+//DO NOT TOUCH, please.
+//Select classes from here but please do not change. Use IDs on your divs to modify them further.
+
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 42px;
   letter-spacing: 1px;
+  font-size: 13px;
+  color: white;
   font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  width: 144px;
+  height: 40px;
+  background-color: gray;
+  box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
 }
+
+.b-large {
+  height: 65px;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.b-medium {
+  height: 45px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.b-small {
+  height: 30px;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 1.3px;
+}
+
+.b-wide {
+  width: 230px;
+}
+
