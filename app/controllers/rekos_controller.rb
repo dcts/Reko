@@ -2,7 +2,7 @@ class RekosController < ApplicationController
   # REMARK (thomas):
   # -> index page needs user to be logged in, so once we are finished with
   # development we need to remove it from this lise here!
-  skip_before_action :authenticate_user!, only: [ :index, :new, :invalid_token ]
+  skip_before_action :authenticate_user!, only: [ :index, :new, :invalid_token, :create ]
 
   def index
     @movies = build_reko_view_array(find_movies_for_user)
@@ -18,7 +18,38 @@ class RekosController < ApplicationController
     end
   end
 
+  def create
+    # PERMIT PARAMS
+    data = request_params
+
+    # get receiver (User instance)
+    receiver = User.find(User.token_hashmap[data[:token]])
+    # check if movie exists already (check with itunes id)?
+    movie = Movie.find_by(itunes_id: data[:itunes_id])
+    # create if not, otherwise get movie instance
+    if movie.nil?
+      movie = Movie.new(
+        title: data[:title],
+        itunes_id: data[:itunes_id].to_i,
+        image_url: data[:image_url],
+        genre: data[:genre]
+      )
+      movie.save
+    end
+    # create reko!
+    Reko.create(
+      receiver: receiver,
+      sender_name: data[:sender_name],
+      recommendable: movie
+    )
+    puts "creating #{Reko.last.to_s}"
+  end
+
   private
+
+  def request_params
+    params.require(:reko).permit(:sender_name, :token, :itunes_id, :title, :image_url, :genre)
+  end
 
   # make new array of hashes with reko: reko object, sender_names: sender_names array
   # --> make iteration in the view easier
