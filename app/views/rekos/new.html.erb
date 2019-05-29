@@ -9,50 +9,54 @@
 </form>
 
 <div id="search-cards-container">
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
+  <!-- WILL GET DYNAMICALLY POPULATED WITH NEW CARDS -->
 </div>
 
-<style>
+<button id="sendRekosButton" disabled>SEND TO ALLAN</button>
+<div id="serverResponseDiv"></div>
+<script>
+  // SEND POST REQUEST
+  sendRekosButton.addEventListener("click", (event) => {
+    // console.log(event);
+    cards = document.querySelectorAll(".selected");
+    cards.forEach((card) => {
+      sendPostRequestToCreateReko(card);
+      console.log("sended POST");
+    });
+    console.log("redirecting NOW");
+    window.location = `/thankyou?token=${token}&name=${senderName}`;
+  });
 
+
+  const sendPostRequestToCreateReko = (card) => {
+    const xhr = new XMLHttpRequest();
+    // DATA TO SEND
+    const toSend = {
+      authenticity_token: "<%= session[:_csrf_token] %>",
+      reko: {
+        itunes_id: card.dataset.itunes_id,
+        title: card.dataset.title,
+        image_url: card.dataset.image_url,
+        genre: card.dataset.genre,
+        sender_name: senderName,
+        token: token
+      }
+    };
+    // DISPLAY SERVER RESPONSE
+    xhr.onload = function () {
+      console.log("Yay, we got an answer from the server (request response)");
+      console.log(this);
+    };
+
+    console.log(toSend);
+    xhr.open("POST", "/rekos");
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(JSON.stringify(toSend));
+  };
+
+</script>
+
+<style>
   .invisible {
     opacity: 0;
     transition: 0.5s ease;
@@ -64,16 +68,27 @@
 
   #search-cards-container {
     display: flex;
+    flex-wrap: wrap;
   }
   .search-card {
-    border: 2px solid red;
+    width: 130px;
+    max-width: 130px;
+    height: 230px;
+    max-height: 230px;
+    display: inline;
+    border: 1px solid red;
+    margin: 10px;
+    border: 10px solid transparent;
   }
   .search-card > img {
-    height: 200px;
-    width: 130px;
+    width: 100%;
+    height: 84%;
   }
-  .search-card > h2 {
-    color: green;
+  .search-card > p {
+    margin: 0;
+  }
+  .search-card.selected {
+    border: 10px solid green;
   }
 </style>
 
@@ -81,7 +96,8 @@
   // LOG MESSAGE
   console.log("hello from inline script!");
   // FINAL DATA
-  let name;
+  let senderName;
+  const token = document.URL.split("token=")[1];
   let movies = [];
   // LOAD ALL DOM ELEMENTS
   const formSubmitName = document.getElementById("formSubmitName");
@@ -89,6 +105,25 @@
   const inputName = document.getElementById("inputName");
   const inputKeyword = document.getElementById("inputKeyword");
   const cardsContainer = document.getElementById("search-cards-container");
+  const sendRekosButton = document.getElementById("sendRekosButton");
+
+  // ADD EVENTLISTENERS FOR SELECTION
+  const addSelectionListener = (card) => {
+    card.addEventListener("click", (event) => {
+      event.currentTarget.classList.toggle("selected");
+      setButtonState();
+    });
+  };
+
+  // ENABLE BUTTON IF ELEMENTS ARE SELECTED
+  const setButtonState = () => {
+    if (document.querySelectorAll(".selected").length > 0) {
+      sendRekosButton.disabled = false;
+    } else {
+      sendRekosButton.disabled = true;
+    }
+  };
+
   // ADD EVENTLISTENERS FOR "transitioned" event! (loop over all types of transitioned)
   "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd".split(" ").forEach((event) => {
     formSubmitName.addEventListener(event, () => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
@@ -98,12 +133,11 @@
   })
   formSubmitName.addEventListener("submit", (event) => {
     event.preventDefault();
-      console.log(inputName)
     if (inputName.value.length < 2) {
       alert("your name has to few letters!");
     } else {
-      let name = inputName.value;
-      alert(`${name} captured!`);
+      senderName = inputName.value;
+      alert(`${senderName} captured!`);
       formSubmitName.classList.add("invisible");
     }
   });
@@ -119,44 +153,54 @@
 
   // ITUNES API CALL FROM JS
   const apiCall = (searchTerm) => {
-    // const proxyurl = "https://cors-anywhere.herokuapp.com/"; // TO PREVENT CORS FAILURE
+    // NEEDED TO PREVENT CORS FAILURE? -> do more research on it when time...
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // fetch(proxyurl + url)
     const url = "https://itunes.apple.com/search?media=movie&term=" + normalize(searchTerm); //
 
     fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      // console.log(resultsCount);
-      // console.log(data.results[0]);
-
       let movies = [];
-      data.results.forEach((result) => {
+      data.results.forEach((result) => { // loop over all results
         if (result.kind === "feature-movie") {
           const movie = buildMovie(result);
-          // console.log(movie);
           movies.push(movie);
-          // console.log(movies);
         }
       });
+      deleteCardsIfNotSelected(); // reset cards
       addCards(movies);
+      addSelectionListener(document.getElementById("search-cards-container"));
     });
   };
 
   const buildMovie = (apiResultObject) => {
-    // console.log(apiResultObject);
     return {
       "title": apiResultObject.trackName,
-      "artworkUrl": apiResultObject.artworkUrl100,
+      "artworkUrl": resizeImage(apiResultObject.artworkUrl100),
       "itunesId": apiResultObject.trackId,
       "primaryGenreName": apiResultObject.primaryGenreName,
     }
   };
 
+  const deleteCardsIfNotSelected = () => {
+    const cards = document.querySelectorAll(".search-card");
+    cards.forEach((card) => {
+      if (card.classList.contains("selected") != true) {
+        removeElement(card);
+      }
+    });
+  };
+
+  const removeElement = (el) => {
+    el.parentNode.removeChild(el);
+  };
+
   const addCards = (movies) => {
-    deleteChildren(cardsContainer);
     movies.forEach((movie) => {
-      console.log(movie.title);
       const card = buildCard(movie);
-      // addChild(cardsContainer, card);
+      addSelectionListener(card);
+      cardsContainer.insertAdjacentElement('beforeend', card);
     });
   };
 
@@ -167,11 +211,54 @@
   };
 
   const addChild = (element, movie) => {
-
     element.insertAdjacentHTML("beforeend", `<p>${movie.title}</p>`);
   };
 
   const buildCard = (movie) => {
+    // create div with class "search-card"
+    const searchCard = createElementCustom("div", ["search-card"]);
+    // set dataset attributes (for ruby backend!)
+    searchCard.dataset.title = movie.title;
+    searchCard.dataset.image_url = movie.artworkUrl;
+    searchCard.dataset.itunes_id = movie.itunesId;
+    searchCard.dataset.genre = movie.primaryGenreName;
+    searchCard.dataset.sender_name = senderName;
+    // create image with src="[movie.artworkUrl]" and alt="[movie.title]"
+    const img = createImageCustom(movie.artworkUrl, movie.title);
+    // create h2 element with value [movie.title]
+    const title = document.createElement("p");
+    title.innerText = movie.title;
+    // append img and h2 tag to the search-card
+    insertElements(searchCard, [img, title]);
+    return searchCard
+  };
 
+  const createElementCustom = (tagname, classnameArr) => {
+    const el = document.createElement(tagname);
+    classnameArr.forEach((classname) => {
+      el.classList.add(`${classname}`);
+    });
+    return el
+  };
+
+  const createImageCustom = (src, altText) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = altText;
+    return img
+  };
+
+  const insertElements = (parent, childsArr) => {
+    childsArr.forEach((child) => {
+      parent.insertAdjacentElement('beforeend', child);
+    });
+  };
+
+  const resizeImage = (url) => {
+    return url.replace("100x100bb.jpg", "400x400bb.jpg");
   };
 </script>
+
+
+
+

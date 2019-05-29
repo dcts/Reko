@@ -21,6 +21,16 @@ class User < ApplicationRecord
     token_hashmap
   end
 
+  def self.find_by_token(token)
+    # COULD BE REFACTORED!
+    user_id = token_hashmap[token]
+    if user_id # not nil
+      return User.find(user_id)
+    else
+      return nil
+    end
+  end
+
   # custom "to_string" method
   def to_s
     "#{first_name} #{last_name}"

@@ -6,16 +6,16 @@ Rails.application.routes.draw do
   resources :users, only: [:show] # get '/users/:id', to: "users#show", as: "user"
   # define landing page (at the moment the backend control panel)
   root to: 'pages#home'
+  get 'thankyou', to: 'pages#thankyou'
 
   # get 'users/:id/rekos', to: 'rekos#index', as: "current_user"
   # beta applicants route
   resources :beta_applicants, only: [:new, :create]
 
   # rekos_routes
-  resources :rekos, only: [:index, :new, :destroy]
+  resources :rekos, only: [:index, :new, :destroy, :create]
+
   get '/rekos/new/invalid_token', to: "rekos#invalid_token", as: "invalid_token"
-
-
 
   resources :users, only: [:show] do
     resources :user_preferences, only: [:new, :create]
