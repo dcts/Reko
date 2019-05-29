@@ -20,16 +20,33 @@
 <%if @movies.size > 0 %>
   <div class="movie-list">
     <h2>MOVIES</h2>
+
     <% @movies.each do |reko| %>
-      <div>
-        <p><%= reko[:reko].recommendable.title %></p>
-        <span><i class="fas fa-user"></i></span>
-        <% reko[:sender_names].each do |name| %>
-          <span><%= name %> </span>
-        <% end %>
-      </div>
-      <div>
-        <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120">
+
+       <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide delete-slide" data-reko-id="<%= reko[:reko].id %>">
+            <%= link_to 'DELETE', rekos_path, method: :delete, remote: true  %>
+          </div>
+
+          <div class="swiper-slide main-slide">
+            <div>
+              <p><%= reko[:reko].recommendable.title %></p>
+              <span><i class="fas fa-user"></i></span>
+              <% reko[:sender_names].each do |name| %>
+                <span><%= name %> </span>
+              <% end %>
+            </div>
+            <div>
+              <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120">
+            </div>
+          </div>
+
+          <div class="swiper-slide mark-watched-slide">
+            <i class="fas fa-check"></i>
+          </div>
+
+        </div>
       </div>
     <% end %>
   </div>

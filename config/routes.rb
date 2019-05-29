@@ -10,13 +10,12 @@ Rails.application.routes.draw do
 
   # get 'users/:id/rekos', to: 'rekos#index', as: "current_user"
   # beta applicants route
-  resources :beta_applicants, only: [:create]
+  resources :beta_applicants, only: [:new, :create]
 
   # rekos_routes
-  resources :rekos, only: [:index, :new, :create]
+  resources :rekos, only: [:index, :new, :destroy, :create]
+
   get '/rekos/new/invalid_token', to: "rekos#invalid_token", as: "invalid_token"
-
-
 
   resources :users, only: [:show] do
     resources :user_preferences, only: [:new, :create]

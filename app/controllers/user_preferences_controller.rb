@@ -10,29 +10,33 @@ class UserPreferencesController < ApplicationController
   end
 
   def create
-    pref = UserPreference.where(user_id: current_user.id)
-    pref.each do |p|
-      p.destroy!
-    end
+    if params[:user_preference]
+      pref = UserPreference.where(user_id: current_user.id)
+      pref.each do |p|
+        p.destroy!
+      end
 
-    # @user_preference =  UserPreference.new(user_preference_params)
-    @preferences = Preference.find(params[:user_preference][:preference_ids])
-    @user = current_user
+      # @user_preference =  UserPreference.new(user_preference_params)
+      @preferences = Preference.find(params[:user_preference][:preference_ids])
+      @user = current_user
 
-      @user_preference = UserPreference.new
-    @user_preference.user = @user
-    @preferences.each do |preference|
-      @user_preference.preference = preference
+        @user_preference = UserPreference.new
+      @user_preference.user = @user
+      @preferences.each do |preference|
+        @user_preference.preference = preference
+      end
+      @user_preference.save
+      redirect_to rekos_path
+      # @user_preference.user = current_user
+      # raise
+      # if @user_preferences.save
+      #   redirect_to user_preferences_path(@user_preferences)
+      # else
+      #   render :new
+      # end
+    else
+      render :new
     end
-    @user_preference.save
-    redirect_to rekos_path
-    # @user_preference.user = current_user
-    # raise
-    # if @user_preferences.save
-    #   redirect_to user_preferences_path(@user_preferences)
-    # else
-    #   render :new
-    # end
   end
 
   private

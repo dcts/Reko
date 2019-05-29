@@ -1,17 +1,28 @@
 
+<div class="background-container white">
+  <div class="master-container">
+    <div class="landing-wrapper">
 
-<div class="landing-wrapper">
-  <div class="logo-landing">
+      <div class="logo-landing">
+      </div>
+      <h2 class="t-large">Home for all your <br>recommendations.</h2>
+      <h1 style="color:#6966F6">Congrats!!</h1>
+      <%= link_to "BETA ACCESS", new_user_registration_path, :class => "btn b-large b-wide violet", :method => :get %>
+      </div>
+      <div class="paper-wrapper">
+        <div class="landing-bottom-btns">
+          <%= link_to "APPLY FOR BETA", new_beta_applicant_path, class: "btn b-small dark-violet" %>
+          <%= link_to "MEMBER ACCESS", new_user_session_path, class: "btn b-small dark-violet" %>
+
+        </div>
+    </div>
   </div>
-  <h2>Home for all your recommendations.</h2>
-    <h1 style="color:#6966F6">Congrats!!</h1>
-    <%= button_to "BETA INVITE UNLOCKED", new_user_registration_path, :id => "beta-button-large", :method => :get %>
 </div>
 
+<!-- modal version of sign in -->
+<!-- <p class="btn b-medium dark-violet" data-toggle="modal" data-target="#signInModal">MEMBER SIGN IN</p> -->
+      <%#= render 'sign_in_modal' %>
 
-
-<%= render 'sign_in_modal' %>
-<%= render 'beta_applicants/new' %>
-
-<p class="btn btn-primary" data-toggle="modal" data-target="#signInModal">MEMBER SIGN IN</p>
-
+<!--
+<p class="btn b-small dark-violet" data-toggle="modal" data-target="#betaApplicantsModal">APPLY FOR BETA</p> -->
+<%#= render 'beta_applicants/new' %>

@@ -1,12 +1,13 @@
 class RekosController < ApplicationController
   # REMARK (thomas):
   # -> index page needs user to be logged in, so once we are finished with
-  # development we need to remove it from this lise here!
+  # development we need to remove it from this list here!
   skip_before_action :authenticate_user!, only: [ :index, :new, :invalid_token, :create ]
 
   def index
     @movies = build_reko_view_array(find_movies_for_user)
   end
+
 
   def new
     token = params[:token] # get token from params
@@ -26,12 +27,6 @@ class RekosController < ApplicationController
     # check if movie exists already (check with itunes id)?
     movie = Movie.find_by(itunes_id: data[:itunes_id].to_i)
     # create if not, otherwise get movie instance
-
-    # TODO ...........................
-    # ......................
-    # DELETE THE EXCLEMATION MRKS (!)
-    # :.........................
-    # :.........................
     if movie.nil?
       movie = Movie.new(
         title: data[:title],
@@ -39,15 +34,20 @@ class RekosController < ApplicationController
         image_url: data[:image_url],
         genre: data[:genre]
       )
-      movie.save!
+      movie.save
     end
     # create reko!
-    Reko.create!(
+    Reko.create(
       receiver: receiver,
       sender_name: data[:sender_name],
       recommendable: movie
     )
     puts "creating #{Reko.last.to_s}"
+  end
+  
+  def destroy
+    @reko = Reko.find(params[:id])
+    @restaurant.destroy
   end
 
   private

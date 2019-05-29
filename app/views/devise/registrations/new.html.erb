@@ -1,46 +1,45 @@
+<div class="background-container violet">
+  <div class="master-container">
 
-<!-- <div class="welcome-message" style="text-align: center">
-  <h1>Team Reko Says Hi</h1>
-</div>
+  <div class="welcome-message">
+    <h1 style="color:white;">Team Reko Says Hi</h1>
+  </div>
 
 <div class="paper-wrapper">
-    <form>
-      <div class="signin-wrapper">
-        <h1>Sign up for Reko</h1>
-        <input type="text" name="email" placeholder="EMAIL" class="input-field-text-md">
-        <input type="text" name="first-name" placeholder="FIRST NAME" class="input-field-text-md">
-        <input type="text" name="last-name" placeholder="LAST NAME" class="input-field-text-md">
-        <input type="password" name="password" placeholder="PASSWORD" class="input-field-text-md">
-        <br>
-        <input type="submit" name="create-account">
-        <br>
-        <%#= render "devise/shared/links" %>
-      </div>
-    </form>
-</div> -->
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-<div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+  <div class="form-wrapper">
+    <h1 style="color:#6966F6"> Join the Beta:</h1>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: true,
+                      placeholder: "EMAIL",
+                      label: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :first_name,
+                      required: true,
+                      placeholder: "FIRST NAME",
+                      label: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "first-name"}%>
+          <%= f.input :last_name,
+                      required: true,
+                      placeholder: "LAST NAME",
+                      label: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "last-name"}%>
+          <%= f.input :password,
+                      placeholder: "PASSWORD",
+                      label: false,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "SIGN UP", id:"form-btn"%>
+        </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-
+</div>
