@@ -54,18 +54,18 @@
   height: 65px;
   font-family: 'Roboto', sans-serif;
   color: white;
-  opacity:.7;
+
   letter-spacing: 1px;
   position: center;
   border:black;
-  &.active{
+  &:disabled {
+    opacity:.7;
+  }
+  &:active{
     opacity:1;
   }
 }
 
-// .submit-button input{
-//   position:center;
-// }
 
 .future-features{
   font-family: 'Roboto', sans-serif;
