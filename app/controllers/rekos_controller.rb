@@ -19,14 +19,19 @@ class RekosController < ApplicationController
   end
 
   def create
-    # PERMIT PARAMS
+    # PERMIT PARAMS (filter only the needed ones)
     data = request_params
-
     # get receiver (User instance)
     receiver = User.find(User.token_hashmap[data[:token]])
     # check if movie exists already (check with itunes id)?
-    movie = Movie.find_by(itunes_id: data[:itunes_id])
+    movie = Movie.find_by(itunes_id: data[:itunes_id].to_i)
     # create if not, otherwise get movie instance
+
+    # TODO ...........................
+    # ......................
+    # DELETE THE EXCLEMATION MRKS (!)
+    # :.........................
+    # :.........................
     if movie.nil?
       movie = Movie.new(
         title: data[:title],
@@ -34,10 +39,10 @@ class RekosController < ApplicationController
         image_url: data[:image_url],
         genre: data[:genre]
       )
-      movie.save
+      movie.save!
     end
     # create reko!
-    Reko.create(
+    Reko.create!(
       receiver: receiver,
       sender_name: data[:sender_name],
       recommendable: movie
