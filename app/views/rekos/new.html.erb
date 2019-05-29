@@ -21,8 +21,10 @@
     cards = document.querySelectorAll(".selected");
     cards.forEach((card) => {
       sendPostRequestToCreateReko(card);
+      console.log("sended POST");
     });
-    window.location = `/thankyou?toke=${token}&name=${sender_name}`;
+    console.log("redirecting NOW");
+    window.location = `/thankyou?token=${token}&name=${senderName}`;
   });
 
 
