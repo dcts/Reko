@@ -48,12 +48,14 @@ def add_preferences(user, pref_arr)
   pref_arr.each { |pref| UserPreference.create!(user: user, preference: pref)}
 end
 
-# CREATE REKO METHOD
+# CREATE REKO METHOD -> applied only for non admin users!
 # receiver : user-instance
 # sender   : name of the sender (sender_name) as string
 # content  : instance of a movie / podcast or audiobook
 def create_rekos_for_each_user(n)
-  User.all.each do |user|
+  admins = ['admin', 'allan', 'thomas', 'thilo', 'assunta', nil] # do not create rekos for admin users
+  non_admin_users = User.all.reject { |user| admins.include?(user.first_name.downcase) }
+  non_admin_users.each do |user|
     n.times do
       Reko.create!(
         receiver: user,
