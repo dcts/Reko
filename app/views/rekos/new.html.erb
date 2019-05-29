@@ -15,7 +15,6 @@
 <button id="sendRekosButton" disabled>SEND TO ALLAN</button>
 
 <style>
-
   .invisible {
     opacity: 0;
     transition: 0.5s ease;
@@ -52,31 +51,6 @@
 </style>
 
 <script>
-  // ENABLE BUTTON CONDITIONAL
-  const setButtonState = () => {
-    console.log("hi from button state selector!");
-    console.log(sendRekosButton);
-    if (document.querySelectorAll(".selected").length > 0) {
-      console.log("...true branch");
-      sendRekosButton.disabled = false;
-    } else {
-      sendRekosButton.disabled = true;
-      console.log("...false branch");
-    }
-  };
-</script>
-
-<script>
-  // ADD EVENTLISTENERS FOR SELECTION
-  const addSelectionListener = (card) => {
-    card.addEventListener("click", (event) => {
-      event.currentTarget.classList.toggle("selected");
-      setButtonState();
-    });
-  };
-</script>
-
-<script>
   // LOG MESSAGE
   console.log("hello from inline script!");
   // FINAL DATA
@@ -89,6 +63,23 @@
   const inputKeyword = document.getElementById("inputKeyword");
   const cardsContainer = document.getElementById("search-cards-container");
   const sendRekosButton = document.getElementById("sendRekosButton");
+
+  // ADD EVENTLISTENERS FOR SELECTION
+  const addSelectionListener = (card) => {
+    card.addEventListener("click", (event) => {
+      event.currentTarget.classList.toggle("selected");
+      setButtonState();
+    });
+  };
+
+  // ENABLE BUTTON IF ELEMENTS ARE SELECTED
+  const setButtonState = () => {
+    if (document.querySelectorAll(".selected").length > 0) {
+      sendRekosButton.disabled = false;
+    } else {
+      sendRekosButton.disabled = true;
+    }
+  };
 
   // ADD EVENTLISTENERS FOR "transitioned" event! (loop over all types of transitioned)
   "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd".split(" ").forEach((event) => {
@@ -119,21 +110,22 @@
 
   // ITUNES API CALL FROM JS
   const apiCall = (searchTerm) => {
-    // const proxyurl = "https://cors-anywhere.herokuapp.com/"; // TO PREVENT CORS FAILURE
+    // NEEDED TO PREVENT CORS FAILURE? -> do more research on it when time...
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // fetch (proxyurl + url)
     const url = "https://itunes.apple.com/search?media=movie&term=" + normalize(searchTerm); //
 
     fetch(url)
     .then((response) => response.json())
     .then((data) => {
       let movies = [];
-      // --------------- LOOP ALL RESULTS
-      data.results.forEach((result) => {
+      data.results.forEach((result) => { // loop over all results
         if (result.kind === "feature-movie") {
           const movie = buildMovie(result);
           movies.push(movie);
         }
       });
-      deleteCards();
+      deleteCardsIfNotSelected(); // reset cards
       addCards(movies);
       addSelectionListener(document.getElementById("search-cards-container"));
     });
@@ -148,30 +140,13 @@
     }
   };
 
-  const deleteCards = () => {
+  const deleteCardsIfNotSelected = () => {
     const cards = document.querySelectorAll(".search-card");
     cards.forEach((card) => {
-      console.log(card)
-      if (card.classList.contains("selected")) {
-        console.log("DONT delete");
-      } else {
-        console.log("delete");
+      if (card.classList.contains("selected") != true) {
         removeElement(card);
       }
     });
-
-    console.log("HEEERRRE");
-    console.log(cards);
-    // deleteChildren(element);
-    // let children = element.childNodes;
-    // console.log(children);
-    // console.log(child.classList.contains("selected"));
-
-    // while (element.firstChild) {
-    //   if (!element.firstChild.classList.contains("selected")) {
-    //     element.removeChild(element.firstChild);
-    //   }
-    // }
   };
 
   const removeElement = (el) => {
@@ -182,9 +157,7 @@
     movies.forEach((movie) => {
       const card = buildCard(movie);
       addSelectionListener(card);
-      // console.log(card);
       cardsContainer.insertAdjacentElement('beforeend', card);
-      // addChild(cardsContainer, card);
     });
   };
 
@@ -210,7 +183,6 @@
     insertElements(searchCard, [img, title]);
     return searchCard
   };
-
 
   const createElementCustom = (tagname, classnameArr) => {
     const el = document.createElement(tagname);
