@@ -75,7 +75,36 @@
   .search-card > h2 {
     color: green;
   }
+  .search-card.selected {
+    border: 10px solid green;
+  }
 </style>
+
+
+<script>
+  // ADD EVENTLISTENERS FOR SELECTION
+  const addSelectionListener = (cardsContainer) => {
+    console.log("hi from inside selection listener!")
+    const cards = document.querySelectorAll(".search-card");
+    cards.forEach((card) => {
+      card.addEventListener("click", (event) => {
+        console.log(event);
+        event.currentTarget.classList.toggle("selected");
+      });
+
+    });
+    console.log(cards[0]);
+    console.log(typeof(cards[0]));
+
+    // cardsContainer.children.forEach((searchCard) => {
+    //   // console.log(searchCard);
+    //   searchCard.addEventListener("click", (event) => {
+    //     console.log(event);
+    //     // event.currentTarget.classList.toggle("selected");
+    //   });
+    // });
+  };
+</script>
 
 <script>
   // LOG MESSAGE
@@ -98,7 +127,6 @@
   })
   formSubmitName.addEventListener("submit", (event) => {
     event.preventDefault();
-      console.log(inputName)
     if (inputName.value.length < 2) {
       alert("your name has to few letters!");
     } else {
@@ -125,27 +153,29 @@
     fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      // console.log(resultsCount);
-      // console.log(data.results[0]);
-
       let movies = [];
+      // --------------- ONLY FIRST RESULT
+      // console.log(data);
+      // console.log(data.results[0]);
+      // if (typeof data.results[0] !== "undefined" && data.results[0].kind === "feature-movie") {
+      //   movies.push(buildMovie(data.results[0]));
+      // }
+      // --------------- LOOP ALL RESULTS
       data.results.forEach((result) => {
         if (result.kind === "feature-movie") {
           const movie = buildMovie(result);
-          // console.log(movie);
           movies.push(movie);
-          // console.log(movies);
         }
       });
       addCards(movies);
+      addSelectionListener(cardsContainer);
     });
   };
 
   const buildMovie = (apiResultObject) => {
-    // console.log(apiResultObject);
     return {
       "title": apiResultObject.trackName,
-      "artworkUrl": apiResultObject.artworkUrl100,
+      "artworkUrl": resizeImage(apiResultObject.artworkUrl100),
       "itunesId": apiResultObject.trackId,
       "primaryGenreName": apiResultObject.primaryGenreName,
     }
@@ -154,8 +184,9 @@
   const addCards = (movies) => {
     deleteChildren(cardsContainer);
     movies.forEach((movie) => {
-      console.log(movie.title);
       const card = buildCard(movie);
+      console.log(card);
+      cardsContainer.insertAdjacentElement('beforeend', card);
       // addChild(cardsContainer, card);
     });
   };
@@ -167,11 +198,50 @@
   };
 
   const addChild = (element, movie) => {
-
     element.insertAdjacentHTML("beforeend", `<p>${movie.title}</p>`);
   };
 
   const buildCard = (movie) => {
+    // create div with class "search-card"
+    const searchCard = createElementCustom("div", ["search-card"]);
+    // create image with src="[movie.artworkUrl]" and alt="[movie.title]"
+    const img = createImageCustom(movie.artworkUrl, movie.title, "100%");
+    // create h2 element with value [movie.title]
+    const title = document.createElement("h4");
+    title.innerText = movie.title;
+    // append img and h2 tag to the search-card
+    insertElements(searchCard, [img, title]);
+    return searchCard
+  };
 
+
+  const createElementCustom = (tagname, classnameArr) => {
+    const el = document.createElement(tagname);
+    classnameArr.forEach((classname) => {
+      el.classList.add(`${classname}`);
+    });
+    return el
+  };
+
+  const createImageCustom = (src, altText, width) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = altText;
+    img.style.width = width;
+    return img
+  };
+
+  const insertElements = (parent, childsArr) => {
+    childsArr.forEach((child) => {
+      parent.insertAdjacentElement('beforeend', child);
+    });
+  };
+
+  const resizeImage = (url) => {
+    return url.replace("100x100bb.jpg", "400x400bb.jpg");
   };
 </script>
+
+
+
+
