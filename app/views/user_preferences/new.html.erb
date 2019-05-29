@@ -1,28 +1,24 @@
 <div class = "container">
   <div class = "row">
-    <!-- <div class="col-xs-12 col-sm-6 col-sm-offset-3"> -->
 
-  <div class="form-post">
     <h1>You need some good recommendation for:</h1>
+  <div class="form-post">
 
     <%= simple_form_for [@user, @user_preference] do |f| %>
-
-    <%#= f.association :preference, as: :check_boxes %>
-     <%#= f.input :status, collection: User_Preferences::STATUSES, prompt: "Which status" %>
      <div class = "user_preference_choices">
        <% Preference.all.each do |preference| %>
-        <input type="checkbox" class="hidden" value="<%= preference.id %>" name="user_preference[preference_ids][]" id="post_preference_ids_<%= preference.id %>">
+        <input type="checkbox" value="<%= preference.id %>" name="user_preference[preference_ids][]" id="post_preference_ids_<%= preference.id %>" hidden>
           <label class="user_preference_choice" for="post_preference_ids_<%= preference.id %>">
-          <%= preference.name %>
+           <%= preference.name %>
           <!-- <i class="fa fa-check"></i> -->
-        </label>
-       <% end %>
-       <%= f.submit %>
+          </label>
+         <% end %>
+        <div class="submit-button">
+         <%= f.submit disabled: true %>
+        </div>
       <% end %>
     </div>
 
   </div>
-
-    <!-- </div> -->
   </div>
 </div>
