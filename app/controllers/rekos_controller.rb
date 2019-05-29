@@ -6,6 +6,7 @@ class RekosController < ApplicationController
 
   def index
     @movies = build_reko_view_array(find_movies_for_user)
+    @visitor_link = "http://localhost:3000/rekos/new?token=#{current_user.token}"
   end
 
 
@@ -44,7 +45,7 @@ class RekosController < ApplicationController
     )
     puts "creating #{Reko.last.to_s}"
   end
-  
+
   def destroy
     @reko = Reko.find(params[:id])
     @restaurant.destroy
