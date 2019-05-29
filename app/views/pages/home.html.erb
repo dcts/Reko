@@ -1,20 +1,20 @@
 
-<div class="background-container violet">
+<div class="background-container white">
   <div class="master-container">
-<div class="paper-wrapper">
+    <div class="landing-wrapper">
 
-    <div class="logo-landing">
-    </div>
-    <h2>Home for all your recommendations.</h2>
+      <div class="logo-landing">
+      </div>
+
+      <h2 class="t-large">Home for all your <br>recommendations.</h2>
       <h1 style="color:#6966F6">Congrats!!</h1>
-      <%= button_to "BETA INVITE UNLOCKED", new_user_registration_path, :id => "beta-button-large", :method => :get %>
-
-
-
-  <%= render 'sign_in_modal' %>
-  <%= render 'beta_applicants/new' %>
-
-  <p class="btn btn-primary" data-toggle="modal" data-target="#signInModal">MEMBER SIGN IN</p>
-</div>
-</div>
+      <%= button_to "BETA UNLOCKED", new_user_registration_path, :class => "btn b-large b-wide violet", :method => :get %>
+      </div>
+      <div class="paper-wrapper">
+      <p class="btn b-medium dark-violet" data-toggle="modal" data-target="#signInModal">MEMBER SIGN IN</p>
+      <p class="btn b-small dark-violet" data-toggle="modal" data-target="#betaApplicantsModal">APPLY FOR BETA</p>
+      <%#= render 'sign_in_modal' %>
+      <%#= render 'beta_applicants/new' %>
+    </div>
+  </div>
 </div>
