@@ -25,7 +25,9 @@
 
        <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide delete-slide"><i class="fas fa-trash-alt"></i></div>
+          <div class="swiper-slide delete-slide" data-reko-id="<%= reko[:reko].id %>">
+            <%= link_to 'DELETE', rekos_path, method: :delete, remote: true  %>
+          </div>
 
           <div class="swiper-slide main-slide">
             <div>
