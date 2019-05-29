@@ -1,8 +1,21 @@
 class RekosController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :onboard, :new, :invalid_token]
+  # REMARK (thomas):
+  # -> index page needs user to be logged in, so once we are finished with
+  # development we need to remove it from this lise here!
+  skip_before_action :authenticate_user!, only: [ :index, :new, :invalid_token ]
 
   def index
     @movies = build_reko_view_array(find_movies_for_user)
+  end
+
+  def new
+    token = params[:token] # get token from params
+    user_id = User.token_hashmap[token] # returns user instance or nil
+    if user_id.nil? # User not existant -> token invalid
+      redirect_to invalid_token_path
+    else
+      @user = User.find(user_id)
+    end
   end
 
   private
@@ -38,25 +51,6 @@ class RekosController < ApplicationController
   # Check if movie title is already in reko list to avoid duplicates
   def title_already_in_list(array, reko)
     array.select { |r| r[:reko].recommendable.title == reko.recommendable.title }.size.positive?
-  end
-
-  def onboard
-
-  end
-
-  def new
-    # raise
-    token = params[:token] # get token from params
-    user_id = User.token_hashmap[token] # returns user instance or nil
-    if user_id.nil? # User not existant -> token invalid
-      redirect_to invalid_token_path
-    else
-      @user = User.find(user_id)
-    end
-  end
-
-  def invalid_token
-
   end
 end
 

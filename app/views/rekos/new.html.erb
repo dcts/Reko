@@ -12,6 +12,8 @@
   <!-- WILL GET DYNAMICALLY POPULATED WITH NEW CARDS -->
 </div>
 
+<button id="sendRekosButton" disabled>SEND TO ALLAN</button>
+
 <style>
 
   .invisible {
@@ -49,37 +51,29 @@
   }
 </style>
 
+<script>
+  // ENABLE BUTTON CONDITIONAL
+  const setButtonState = () => {
+    console.log("hi from button state selector!");
+    console.log(sendRekosButton);
+    if (document.querySelectorAll(".selected").length > 0) {
+      console.log("...true branch");
+      sendRekosButton.disabled = false;
+    } else {
+      sendRekosButton.disabled = true;
+      console.log("...false branch");
+    }
+  };
+</script>
 
 <script>
   // ADD EVENTLISTENERS FOR SELECTION
-  // const addSelectionListener = (cardsContainer) => {
-  //   console.log("hi from inside selection listener!")
-  //   const cards = document.querySelectorAll(".search-card");
-  //   cards.forEach((card) => {
-  //     card.addEventListener("click", (event) => {
-  //       console.log(event);
-  //       console.log(event.currentTarget);
-  //       event.currentTarget.classList.toggle("selected");
-  //     });
-  //   });
-  //   console.log(cards[0]);
-  //   console.log(typeof(cards[0]));
-
   const addSelectionListener = (card) => {
     card.addEventListener("click", (event) => {
-        // console.log(event);
-        // console.log(event.currentTarget);
-        event.currentTarget.classList.toggle("selected");
-      });
+      event.currentTarget.classList.toggle("selected");
+      setButtonState();
+    });
   };
-  // cardsContainer.children.forEach((searchCard) => {
-  //   // console.log(searchCard);
-  //   searchCard.addEventListener("click", (event) => {
-  //     console.log(event);
-  //     // event.currentTarget.classList.toggle("selected");
-  //   });
-  // });
-  // };
 </script>
 
 <script>
@@ -94,6 +88,8 @@
   const inputName = document.getElementById("inputName");
   const inputKeyword = document.getElementById("inputKeyword");
   const cardsContainer = document.getElementById("search-cards-container");
+  const sendRekosButton = document.getElementById("sendRekosButton");
+
   // ADD EVENTLISTENERS FOR "transitioned" event! (loop over all types of transitioned)
   "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd".split(" ").forEach((event) => {
     formSubmitName.addEventListener(event, () => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
