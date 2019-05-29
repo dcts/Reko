@@ -21,6 +21,10 @@
     <td><%= user.token %></td>
   </tr>
   <tr>
+    <th>public link</th>
+    <td><%= link_to @visitor_link, "#{@visitor_link}" %></td>
+  </tr>
+  <tr>
     <th>rekos_received</th>
     <td><%= user.rekos_received.size %></td>
   </tr>
