@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :beta_applicants, only: [:create]
 
   # rekos_routes
-  resources :rekos, only: [:index, :new]
+  resources :rekos, only: [:index, :new, :destroy]
   get '/rekos/new/invalid_token', to: "rekos#invalid_token", as: "invalid_token"
 
 

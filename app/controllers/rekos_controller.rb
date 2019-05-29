@@ -5,6 +5,11 @@ class RekosController < ApplicationController
     @movies = build_reko_view_array(find_movies_for_user)
   end
 
+  def destroy
+    @reko = Reko.find(params[:id])
+    @restaurant.destroy
+  end
+
   private
 
   # make new array of hashes with reko: reko object, sender_names: sender_names array
