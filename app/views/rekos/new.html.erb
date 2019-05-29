@@ -9,46 +9,7 @@
 </form>
 
 <div id="search-cards-container">
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
-  <div class="search-card">
-    <img src="https://is4-ssl.mzstatic.com/image/thumb/Video115/v4/7f/9b/a1/7f9ba129-40bc-f14f-35e7-eb480118692b/source/400x400bb.jpg" alt="">
-    <h2>Matrix</h2>
-  </div>
+  <!-- WILL GET DYNAMICALLY POPULATED WITH NEW CARDS -->
 </div>
 
 <style>
@@ -64,16 +25,24 @@
 
   #search-cards-container {
     display: flex;
+    flex-wrap: wrap;
   }
   .search-card {
-    border: 2px solid red;
+    width: 130px;
+    max-width: 130px;
+    height: 230px;
+    max-height: 230px;
+    display: inline;
+    border: 1px solid red;
+    margin: 10px;
+    border: 10px solid transparent;
   }
   .search-card > img {
-    height: 200px;
-    width: 130px;
+    width: 100%;
+    height: 84%;
   }
-  .search-card > h2 {
-    color: green;
+  .search-card > p {
+    margin: 0;
   }
   .search-card.selected {
     border: 10px solid green;
@@ -83,27 +52,34 @@
 
 <script>
   // ADD EVENTLISTENERS FOR SELECTION
-  const addSelectionListener = (cardsContainer) => {
-    console.log("hi from inside selection listener!")
-    const cards = document.querySelectorAll(".search-card");
-    cards.forEach((card) => {
-      card.addEventListener("click", (event) => {
-        console.log(event);
+  // const addSelectionListener = (cardsContainer) => {
+  //   console.log("hi from inside selection listener!")
+  //   const cards = document.querySelectorAll(".search-card");
+  //   cards.forEach((card) => {
+  //     card.addEventListener("click", (event) => {
+  //       console.log(event);
+  //       console.log(event.currentTarget);
+  //       event.currentTarget.classList.toggle("selected");
+  //     });
+  //   });
+  //   console.log(cards[0]);
+  //   console.log(typeof(cards[0]));
+
+  const addSelectionListener = (card) => {
+    card.addEventListener("click", (event) => {
+        // console.log(event);
+        // console.log(event.currentTarget);
         event.currentTarget.classList.toggle("selected");
       });
-
-    });
-    console.log(cards[0]);
-    console.log(typeof(cards[0]));
-
-    // cardsContainer.children.forEach((searchCard) => {
-    //   // console.log(searchCard);
-    //   searchCard.addEventListener("click", (event) => {
-    //     console.log(event);
-    //     // event.currentTarget.classList.toggle("selected");
-    //   });
-    // });
   };
+  // cardsContainer.children.forEach((searchCard) => {
+  //   // console.log(searchCard);
+  //   searchCard.addEventListener("click", (event) => {
+  //     console.log(event);
+  //     // event.currentTarget.classList.toggle("selected");
+  //   });
+  // });
+  // };
 </script>
 
 <script>
@@ -154,12 +130,6 @@
     .then((response) => response.json())
     .then((data) => {
       let movies = [];
-      // --------------- ONLY FIRST RESULT
-      // console.log(data);
-      // console.log(data.results[0]);
-      // if (typeof data.results[0] !== "undefined" && data.results[0].kind === "feature-movie") {
-      //   movies.push(buildMovie(data.results[0]));
-      // }
       // --------------- LOOP ALL RESULTS
       data.results.forEach((result) => {
         if (result.kind === "feature-movie") {
@@ -167,8 +137,9 @@
           movies.push(movie);
         }
       });
+      deleteCards();
       addCards(movies);
-      addSelectionListener(cardsContainer);
+      addSelectionListener(document.getElementById("search-cards-container"));
     });
   };
 
@@ -181,11 +152,41 @@
     }
   };
 
+  const deleteCards = () => {
+    const cards = document.querySelectorAll(".search-card");
+    cards.forEach((card) => {
+      console.log(card)
+      if (card.classList.contains("selected")) {
+        console.log("DONT delete");
+      } else {
+        console.log("delete");
+        removeElement(card);
+      }
+    });
+
+    console.log("HEEERRRE");
+    console.log(cards);
+    // deleteChildren(element);
+    // let children = element.childNodes;
+    // console.log(children);
+    // console.log(child.classList.contains("selected"));
+
+    // while (element.firstChild) {
+    //   if (!element.firstChild.classList.contains("selected")) {
+    //     element.removeChild(element.firstChild);
+    //   }
+    // }
+  };
+
+  const removeElement = (el) => {
+    el.parentNode.removeChild(el);
+  };
+
   const addCards = (movies) => {
-    deleteChildren(cardsContainer);
     movies.forEach((movie) => {
       const card = buildCard(movie);
-      console.log(card);
+      addSelectionListener(card);
+      // console.log(card);
       cardsContainer.insertAdjacentElement('beforeend', card);
       // addChild(cardsContainer, card);
     });
@@ -205,9 +206,9 @@
     // create div with class "search-card"
     const searchCard = createElementCustom("div", ["search-card"]);
     // create image with src="[movie.artworkUrl]" and alt="[movie.title]"
-    const img = createImageCustom(movie.artworkUrl, movie.title, "100%");
+    const img = createImageCustom(movie.artworkUrl, movie.title);
     // create h2 element with value [movie.title]
-    const title = document.createElement("h4");
+    const title = document.createElement("p");
     title.innerText = movie.title;
     // append img and h2 tag to the search-card
     insertElements(searchCard, [img, title]);
@@ -223,11 +224,10 @@
     return el
   };
 
-  const createImageCustom = (src, altText, width) => {
+  const createImageCustom = (src, altText) => {
     const img = document.createElement('img');
     img.src = src;
     img.alt = altText;
-    img.style.width = width;
     return img
   };
 
