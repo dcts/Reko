@@ -5,7 +5,8 @@ class PagesController < ApplicationController
   end
 
   def thankyou
-    @receiver = User.find_by_token(params[:token])
+    @token = params[:token]
+    @receiver = User.find_by_token(@token)
     @sender_name = params[:name]
     @movies = params[:movies].split("_and_")
     # redirect if token is invalid

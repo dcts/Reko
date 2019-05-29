@@ -11,6 +11,7 @@ class RekosController < ApplicationController
 
   def new
     token = params[:token] # get token from params
+    @sender_name = params[:sender_name] # get sender name if provided
     user_id = User.token_hashmap[token] # returns user instance or nil
     if user_id.nil? # User not existant -> token invalid
       redirect_to invalid_token_path

@@ -6,5 +6,8 @@
         <li><%= movie %></li>
       <% end %>
     </ul>
+
+    <%= link_to "send more rekos", new_reko_path(sender_name: @sender_name, token: @token), class: "bttn bttn-small violet" %>
+    <%= link_to "sign up for beta", new_beta_applicant_path, class: "bttn bttn-small violet"  %>
   </div>
 </div>

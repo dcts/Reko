@@ -1,9 +1,10 @@
+<!-- DO NOT CHANGE THE ID NAMING -->
 <!-- <div class="background-container dark-violet"> -->
   <div class="master-container green">
     <div class="paper-wrapper">
       <h1>hello friend of <%= @user.to_s %></h1>
       <form id="formSubmitName">
-        <input autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="input your name">
+        <input autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="input your name" value="<%= "#{@sender_name}" %>">
         <button>submit</button>
       </form>
 
@@ -11,6 +12,8 @@
         <input autocomplete="off" id="inputKeyword" name="" type="text" placeholder="search for movies">
         <button id="sendRekosButton">GO</button>
       </form>
+
+      <!-- CARDS STYLING -> _search-cards.scss -->
       <div id="search-cards-container">
         <!-- WILL GET DYNAMICALLY POPULATED WITH NEW CARDS -->
       </div>
@@ -20,46 +23,21 @@
 
 
 
-  <!-- IF YOU CHANGE THE NAME OF THE ID HERE BE SURE TO ADAPT THE JAVASCRIPT ACCORDINGLY -->
-
-
-<style>
-  .invisible {
-    opacity: 0;
-    transition: 0.5s ease;
-  }
-  .visible {
-    opacity: 1;
-    transition: opacity 0.5s ease;
-  }
-
-  #search-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .search-card {
-    width: 110px;
-    max-width: 110px;
-    height: 230px;
-    max-height: 230px;
-    display: inline;
-    border: 1px solid red;
-    margin: 10px;
-    border: 10px solid transparent;
-  }
-  .search-card > img {
-    width: 100%;
-    height: 84%;
-  }
-  .search-card > p {
-    margin: 0;
-  }
-  .search-card.selected {
-    border: 10px solid green;
-  }
-</style>
-
 <script>
+  // LOG MESSAGE
+  console.log("hello from inline script!");
+  // FINAL DATA
+  let senderName;
+  const token = document.URL.split("token=")[1];
+  let movies = [];
+  // LOAD ALL DOM ELEMENTS
+  const formSubmitName = document.getElementById("formSubmitName");
+  const formAjaxSearch = document.getElementById("formAjaxSearch");
+  const inputName = document.getElementById("inputName");
+  const inputKeyword = document.getElementById("inputKeyword");
+  const cardsContainer = document.getElementById("search-cards-container");
+  const sendRekosButton = document.getElementById("sendRekosButton");
+
   // SEND POST REQUEST
   formAjaxSearch.addEventListener("submit", (event) => {
 
@@ -104,23 +82,6 @@
     console.log("POST request send with data: ");
     console.log(toSend);
   };
-</script>
-
-<script>
-
-  // LOG MESSAGE
-  console.log("hello from inline script!");
-  // FINAL DATA
-  let senderName;
-  const token = document.URL.split("token=")[1];
-  let movies = [];
-  // LOAD ALL DOM ELEMENTS
-  const formSubmitName = document.getElementById("formSubmitName");
-  const formAjaxSearch = document.getElementById("formAjaxSearch");
-  const inputName = document.getElementById("inputName");
-  const inputKeyword = document.getElementById("inputKeyword");
-  const cardsContainer = document.getElementById("search-cards-container");
-  const sendRekosButton = document.getElementById("sendRekosButton");
 
   // ADD EVENTLISTENERS FOR SELECTION
   const addSelectionListener = (card) => {
