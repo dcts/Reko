@@ -1,60 +1,27 @@
-<h1>hello friend of <%= @user.to_s %></h1>
-<form id="formSubmitName">
-  <input id="inputName" name="beta_applicant[name]" type="text" placeholder="input your name">
-  <button>submit your name</button>
-</form>
+<!-- <div class="background-container dark-violet"> -->
+  <div class="master-container green">
+    <div class="paper-wrapper">
+      <h1>hello friend of <%= @user.to_s %></h1>
+      <form id="formSubmitName">
+        <input autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="input your name">
+        <button>submit</button>
+      </form>
 
-<form id="formAjaxSearch" class="visible">
-  <input id="inputKeyword" name="" type="text" placeholder="search for movies">
-</form>
-
-<div id="search-cards-container">
-  <!-- WILL GET DYNAMICALLY POPULATED WITH NEW CARDS -->
-</div>
-
-<button id="sendRekosButton" disabled>SEND TO ALLAN</button>
-<div id="serverResponseDiv"></div>
-<script>
-  // SEND POST REQUEST
-  sendRekosButton.addEventListener("click", (event) => {
-    // console.log(event);
-    cards = document.querySelectorAll(".selected");
-    cards.forEach((card) => {
-      sendPostRequestToCreateReko(card);
-      console.log("sended POST");
-    });
-    console.log("redirecting NOW");
-    window.location = `/thankyou?token=${token}&name=${senderName}`;
-  });
+      <form id="formAjaxSearch" class="invisible">
+        <input autocomplete="off" id="inputKeyword" name="" type="text" placeholder="search for movies">
+        <button id="sendRekosButton">GO</button>
+      </form>
+      <div id="search-cards-container">
+        <!-- WILL GET DYNAMICALLY POPULATED WITH NEW CARDS -->
+      </div>
+    </div>
+  </div>
+<!-- </div> -->
 
 
-  const sendPostRequestToCreateReko = (card) => {
-    const xhr = new XMLHttpRequest();
-    // DATA TO SEND
-    const toSend = {
-      authenticity_token: "<%= session[:_csrf_token] %>",
-      reko: {
-        itunes_id: card.dataset.itunes_id,
-        title: card.dataset.title,
-        image_url: card.dataset.image_url,
-        genre: card.dataset.genre,
-        sender_name: senderName,
-        token: token
-      }
-    };
-    // DISPLAY SERVER RESPONSE
-    xhr.onload = function () {
-      console.log("Yay, we got an answer from the server (request response)");
-      console.log(this);
-    };
 
-    console.log(toSend);
-    xhr.open("POST", "/rekos");
-    xhr.setRequestHeader("Content-type", "application/json");
-    xhr.send(JSON.stringify(toSend));
-  };
+  <!-- IF YOU CHANGE THE NAME OF THE ID HERE BE SURE TO ADAPT THE JAVASCRIPT ACCORDINGLY -->
 
-</script>
 
 <style>
   .invisible {
@@ -71,8 +38,8 @@
     flex-wrap: wrap;
   }
   .search-card {
-    width: 130px;
-    max-width: 130px;
+    width: 110px;
+    max-width: 110px;
     height: 230px;
     max-height: 230px;
     display: inline;
@@ -93,6 +60,54 @@
 </style>
 
 <script>
+  // SEND POST REQUEST
+  formAjaxSearch.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+    console.log("SUBMITT EVENT TRIGGERED");
+    let movies = []; // save movie titles
+    cards = document.querySelectorAll(".selected");
+    cards.forEach((card) => {
+      console.log(card.dataset.title);
+      movies.push(card.dataset.title);
+      sendPostRequestToCreateReko(card);
+    });
+    const redirectUrl = `/thankyou?token=${token}&name=${senderName}&movies=${normalize(movies.join("_and_"))}`;
+    console.log("redirecting NOW");
+    console.log(redirectUrl)
+    window.location = redirectUrl;
+  });
+
+  const sendPostRequestToCreateReko = (card) => {
+    const xhr = new XMLHttpRequest();
+    // listener for server response
+    // whenever the request gets a response the .onload() function gets triggered
+    xhr.onload = function () {
+      console.log("Yay, we got an an answer from the server (request response):");
+      console.log(this);
+    };
+    // DATA TO SEND
+    const toSend = {
+      authenticity_token: "<%= session[:_csrf_token] %>",
+      reko: {
+        itunes_id: card.dataset.itunes_id,
+        title: card.dataset.title,
+        image_url: card.dataset.image_url,
+        genre: card.dataset.genre,
+        sender_name: senderName,
+        token: token
+      }
+    };
+    xhr.open("POST", "/rekos");
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(JSON.stringify(toSend));
+    console.log("POST request send with data: ");
+    console.log(toSend);
+  };
+</script>
+
+<script>
+
   // LOG MESSAGE
   console.log("hello from inline script!");
   // FINAL DATA
@@ -129,6 +144,7 @@
     formSubmitName.addEventListener(event, () => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
       formAjaxSearch.classList.remove("invisible");
       formAjaxSearch.classList.add("visible");
+      // formAjaxSearch.classList.add("visible");
     });
   })
   formSubmitName.addEventListener("submit", (event) => {
@@ -137,7 +153,6 @@
       alert("your name has to few letters!");
     } else {
       senderName = inputName.value;
-      alert(`${senderName} captured!`);
       formSubmitName.classList.add("invisible");
     }
   });
@@ -147,8 +162,8 @@
     apiCall(inputKeyword.value);
   });
 
-  const normalize = searchTerm => {
-    return searchTerm.replace(/ /g, '+');
+  const normalize = term => {
+    return term.replace(/ /g, '+');
   };
 
   // ITUNES API CALL FROM JS
