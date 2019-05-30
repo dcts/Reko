@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    rekos_path
+    if resource.created_at > 10.seconds.ago
+      new_user_user_preference_path(resource)
+    else
+      rekos_path
+    end
   end
 end

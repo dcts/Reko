@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'registrations/after_sign_up_path_for'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
   # custom users listing page
