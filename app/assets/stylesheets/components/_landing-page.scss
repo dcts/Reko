@@ -4,15 +4,16 @@
   flex-direction: column;
   justify-content: flex-end;
   text-align: center;
+  height: 66vh;
 
 }
 
 .logo-landing {
+  // background-color: red;
   background-image: url("logo.svg");
   background-repeat: no-repeat;
   background-position: center center;
-  min-height: 37vh;
-  width: 200px;
+  height: 13vh;
 }
 
 .landing-bottom-btns {
