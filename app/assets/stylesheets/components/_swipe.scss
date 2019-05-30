@@ -4,6 +4,15 @@ html, body {
   padding: 0;
 }
 
+.swiper-card {
+  width: 320px;
+  height: 90px;
+  overflow: hidden;
+  margin: 20px 0;
+  box-shadow: 0 0 20px;
+  border-radius: 0 0 20px 20px;
+}
+
 .swiper-container {
   width: 100%;
   height: 100%;
@@ -12,14 +21,13 @@ html, body {
 .swiper-wrapper {
   display: -webkit-box;
   z-index: 1;
-
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
-  border: 1px solid black;
+  // box-shadow: 0 0 40px;
 
   /* Center slide text vertically */
 
@@ -33,10 +41,15 @@ html, body {
   max-width: 320px;
   background-color: #2C8DFB;
   color: #fff;
+  border-radius: 0 0 20px 0;
 }
 
 .main-slide {
   width: 100%;
+  border-radius: 3px 3px 3px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
 }
 
 .mark-watched-slide {
@@ -44,4 +57,38 @@ html, body {
   max-width: 320px;
   background-color: #00CC66;
   color: #fff;
+  border-radius: 0 0 0 20px;
+
+}
+
+.reko-artwork {
+  height: 90px;
+  width: 90px;
+  border-radius: 0 3px 3px 0;
+  background-size: cover;
+  flex-shrink: 0;
+}
+
+.reko-info {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.reko-title {
+  margin-top: 0;
+  font-size: 1rem;
+  margin-top: 0;
+  text-align: left
+}
+
+.sender-names {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  justify-content: space-between;
 }

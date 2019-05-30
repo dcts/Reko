@@ -28,29 +28,44 @@
 
           <% @movies.each do |reko| %>
 
-             <div class="swiper-container">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide delete-slide" data-reko-id="<%= reko[:reko].id %>">
-                  <%= link_to 'DELETE', rekos_path, method: :delete, remote: true  %>
-                </div>
+              <div class="swiper-card">
+               <div class="swiper-container">
+                <div class="swiper-wrapper">
 
-                <div class="swiper-slide main-slide">
-                  <div>
-                    <p><%= reko[:reko].recommendable.title %></p>
-                    <span><i class="fas fa-user"></i></span>
-                    <% reko[:sender_names].each do |name| %>
-                      <span><%= name %> </span>
-                    <% end %>
+                <!-- MARK WATCHED -->
+                  <div class="swiper-slide mark-watched-slide">
+                    <i class="fas fa-check"></i>
                   </div>
-                  <div>
-                    <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120">
+
+                <!-- MAIN SLIDE  -->
+                  <div class="swiper-slide main-slide">
+                    <div class="reko-info">
+                      <div class="reko-title"><%= reko[:reko].recommendable.title %></div>
+
+                      <div class="sender-names">
+                        <i style="font-size: 29px" class="fas fa-user-circle"></i>
+
+                        <div>
+                          <%= reko[:sender_names].first.capitalize %>
+                          <% if reko[:sender_names].size > 1 %>
+                            <br>+
+                          <%= pluralize((reko[:sender_names].size - 1), 'other') %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="reko-artwork" style="background-image: url(<%= reko[:reko].recommendable.image_url %>);">
+                      <!-- <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120"> -->
+                    </div>
                   </div>
-                </div>
 
-                <div class="swiper-slide mark-watched-slide">
-                  <i class="fas fa-check"></i>
-                </div>
+                <!-- DELETE REKO -->
+                  <div class="swiper-slide delete-slide" data-reko-id="<%= reko[:reko].id %>">
+                    <%= link_to 'DELETE', rekos_path, method: :delete, remote: true  %>
+                  </div>
 
+                </div>
               </div>
             </div>
           <% end %>
