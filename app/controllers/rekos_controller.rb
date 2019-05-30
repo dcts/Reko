@@ -60,6 +60,17 @@ class RekosController < ApplicationController
     end
   end
 
+  def mark_as_done
+    @reko = Reko.find(params[:reko_id])
+    @reko.status = 'done'
+    if @reko.save
+      respond_to do |format|
+        format.js
+        format.html
+      end
+    end
+  end
+
   private
 
   def request_params

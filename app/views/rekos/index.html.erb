@@ -24,7 +24,7 @@
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
       <%if @movies.size > 0 %>
-        <div class="movie-list">
+        <div id="movie-list">
 
           <% @movies.each do |reko| %>
 
@@ -34,7 +34,7 @@
 
                 <!-- MARK WATCHED -->
                   <div class="swiper-slide mark-watched-slide">
-                    <i class="fas fa-check"></i>
+                    <%= link_to "", reko_mark_as_done_path(reko[:reko]), method: :put, remote: true, class: "fas fa-check", style: "color: white"  %>
                   </div>
 
                 <!-- MAIN SLIDE  -->

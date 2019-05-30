@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # rekos_routes
   resources :rekos, only: [:index, :new, :create] do
     put :mark_as_rejected
+    put :mark_as_done
   end
 
   get '/rekos/new/invalid_token', to: "rekos#invalid_token", as: "invalid_token"
