@@ -1,20 +1,35 @@
-<h2>Log in</h2>
+<div class="background-container-landing b-violet">
+  <div class=space-top>
+  <div class="master-container-landing">
+    <div class="paper-wrapper">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <h2 >Log in</h2>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="form-wrapper">
+          <div class="form-log-in">
+            <%= f.input :email,
+                        required: false,
+                        autofocus: true,
+                        label:false,
+                        placeholder:"EMAIL",
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :password,
+                        required: false,
+                        placeholder:"PASSWORD",
+                        label:false,
+                        input_html: { autocomplete: "current-password" } %>
+            <%= f.input :remember_me, class: "no-border", as: :boolean if devise_mapping.rememberable? %>
+         </div>
+
+              <div>
+               <%= f.button :submit, "Log in", id:"form-btn-login"%>
+              </div>
+        <% end %>
+
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+        <%= render "devise/shared/links" %>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  </div>
+</div>
