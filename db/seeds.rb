@@ -8,6 +8,7 @@ welcome_message
 reset_database
 
 # CREATE USERS
+create_user(password: "123456", first_name: "admin",  last_name: "admin", email: "admin@admin.com")
 create_user(password: "123456", first_name: 'Allan',   last_name: 'Holmes',     email: 'allan.homes@me.com')
 create_user(password: "123456", first_name: 'Assunta', last_name: 'Waldorf',    email: 'sunti@mail.com')
 create_user(password: "123456", first_name: 'Thilo',   last_name: 'Somthing',   email: 'thiloooo@reko.com')
@@ -15,9 +16,6 @@ create_user(password: "123456", first_name: 'Thomas',  last_name: 'Starzynski', 
 create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: Faker::Name.last_name, email: Faker::Internet.email)
 create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: Faker::Name.last_name, email: Faker::Internet.email)
 create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: Faker::Name.last_name, email: Faker::Internet.email)
-
-# CREATE PREFERENCE (CATEGORIES) (only 2 for the moment)
-# create_preferences(["Movies", "Documentaries"])
 
 # CREATE RANDOM USER PREFERENCES
 user_preferences = %w( Movies Documentaries)
