@@ -1,6 +1,17 @@
-<h2>Sign up for beta</h2>
-<%= form_tag(controller: "beta_applicants", action: "create", method: "post") do %>
-  <%= text_field_tag :email, nil, placeholder: 'Email', id: "email" %>
-  <%= submit_tag 'Apply' %>
-<% end -%>
+<div class="background-container b-violet">
+  <div class="master-container-landing">
+  <div class=space-top></div>
+    <div class="paper-wrapper-landing">
 
+      <h2>Sign up for beta</h2>
+        <div class="form-post">
+    <%= form_tag(controller: "beta_applicants", action: "create", method: "post") do %>
+        <%= text_field_tag :email, nil, placeholder: 'Email', id: "email" %>
+        <%= submit_tag 'Apply', id:"form-btn-apply" %>
+      <% end -%>
+
+
+      </div>
+    </div>
+  </div>
+</div>
