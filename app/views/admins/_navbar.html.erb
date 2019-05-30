@@ -1,59 +1,21 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "/admins", class: "navbar-brand" do %>
-    <%= image_tag "https://user-images.githubusercontent.com/44790691/58438090-58eba500-80cd-11e9-8c75-65f4dac627b3.png" %>
-  <% end %>
+<ul class="navbar-ul">
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins">ADMIN CONTROL</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/users">Users</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/rekos">Rekos</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/recommendables">Movies</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/preferences">Preferences</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/beta_applicants">Beta Applicants</a></li>
+</ul>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<script>
+  console.log("hi from navbar");
+  const ending = document.URL.split("/admins")[1];
+  navbarLinks = document.querySelectorAll(".navbar-link");
+  navbarLinks.forEach((navbarLink) => {
+    if (navbarLink.href === document.URL) {
+      navbarLink.classList.add("admin-navbar-active");
+    }
+  });
+</script>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://user-images.githubusercontent.com/44790691/58282155-35f78300-7da5-11e9-83f2-b6a1a006bacb.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "DASHBOARD", admins_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <span class="nav-link">|</span>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Users", admins_users_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Rekos", admins_rekos_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Recommendables", admins_recommendables_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Preferences", admins_preferences_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Beta-Applicants", admins_beta_applicants_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <span class="nav-link">|</span>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>

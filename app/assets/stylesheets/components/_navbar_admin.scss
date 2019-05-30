@@ -1,22 +1,27 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
-
-li {
-  display: block
-}
-
-.nav-item
-{
+.admin-navbar-li {
   float: left;
-  clear: left;
+}
+
+.admin-navbar-li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.admin-navbar-li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.admin-navbar-active {
+  background-color: #4CAF50;
 }
