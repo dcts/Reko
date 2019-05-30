@@ -1,6 +1,8 @@
-const rekoList = document.getElementById("movie-list");
-const rekoDone = document.querySelector("[data-reko-id='<%= @reko.id %>']");
+// let rekoList = $("movie-list");
+// let rekoDone = $("[data-reko-id='<%= @reko.id %>']");
 
-rekoDone.remove;
-rekoList.insertAdjacentElement('beforeend', rekoDone);
+// rekoDone.remove;
+// rekoList.insertAdjacentElement('beforeend', rekoDone);
 
+var rekoDone = document.querySelector("[data-reko-id='<%= @reko.id %>']");
+rekoDone.parentNode.appendChild(rekoDone);

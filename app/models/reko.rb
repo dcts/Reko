@@ -14,7 +14,9 @@ class Reko < ApplicationRecord
 
   # STATUS of the reko
   enum status: { open: 0, done: 1, rejected: 2 }
-  scope :not_rejected, -> { where.not(status: 'rejected') }
+  # scope :not_rejected, -> { where.not(status: 'rejected') }
+  # scope :unseen, -> { where(status: 'open') }
+  # scope :seen, -> { where(status: 'done') }
 
   def self.display
     all.map { |x| x.to_s }.each { |x| puts x }
