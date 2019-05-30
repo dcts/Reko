@@ -31,5 +31,6 @@ Rails.application.routes.draw do
   get '/admins/recommendables', to: "admins#recommendables"
   get '/admins/preferences', to: "admins#preferences"
   get '/admins/beta_applicants', to: "admins#beta_applicants"
+  get '/admins/tests', to: "admins#tests"
 
 end

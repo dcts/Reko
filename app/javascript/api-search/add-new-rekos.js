@@ -1,7 +1,6 @@
-const searchFlow = () => {
+const addNewRekos = () => {
+  console.log("---TRIGGERED : addNewRekos");
 
-  // LOG MESSAGE
-  console.log("hello from inline script!");
   // FINAL DATA
   let senderName;
   const token = document.URL.split("token=")[1];
@@ -231,4 +230,4 @@ const searchFlow = () => {
   };
 };
 
-export { searchFlow };
+export { addNewRekos };
