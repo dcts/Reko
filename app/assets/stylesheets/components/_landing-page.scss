@@ -1,12 +1,8 @@
 
-.landing-wrapper {
+.landing-wrapper-landing {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 70%;
-  margin-bottom: 77px;
-  padding: 0px 12px;
+  justify-content: flex-end;
   text-align: center;
 
 }
@@ -15,7 +11,7 @@
   background-image: url("logo.svg");
   background-repeat: no-repeat;
   background-position: center center;
-  height: 100px;
+  min-height: 37vh;
   width: 200px;
 }
 
