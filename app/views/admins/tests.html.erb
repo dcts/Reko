@@ -1,0 +1,51 @@
+<div class="background-container b-violet">
+  <div class="master-container">
+    <div class="paper-wrapper">
+      <h1>TESTING COPY LINK</h1>
+
+      <input type="text" id="visitorLink" value="<%= (rand * 100).floor %>" readonly style="opacity:0; width:1px; height:1px;"/>
+      <button class="bttn b-small" onclick="copy('visitorLink')">Copy Link</button>
+      <br>
+      <!-- TESTFIELD TO TEST -->
+      <input type="text" id="visitorLink" value="" />
+    </div>
+  </div>
+</div>
+
+<script>
+
+let copy = function(elementId) {
+  var input = document.getElementById(elementId);
+  var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
+
+  if (isiOSDevice) {
+    var editable = input.contentEditable;
+    var readOnly = input.readOnly;
+
+    input.contentEditable = true;
+    input.readOnly = false;
+
+    var range = document.createRange();
+    range.selectNodeContents(input);
+
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    input.setSelectionRange(0, 999999);
+    input.contentEditable = editable;
+    input.readOnly = readOnly;
+
+  } else {
+    input.select();
+  }
+
+  document.execCommand('copy');
+}
+
+const test = () => {
+  console.log("Ho from inside the copylink-new script!");
+}
+
+
+</script>
