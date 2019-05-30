@@ -1,10 +1,17 @@
 
+
+.congrats {
+  font-size: 33px;
+  color: #6966F6;
+  padding-top: 55px;
+  padding-bottom: 16px;
+}
+
 .landing-wrapper-landing {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  margin-top: 15vh;
+  margin-bottom: 10vh;
   text-align: center;
-  height: 66vh;
+  height: 100%;
 }
 
 .logo-landing {
