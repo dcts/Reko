@@ -1,60 +1,68 @@
 
-<div class="inbox-title">
-  <h2> <i class="fas fa-user"></i><%= current_user.first_name %></h2>
-</div>
+<div class="background-container gray">
+   <div class="master-container">
 
-<%#= link_to "Add new reko", new_reko_path(token: current_user.token)  %>
+    <div class="inbox-title">
+      <p> <i class="fas fa-user"></i><%= current_user.first_name %></p>
+    </div>
 
-<div>
-  <h2>YOUR LINK:</h2>
-  <div>
-    <button class="js-copy btn btn-primary"><%= @visitor_link %></button>
-  </div>
-</div>
+    <div class="paper-wrapper">
+      <%#= link_to "Add new reko", new_reko_path(token: current_user.token)  %>
 
-<div>
-  ADD REKOS:
-  <%= link_to "+", new_reko_path  %>
-</div>
-
-<%if @movies.size > 0 %>
-  <div class="movie-list">
-    <h2>MOVIES</h2>
-
-    <% @movies.each do |reko| %>
-
-       <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide delete-slide" data-reko-id="<%= reko[:reko].id %>">
-            <%= link_to 'DELETE', rekos_path, method: :delete, remote: true  %>
-          </div>
-
-          <div class="swiper-slide main-slide">
-            <div>
-              <p><%= reko[:reko].recommendable.title %></p>
-              <span><i class="fas fa-user"></i></span>
-              <% reko[:sender_names].each do |name| %>
-                <span><%= name %> </span>
-              <% end %>
-            </div>
-            <div>
-              <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120">
-            </div>
-          </div>
-
-          <div class="swiper-slide mark-watched-slide">
-            <i class="fas fa-check"></i>
-          </div>
-
+      <div class="inbox-top-nav">
+        <div class="copy-link-nav">
+          <p>SEND LINK TO FRIENDS:</p>
+          <a class="js-copy bttn reko-link violet"><%= @visitor_link %></a>
         </div>
+          <%= link_to "+", new_reko_path, class:"add-bttn" %>
       </div>
-    <% end %>
+
+
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- DONT TOUCH BELOW OR ASSUNTA WILL KILL ME -->
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+      <%if @movies.size > 0 %>
+        <div class="movie-list">
+
+          <% @movies.each do |reko| %>
+
+             <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide delete-slide" data-reko-id="<%= reko[:reko].id %>">
+                  <%= link_to 'DELETE', rekos_path, method: :delete, remote: true  %>
+                </div>
+
+                <div class="swiper-slide main-slide">
+                  <div>
+                    <p><%= reko[:reko].recommendable.title %></p>
+                    <span><i class="fas fa-user"></i></span>
+                    <% reko[:sender_names].each do |name| %>
+                      <span><%= name %> </span>
+                    <% end %>
+                  </div>
+                  <div>
+                    <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120">
+                  </div>
+                </div>
+
+                <div class="swiper-slide mark-watched-slide">
+                  <i class="fas fa-check"></i>
+                </div>
+
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="empty-reko-list">
+          Your list is currently empty :(
+        </div>
+      <%end %>
+    </div>
+
+
+
   </div>
-<% else %>
-  <div class="empty-reko-list">
-    Your list is currently empty :(
-  </div>
-<%end %>
-
-
-
+</div>
