@@ -9,16 +9,18 @@ body {
 //To add color use this class + color classes (white, gray, green, violet, or dark-violet)
 .background-container {
   width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  height: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-end;
 }
 
 .master-container {
   display: flex;
+  justify-content: flex-end;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   margin: 0 auto;
 }
 

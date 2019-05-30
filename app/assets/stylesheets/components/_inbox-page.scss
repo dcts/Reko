@@ -1,0 +1,30 @@
+.inbox-title {
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+  font-size: 22px;
+  width: 100vw;
+}
+
+.inbox-top-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  flex-direction: row;
+  margin-bottom: 25px;
+  margin-left: 11px;
+}
+
+.copy-link-nav {
+  display: flex;
+  font-size: 10px;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+}
+
+.copy-link-nav p {
+  color: #6966F6;
+  text-size: 7px !important;
+  margin: 0;
+  }
