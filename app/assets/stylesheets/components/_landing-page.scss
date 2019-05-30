@@ -5,6 +5,19 @@
   color: #6966F6;
   padding-top: 55px;
   padding-bottom: 16px;
+  animation: 2s fadeIn;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .landing-wrapper-landing {
