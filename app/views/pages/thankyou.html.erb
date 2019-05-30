@@ -1,1 +1,13 @@
-<h1>Thank you <%= @sender_name %> for providing Rekos to <%= @receiver&.first_name %></h1>
+<div class="master-container">
+  <div class="paper-wrapper">
+    <h1>Thank you <%= @sender_name %> for providing the following Rekos to <%= @receiver&.first_name %></h1>
+    <ul>
+      <% @movies.each do |movie| %>
+        <li><%= movie %></li>
+      <% end %>
+    </ul>
+
+    <%= link_to "send more rekos", new_reko_path(sender_name: @sender_name, token: @token), class: "bttn bttn-small violet" %>
+    <%= link_to "sign up for beta", new_beta_applicant_path, class: "bttn bttn-small violet"  %>
+  </div>
+</div>
