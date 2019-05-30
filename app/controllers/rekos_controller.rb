@@ -10,21 +10,25 @@ class RekosController < ApplicationController
   end
 
   def new
-    token = params[:token] # get token from params
-    @sender_name = params[:sender_name] # get sender name if provided
-    user_id = User.token_hashmap[token] # returns user instance or nil
-    if user_id.nil? # User not existant -> token invalid
-      redirect_to invalid_token_path
-    else
-      @user = User.find(user_id)
+    # raise
+    unless user_signed_in?
+      token = params[:token] # get token from params
+      @sender_name = params[:sender_name] # get sender name if provided
+      user_id = User.token_hashmap[token] # returns user instance or nil
+      if user_id.nil? # User not existant -> token invalid
+        # authenticate_user!
+        redirect_to invalid_token_path
+      else
+        @user = User.find(user_id)
+      end
     end
   end
 
   def create
     # PERMIT PARAMS (filter only the needed ones)
     data = request_params
-    # get receiver (User instance)
-    receiver = User.find(User.token_hashmap[data[:token]])
+    # get receiver (User instance) # CODE SMELL -> REFACTOR THIS!
+    receiver = user_signed_in? ? current_user : User.find_by_token(data[:token])
     # check if movie exists already (check with itunes id)?
     movie = Movie.find_by(itunes_id: data[:itunes_id].to_i)
     # create if not, otherwise get movie instance
@@ -36,14 +40,16 @@ class RekosController < ApplicationController
         genre: data[:genre]
       )
       movie.save
+      puts "\n\n\n----------------------------------MOVVIEE CREATED"
     end
-    # create reko!
+    # create reko
     Reko.create(
       receiver: receiver,
       sender_name: data[:sender_name],
       recommendable: movie
     )
     puts "creating #{Reko.last.to_s}"
+    puts "\n\n\n----------------------------------REKO CREATED"
   end
 
   def destroy
