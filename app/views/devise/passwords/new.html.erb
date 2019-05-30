@@ -1,18 +1,31 @@
-<h2>Forgot your password?</h2>
+<div class="background-container b-violet">
+  <div class="master-container-landing">
+  <div class=space-top></div>
+    <div class="paper-wrapper-landing">
 
+
+<h2>Forgot your password?</h2>
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
+<div class="form-post">
   <div class="form-inputs">
     <%= f.input :email,
                 required: true,
                 autofocus: true,
+                label:false,
+                placeholder: 'EMAIL',
                 input_html: { autocomplete: "email" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+    <%= f.button :submit, "Reset password instructions" , id:"form-btn-pw"%>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>
+
+       </div>
+    </div>
+  </div>
+</div>
