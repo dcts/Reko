@@ -46,9 +46,18 @@ class RekosController < ApplicationController
     puts "creating #{Reko.last.to_s}"
   end
 
-  def destroy
-    @reko = Reko.find(params[:id])
-    @restaurant.destroy
+  def update
+  end
+
+  def mark_as_rejected
+    @reko = Reko.find(params[:reko_id])
+    @reko.status = 'rejected'
+    if @reko.save
+      respond_to do |format|
+        format.js
+        format.html
+      end
+    end
   end
 
   private
@@ -66,7 +75,7 @@ class RekosController < ApplicationController
 
   # Find rekos, including their movie information, for the current user, ordered by movie title
   def find_movies_for_user
-    Reko.includes(:movie).where(receiver_id: current_user.id).order('movies.title')
+    Reko.not_rejected.includes(:movie).where(receiver_id: current_user.id).order('movies.title')
   end
 
   def build_reko_view_array(rekos)

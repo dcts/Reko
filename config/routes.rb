@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   resources :beta_applicants, only: [:new, :create]
 
   # rekos_routes
-  resources :rekos, only: [:index, :new, :destroy, :create]
+  resources :rekos, only: [:index, :new, :create] do
+    put :mark_as_rejected
+  end
 
   get '/rekos/new/invalid_token', to: "rekos#invalid_token", as: "invalid_token"
 

@@ -28,7 +28,7 @@
 
           <% @movies.each do |reko| %>
 
-              <div class="swiper-card">
+              <div class="swiper-card" data-reko-id="<%= reko[:reko].id %>">
                <div class="swiper-container">
                 <div class="swiper-wrapper">
 
@@ -61,8 +61,8 @@
                   </div>
 
                 <!-- DELETE REKO -->
-                  <div class="swiper-slide delete-slide" data-reko-id="<%= reko[:reko].id %>">
-                    <%= link_to 'DELETE', rekos_path, method: :delete, remote: true  %>
+                  <div class="swiper-slide delete-slide" >
+                    <%= link_to "", reko_mark_as_rejected_path(reko[:reko]), method: :put, remote: true, class: "fas fa-trash-alt", style: "color: white"  %>
                   </div>
 
                 </div>
