@@ -6,9 +6,8 @@ class RekosController < ApplicationController
 
   def index
     @movies = build_reko_view_array(find_movies_for_user)
-    @visitor_link = "http://localhost:3000/rekos/new?token=#{current_user.token}"
+    @visitor_link = request.original_url.gsub("/rekos", "/rekos/new?token=#{current_user.token}")
   end
-
 
   def new
     token = params[:token] # get token from params
@@ -65,7 +64,6 @@ class RekosController < ApplicationController
   # end
 
   # Find rekos, including their movie information, for the current user, ordered by movie title
-
   def find_movies_for_user
     Reko.includes(:movie).where(receiver_id: current_user.id).order('movies.title')
   end

@@ -14,21 +14,18 @@ class User < ApplicationRecord
   validates :token, uniqueness: true
 
   # Class method that returns a hash with key=token and value=user_id
-  # -> needed to check if a link exists in the inboxes controller
+  # -> needed to check if a link exists in the rekos controller
   def self.token_hashmap
     token_hashmap = {}
     all.each { |user| token_hashmap[user.token] = user.id }
     token_hashmap
   end
 
+  # FINDS USER BY TOKEN
+  # if token exists, returns user instance, else returns nil
   def self.find_by_token(token)
-    # COULD BE REFACTORED!
     user_id = token_hashmap[token]
-    if user_id # not nil
-      return User.find(user_id)
-    else
-      return nil
-    end
+    user_id.nil? ? nil : User.find(user_id)
   end
 
   # custom "to_string" method
