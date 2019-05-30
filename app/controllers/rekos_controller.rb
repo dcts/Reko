@@ -5,7 +5,8 @@ class RekosController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :new, :invalid_token, :create ]
 
   def index
-    @movies = build_reko_view_array(find_movies_for_user)
+    @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: current_user.id)
+    @movies = sort_rekos(@user_movies.open, @user_movies.done)
     @visitor_link = request.original_url.gsub("/rekos", "/rekos/new?token=#{current_user.token}")
   end
 
@@ -52,9 +53,29 @@ class RekosController < ApplicationController
     puts "\n\n\n----------------------------------REKO CREATED"
   end
 
-  def destroy
-    @reko = Reko.find(params[:id])
-    @restaurant.destroy
+  def update
+  end
+
+  def mark_as_rejected
+    @reko = Reko.find(params[:reko_id])
+    @reko.status = 'rejected'
+    if @reko.save
+      respond_to do |format|
+        format.js
+        format.html
+      end
+    end
+  end
+
+  def mark_as_done
+    @reko = Reko.find(params[:reko_id])
+    @reko.status = 'done'
+    if @reko.save
+      respond_to do |format|
+        format.js
+        format.html
+      end
+    end
   end
 
   private
@@ -70,25 +91,31 @@ class RekosController < ApplicationController
   #   @rekos = build_reko_view_array(@rekos)
   # end
 
-  # Find rekos, including their movie information, for the current user, ordered by movie title
-  def find_movies_for_user
-    Reko.includes(:movie).where(receiver_id: current_user.id).order('movies.title')
-  end
-
-  def build_reko_view_array(rekos)
-    @reko_array = []
-    rekos.each do |reko|
-      sender_names = pluck_sender_names(reko)
-      @reko_array << { reko: reko, sender_names: sender_names } unless title_already_in_list(@reko_array, reko)
-    end
-    @reko_array.sort_by { |k| k[:sender_names].size }.reverse
-  end
-
   # Find all sender names for a movie, through the different rekos it is tied to
   # --> find names of people who have recommended this movie
   def pluck_sender_names(reko)
-    Reko.includes(:movie).where(receiver_id: current_user.id).where(movies: { title: reko.recommendable.title }).order('movies.title').pluck(:sender_name)
+    @user_movies.where(movies: { title: reko.recommendable.title }).pluck(:sender_name)
   end
+
+  # HERE BE DRAGONS
+  def sort_rekos(open_rekos, done_rekos)
+    result = []
+
+    open_rekos.each do |reko|
+      sender_names = pluck_sender_names(reko)
+      result << { reko: reko, sender_names: sender_names } unless title_already_in_list(result, reko)
+    end
+
+    result = result.sort_by { |k| k[:sender_names].size }.reverse
+
+    done_rekos.each do |reko|
+      sender_names = pluck_sender_names(reko)
+      result << { reko: reko, sender_names: sender_names } unless title_already_in_list(result, reko)
+    end
+
+    result
+  end
+
 
   # Check if movie title is already in reko list to avoid duplicates
   def title_already_in_list(array, reko)

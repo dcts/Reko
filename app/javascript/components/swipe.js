@@ -10,6 +10,12 @@ const makeSwipe = () => {
       initialSlide: 1,
       resistanceRatio: 0,
       slideToClickedSlide: true,
+
+      on: {
+        click: function() {
+          this.slideTo(1)
+      }
+    }
     //   on: {
     //     slideChangeTransitionStart: function () {
     //       var slider = this;
