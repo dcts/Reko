@@ -1,13 +1,13 @@
 import "bootstrap";
-import { copyLink } from "../components/copylink";
+// import { copyLink } from "../components/copylink";
 import { makeSwipe } from "../components/swipe";
-import { searchFlow } from "../api-search/add-rekos-flow";
+import { addNewRekos } from "../api-search/add-new-rekos";
 import toggleButtons from "../components/user-preference-choice";
-import { copyToClipboard, test } from "../components/copylink-new";
+import { copyToClipboard } from "../components/copy-to-clipboard";
 
 
-copyLink();
+// copyLink();
 makeSwipe();
 toggleButtons();
-searchFlow();
-test();
+addNewRekos();
+copyToClipboard();

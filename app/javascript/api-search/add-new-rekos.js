@@ -1,9 +1,9 @@
-const searchFlow = () => {
+const addNewRekos = () => {
   // LOG MESSAGE
-  console.log("hello from inline script!");
-
+  console.log("-----load : add-new-rekos.js");
   // check if the script should be triggered
-  if (document.getElementById("jsTrigger-SearchFlow")) {
+  if (document.getElementById("jsTrigger-AddNewRekos")) {
+    console.log("TRIGGERED : add-new-rekos.js");
     // FINAL DATA
     let senderName;
     const token = document.URL.split("token=")[1];
@@ -234,4 +234,4 @@ const searchFlow = () => {
   }
 };
 
-export { searchFlow };
+export { addNewRekos };

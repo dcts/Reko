@@ -1,7 +1,7 @@
 <!-- DO NOT CHANGE THE ID NAMING -->
 <!-- <div class="background-container dark-violet"> -->
 
-  <div id="jsTrigger-SearchFlow" class="master-container green">
+  <div id="jsTrigger-AddNewRekos" class="master-container green">
     <div class="paper-wrapper">
       <% if user_signed_in? %>
         <h1>Hello <%= current_user.first_name %>, add Rekos to your own list!</h1>
@@ -12,7 +12,6 @@
           <button>submit</button>
         </form>
       <% end %>
-
 
       <form id="formAjaxSearch" class="<%= user_signed_in? ? "visible" : "invisible" %>">
         <input id="auth" type="hidden" value="<%= session[:_csrf_token] %>">
