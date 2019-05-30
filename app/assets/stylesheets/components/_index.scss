@@ -1,7 +1,7 @@
 // Import your components CSS files here.
 @import "alert";
 @import "avatar";
-@import "navbar";
+@import "navbar_admin";
 @import "sign-in-form";
 @import "text-styles";
 @import "text-input-field";
@@ -13,6 +13,8 @@
 @import "simple-form-style";
 @import "colors";
 @import "search-cards";
+@import "bootstrap-clone/tables";
+@import "bootstrap-clone/containers";
 @import "inbox-page";
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');

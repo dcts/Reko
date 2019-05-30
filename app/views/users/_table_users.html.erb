@@ -16,7 +16,6 @@
     <th>updated_at</th>
     <!-- <th colspan="3">admin</th> -->
   </tr>
-
   <% users.each do |user| %>
     <tr>
       <td><%#= image_tag user.image_url, alt: "Le Wagon", height: 50, style: "border-radius: 50%;" %></td>
@@ -25,7 +24,7 @@
       <td><%= user.last_name %></td>
       <td><%= user.email %></td>
       <td><%= user.rekos_received.size %></td>
-      <td><%= user.token %></td>
+      <td><%= link_to (user.token), new_reko_path(token: user.token) %></td>
       <td><%= user.created_at %></td>
       <td><%= user.updated_at %></td>
       <!-- <td style="letter-spacing: 3px;"> -->

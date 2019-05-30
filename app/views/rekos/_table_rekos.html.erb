@@ -21,7 +21,7 @@
   </tr>
   <% rekos.each do |reko| %>
     <tr>
-      <td><img src="<%= reko.recommendable.image_url %>" alt="" height="120"></td>
+      <td><img src="<%= reko.recommendable.image_url %>" alt="" height="60"></td>
       <%#= image_tag reko.recommendable.url(:large), :style => "border: 1px solid red" %>
       <td><%= reko.id %></td>
       <% unless hide_receiver %>

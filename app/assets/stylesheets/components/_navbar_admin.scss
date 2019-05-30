@@ -1,0 +1,28 @@
+.navbar-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.admin-navbar-li {
+  float: left;
+}
+.admin-navbar-li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.admin-navbar-li a:hover:not(.active) {
+  background-color: #111;
+}
+// .admin-navbar-active {
+//   background-color: #4CAF50;
+//   background-color: #5A5766;
+//   background-color: #6966F6;
+// }
