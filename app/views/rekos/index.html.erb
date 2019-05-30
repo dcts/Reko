@@ -34,7 +34,7 @@
 
                 <!-- MARK WATCHED -->
                   <div class="swiper-slide mark-watched-slide">
-                    <%= link_to "", reko_mark_as_done_path(reko[:reko]), method: :put, remote: true, class: "fas fa-check", style: "color: white"  %>
+                    <%= link_to "", reko_mark_as_done_path(reko[:reko]), method: :put, remote: true, class: "fas fa-check", style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
                   </div>
 
                 <!-- MAIN SLIDE  -->
@@ -62,7 +62,7 @@
 
                 <!-- DELETE REKO -->
                   <div class="swiper-slide delete-slide" >
-                    <%= link_to "", reko_mark_as_rejected_path(reko[:reko]), method: :put, remote: true, class: "fas fa-trash-alt", style: "color: white"  %>
+                    <%= link_to "", reko_mark_as_rejected_path(reko[:reko]), method: :put, remote: true, class: "fas fa-trash-alt", style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
                   </div>
 
                 </div>
