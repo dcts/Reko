@@ -3,6 +3,9 @@ class PagesController < ApplicationController
 
   def home
     @invited = params[:invite] == ENV['INVITATION_LINK_TOKEN_1']
+    if current_user != nil # user is logged in
+      redirect_to rekos_path
+    end
   end
 
   def thankyou
