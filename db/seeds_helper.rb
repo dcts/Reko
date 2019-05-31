@@ -53,7 +53,7 @@ end
 # sender   : name of the sender (sender_name) as string
 # content  : instance of a movie / podcast or audiobook
 def create_fake_rekos_for_nonadmin_users(n)
-  non_admin_users = User.where(admin: true)
+  non_admin_users = User.where(admin: false)
   non_admin_users.each do |user|  # for each user
     n.times do                    # create n rekos
       Reko.create!(
