@@ -1,25 +1,4 @@
 
-
-.congrats {
-  font-size: 33px;
-  color: #6966F6;
-  padding-top: 55px;
-  padding-bottom: 16px;
-  animation: 2s fadeIn;
-  animation-fill-mode: forwards;
-  visibility: hidden;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
 .landing-wrapper-landing {
   margin-top: 15vh;
   margin-bottom: 10vh;
@@ -29,27 +8,160 @@
 
 .logo-landing {
   // background-color: red;
-  background-image: url("logo.svg");
+  background-image: url("logo-animate1.gif");
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 13vh;
+  height: 20vh;
 }
 
 .landing-bottom-btns {
   display: flex;
   flex-direction: column; justify-content: space-around;
-  margin-top: 20px;
-  height: 115px;
+  margin-top: 1vh;
+  // height: 10vh;
 }
 
-.home-desktop {
-  background-color: red;
+
+.landing-wrapper-landing-main {
+  margin-top: 25%;
+  margin-bottom: 1vh;
+  text-align: center;
   height: 100%;
-  width: 100%;
-  z-index: 10;
-  position: absolute;
+}
 
+
+.beta-bttn {
+  position: relative;
+  top: -37px;
+}
+
+.t-medium-landing {
+  font-size: 17px;
+  margin-top: -25px;
+  margin-bottom: 15vh;
+}
+
+
+.congrats {
+  font-size: 26px;
+  color: #6966F6;
+  padding-top: 55px;
+  padding-bottom: 16px;
 
 }
+
+
+.animate-reveal {
+  opacity: 0;
+  -webkit-animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+     -moz-animation: reveal 1s ease-in 1 normal forwards;
+       -o-animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+          animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+}
+
+.animate-first {
+  -webkit-animation-delay: 2000ms;
+     -moz-animation-delay: 2000ms;
+       -o-animation-delay: 2000ms;
+          animation-delay: 2000ms;
+}
+
+.animate-second {
+  -webkit-animation-delay: 2500ms;
+     -moz-animation-delay: 2500ms;
+       -o-animation-delay: 2500ms;
+          animation-delay: 2500ms;
+}
+
+
+@-webkit-keyframes reveal {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+       -moz-transform: translateY(100%);
+         -o-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+       -moz-transform: translateY(0);
+         -o-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-moz-keyframes reveal {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+       -moz-transform: translateY(100%);
+         -o-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+       -moz-transform: translateY(0);
+         -o-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-o-keyframes reveal {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+       -moz-transform: translateY(100%);
+         -o-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+       -moz-transform: translateY(0);
+         -o-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(50%);
+       -moz-transform: translateY(50%);
+         -o-transform: translateY(50%);
+            transform: translateY(50%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+       -moz-transform: translateY(0);
+         -o-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+
+// .congrats {
+//   font-size: 26px;
+//   color: #6966F6;
+//   padding-top: 55px;
+//   padding-bottom: 16px;
+//   animation: 1s fadeIn;
+//   animation-fill-mode: forwards;
+//   visibility: hidden;
+// }
+
+// @keyframes fadeIn {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     visibility: visible;
+//     opacity: 1;
+//   }
+// }
 
 
