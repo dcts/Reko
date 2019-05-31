@@ -14,6 +14,7 @@ const addNewRekos = () => {
   let sendRekosButton;
   let authenticityToken;
   let userSignedIn;
+  let instructionText;
 
   // LOAD ALL DOM ELEMENTS
   formSubmitName = document.getElementById("formSubmitName");
@@ -24,6 +25,8 @@ const addNewRekos = () => {
   sendRekosButton = document.getElementById("sendRekosButton");
   authenticityToken = document.getElementById("auth").value;
   userSignedIn = document.getElementById("userSignedIn").value === "true";
+  instructionText = document.getElementById("search-instruction-text");
+
 
   // VARIABLES TO CONTROLL POST REQUESTS
   let count = 0;
@@ -92,8 +95,12 @@ const addNewRekos = () => {
   "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd".split(" ").forEach((event) => {
     if (userSignedIn == false) {
       formSubmitName.addEventListener(event, () => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
+        removeElement(formSubmitName);
+        instructionText.innerText = `Thanks ${senderName}`
         formAjaxSearch.classList.remove("invisible");
         formAjaxSearch.classList.add("visible");
+        // removeElement(formAjaxSearch);
+        // console.log("HI");
         // formAjaxSearch.classList.add("visible");
       });
     }

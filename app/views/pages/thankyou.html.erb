@@ -1,6 +1,6 @@
 <div class="master-container">
   <div class="paper-wrapper">
-    <h1>Thank you <%= @sender_name %> for providing the following Rekos to <%= @receiver&.first_name %></h1>
+    <h1>Thank you <%= @sender_name %> for providing Rekos to <%= @receiver&.first_name %></h1>
     <ul>
       <% @movies.each do |movie| %>
         <li><%= movie %></li>

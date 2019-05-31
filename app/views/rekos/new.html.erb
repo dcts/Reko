@@ -12,7 +12,7 @@
           <%= @user.first_name.capitalize %> needs some great movies to watch.
         </div>
         <div class="paper-wrapper-search">
-          <h3>Type your name to start giving rekos:</h3>
+          <h3 id="search-instruction-text">Type your name to start giving rekos:</h3>
 
               <form id="formSubmitName" class = "search-div">
                 <input class= "input-field-text-md" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="YOUR NAME HERE" value="<%= "#{@sender_name}" %>">
