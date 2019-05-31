@@ -50,27 +50,6 @@
 
 }
 
-.submit-button {
-  -webkit-appearance: none;
-  background-color:#61E786 !important;
-  border-radius: 50%;
-  font-size: 17px;
-  width: 65px;
-  height: 65px;
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  background-image: url(checkmark.png);
-  background-position: center;
-  letter-spacing: 1px;
-  position: center;
-  border:black;
-  &:disabled {
-    display: none;
-  }
-  &:active{
-    opacity:1;
-  }
-}
 
 
 .future-features{
