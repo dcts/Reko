@@ -25,25 +25,32 @@ const addNewRekos = () => {
   authenticityToken = document.getElementById("auth").value;
   userSignedIn = document.getElementById("userSignedIn").value === "true";
 
+  // VARIABLES TO CONTROLL POST REQUESTS
+  let count = 0;
+  let target;
+
   // SEND POST REQUESTS
   formAjaxSearch.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log("SUBMITT EVENT TRIGGERED");
+    // console.log("SUBMITT EVENT TRIGGERED");
     const movies = []; // save movie titles
     const cards = document.querySelectorAll(".selected");
+    target = cards.length;
     cards.forEach((card) => {
       sendPostRequestToCreateReko(card);
     });
-    let redirectUrl;
-    if (userSignedIn) {
-      redirectUrl = "/rekos"
-    } else {
-      redirectUrl = `/thankyou?token=${token}&name=${senderName}&movies=${normalize(movies.join("_and_"))}`;
-    }
-    console.log("redirecting NOW");
-    console.log(redirectUrl)
-    window.location = redirectUrl;
   });
+
+  // GET REDIRECTION URL
+  const buildRedirectionUrl = () => {
+    let redirectionUrl;
+    if (userSignedIn) {
+      redirectionUrl = "/rekos";
+    } else {
+      redirectionUrl = `/thankyou?token=${token}&name=${senderName}&movies=${normalize(movies.join("_and_"))}`;
+    }
+    return redirectionUrl
+  };
 
   // ADD EVENTLISTENERS FOR SELECTION
   const addSelectionListener = (card) => {
@@ -97,8 +104,18 @@ const addNewRekos = () => {
     // listener for server response
     // whenever the request gets a response the .onload() function gets triggered
     xhr.onload = function () {
-      console.log("Yay, we got an an answer from the server (request response):");
-      console.log(this);
+      count += 1;
+      // console.log("Yay, we got an an answer from the server (request response):");
+      // console.log(this);
+      // console.log("check if this was the last post request to send?");
+      if (count == target) {
+        let redirectionUrl = buildRedirectionUrl();
+        // console.log("redirecting NOW");
+        // console.log(redirectionUrl);
+        window.location = redirectionUrl;
+      } else {
+        // console.log(`Nope.. count: ${count} target: ${target}`);
+      }
     };
     // DATA TO SEND
     senderName = userSignedIn ? "YOU" : senderName;
@@ -116,8 +133,8 @@ const addNewRekos = () => {
     xhr.open("POST", "/rekos");
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(JSON.stringify(toSend));
-    console.log("POST request send with data: ");
-    console.log(toSend);
+    // console.log("POST request send with data: ");
+    // console.log(toSend);
   };
 
   const normalize = term => {
