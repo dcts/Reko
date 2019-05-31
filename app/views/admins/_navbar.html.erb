@@ -5,6 +5,12 @@
   <li class="admin-navbar-li"><a class="navbar-link" href="/admins/recommendables">Movies</a></li>
   <li class="admin-navbar-li"><a class="navbar-link" href="/admins/preferences">Preferences</a></li>
   <li class="admin-navbar-li"><a class="navbar-link" href="/admins/beta_applicants">Beta Applicants</a></li>
+  <% if user_signed_in? %>
+    <li class="admin-navbar-li" style="float:right"><a class="navbar-link" rel="nofollow" data-method="delete" href="/users/sign_out">LOGOUT</a></li>
+    <li class="admin-navbar-li" style="float:right"><p style="margin:14px;" class="navbar-link">(<%= current_user.to_s %>)</p></li>
+  <% else %>
+    <li class="admin-navbar-li" style="float:right"><a class="navbar-link" href="/users/sign_in">LOG IN</a></li>
+  <% end %>
 </ul>
 
 <script>
@@ -16,5 +22,6 @@
     }
   });
 </script>
+
 
 
