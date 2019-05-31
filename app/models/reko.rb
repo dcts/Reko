@@ -11,6 +11,7 @@ class Reko < ApplicationRecord
 
 
   validates :sender_name, length: { minimum: 2 }
+  validates :recommendable, presence: true
 
   # STATUS of the reko
   enum status: { open: 0, done: 1, rejected: 2 }

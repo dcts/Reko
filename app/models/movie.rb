@@ -1,6 +1,9 @@
 class Movie < ApplicationRecord
   has_many :rekos, as: :recommendable
 
+  validates :itunes_id, presence: true
+  validates :image_url, presence: true
+
   def to_s
     "#{title}"
   end
