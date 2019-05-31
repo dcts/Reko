@@ -3,16 +3,15 @@
 <div class="background-container b-violet">
   <div id="jsTrigger-addNewRekos" class="master-container">
 
-      <% if user_signed_in? %>
       <div class="search-top-wrapper">
-        Hey <%= current_user.first_name %>, <br>add Rekos to your own list!
+        <% if user_signed_in? %>
+          Hey <%= current_user.first_name %>, <br>add Rekos to your own list!
+          <div class="paper-wrapper-search">
+        <% else %>
+            <%= @user.first_name.capitalize %> needs some great movies to watch.
+      </div>
         <div class="paper-wrapper-search">
-      <% else %>
-        <div class="search-top-wrapper">
-          <%= @user.first_name.capitalize %> needs some great movies to watch.
-        </div>
-        <div class="paper-wrapper-search">
-          <h3>Type your name to start giving rekos:</h3>
+          <h3>Start Giving Rekos:</h3>
 
               <form id="formSubmitName" class = "search-div">
                 <input class= "input-field-text-md" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="YOUR NAME HERE" value="<%= "#{@sender_name}" %>">
