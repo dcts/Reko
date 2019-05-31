@@ -8,7 +8,7 @@
         <% if user_signed_in? %>
           Hello <%= current_user.first_name %>, add Rekos to your own list!
         <% else %>
-          <%= @user.to_s %> needs some great movies to watch.
+          <%= @user.first_name.capitalize %> needs some great movies to watch.
       </div>
 
     <div class="paper-wrapper">

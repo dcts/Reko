@@ -11,6 +11,7 @@
         <div class="congrats animate-reveal animate-first">
           You're in!
         </div>
+      <% end %>
     </div>
 
     <div class="paper-wrapper-landing-main">
@@ -24,8 +25,6 @@
 
       <div class="landing-bottom-btns">
           <%= link_to "MEMBER LOG IN", new_user_session_path, class: "bttn b-small b-dark-violet", id: "margin-bttn" %>
-        <% unless @invited %>
-        <% end %>
       </div>
     </div>
 
