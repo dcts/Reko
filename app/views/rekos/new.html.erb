@@ -1,29 +1,31 @@
 <!-- DO NOT CHANGE THE ID NAMING -->
 <!-- <div class="background-container dark-violet"> -->
 <div class="background-container b-violet">
-  <div id="jsTrigger-addNewRekos" class="master-container green">
-      <div class="search-top-wrapper">
-        <% if user_signed_in? %>
-          Hello <%= current_user.first_name %>, add Rekos to your own list!
-        <% else %>
-          <%= @user.first_name.capitalize %> needs some great movies to watch.
-      </div>
+  <div id="jsTrigger-addNewRekos" class="master-container">
 
-    <div class="paper-wrapper">
-      <h3>Type your name to start giving rekos:</h3>
-        <div class="search-div">
-          <form id="formSubmitName">
-            <input class= "input-field-text-md" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="YOUR NAME HERE" value="<%= "#{@sender_name}" %>">
-            <button class= "submit-button">+</button>
-          </form>
+      <% if user_signed_in? %>
+      <div class="search-top-wrapper">
+        Hey <%= current_user.first_name %>, <br>add Rekos to your own list!
+        <div class="paper-wrapper-search">
+      <% else %>
+        <div class="search-top-wrapper">
+          <%= @user.first_name.capitalize %> needs some great movies to watch.
         </div>
-      <% end %>
+        <div class="paper-wrapper-search">
+          <h3>Type your name to start giving rekos:</h3>
+
+              <form id="formSubmitName" class = "search-div">
+                <input class= "input-field-text-md" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="YOUR NAME HERE" value="<%= "#{@sender_name}" %>">
+                <button class= "submit-button"></button>
+              </form>
+
+        <% end %>
 
       <form id="formAjaxSearch" class="<%= user_signed_in? ? "visible" : "invisible" %>">
         <input id="auth" type="hidden" value="<%= session[:_csrf_token] %>">
         <input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
         <input autocomplete="off" id="inputKeyword" name="" type="text" class= "input-field-text-md" placeholder="search for movies">
-        <button class="submit-button"></button>
+        <button class="bttn-round-small">+</button>
       </form>
 
       <!-- CARDS STYLING -> _search-cards.scss -->
