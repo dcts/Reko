@@ -6,11 +6,13 @@
       <% if user_signed_in? %>
         <h1>Hello <%= current_user.first_name %>, add Rekos to your own list!</h1>
       <% else %>
-        <h1><%= @user.to_s %> needs Rekos from you!</h1>
-        <form id="formSubmitName">
-          <input autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="input your name" value="<%= "#{@sender_name}" %>">
-          <button>submit</button>
-        </form>
+        <h1> Send <%= @user.to_s %> needs a great documentary to watch.</h1> <h2>Send him some Rekos:</h2>
+        <div class="search-div">
+          <form id="formSubmitName">
+            <input class= "input-field-text-md" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="YOUR NAME HERE" value="<%= "#{@sender_name}" %>">
+            <button class= "bttn bttn-round-small">+</button>
+          </form>
+        </div>
       <% end %>
 
       <form id="formAjaxSearch" class="<%= user_signed_in? ? "visible" : "invisible" %>">
