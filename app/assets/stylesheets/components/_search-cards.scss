@@ -8,26 +8,35 @@
 }
 
 #search-cards-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
 }
 .search-card {
   width: 110px;
   max-width: 110px;
-  height: 230px;
-  max-height: 230px;
-  display: inline;
-  border: 1px solid red;
-  margin: 10px;
-  border: 10px solid transparent;
+  height: 180px;
+  max-height: 180px;
+  display: column;
+  // border: 1px solid black;
+  margin: 4px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
 }
 .search-card > img {
-  width: 100%;
-  height: 84%;
+  object-fit: cover;
+  img {
+    width: 100%;
+    height: 84%;
+    object-fit: cover;
+  }
 }
-.search-card > p {
-  margin: 0;
-}
+// .search-card > p {
+//   margin: 0;
+// }
 .search-card.selected {
-  border: 10px solid green;
+  border: 5px solid black;
 }
