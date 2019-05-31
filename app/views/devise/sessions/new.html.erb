@@ -3,7 +3,7 @@
   <div class="master-container-landing">
     <div class="paper-wrapper">
 
-        <h2 >Log in</h2>
+        <h2 class="style-login-h2">Log in</h2>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="form-wrapper">
@@ -19,7 +19,7 @@
                         placeholder:"PASSWORD",
                         label:false,
                         input_html: { autocomplete: "current-password" } %>
-            <div>
+            <div class="login-checkbox">
             <%= f.input_field :remember_me,class: "no-border", as: :boolean if devise_mapping.rememberable? %>
             <%= f.label "Remember Me" %>
             </div>
