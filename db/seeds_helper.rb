@@ -52,11 +52,10 @@ end
 # receiver : user-instance
 # sender   : name of the sender (sender_name) as string
 # content  : instance of a movie / podcast or audiobook
-def create_rekos_for_each_user(n)
-  admins = ['admin', 'allan', 'thomas', 'thilo', 'assunta', nil] # do not create rekos for admin users
-  non_admin_users = User.all.reject { |user| admins.include?(user.first_name.downcase) }
-  non_admin_users.each do |user|
-    n.times do
+def create_fake_rekos_for_nonadmin_users(n)
+  non_admin_users = User.where(admin: true)
+  non_admin_users.each do |user|  # for each user
+    n.times do                    # create n rekos
       Reko.create!(
         receiver: user,
         sender_name: Faker::Name.first_name,
