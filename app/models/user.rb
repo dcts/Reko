@@ -33,6 +33,11 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  # returns role of the user as string
+  def role
+    admin ? "admin" : "user"
+  end
+
   protected
 
   # solution taken from here: https://stackoverflow.com/a/12109098/6272061
