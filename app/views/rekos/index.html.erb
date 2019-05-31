@@ -3,7 +3,7 @@
    <div class="master-container">
 
     <div class="inbox-title">
-      <p> <i class="fas fa-user"></i><%= current_user.first_name %></p>
+      <p class="inbox-user"> <i class="fas fa-user user-icon"></i><%= current_user.first_name %></p>
     </div>
 
     <div class="paper-wrapper">
@@ -90,6 +90,7 @@
           </div>
         </div>
       <%end %>
+      <%= link_to '', destroy_user_session_path, method: :delete, class: 'fas fa-door-open logout-icon' %>
     </div>
 
 

@@ -1,6 +1,6 @@
 .inbox-title {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   color: white;
   font-size: 22px;
   width: 100vw;
@@ -15,6 +15,20 @@
   margin-bottom: 25px;
   margin-left: 11px;
   min-height: 50px;
+}
+
+.inbox-user {
+  margin-left: 10px;
+}
+
+.user-icon {
+  margin-right: 15px;
+}
+
+.logout-icon {
+  color: lightgrey;
+  margin-bottom: 30px;
+  font-size: 2rem;
 }
 
 .copy-link-nav {
@@ -47,6 +61,7 @@
 
 .js-copy {
   margin-left: 25px;
+  border: none;
 }
 
 .js-copy-large {
@@ -57,6 +72,8 @@
   text-align: center;
   justify-content: center;
   margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 0;
 }
 
 .hidden-link-button {
