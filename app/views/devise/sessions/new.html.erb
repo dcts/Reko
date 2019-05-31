@@ -19,7 +19,9 @@
                         placeholder:"PASSWORD",
                         label:false,
                         input_html: { autocomplete: "current-password" } %>
-            <%= f.input :remember_me, class: "no-border", as: :boolean if devise_mapping.rememberable? %>
+            <%= f.label "Remember Me" %>
+
+            <%= f.input_field :remember_me, class: "no-border", as: :boolean if devise_mapping.rememberable? %>
          </div>
 
               <div>
