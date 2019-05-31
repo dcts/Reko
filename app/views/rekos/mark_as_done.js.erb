@@ -5,4 +5,10 @@
 // rekoList.insertAdjacentElement('beforeend', rekoDone);
 
 var rekoDone = document.querySelector("[data-reko-id='<%= @reko.id %>']");
+
+// get main slide to add class
+// rekoDone.querySelector('.main-slide').classList.add('light-grey-background');
+rekoDone.querySelector('.can-be-marked-done').classList.add('light-grey-background');
+
 rekoDone.parentNode.appendChild(rekoDone);
+

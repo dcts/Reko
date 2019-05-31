@@ -4,7 +4,6 @@
     <div class="landing-wrapper-landing-main">
 
       <div class="logo-landing">
-
       </div>
       <h2 class="t-medium-landing">Home for all your <br>recommendations.</h2>
       <p class="t-small"> *Reko is currently invite only*</p>
@@ -22,6 +21,16 @@
           <%= link_to "APPLY FOR BETA", new_beta_applicant_path, class: "bttn b-small b-dark-violet" %>
 
         </div>
+        <div class="congrats-bttn">
+          <%= link_to "APPLY FOR BETA", new_beta_applicant_path, :class => "bttn b-large b-wide b-violet", :method => :get %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="paper-wrapper-landing">
+      <div class="landing-bottom-btns">
+        <%= link_to "MEMBER LOG IN", new_user_session_path, class: "bttn b-small b-dark-violet" %>
+      </div>
     </div>
   </div>
 </div>

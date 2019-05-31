@@ -38,17 +38,17 @@
                   </div>
 
                 <!-- MAIN SLIDE  -->
-                  <div class="swiper-slide main-slide">
+                  <div class="swiper-slide main-slide <%= 'light-grey-background' if reko[:reko].done? %> can-be-marked-done">
                     <div class="reko-info">
                       <div class="reko-title"><%= reko[:reko].recommendable.title %></div>
 
                       <div class="sender-names">
-                        <i style="font-size: 29px" class="fas fa-user-circle"></i>
+                        <i style="font-size: 29px" class="fas fa-user-circle in-card-avatar"></i>
 
                         <div>
                           <%= reko[:sender_names].first.capitalize %>
                           <% if reko[:sender_names].size > 1 %>
-                            <br>+
+                            +
                           <%= pluralize((reko[:sender_names].size - 1), 'other') %>
                           <% end %>
                         </div>

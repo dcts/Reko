@@ -8,20 +8,19 @@ welcome_message
 reset_database
 
 # CREATE USERS
-create_user(password: "123456", first_name: "admin",  last_name: "admin", email: "admin@admin.com")
-create_user(password: "123456", first_name: 'Allan',   last_name: 'Holmes',     email: 'allan.homes@me.com')
-create_user(password: "123456", first_name: 'Assunta', last_name: 'Waldorf',    email: 'sunti@mail.com')
-create_user(password: "123456", first_name: 'Thilo',   last_name: 'Somthing',   email: 'thiloooo@reko.com')
-create_user(password: "123456", first_name: 'Thomas',  last_name: 'Starzynski', email: 'thommy-star@hotmail.com')
+create_user(admin: true, password: "123456", first_name: "admin",  last_name: "admin", email: "admin@admin.com")
+create_user(admin: true, password: "123456", first_name: 'Allan',   last_name: 'Holmes',     email: 'allan.homes@me.com')
+create_user(admin: true, password: "123456", first_name: 'Assunta', last_name: 'Waldorf',    email: 'sunti@mail.com')
+create_user(admin: true, password: "123456", first_name: 'Thilo',   last_name: 'Somthing',   email: 'thiloooo@reko.com')
+create_user(admin: true, password: "123456", first_name: 'Thomas',  last_name: 'Starzynski', email: 'thommy-star@hotmail.com')
 create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: Faker::Name.last_name, email: Faker::Internet.email)
 create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: Faker::Name.last_name, email: Faker::Internet.email)
 create_user(password: "123456", first_name: Faker::Name.first_name,  last_name: Faker::Name.last_name, email: Faker::Internet.email)
 
-# CREATE RANDOM USER PREFERENCES
-user_preferences = %w( Movies Documentaries)
-user_preferences.each do |user_preference|
-  Preference.create!(name: user_preference)
-end
+# CREATE PREFERENCES
+Preference.create!(name: "Movies")
+Preference.create!(name: "Documentaries")
+create_user_preferences # randomly assign user preferences for all users
 
 # POPULATE RECOMMENDABLE
 # seed itunes API for movies (documentaries included)
@@ -50,8 +49,8 @@ keywords.each do |keyword|
   save_recommendables(recommendables)
 end
 
-# CREATE RANDOM REKOS (argument = number of rekos per user)
-create_rekos_for_each_user(10)
+# CREATE RANDOM REKOS (only for nonadmin fake users) (argument = number of rekos per user)
+create_fake_rekos_for_nonadmin_users(10)
 
 # CREATE RANDOM BETA APPLICANTS (just mail needed) (argument = number of applicants)
 create_beta_applicants(20)
