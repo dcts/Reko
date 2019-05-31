@@ -6,28 +6,31 @@
       </div>
       <h2 class="t-medium-landing">Home for all your <br>recommendations.</h2>
       <p class="t-small"> *Reko is currently invite only*</p>
-      <div class="congrats animate-reveal animate-first">
-        You're in!
-      </div>
+
+      <% if @invited %>
+        <div class="congrats animate-reveal animate-first">
+          You're in!
+        </div>
+      <% end %>
     </div>
+
     <div class="paper-wrapper-landing-main">
       <div class="beta-bttn animate-reveal animate-second">
-        <%= link_to "BETA ACCESS", new_user_registration_path, :class => "bttn b-large b-wide b-violet", :method => :get %>
+        <% if @invited %>
+          <%= link_to "BETA ACCESS", new_user_registration_path, :class => "bttn b-large b-wide b-violet", :method => :get %>
+        <% else  %>
+          <%= link_to "APPLY FOR BETA", new_beta_applicant_path, :class => "bttn b-large b-wide b-violet", :method => :get %>
+        <% end %>
       </div>
-      <div class="landing-bottom-btns">
-        <%= link_to "MEMBER LOG IN", new_user_session_path, class: "bttn b-small b-dark-violet", id: "margin-bttn" %>
-        <%= link_to "APPLY FOR BETA", new_beta_applicant_path, class: "bttn b-small b-dark-violet" %>
 
-      </div>
-      <div class="congrats-bttn">
-        <%= link_to "APPLY FOR BETA", new_beta_applicant_path, :class => "bttn b-large b-wide b-violet", :method => :get %>
-      </div>
-    </div>
-    <div class="paper-wrapper-landing">
       <div class="landing-bottom-btns">
-        <%= link_to "MEMBER LOG IN", new_user_session_path, class: "bttn b-small b-dark-violet" %>
+        <% unless @invited %>
+          <%= link_to "MEMBER LOG IN", new_user_session_path, class: "bttn b-small b-dark-violet", id: "margin-bttn" %>
+        <% end %>
       </div>
     </div>
+
+
   </div>
 </div>
 

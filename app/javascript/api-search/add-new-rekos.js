@@ -196,11 +196,11 @@ const addNewRekos = () => {
     searchCard.dataset.sender_name = senderName;
     // create image with src="[movie.artworkUrl]" and alt="[movie.title]"
     const img = createImageCustom(movie.artworkUrl, movie.title);
-    // create h2 element with value [movie.title]
-    const title = document.createElement("p");
-    title.innerText = movie.title;
+    // // create h2 element with value [movie.title]
+    // const title = document.createElement("p");
+    // title.innerText = movie.title;
     // append img and h2 tag to the search-card
-    insertElements(searchCard, [img, title]);
+    insertElements(searchCard, [img]);
     return searchCard
   };
 
