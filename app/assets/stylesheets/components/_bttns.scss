@@ -87,3 +87,22 @@
   background: #297A6A;
   transition: .4s;
 }
+
+.bttn-round-small{
+  display: inline-block;
+  position: relative;
+  top: 10px;
+  text-decoration: none;
+  background: #61E786;
+  color: #297A6A;
+  font-size: 44px;
+  width: 50px;
+  height: 50px;
+  line-height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  transition: .4s;
+  box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+}
