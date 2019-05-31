@@ -76,11 +76,15 @@
             </div>
           <% end %>
         </div>
+
       <% else %>
         <div class="empty-reko-list">
           <h3 class="rekos-are-empty">
-          Your reko inbox is empty. Send this link to your friends to get rekos:
+            Your reko inbox is empty.
           </h3>
+          <h4 class="rekos-are-empty send-link">
+            Send this link to your friends to get rekos:
+          </h4>
 
           <div class="copy-link-nav">
             <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
