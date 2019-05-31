@@ -1,5 +1,5 @@
 
-<div class="background-container b-gray">
+<div id="jsTrigger-copyToClipboard" class="background-container b-gray">
    <div class="master-container">
 
     <div class="inbox-title">
@@ -11,9 +11,15 @@
 
       <div class="inbox-top-nav">
         <div class="copy-link-nav">
+          <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
+          <button id="<%= 'bttnCopyVisitorLink' if @movies.size > 0 %>" class="bttn js-copy reko-link b-violet <%= 'hidden-link-button' if @movies.size == 0 %>">
+            <%= @visitor_link %>
+          </button>
+        </div>
+        <!-- <div class="copy-link-nav">
           <p>SEND LINK TO FRIENDS:</p>
           <a class="js-copy bttn reko-link b-violet"><%= @visitor_link %></a>
-        </div>
+        </div> -->
           <%= link_to "+", new_reko_path, class:"bttn-round" %>
       </div>
 
@@ -72,7 +78,16 @@
         </div>
       <% else %>
         <div class="empty-reko-list">
-          Your list is currently empty :(
+          <h3 class="rekos-are-empty">
+          Your reko inbox is empty. Send this link to your friends to get rekos:
+          </h3>
+
+          <div class="copy-link-nav">
+            <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
+            <button id="bttnCopyVisitorLink" class="bttn js-copy js-copy-large reko-link b-violet">
+              <%= @visitor_link %>
+            </button>
+          </div>
         </div>
       <%end %>
     </div>

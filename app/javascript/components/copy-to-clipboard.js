@@ -35,7 +35,7 @@ const copyToClipboard = function(elementId) {
     bttnCopyLink.classList.add("b-dark-green");
     bttnCopyLink.setAttribute("style", "transition: ease 0.5s;");
     setTimeout(() => {
-      bttnCopyLink.innerText = "Copy Invitation Link";
+      bttnCopyLink.innerText = "Copy Invite Link";
       bttnCopyLink.classList.add("b-violet");
       bttnCopyLink.classList.remove("b-dark-green");
     }, 2000);
