@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-#new_user input {
+#new_user input[type=email], #new_user input[type=password] {
   font-family: 'Roboto', sans-serif;
   background-color: white;
   border-radius: 4px;
@@ -12,10 +12,16 @@
   padding: 7px;
   margin: 9px;
   text-align: center;
-  height: 20px;
-  width: 200px;
-  font-size: 13px;
+  height: 30px;
+  width: 280px;
+  font-size: 16px;
 }
+
+.login-checkbox{
+    margin:15px 0;
+
+}
+
 
 #form-btn {
   -webkit-appearance: none;
@@ -40,6 +46,8 @@
   height: 50px !important;
   border-radius: 33px !important;
   text-decoration: none;
+  font-size: 16px;
+  margin:20px;
 }
 
 
@@ -50,7 +58,7 @@
 }
 
 .space-top{
-  padding:90px;
+  padding:50px;
 }
 
 #form-btn-apply {
@@ -76,8 +84,7 @@
   text-decoration: none;
 }
 
-// .no-border{
-//   padding:none !important;
-//   margin:none !important;
-//   text-align:center !important;
-// }
+.style-login-h2{
+  font-size:30px;
+  font-family: 'Roboto', sans-serif;
+}
