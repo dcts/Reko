@@ -13,12 +13,7 @@
 
   <body>
       <%#= render 'shared/navbar' %>
-       <%= render 'shared/flashes' %>
-       <% if user_signed_in? %>
-         <li>
-           <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-         </li>
-       <% end %>
+       <%#= render 'shared/flashes' %>
        <%= yield %>
 
       <%= javascript_include_tag 'application' %>
