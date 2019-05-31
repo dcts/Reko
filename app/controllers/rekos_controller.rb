@@ -27,30 +27,36 @@ class RekosController < ApplicationController
 
   def create
     # PERMIT PARAMS (filter only the needed ones)
+    # binding.pry
     data = request_params
     # get receiver (User instance) # CODE SMELL -> REFACTOR THIS!
     receiver = user_signed_in? ? current_user : User.find_by_token(data[:token])
-    # check if movie exists already (check with itunes id)?
-    movie = Movie.find_by(itunes_id: data[:itunes_id].to_i)
-    # create if not, otherwise get movie instance
-    if movie.nil?
-      movie = Movie.new(
-        title: data[:title],
-        itunes_id: data[:itunes_id].to_i,
-        image_url: data[:image_url],
-        genre: data[:genre]
+    # check if movie is valid!
+    if data[:itunes_id] && data[:image_url]
+      # check if movie exists already (check with itunes id)?
+      # create if not, otherwise get movie instance
+      movie = Movie.find_by(itunes_id: data[:itunes_id].to_i)
+      if movie.nil? && data[:itunes_id] && data[:image_url]
+        movie = Movie.new(
+          title: data[:title],
+          itunes_id: data[:itunes_id].to_i,
+          image_url: data[:image_url],
+          genre: data[:genre]
+        )
+        movie.save
+        puts "\n\n\n----------------------------------MOVVIEE CREATED"
+      end
+      # create reko
+      Reko.create(
+        receiver: receiver,
+        sender_name: data[:sender_name],
+        recommendable: movie
       )
-      movie.save
-      puts "\n\n\n----------------------------------MOVVIEE CREATED"
+      puts "creating #{Reko.last.to_s}"
+      puts "\n\n\n----------------------------------REKO CREATED"
+    else
+      puts "\n not a valid movie! Reko is not created!"
     end
-    # create reko
-    Reko.create(
-      receiver: receiver,
-      sender_name: data[:sender_name],
-      recommendable: movie
-    )
-    puts "creating #{Reko.last.to_s}"
-    puts "\n\n\n----------------------------------REKO CREATED"
   end
 
   def update
