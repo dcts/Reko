@@ -5,7 +5,7 @@
       <div class="logo-landing">
       </div>
       <h2 class="t-medium-landing">Home for all your <br>recommendations.</h2>
-      <p class="t-small"> *Reko is currently invite only*</p>
+      <p class="t-small-new f-violet"> * Reko is currently invite only *</p>
 
       <% if @invited %>
         <div class="congrats animate-reveal animate-first">
@@ -24,8 +24,8 @@
       </div>
 
       <div class="landing-bottom-btns">
-        <% unless @invited %>
           <%= link_to "MEMBER LOG IN", new_user_session_path, class: "bttn b-small b-dark-violet", id: "margin-bttn" %>
+        <% unless @invited %>
         <% end %>
       </div>
     </div>

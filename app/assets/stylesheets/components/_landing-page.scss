@@ -37,11 +37,14 @@
 }
 
 .t-medium-landing {
-  font-size: 17px;
-  margin-top: -25px;
+  font-size: 18px;
+  margin-top: -7px;
   margin-bottom: 15vh;
 }
 
+.t-small-new {
+  margin-bottom: 37px;
+}
 
 .congrats {
   font-size: 26px;
@@ -54,10 +57,10 @@
 
 .animate-reveal {
   opacity: 0;
-  -webkit-animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
-     -moz-animation: reveal 1s ease-in 1 normal forwards;
-       -o-animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
-          animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+  -webkit-animation: reveal .5s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+     -moz-animation: reveal .5s ease-in 1 normal forwards;
+       -o-animation: reveal .5s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+          animation: reveal .5s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
 }
 
 .animate-first {
