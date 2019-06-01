@@ -3,6 +3,7 @@ import { makeSwipe } from "../components/swipe";
 import { addNewRekos } from "../search-itunes-api/add-new-rekos";
 import { toggleButtons } from "../components/user-preference-choice";
 import { copyToClipboard } from "../components/copy-to-clipboard";
+import { feedbackModal } from "../components/feedback-modal";
 
 /*
  * IMPORTANT
@@ -34,6 +35,7 @@ triggerJsOnTarget(copyToClipboard, "jsTrigger-copyToClipboard");
 triggerJsOnTarget(addNewRekos,     "jsTrigger-addNewRekos");
 triggerJsOnTarget(makeSwipe,       "jsTrigger-makeSwipe");
 triggerJsOnTarget(toggleButtons,   "jsTrigger-toggleButtons");
+triggerJsOnTarget(feedbackModal,   "jsTrigger-feedbackModal");
 
 
 
