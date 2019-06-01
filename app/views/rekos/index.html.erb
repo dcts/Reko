@@ -92,11 +92,7 @@
           </div>
         </div>
       <%end %>
-      <div id="index-footer">
-        <input id="auth" type="hidden" value="<%= session[:_csrf_token] %>">
-        <button id="new-feedback-bttn" class="bttn b-violet">Leave Feedback!</button>
-        <%= link_to '', destroy_user_session_path, method: :delete, class: 'fas fa-door-open logout-icon' %>
-      </div>
+      <%= render 'feedbacks/footer' %>
     </div>
 
 
