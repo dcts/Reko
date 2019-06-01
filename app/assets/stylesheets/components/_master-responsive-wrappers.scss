@@ -1,6 +1,7 @@
-
+///////////////////////////////////////////////////////////////////
 // DO NOT TOUCH, please.
 // These classes effect all containers and wrappers on Reko.
+///////////////////////////////////////////////////////////////////
 
 body {
   margin: 0;
@@ -32,6 +33,12 @@ body {
 }
 
 
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+
+
+
 .background-container-landing {
   width: 100%;
   height: 100%;
@@ -42,15 +49,12 @@ body {
 
 .master-container-landing {
   display: flex;
-  // justify-content: flex-end;
   flex-direction: column;
   align-items: center;
-  // height: 100vh;
   margin: 0 auto;
 }
 
 .paper-wrapper-landing {
-  // height: 20vh;
   margin-top: 55px;
   display: flex;
   flex-direction: column;
@@ -59,77 +63,68 @@ body {
   background-color: white;
   padding: 12px 12px 50px 12px;
   width: 97vw;
-  // box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
-  // -webkit-box-shadow: 0px 0px 23px 10px rgba(0,0,0,0.5);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  // -moz-box-shadow:    0px 0px 23px 10px rgba(0,0,0,0.5);  /* Firefox 3.5 - 3.6 */
  -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
-}
-
-
-
-
-
-.paper-wrapper-search {
-  color: #5E5E5E;
-  min-height: 100vh;
-  margin-top: 45px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 55px 2px 2px 2px;
-  background-color: white;
-  padding: 12px 12px 50px 12px;
-  width: 97vw;
-  -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
   box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
 }
 
 
-.paper-wrapper-landing-main {
-  height: 40vh;
-  // margin-top: 55px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 55px 2px 2px 2px;
-  background-color: white;
-  padding: 12px 12px 50px 12px;
-  width: 97vw;
-  // box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
-  // -webkit-box-shadow: 0px 0px 23px 10px rgba(0,0,0,0.5);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  // -moz-box-shadow:    0px 0px 23px 10px rgba(0,0,0,0.5);  /* Firefox 3.5 - 3.6 */
- -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.1);
-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.1);
-}
+
+// .paper-wrapper-search {
+//   color: #5E5E5E;
+//   min-height: 100vh;
+//   margin-top: 45px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   border-radius: 55px 2px 2px 2px;
+//   background-color: white;
+//   padding: 12px 12px 50px 12px;
+//   width: 97vw;
+//   -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
+//   box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
+// }
 
 
-@media (min-width: 750px) {
-  .master-wrapper {
-  max-width: 750px;
-  }
+// .paper-wrapper-landing-main {
+//   height: 40vh;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   border-radius: 55px 2px 2px 2px;
+//   background-color: white;
+//   padding: 12px 12px 50px 12px;
+//   width: 97vw;
+//   -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.1);
+//   box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.1);
+// }
 
-  .paper-wrapper {
-  max-width: 300px;
-  }
-}
+
+// @media (min-width: 750px) {
+//   .master-wrapper {
+//   max-width: 750px;
+//   }
+
+//   .paper-wrapper {
+//   max-width: 300px;
+//   }
+// }
 
 
 
-@media (min-width: 750px) {
-  .master-wrapper-landing {
-  max-width: 750px;
-  }
+// @media (min-width: 750px) {
+//   .master-wrapper-landing {
+//   max-width: 750px;
+//   }
 
-  .paper-wrapper-landing {
-  max-width: 750px;
-  }
-  .master-wrapper-search {
-  max-width: 750px;
-  }
+//   .paper-wrapper-landing {
+//   max-width: 750px;
+//   }
+//   .master-wrapper-search {
+//   max-width: 750px;
+//   }
 
-  .paper-wrapper-search {
-  max-width: 750px;
-  }
+//   .paper-wrapper-search {
+//   max-width: 750px;
+//   }
 
-}
+// }
