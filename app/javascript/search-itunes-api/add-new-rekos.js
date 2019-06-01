@@ -5,7 +5,10 @@ const addNewRekos = () => {
   let senderName;
   const movies = [];
   const token = document.URL.split("token=")[1];
+
+  // get encoded data from view
   const authenticityToken = document.getElementById("auth").value;
+  const rekoTickImgUrl = document.getElementById("rekoTickImgUrl").value;
   const userSignedIn = document.getElementById("userSignedIn").value === "true";
 
   // LOAD DOM ELEMENTS
@@ -47,18 +50,23 @@ const addNewRekos = () => {
   // ADD EVENTLISTENERS FOR SELECTION
   const addSelectionListener = (card) => {
     card.addEventListener("click", (event) => {
+      console.log("current event:");
+      console.log(event);
+      console.log(event.currentTarget);
+      event.currentTarget.style.background = `linear-gradient(rgba(97,231,134,.45),rgba(97,231,134,.45)), url("${event.currentTarget.dataset.image_url}")`;
+      event.currentTarget.style.backgroundSize = "cover";
       event.currentTarget.classList.toggle("selected");
-      setButtonState();
+      // setButtonState();
     });
   };
 
   // ENABLE BUTTON IF ELEMENTS ARE SELECTED
   const setButtonState = () => {
-    if (document.querySelectorAll(".selected").length > 0) {
-      sendRekosButton.disabled = false;
-    } else {
-      sendRekosButton.disabled = true;
-    }
+    // if (document.querySelectorAll(".selected").length > 0) {
+    //   sendRekosButton.disabled = false;
+    // } else {
+    //   sendRekosButton.disabled = true;
+    // }
   };
 
   // ADD EVENTLISTENER FOR AJAX CALL
@@ -85,7 +93,7 @@ const addNewRekos = () => {
     if (userSignedIn == false) {
       formSubmitName.addEventListener(event, () => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
         removeElement(formSubmitName);
-        instructionText.innerText = `Thanks ${senderName}`
+        // instructionText.innerText = `Thanks ${senderName}`
         formAjaxSearch.classList.remove("invisible");
         formAjaxSearch.classList.add("visible");
       });
@@ -151,7 +159,6 @@ const addNewRekos = () => {
       });
       deleteCardsIfNotSelected(); // reset cards
       addCards(movies);
-      addSelectionListener(document.getElementById("search-cards-container"));
     });
   };
 
@@ -197,24 +204,22 @@ const addNewRekos = () => {
 
   const buildCard = (movie) => {
     // create div with class "search-card"
-    const searchCard = createElementCustom("div", ["search-card"]);
+    const searchCard = createElWithClasses("div", ["search-card"]);
+    searchCard.style.background = `url("${movie.artworkUrl}")`;
+    searchCard.style.backgroundSize = "cover";
+    // add reko tick image to card
+    searchCard.insertAdjacentElement('beforeend', createRekoTickImage());
+    // insertElements(searchCard, [rekoTickImg]);
     // set dataset attributes (for ruby backend!)
     searchCard.dataset.title = movie.title;
     searchCard.dataset.image_url = movie.artworkUrl;
     searchCard.dataset.itunes_id = movie.itunesId;
     searchCard.dataset.genre = movie.primaryGenreName;
     searchCard.dataset.sender_name = senderName;
-    // create image with src="[movie.artworkUrl]" and alt="[movie.title]"
-    const img = createImageCustom("https://user-images.githubusercontent.com/48794959/58748320-20eeb400-8477-11e9-95bb-e0315d8ce7f9.png", movie.title);
-    // // create h2 element with value [movie.title]
-    // const title = document.createElement("p");
-    // title.innerText = movie.title;
-    // append img and h2 tag to the search-card
-    insertElements(searchCard, [img]);
     return searchCard
   };
 
-  const createElementCustom = (tagname, classnameArr) => {
+  const createElWithClasses = (tagname, classnameArr) => {
     const el = document.createElement(tagname);
     classnameArr.forEach((classname) => {
       el.classList.add(`${classname}`);
@@ -222,10 +227,10 @@ const addNewRekos = () => {
     return el
   };
 
-  const createImageCustom = (src, altText) => {
+  const createRekoTickImage = () => {
     const img = document.createElement('img');
-    img.src = src;
-    img.alt = altText;
+    img.src = rekoTickImgUrl;
+    // img.alt = "reko-selected";
     return img
   };
 
