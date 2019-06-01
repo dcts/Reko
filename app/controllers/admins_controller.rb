@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :users, :user, :rekos, :recommendables, :preferences, :beta_applicants, :tests]
   # if you are an admin, you can see all tables
-  before_action :authenticate_admin
+  # before_action :authenticate_admin
 
   def home
     # @
