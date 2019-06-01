@@ -1,0 +1,55 @@
+
+.sign-up-welcome {
+  padding: 44px;
+  font-size: 33px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+.new-form-field-lg {
+  color:#6966F6 !important;
+  width: 60vw !important;
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 17px !important;
+  min-height: 30px !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  letter-spacing: .5px !important;
+  border: 0 !important;
+  border-bottom: 2px solid #f0f0f0 !important;
+  font-size: 33px;
+}
+
+#form-btn-signin {
+  position: relative;
+  justify-content: center;
+  -webkit-appearance: none;
+  background-color:  #6966F6 !important;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing:1px;
+  font-weight: 500;
+  color: white;
+  font-size: 12px;
+  margin-top:22px;
+  margin-bottom:33px;
+  border: none !important;
+  width: 200px !important;
+  height: 50px !important;
+  border-radius: 33px !important;
+  text-decoration: none;
+}
+
+#center-bttn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
