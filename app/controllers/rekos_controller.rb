@@ -100,7 +100,7 @@ class RekosController < ApplicationController
   # Find all sender names for a movie, through the different rekos it is tied to
   # --> find names of people who have recommended this movie
   def pluck_sender_names(reko)
-    @user_movies.where(movies: { id: reko.recommendable.id }).pluck(:sender_name)
+    @user_movies.where(movies: { id: reko.recommendable.id }).pluck(:sender_name).uniq
   end
 
   # HERE BE DRAGONS
