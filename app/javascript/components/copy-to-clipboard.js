@@ -2,8 +2,6 @@ const copyToClipboard = function(elementId) {
   console.log("---TRIGGERED : copyToClipboard");
 
   document.getElementById("bttnCopyVisitorLink").addEventListener("click", (event) => {
-    console.log(event.currentTarget);
-
     var input = document.getElementById("visitorLink");
     var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
 

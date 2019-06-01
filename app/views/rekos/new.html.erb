@@ -1,22 +1,22 @@
 <!-- DO NOT CHANGE THE ID NAMING -->
 <!-- <div class="background-container dark-violet"> -->
-<div class="background-container b-violet">
-  <div id="jsTrigger-addNewRekos" class="master-container">
+<div class="jsTrigger-addNewRekos jsTrigger-itunesApiCall background-container b-violet">
+  <div class="master-container">
 
       <div class="search-top-wrapper">
         <% if user_signed_in? %>
           Hey <%= current_user.first_name %>, <br>add Rekos to your own list!
           <div class="paper-wrapper-search">
         <% else %>
-            <%= @user.first_name.capitalize %> needs some great movies to watch.
+          <%= @user.first_name.capitalize %> needs some great movies to watch.
       </div>
         <div class="paper-wrapper-search">
-          <h3>Start Giving Rekos:</h3>
+          <h3 id="search-instruction-text">Start Giving Rekos:</h3>
 
-              <form id="formSubmitName" class = "search-div">
-                <input class= "input-field-text-md" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="YOUR NAME HERE" value="<%= "#{@sender_name}" %>">
-                <button class= "submit-button"></button>
-              </form>
+            <form id="formSubmitName" class = "search-div">
+              <input class= "input-field-text-md" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="YOUR NAME HERE" value="<%= "#{@sender_name}" %>">
+              <button class= "submit-button"></button>
+            </form>
 
         <% end %>
 
