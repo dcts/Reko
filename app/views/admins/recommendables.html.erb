@@ -1,8 +1,8 @@
 <%= render partial: "navbar" %>
 
 <div class="container">
-  <h1>Recommendables</h1>
+  <h2>Recommendables</h2>
 
-  <h2><%= @movies.size %> Movies</h2>
+  <h4>(<%= @movies.size %> Movies)</h4>
   <%= render partial: "recommendables/table_movies", locals: { movies: @movies } %>
 </div>

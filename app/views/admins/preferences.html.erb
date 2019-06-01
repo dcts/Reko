@@ -1,7 +1,7 @@
 <%= render partial: "navbar" %>
 
 <div class="container">
-  <h1>Preferences</h1>
+  <h2>Preferences</h2>
   <h4>(<%= @preferences.size %> Preferences)</h4>
   <%= render partial: "preferences/table_preferences", locals: { preferences: @preferences } %>
 </div>

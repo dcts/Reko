@@ -1,8 +1,8 @@
 <%= render partial: "navbar" %>
 
 <div class="container">
-  <h1>User <%= "#{@user.first_name} #{@user.last_name}"%></h1>
+  <h2>User <%= "#{@user.first_name} #{@user.last_name}"%></h2>
   <%= render partial: "users/table_user", locals: { user: @user } %>
-  <h2>Rekos Inbox</h2>
+  <h3>Rekos Inbox</h3>
   <%= render partial: "rekos/table_rekos", locals: { rekos: @user.rekos_received, hide_receiver: true  } %>
 </div>
