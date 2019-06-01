@@ -1,1 +1,220 @@
-search.html.erb
+<!-- DO NOT CHANGE THE ID NAMING -->
+<!-- <div class="background-container dark-violet"> -->
+
+<!-- <div class="jsTrigger-addNewRekos jsTrigger-itunesApiCall background-container b-white"> -->
+  <!-- <div class="master-container"> -->
+
+    <!-- <div class="search-page-wrapper"> -->
+      <!-- <div class="search-top-text"> -->
+      <div id="search-page-container">
+
+        <div id="sticky-search-navbar">
+          <form id="formAjaxSearch" class="visible">
+            <!-- ENCODE "auth-token", "rekoTickImgUrl" and "userSignedId" inside hidden fields -->
+            <input id="auth" type="hidden" value="<%= session[:_csrf_token] %>">
+            <input id="rekoTickImgUrl" type="hidden" value="<%= asset_path 'white-check.svg' %>">
+            <input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
+            <!-- END OF HIDDEN FIELDS -->
+            <input autocomplete="off" id="inputKeyword" name="" type="text" class= "input-field-text-md" placeholder="search for movies">
+          </form>
+        </div>
+
+        <!-- CARDS STYLING -> _search-cards.scss -->
+        <div id="search-cards-container">
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+          <div class="search-card">
+            <div class="green-layer">
+              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+            </div>
+          </div>
+        </div>
+
+        <div id="sticky-footer-send">
+          <button id="sendRekosButton" class="bttn-round-small"></button>
+        </div>
+
+      </div>
+
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+
+
+<style>
+.search-card {
+  background: url("https://fanart.tv/fanart/movies/605/movieposter/the-matrix-revolutions-524679650709a.jpg");
+  background-size: cover;
+}
+#search-page-container {
+  height: 800px;
+  position: relative;
+}
+#sticky-search-navbar {
+  /*background-color: #333;*/
+  width: 100%;
+  height: 60px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*background: transparent;*/
+  background: -webkit-gradient(
+    linear, left top, left bottom,
+    from(rgba(120,120,120,1)),
+    to(rgba(120,120,120,0))
+  );
+}
+#sticky-footer-send {
+  /*overflow: hidden;*/
+  /*background-color: #333;*/
+  width: 100%;
+  height: 60px;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*background: transparent;*/
+  background: -webkit-gradient(
+    linear, left bottom, left top,
+    from(rgba(120,120,120,1)),
+    to(rgba(120,120,120,0))
+  );
+}
+#sendRekosButton {
+  /*top: 90%;*/
+  /*left: 45%;*/
+  /*position: absolute;*/
+}
+</style>
+
+
+
+
+<script>
+  const cards = document.querySelectorAll(".search-card");
+  console.log(cards);
+  cards.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      event.currentTarget.classList.toggle("selected");
+    });
+  });
+</script>

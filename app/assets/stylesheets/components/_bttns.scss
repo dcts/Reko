@@ -118,9 +118,11 @@
   background-image: url(airplane.png);
   background-size: contain;
   background-repeat: no-repeat;
-  top: 90%;
-  left: 45%;
-  position: absolute;
+  // IF WE WANT THE BUTTON TO BE REUSABLE THE POSITIONING
+  // SHOULD NOT GO HERE I TINK (thomas)
+  // top: 90%;
+  // left: 45%;
+  // position: absolute;
   background-size:25px;
   background-position: center;
   // filter:contrast(125%);
