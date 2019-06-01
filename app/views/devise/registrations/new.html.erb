@@ -1,45 +1,46 @@
-<div class="background-container-landing b-violet">
-  <div class="master-container-landing">
-
-  <div class="welcome-message">
-    <h1 style="color:white;">Team Reko Says Hi</h1>
+<div class="background-container fun-bg">
+  <div class=space-top>
   </div>
+    <div class="sign-up-welcome">
+      <div class="f-white">Welcome to our beta launch.</div>
+    </div>
 
-<div class="paper-wrapper">
+<div class="paper-wrapper-beta">
+  <div class="sign-in-title">Create an account:</div>
+    <div class="beta-form-wrapper">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
-  <div class="form-wrapper">
-    <h1 style="color:#6966F6"> Join the Beta:</h1>
-        <div class="form-inputs">
+        <div class="beta-form-new">
           <%= f.input :email,
+                      # :html => { :class => 'new-form-field' },
                       required: true,
                       placeholder: "EMAIL",
                       label: false,
                       autofocus: true,
-                      input_html: { autocomplete: "email" }%>
+                      input_html: { autocomplete: "email", class: "new-form-field-lg" }%>
           <%= f.input :first_name,
                       required: true,
                       placeholder: "FIRST NAME",
                       label: false,
                       autofocus: true,
-                      input_html: { autocomplete: "first-name"}%>
+                      input_html: { autocomplete: "first-name" , class: "new-form-field-lg"}%>
           <%= f.input :last_name,
                       required: true,
                       placeholder: "LAST NAME",
                       label: false,
                       autofocus: true,
-                      input_html: { autocomplete: "last-name"}%>
+                      input_html: { autocomplete: "last-name" , class: "new-form-field-lg"}%>
           <%= f.input :password,
                       placeholder: "PASSWORD",
                       label: false,
                       required: true,
-                      input_html: { autocomplete: "new-password" } %>
+                      input_html: { autocomplete: "new-password" , class: "new-form-field" } %>
         </div>
-        <div class="form-actions">
-          <%= f.button :submit, "SIGN UP", id:"form-btn"%>
+        <div class="form-actions center" id = "center-bttn">
+          <%= f.button :submit, "CREATE ACCOUNT", id:"form-btn-signin"%>
         </div>
         <% end %>
-        <%= render "devise/shared/links" %>
+        <%#= render "devise/shared/links" %>
     </div>
   </div>
 </div>

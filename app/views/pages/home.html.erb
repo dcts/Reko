@@ -1,20 +1,22 @@
 
-<div class="background-container-landing white">
-  <div class="master-container-landing">
-    <div class="landing-wrapper-landing-main">
-      <div class="logo-landing">
+  <div class="master-container">
+
+    <div class="landing-top-wrapper">
+      <div class="logo-lockup">
+        <div class="logo-landing">
+        </div>
+        <h2 class="tagline">Home for all your <br>recommendations.</h2>
       </div>
-      <h2 class="t-medium-landing">Home for all your <br>recommendations.</h2>
-      <p class="t-small-new f-violet"> * Reko is currently invite only *</p>
+      <p class="invite-only f-gray"> * Reko is currently invite only *</p>
 
       <% if @invited %>
         <div class="congrats animate-reveal animate-first">
-          You're in!
+          Congrats, you're in!
         </div>
       <% end %>
     </div>
 
-    <div class="paper-wrapper-landing-main">
+    <div class="paper-wrapper-landing">
       <div class="beta-bttn animate-reveal animate-second">
         <% if @invited %>
           <%= link_to "BETA ACCESS", new_user_registration_path, :class => "bttn b-large b-wide b-violet", :method => :get %>
@@ -27,9 +29,6 @@
           <%= link_to "MEMBER LOG IN", new_user_session_path, class: "bttn b-small b-dark-violet", id: "margin-bttn" %>
       </div>
     </div>
-
-
   </div>
-</div>
 
 

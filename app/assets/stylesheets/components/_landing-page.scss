@@ -1,19 +1,58 @@
 
-.landing-wrapper-landing {
-  margin-top: 15vh;
-  margin-bottom: 10vh;
+.landing-top-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  // align-content: bottom;
+  // margin-top: 25%;
+  // margin-bottom: 1vh;
   text-align: center;
-  height: 100%;
+  height: 55vh;
 }
 
+
 .logo-landing {
-  // background-color: red;
   background-image: url("logo-animate1.gif");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 20vh;
+  height: 15vh;
 }
+
+.tagline {
+  font-size: 18px;
+  margin-top: -7px;
+  margin-bottom: 42px;
+  // margin-bottom: 15vh;
+}
+
+.invite-only {
+  margin-bottom: 37px;
+}
+
+.congrats {
+  font-size: 24px;
+  color: #6966F6;
+  margin-bottom: -11px
+  // margin-top: 55px;
+  // padding-top: 55px;
+  // margin-bottom: 31px;
+}
+
+.paper-wrapper-landing {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 55px 2px 2px 2px;
+  background-color: white;
+  padding: 12px 12px 50px 12px;
+  height: 45vh;
+ -webkit-box-shadow: 0px 0px 88px -7px rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 0px 88px -7px rgba(0, 0, 0, 0.17);
+}
+
+
 
 .landing-bottom-btns {
   display: flex;
@@ -23,35 +62,9 @@
 }
 
 
-.landing-wrapper-landing-main {
-  margin-top: 25%;
-  margin-bottom: 1vh;
-  text-align: center;
-  height: 100%;
-}
-
-
 .beta-bttn {
   position: relative;
   top: -37px;
-}
-
-.t-medium-landing {
-  font-size: 18px;
-  margin-top: -7px;
-  margin-bottom: 15vh;
-}
-
-.t-small-new {
-  margin-bottom: 37px;
-}
-
-.congrats {
-  font-size: 26px;
-  color: #6966F6;
-  padding-top: 55px;
-  padding-bottom: 16px;
-
 }
 
 
