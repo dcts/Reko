@@ -205,7 +205,7 @@ const addNewRekos = () => {
     searchCard.dataset.genre = movie.primaryGenreName;
     searchCard.dataset.sender_name = senderName;
     // create image with src="[movie.artworkUrl]" and alt="[movie.title]"
-    const img = createImageCustom(movie.artworkUrl, movie.title);
+    const img = createImageCustom("https://user-images.githubusercontent.com/48794959/58748320-20eeb400-8477-11e9-95bb-e0315d8ce7f9.png", movie.title);
     // // create h2 element with value [movie.title]
     // const title = document.createElement("p");
     // title.innerText = movie.title;
