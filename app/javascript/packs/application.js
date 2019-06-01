@@ -3,7 +3,6 @@ import { makeSwipe } from "../components/swipe";
 import { addNewRekos } from "../search-itunes-api/add-new-rekos";
 import { toggleButtons } from "../components/user-preference-choice";
 import { copyToClipboard } from "../components/copy-to-clipboard";
-import { copyLink } from "../components/copylink"; // do we want to keep this function?
 
 /*
  * IMPORTANT
