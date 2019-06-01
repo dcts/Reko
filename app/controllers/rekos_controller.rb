@@ -1,8 +1,5 @@
 class RekosController < ApplicationController
-  # REMARK (thomas):
-  # -> index page needs user to be logged in, so once we are finished with
-  # development we need to remove it from this list here!
-  skip_before_action :authenticate_user!, only: [ :index, :new, :invalid_token, :create ]
+  skip_before_action :authenticate_user!, only: [ :new, :invalid_token, :create ]
 
   def index
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: current_user.id)
