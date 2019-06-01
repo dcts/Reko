@@ -100,7 +100,7 @@ class RekosController < ApplicationController
   # Find all sender names for a movie, through the different rekos it is tied to
   # --> find names of people who have recommended this movie
   def pluck_sender_names(reko)
-    @user_movies.where(movies: { title: reko.recommendable.title }).pluck(:sender_name)
+    @user_movies.where(movies: { id: reko.recommendable.id }).pluck(:sender_name)
   end
 
   # HERE BE DRAGONS
@@ -109,23 +109,23 @@ class RekosController < ApplicationController
 
     open_rekos.each do |reko|
       sender_names = pluck_sender_names(reko)
-      result << { reko: reko, sender_names: sender_names } unless title_already_in_list(result, reko)
+      result << { reko: reko, sender_names: sender_names } unless recommendable_already_in_list(result, reko)
     end
 
     result = result.sort_by { |k| k[:sender_names].size }.reverse
 
     done_rekos.each do |reko|
       sender_names = pluck_sender_names(reko)
-      result << { reko: reko, sender_names: sender_names } unless title_already_in_list(result, reko)
+      result << { reko: reko, sender_names: sender_names } unless recommendable_already_in_list(result, reko)
     end
 
     result
   end
 
 
-  # Check if movie title is already in reko list to avoid duplicates
-  def title_already_in_list(array, reko)
-    array.select { |r| r[:reko].recommendable.title == reko.recommendable.title }.size.positive?
+  # Check if movie recommendable is already in reko list to avoid duplicates
+  def recommendable_already_in_list(array, reko)
+    array.select { |r| r[:reko].recommendable.id == reko.recommendable.id }.size.positive?
   end
 end
 
