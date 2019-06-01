@@ -25,34 +25,25 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
-  background:url("http://2.bp.blogspot.com/-2F8gEE3lENI/UEFvWy-MCLI/AAAAAAAAMkA/P5O9gKXKLbs/s1600/The+Matrix+(1999)+1.jpg");
-  background-size:cover;
+  background: url("http://2.bp.blogspot.com/-2F8gEE3lENI/UEFvWy-MCLI/AAAAAAAAMkA/P5O9gKXKLbs/s1600/The+Matrix+(1999)+1.jpg");
+  background-size: cover;
   img {
-    opacity:0;
+    opacity: 0;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: center;
   }
 }
 
-// .search-card > p {
-//   margin: 0;
-// }
-
 .selected {
   background: linear-gradient(90deg, rgba(97,231,134,.45) 0%, rgba(97,231,134,.45) 100%), url("http://2.bp.blogspot.com/-2F8gEE3lENI/UEFvWy-MCLI/AAAAAAAAMkA/P5O9gKXKLbs/s1600/The+Matrix+(1999)+1.jpg");
-  background-size:cover;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   img {
-      width: 30px;
-      height: 30px;
-      opacity:1;
-      background-size: contain;
-      background-repeat: no-repeat;
-      position: center;
-
-    }
+    opacity: 1;
+  }
 }
-
-
-
