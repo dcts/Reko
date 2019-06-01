@@ -1,4 +1,5 @@
 import "bootstrap";
+import swal from 'sweetalert2';
 import { makeSwipe } from "../components/swipe";
 import { addNewRekos } from "../search-itunes-api/add-new-rekos";
 import { toggleButtons } from "../components/user-preference-choice";

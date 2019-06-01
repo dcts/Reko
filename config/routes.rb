@@ -21,9 +21,15 @@ Rails.application.routes.draw do
 
   get '/rekos/new/invalid_token', to: "rekos#invalid_token", as: "invalid_token"
 
+  #  Users & User Preferences
+
   resources :users, only: [:show] do
     resources :user_preferences, only: [:new, :create]
   end
+
+  #  Feedback
+  post '/feedbacks', to: 'feedbacks#create', as: 'new_feedback'
+
 
   # ALL THE ADMIN ROUTES
   get '/admins/', to: "admins#home"
