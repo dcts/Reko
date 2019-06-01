@@ -11,7 +11,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-
 .search-card {
   width: 115px;
   max-width: 115px;
@@ -22,37 +21,49 @@
   overflow: hidden;
   border-radius: 5px;
   background: white;
-  display: flex;
-  flex-direction: column;
   box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
-  background:url("http://2.bp.blogspot.com/-2F8gEE3lENI/UEFvWy-MCLI/AAAAAAAAMkA/P5O9gKXKLbs/s1600/The+Matrix+(1999)+1.jpg");
-  background-size:cover;
-  img {
-    opacity:0;
-  }
+  /* IS DONE INSIDE add-new-rekos.js file!*/
+  background: url("https://fanart.tv/fanart/movies/605/movieposter/the-matrix-revolutions-524679650709a.jpg");
+  background-size: cover;
+}
+.search-card > .green-layer {
+  background-color: rgba(97,231,134,0);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // transition: background-color 0.2s;
+}
+.search-card > .green-layer > img {
+  opacity: 0;
+  width: 10px;
+  height: 10px;
+  transition: opacity 0.2s, width 0.2s,height 0.2s;
 }
 
-// .search-card > p {
-//   margin: 0;
-// }
-
-.selected {
-  background: linear-gradient(90deg, rgba(97,231,134,.45) 0%, rgba(97,231,134,.45) 100%), url("http://2.bp.blogspot.com/-2F8gEE3lENI/UEFvWy-MCLI/AAAAAAAAMkA/P5O9gKXKLbs/s1600/The+Matrix+(1999)+1.jpg");
-  background-size:cover;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  img {
-      width: 30px;
-      height: 30px;
-      opacity:1;
-      background-size: contain;
-      background-repeat: no-repeat;
-      position: center;
-
-    }
+.search-card.selected > .green-layer {
+  background-color: rgba(97,231,134,.45);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // transition: background-color 0.2s;
+}
+.search-card.selected > .green-layer > img {
+  opacity: 1;
+  width: 30px;
+  height: 30px;
+  transition: opacity 0.2s, width 0.2s, height 0.2s;
 }
 
 
-
+// SEARCH CARD STRUCTURE LOOKS LIKE THIS:
+// <div id="search-cards-container">
+//   <div class="search-card">
+//     <div class="green-layer">
+//       <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+//     </div>
+//   </div>
+// </div>

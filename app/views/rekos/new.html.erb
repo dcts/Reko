@@ -13,22 +13,25 @@
           <form id="formSubmitName" class = "search-div">
             <input class= "name-input-field" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="What's your name?" value="<%= "#{@sender_name}" %>">
             <button class= "submit-button"></button>
-          </form>     
+          </form>
         <% end %>
 
         <form id="formAjaxSearch" class="<%= user_signed_in? ? "visible" : "invisible" %>">
+          <!-- ENCODE "auth-token", "rekoTickImgUrl" and "userSignedId" inside hidden fields -->
           <input id="auth" type="hidden" value="<%= session[:_csrf_token] %>">
+          <input id="rekoTickImgUrl" type="hidden" value="<%= asset_path 'white-check.svg' %>">
           <input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
+          <!-- END OF HIDDEN FIELDS -->
           <input autocomplete="off" id="inputKeyword" name="" type="text" class= "input-field-text-md" placeholder="search for movies">
-          <button class="bttn-round-small"></button>
+          <button id="sendRekosButton" class="invisible bttn-round-small"></button>
         </form>
 
         <!-- CARDS STYLING -> _search-cards.scss -->
         <div id="search-cards-container">
           <!-- WILL GET DYNAMICALLY POPULATED WITH NEW CARDS -->
         </div>
- 
-      </div>   
+
+      </div>
     </div>
   </div>
 </div>

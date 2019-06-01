@@ -5,7 +5,10 @@ const addNewRekos = () => {
   let senderName;
   const movies = [];
   const token = document.URL.split("token=")[1];
+
+  // get encoded data from view
   const authenticityToken = document.getElementById("auth").value;
+  const rekoTickImgUrl = document.getElementById("rekoTickImgUrl").value;
   const userSignedIn = document.getElementById("userSignedIn").value === "true";
 
   // LOAD DOM ELEMENTS
@@ -20,6 +23,8 @@ const addNewRekos = () => {
   // VARIABLES TO CONTROLL POST REQUESTS
   let count = 0;
   let target;
+
+  // ADD SELECTION EVENT LISTENERS
 
   // SEND POST REQUESTS
   formAjaxSearch.addEventListener("submit", (event) => {
@@ -44,20 +49,52 @@ const addNewRekos = () => {
     return redirectionUrl
   };
 
+  // document.querySelector('body').addEventListener('click', (event) => {
+  //   console.log(event.target);
+  //   console.log(event.target.classList.contains("green-layer"));
+  //   console.log(event.target.id === "sendRekosButton");
+  //   // if (event.target.tagName.toLowerCase() === 'li') {
+  //   //   // do your action on your 'li' or whatever it is you're listening for
+  //   // }
+  // });
+
   // ADD EVENTLISTENERS FOR SELECTION
-  const addSelectionListener = (card) => {
-    card.addEventListener("click", (event) => {
-      event.currentTarget.classList.toggle("selected");
-      setButtonState();
+  // const addSelectionListener = (card) => {
+    // card.addEventListener("click", (event) => {
+    //   console.log("current event:");
+    //   console.log(event);
+    //   console.log(event.currentTarget);
+    //   event.currentTarget.classList.toggle("selected");
+    // });
+  // };
+  // ADD EVENTLISTENERS FOR CARDS
+  const addSelectionListeners = () => {
+    console.log(cardsContainer);
+    cardsContainer.childNodes.forEach((card) => {
+      card.addEventListener("click", (event) => {
+        console.log("current event:");
+        console.log(event);
+        console.log(event.currentTarget);
+        event.currentTarget.classList.toggle("selected");
+        setButtonState();
+      });
     });
   };
 
   // ENABLE BUTTON IF ELEMENTS ARE SELECTED
   const setButtonState = () => {
+    console.log("inside setButtonState");
+    console.log(sendRekosButton);
     if (document.querySelectorAll(".selected").length > 0) {
-      sendRekosButton.disabled = false;
+      console.log("at least one selected");
+      sendRekosButton.classList.remove("invisible");
+      sendRekosButton.classList.add("visible");
+      // sendRekosButton.style.visibility = "visible";
     } else {
-      sendRekosButton.disabled = true;
+      console.log("none selected");
+      sendRekosButton.classList.remove("visible");
+      sendRekosButton.classList.add("invisible");
+      // sendRekosButton.style.visibility = "collapse";
     }
   };
 
@@ -78,19 +115,27 @@ const addNewRekos = () => {
       }
     });
   }
+
+  // ADD EVENT LISTENER
+  formSubmitName.addEventListener("submit", (event) => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
+    removeElement(formSubmitName);
+    // instructionText.innerText = `Thanks ${senderName}`
+    formAjaxSearch.classList.remove("invisible");
+    formAjaxSearch.classList.add("visible");
+  });
   // when name gets submitted
   // -> wait for transition to end
   // -> remove nameInputElement and make SearchInput visible
-  "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd".split(" ").forEach((event) => {
-    if (userSignedIn == false) {
-      formSubmitName.addEventListener(event, () => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
-        removeElement(formSubmitName);
-        instructionText.innerText = `Thanks ${senderName}`
-        formAjaxSearch.classList.remove("invisible");
-        formAjaxSearch.classList.add("visible");
-      });
-    }
-  })
+  // "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd".split(" ").forEach((event) => {
+  //   if (userSignedIn == false) {
+  //     formSubmitName.addEventListener(event, () => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
+  //       removeElement(formSubmitName);
+  //       // instructionText.innerText = `Thanks ${senderName}`
+  //       formAjaxSearch.classList.remove("invisible");
+  //       formAjaxSearch.classList.add("visible");
+  //     });
+  //   }
+  // });
 
   const sendPostRequestToCreateReko = (card) => {
     const xhr = new XMLHttpRequest();
@@ -151,7 +196,7 @@ const addNewRekos = () => {
       });
       deleteCardsIfNotSelected(); // reset cards
       addCards(movies);
-      addSelectionListener(document.getElementById("search-cards-container"));
+      addSelectionListeners();
     });
   };
 
@@ -180,7 +225,7 @@ const addNewRekos = () => {
   const addCards = (movies) => {
     movies.forEach((movie) => {
       const card = buildCard(movie);
-      addSelectionListener(card);
+      // addSelectionListener(card);
       cardsContainer.insertAdjacentElement('beforeend', card);
     });
   };
@@ -196,25 +241,28 @@ const addNewRekos = () => {
   };
 
   const buildCard = (movie) => {
-    // create div with class "search-card"
-    const searchCard = createElementCustom("div", ["search-card"]);
+    // create div with class "search-card" // <div class="search-card">
+    const searchCardDiv = createElWithClasses("div", ["search-card"]);
+    // create div with class "green-layer" // <div class="green-layer">
+    const greenLayerDiv = createElWithClasses("div", ["green-layer"]);
+    // create img with src = ... and alt="tekoTickImg"
+      // <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+    searchCardDiv.style.background = `url("${movie.artworkUrl}")`;
+    searchCardDiv.style.backgroundSize = "cover";
+    // add reko tick image to card
+    greenLayerDiv.insertAdjacentElement('beforeend', createRekoTickImage());
+    searchCardDiv.insertAdjacentElement('beforeend', greenLayerDiv);
+    // insertElements(searchCardDiv, [rekoTickImg]);
     // set dataset attributes (for ruby backend!)
-    searchCard.dataset.title = movie.title;
-    searchCard.dataset.image_url = movie.artworkUrl;
-    searchCard.dataset.itunes_id = movie.itunesId;
-    searchCard.dataset.genre = movie.primaryGenreName;
-    searchCard.dataset.sender_name = senderName;
-    // create image with src="[movie.artworkUrl]" and alt="[movie.title]"
-    const img = createImageCustom("https://user-images.githubusercontent.com/48794959/58748320-20eeb400-8477-11e9-95bb-e0315d8ce7f9.png", movie.title);
-    // // create h2 element with value [movie.title]
-    // const title = document.createElement("p");
-    // title.innerText = movie.title;
-    // append img and h2 tag to the search-card
-    insertElements(searchCard, [img]);
-    return searchCard
+    searchCardDiv.dataset.title = movie.title;
+    searchCardDiv.dataset.image_url = movie.artworkUrl;
+    searchCardDiv.dataset.itunes_id = movie.itunesId;
+    searchCardDiv.dataset.genre = movie.primaryGenreName;
+    searchCardDiv.dataset.sender_name = senderName;
+    return searchCardDiv
   };
 
-  const createElementCustom = (tagname, classnameArr) => {
+  const createElWithClasses = (tagname, classnameArr) => {
     const el = document.createElement(tagname);
     classnameArr.forEach((classname) => {
       el.classList.add(`${classname}`);
@@ -222,18 +270,17 @@ const addNewRekos = () => {
     return el
   };
 
-  const createImageCustom = (src, altText) => {
+  const createRekoTickImage = () => {
     const img = document.createElement('img');
-    img.src = src;
-    img.alt = altText;
+    img.src = rekoTickImgUrl;
     return img
   };
 
-  const insertElements = (parent, childsArr) => {
-    childsArr.forEach((child) => {
-      parent.insertAdjacentElement('beforeend', child);
-    });
-  };
+  // const insertElements = (parent, childsArr) => {
+  //   childsArr.forEach((child) => {
+  //     parent.insertAdjacentElement('beforeend', child);
+  //   });
+  // };
 
   const resizeImage = (url) => {
     return url.replace("100x100bb.jpg", "400x400bb.jpg");
@@ -241,3 +288,5 @@ const addNewRekos = () => {
 };
 
 export { addNewRekos };
+
+

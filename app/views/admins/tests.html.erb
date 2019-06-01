@@ -8,6 +8,51 @@
       <br>
       <!-- TESTFIELD TO TEST -->
       <input type="text" value="" />
+
+      <h1>TEST GOES HERE</h1>
+      <div id="search-cards-container">
+        <div class="search-card">
+          <div class="green-layer">
+            <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+          </div>
+        </div>
+        <div class="search-card">
+          <div class="green-layer">
+            <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+          </div>
+        </div>
+        <div class="search-card">
+          <div class="green-layer">
+            <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+          </div>
+        </div>
+        <div class="search-card">
+          <div class="green-layer">
+            <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+          </div>
+        </div>
+        <div class="search-card">
+          <div class="green-layer">
+            <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+          </div>
+        </div>
+        <div class="search-card">
+          <div class="green-layer">
+            <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  const cards = document.querySelectorAll(".search-card");
+  console.log(cards);
+  cards.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      event.currentTarget.classList.toggle("selected");
+    });
+  });
+
+</script>
