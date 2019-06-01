@@ -29,21 +29,21 @@
   background-size: cover;
   img {
     opacity: 0;
-    width: 30px;
-    height: 30px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: center;
   }
 }
 
 .selected {
-  background: linear-gradient(90deg, rgba(97,231,134,.45) 0%, rgba(97,231,134,.45) 100%), url("http://2.bp.blogspot.com/-2F8gEE3lENI/UEFvWy-MCLI/AAAAAAAAMkA/P5O9gKXKLbs/s1600/The+Matrix+(1999)+1.jpg");
+  background-image: linear-gradient(rgba(97,231,134,.45),rgba(97,231,134,.45)), url("http://2.bp.blogspot.com/-2F8gEE3lENI/UEFvWy-MCLI/AAAAAAAAMkA/P5O9gKXKLbs/s1600/The+Matrix+(1999)+1.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   img {
     opacity: 1;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: center;
   }
 }
