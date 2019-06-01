@@ -1,21 +1,21 @@
 const addNewRekos = () => {
   console.log("---TRIGGERED : addNewRekos");
 
-  // FINAL DATA
+  // DATA NEEDED FOR REDIRECTION URL
   let senderName;
+  const movies = [];
   const token = document.URL.split("token=")[1];
-  let movies = [];
+  const authenticityToken = document.getElementById("auth").value;
+  const userSignedIn = document.getElementById("userSignedIn").value === "true";
 
-  // LOAD ALL DOM ELEMENTS
-  let formSubmitName = document.getElementById("formSubmitName");
-  let formAjaxSearch = document.getElementById("formAjaxSearch");
-  let inputName = document.getElementById("inputName");
-  let inputKeyword = document.getElementById("inputKeyword");
-  let cardsContainer = document.getElementById("search-cards-container");
-  let sendRekosButton = document.getElementById("sendRekosButton");
-  let authenticityToken = document.getElementById("auth").value;
-  let userSignedIn = document.getElementById("userSignedIn").value === "true";
-  let instructionText = document.getElementById("search-instruction-text");
+  // LOAD DOM ELEMENTS
+  const formSubmitName = document.getElementById("formSubmitName");
+  const formAjaxSearch = document.getElementById("formAjaxSearch");
+  const inputName = document.getElementById("inputName");
+  const inputKeyword = document.getElementById("inputKeyword");
+  const cardsContainer = document.getElementById("search-cards-container");
+  const sendRekosButton = document.getElementById("sendRekosButton");
+  const instructionText = document.getElementById("search-instruction-text");
 
   // VARIABLES TO CONTROLL POST REQUESTS
   let count = 0;
@@ -205,7 +205,7 @@ const addNewRekos = () => {
     searchCard.dataset.genre = movie.primaryGenreName;
     searchCard.dataset.sender_name = senderName;
     // create image with src="[movie.artworkUrl]" and alt="[movie.title]"
-    const img = createImageCustom(movie.artworkUrl, movie.title);
+    const img = createImageCustom("https://user-images.githubusercontent.com/48794959/58748320-20eeb400-8477-11e9-95bb-e0315d8ce7f9.png", movie.title);
     // // create h2 element with value [movie.title]
     // const title = document.createElement("p");
     // title.innerText = movie.title;

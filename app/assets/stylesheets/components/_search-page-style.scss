@@ -1,18 +1,43 @@
+
+.search-page-wrapper {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.search-top-text {
+  margin: 7vh 0;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 150%;
+  color: #5E5E5E;
+  padding: 0 7%;
+}
+
 .search-div {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 12vh;
 }
 
-
+.name-input-field {
+  height: 55px;
+}
 
 .search-top-wrapper {
   margin-top: 7vh;
   width: 100vw;
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 27px;
-  color: white;
-  padding: 0 20%;
+  font-size: 22px;
+  border-top: none;
+  border-bottom: 5px;
+  border-color: #6966F6;
+  color: #6966F6;
+  margin-right: 22px;
 }
+

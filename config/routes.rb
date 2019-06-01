@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   end
 
   # ALL THE ADMIN ROUTES
-
   get '/admins/', to: "admins#home"
   get '/admins/users', to: "admins#users"
   get '/admins/users/:id', to: "admins#user", as: "admins_user"
@@ -35,5 +34,7 @@ Rails.application.routes.draw do
   get '/admins/preferences', to: "admins#preferences"
   get '/admins/beta_applicants', to: "admins#beta_applicants"
   get '/admins/tests', to: "admins#tests"
+  get '/admins/allan', to: "admins#allan"
+
 
 end
