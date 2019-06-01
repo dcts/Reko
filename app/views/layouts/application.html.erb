@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1.0, user-scalable=no;user-scalable=0;"/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, user-scalable=no, user-scalable=0">
     <title>Reko</title>
     <meta description="Get recommendations for movies, shows and documentaries from your friends, because friends know best!">
     <%= csrf_meta_tags %>
@@ -13,12 +12,12 @@
   </head>
 
   <body>
-      <%#= render 'shared/navbar' %>
-       <%#= render 'shared/flashes' %>
-       <%= yield %>
+    <%#= render 'shared/navbar' %>
+    <%#= render 'shared/flashes' %>
+    <%= yield %>
 
-      <%= javascript_include_tag 'application' %>
-      <%= javascript_pack_tag 'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
   </body>
 
 </html>
