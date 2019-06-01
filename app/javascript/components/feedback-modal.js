@@ -6,7 +6,7 @@ const feedbackModal = () => {
   // const span = document.getElementsByClassName("close")[0];
 
   btn.onclick = () => {
-    swal("We'd love to hear what you think! Leave your feedback here:", {
+    swal("We'd love to hear what you think! Leave your anonymous comments here:", {
       content: "input",
     }
     )
