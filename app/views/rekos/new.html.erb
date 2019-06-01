@@ -1,17 +1,19 @@
 <!-- DO NOT CHANGE THE ID NAMING -->
 <!-- <div class="background-container dark-violet"> -->
-<div class="background-container white">
-  <div id="jsTrigger-addNewRekos" class="master-container">
+
+<div class="jsTrigger-addNewRekos jsTrigger-itunesApiCall background-container b-white">
+  <div class="master-container">
+
     <div class="search-page-wrapper">
       <div class="search-top-text">
         <% if user_signed_in? %>
           Hey <%= current_user.first_name %>, <br> add Rekos to your own list!
         <% else %>
           <%= @user.first_name.capitalize %> is looking for a good documentary to watch.
-                <form id="formSubmitName" class = "search-div">
-                  <input class= "name-input-field" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="What's your name?" value="<%= "#{@sender_name}" %>">
-                  <button class= "submit-button"></button>
-                </form>
+          <form id="formSubmitName" class = "search-div">
+            <input class= "name-input-field" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="What's your name?" value="<%= "#{@sender_name}" %>">
+            <button class= "submit-button"></button>
+          </form>     
         <% end %>
 
         <form id="formAjaxSearch" class="<%= user_signed_in? ? "visible" : "invisible" %>">
@@ -23,12 +25,13 @@
 
         <!-- CARDS STYLING -> _search-cards.scss -->
         <div id="search-cards-container">
+          <!-- WILL GET DYNAMICALLY POPULATED WITH NEW CARDS -->
         </div>
-      </div>   <!-- WILL GET DYNAMICALLY POPULATED WITH NEW CARDS -->
+        
+      </div>   
     </div>
   </div>
 </div>
 
 
-<!-- </div> -->
 

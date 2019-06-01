@@ -1,4 +1,6 @@
 const toggleButtons = () => {
+  console.log("---TRIGGERED : toggleButtons");
+
   const userChoices = document.querySelectorAll(".user_preference_choice")
   const submitButton = document.querySelector('.user_preference_choices input[type="submit"]')
   if (userChoices) {
@@ -15,4 +17,4 @@ const toggleButtons = () => {
   }
 }
 
-export default toggleButtons
+export { toggleButtons }

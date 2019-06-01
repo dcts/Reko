@@ -6,24 +6,16 @@ const addNewRekos = () => {
   const token = document.URL.split("token=")[1];
   let movies = [];
 
-  let formSubmitName;
-  let formAjaxSearch;
-  let inputName;
-  let inputKeyword;
-  let cardsContainer;
-  let sendRekosButton;
-  let authenticityToken;
-  let userSignedIn;
-
   // LOAD ALL DOM ELEMENTS
-  formSubmitName = document.getElementById("formSubmitName");
-  formAjaxSearch = document.getElementById("formAjaxSearch");
-  inputName = document.getElementById("inputName");
-  inputKeyword = document.getElementById("inputKeyword");
-  cardsContainer = document.getElementById("search-cards-container");
-  sendRekosButton = document.getElementById("sendRekosButton");
-  authenticityToken = document.getElementById("auth").value;
-  userSignedIn = document.getElementById("userSignedIn").value === "true";
+  let formSubmitName = document.getElementById("formSubmitName");
+  let formAjaxSearch = document.getElementById("formAjaxSearch");
+  let inputName = document.getElementById("inputName");
+  let inputKeyword = document.getElementById("inputKeyword");
+  let cardsContainer = document.getElementById("search-cards-container");
+  let sendRekosButton = document.getElementById("sendRekosButton");
+  let authenticityToken = document.getElementById("auth").value;
+  let userSignedIn = document.getElementById("userSignedIn").value === "true";
+  let instructionText = document.getElementById("search-instruction-text");
 
   // VARIABLES TO CONTROLL POST REQUESTS
   let count = 0;
@@ -92,9 +84,10 @@ const addNewRekos = () => {
   "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd".split(" ").forEach((event) => {
     if (userSignedIn == false) {
       formSubmitName.addEventListener(event, () => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
+        removeElement(formSubmitName);
+        instructionText.innerText = `Thanks ${senderName}`
         formAjaxSearch.classList.remove("invisible");
         formAjaxSearch.classList.add("visible");
-        // formAjaxSearch.classList.add("visible");
       });
     }
   })
@@ -212,7 +205,7 @@ const addNewRekos = () => {
     searchCard.dataset.genre = movie.primaryGenreName;
     searchCard.dataset.sender_name = senderName;
     // create image with src="[movie.artworkUrl]" and alt="[movie.title]"
-    const img = createImageCustom(movie.artworkUrl, movie.title);
+    const img = createImageCustom("https://user-images.githubusercontent.com/48794959/58748320-20eeb400-8477-11e9-95bb-e0315d8ce7f9.png", movie.title);
     // // create h2 element with value [movie.title]
     // const title = document.createElement("p");
     // title.innerText = movie.title;
