@@ -1,4 +1,4 @@
-<div class="jsTrigger-makeSwipe jsTrigger-copyToClipboard background-container b-gray">
+<div class="jsTrigger-makeSwipe jsTrigger-copyToClipboard jsTrigger-feedbackModal background-container b-gray">
    <div class="master-container">
 
     <div class="inbox-title">
@@ -94,6 +94,8 @@
         </div>
       <%end %>
       <%= link_to '', destroy_user_session_path, method: :delete, class: 'fas fa-door-open logout-icon' %>
+      <button id="new-feedback-bttn" class="bttn b-violet">Leave Feedback!</button>
+      <%= render 'feedbacks/new_feedback_modal' %>
     </div>
 
 
