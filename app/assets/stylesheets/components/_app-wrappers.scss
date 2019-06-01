@@ -1,0 +1,20 @@
+
+
+.app-background {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inbox-wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  height: 90vh;
+  border-radius: 77px 5px 5px 5px;
+  background-color: white;
+  overflow: hidden;
+  color: #5E5E5E;
+}
+
