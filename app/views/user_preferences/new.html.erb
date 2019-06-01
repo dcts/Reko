@@ -1,31 +1,32 @@
-<div class="jsTrigger-toggleButtons background-container b-violet">
-  <div class="master-container-landing">
-    <div class="padding-user-pref"></div>
-      <div class="paper-wrapper-landing">
-       <!--  <div class = "container">
-          <div class = "row"> -->
-            <h1>What do you need recommendations for?</h1>
+<div class="jsTrigger-toggleButtons  background-container fun-bg">
+  <div class=space-top-user>
+  </div>
+  <div class="what-do-you">
+      <div class="f-white">What kind ofrecommendations do you need right now?</div>
+    </div>
+  <div class="paper-wrapper-beta">
             <div class="form-post">
              <%= simple_form_for [@user, @user_preference] do |f| %>
                <div class = "user_preference_choices">
                <% Preference.all.each do |preference| %>
                 <input type="checkbox" value="<%= preference.id %>" name="user_preference[preference_ids][]" id="post_preference_ids_<%= preference.id %>" hidden>
-                  <label class="user_preference_choice" for="post_preference_ids_<%= preference.id %>">
+                  <label class="user_preference_choice bg-fun" for="post_preference_ids_<%= preference.id %>">
                    <%= preference.name %>
                     </label>
                     <% end %>
-
-                    <h4 class="future-features">Audiobooks and Podcasts are coming soon.</h4>
-                    <div style="text-align:center">
-
-                  <%= f.submit '', class: "submit-button", disabled: true %>
+                    <div class="coming-soon">
+                    Audiobooks and Podcasts are coming soon.
+                    </div>
+                <div class="submit-bttn-div">
+                <%= f.submit '', class: "submit-button", disabled: true %>
                 <% end %>
+                </div>
                 <!-- </div>
               </div> -->
           </div>
         </div>
       </div>
-      <a href="https://www.google.com">BACK</a>
+     <!--  <a href="https://www.google.com">BACK</a> -->
     </div>
   </div>
 </div>
