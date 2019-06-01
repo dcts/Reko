@@ -10,7 +10,6 @@
 #search-cards-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
 }
 
 .search-card {
@@ -19,7 +18,6 @@
   height: 170px;
   max-height: 170px;
   display: column;
-  // border: 1px solid black;
   margin: 4px;
   overflow: hidden;
   border-radius: 5px;
@@ -27,31 +25,34 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
-}
-.search-card {
+  background:url("http://2.bp.blogspot.com/-2F8gEE3lENI/UEFvWy-MCLI/AAAAAAAAMkA/P5O9gKXKLbs/s1600/The+Matrix+(1999)+1.jpg");
+  background-size:cover;
   img {
-    width: 100%;
-    height: 100%;
+    opacity:0;
   }
 }
 
 // .search-card > p {
 //   margin: 0;
 // }
-.search-card.selected {
-  background-size: cover;
-  background-color:#61E786 !important;
-  font-size: 17px;
-  // width: 65px;
-  // height: 65px;
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  background-image: url(check-mark.png) !important;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  letter-spacing: 1px;
-  position: center;
+
+.selected {
+  background: linear-gradient(90deg, rgba(97,231,134,.45) 0%, rgba(97,231,134,.45) 100%), url("http://2.bp.blogspot.com/-2F8gEE3lENI/UEFvWy-MCLI/AAAAAAAAMkA/P5O9gKXKLbs/s1600/The+Matrix+(1999)+1.jpg");
+  background-size:cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  img {
+      width: 30px;
+      height: 30px;
+      opacity:1;
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: center;
+
+    }
 }
+
 
 
