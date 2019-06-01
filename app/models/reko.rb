@@ -9,10 +9,8 @@ class Reko < ApplicationRecord
   belongs_to :recommendable, polymorphic: true
   belongs_to :movie, -> { where(rekos: {recommendable_type: 'Movie'}) }, foreign_key: 'recommendable_id', optional: true
 
-
   validates :sender_name, length: { minimum: 2 }
-  # validates :recommendable, presence: true
-  # validates :recommendable_id, null: false
+  validates :recommendable_id, presence: true, null: false # only save if movie is saved in db! (recommendable_id exists)
 
   # STATUS of the reko
   enum status: { open: 0, done: 1, rejected: 2 }
