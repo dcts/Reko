@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   end
 
   # ALL THE ADMIN ROUTES
-
   get '/admins/', to: "admins#home"
   get '/admins/users', to: "admins#users"
   get '/admins/users/:id', to: "admins#user", as: "admins_user"

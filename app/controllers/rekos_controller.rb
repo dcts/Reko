@@ -8,7 +8,6 @@ class RekosController < ApplicationController
   end
 
   def new
-    # raise
     unless user_signed_in?
       token = params[:token] # get token from params
       @sender_name = params[:sender_name] # get sender name if provided
@@ -24,7 +23,6 @@ class RekosController < ApplicationController
 
   def create
     # PERMIT PARAMS (filter only the needed ones)
-    # binding.pry
     data = request_params
     # get receiver (User instance) # CODE SMELL -> REFACTOR THIS!
     receiver = user_signed_in? ? current_user : User.find_by_token(data[:token])
@@ -54,9 +52,6 @@ class RekosController < ApplicationController
     else
       puts "\n not a valid movie! Reko is not created!"
     end
-  end
-
-  def update
   end
 
   def mark_as_rejected
