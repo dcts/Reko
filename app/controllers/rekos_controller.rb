@@ -75,7 +75,9 @@ class RekosController < ApplicationController
 
   def mark_as_rejected
     @reko = Reko.find(params[:reko_id])
-    @reko.status = 'rejected'
+    # Reko.where(receiver_id: params[:receiver_id]).where(recommendable_id: @reko.recommendable_id).update_all(status: 'rejected')
+    @reko.rejected!
+
     if @reko.save
       respond_to do |format|
         format.js
