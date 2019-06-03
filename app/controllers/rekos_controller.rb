@@ -4,7 +4,7 @@ class RekosController < ApplicationController
   def index
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: current_user.id)
     @movies = sort_rekos(@user_movies.open, @user_movies.done)
-    @visitor_link = request.original_url.gsub("/rekos", "/rekos/new?token=#{current_user.token}")
+    @visitor_link = request.original_url.gsub("/rekos", "/rekos/new/onboarding?token=#{current_user.token}")
   end
 
   def onboarding
@@ -27,24 +27,25 @@ class RekosController < ApplicationController
 
   def new
     @search_term = params[:search_term] # grab sender_name from params
-    if user_signed_in? == false
-      @token = params[:token] # get token from params
-      @sender_name = params[:sender_name] # get sender name if provided
-      user_id = User.token_hashmap[@token] # returns user instance or nil
-      if user_id.nil? # User not existant -> token invalid
-        # authenticate_user!
-        redirect_to invalid_token_path
-      else
-        @user = User.find(user_id)
-      end
+    # if user_signed_in? == false
+    @token = params[:token] # get token from params
+    @sender_name = params[:sender_name] # get sender name if provided
+    user_id = User.token_hashmap[@token] # returns user instance or nil
+    if user_id.nil? # User not existant -> token invalid
+      # authenticate_user!
+      redirect_to invalid_token_path
+    else
+      @user = User.find(user_id)
     end
+    # end
   end
 
   def create
     # PERMIT PARAMS (filter only the needed ones)
     data = request_params
     # get receiver (User instance) # CODE SMELL -> REFACTOR THIS!
-    receiver = user_signed_in? ? current_user : User.find_by_token(data[:token])
+    # receiver = user_signed_in? ? current_user : User.find_by_token(data[:token])
+    receiver = User.find_by_token(data[:token])
     # check if movie is valid!
     if data[:itunes_id] && data[:image_url]
       # check if movie exists already (check with itunes id)?
@@ -58,7 +59,7 @@ class RekosController < ApplicationController
           genre: data[:genre]
         )
         movie.save
-        puts "\n\n\n----------------------------------MOVVIEE CREATED"
+        puts "----------------------------------MOVVIEE CREATED\n\n\n"
       end
       # create reko
       Reko.create(
@@ -67,7 +68,7 @@ class RekosController < ApplicationController
         recommendable: movie
       )
       puts "creating #{Reko.last.to_s}"
-      puts "\n\n\n----------------------------------REKO CREATED"
+      puts "----------------------------------REKO CREATED\n\n\n"
     else
       puts "\n not a valid movie! Reko is not created!"
     end

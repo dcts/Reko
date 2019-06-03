@@ -1,7 +1,7 @@
 import Swiper from "swiper";
 
 const makeSwipe = () => {
-  console.log("---TRIGGERED : makeSwipe");
+  console.log("TRIGGERED : makeSwipe");
 
   // var menuButton = document.querySelector('.menu-button');
     var openMenu = function () {

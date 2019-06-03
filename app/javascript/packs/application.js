@@ -1,6 +1,6 @@
 import "bootstrap";
 
-import { makeSwipe } from "../components/swipe";
+import { makeSwipe } from "../components/make-swipe";
 import { onboarding } from "../components/onboarding";
 import { search } from "../components/search";
 import { addNewRekos } from "../search-itunes-api/add-new-rekos";

@@ -187,7 +187,7 @@ const addNewRekos = () => {
   });
 
   // GET REDIRECTION URL
-  const buildRedirectionUrl = (userSignedIn) => {
+  const buildRedirectionUrl = () => {
     let redirectionUrl;
     if (userSignedIn) {
       redirectionUrl = "/rekos";
@@ -204,6 +204,9 @@ const addNewRekos = () => {
     xhr.onload = function () {
       count += 1;
       if (count == target) {
+        // console.log("REDIRECTING TO:");
+        // console.log(buildRedirectionUrl());
+        // console.log(userSignedIn);
         window.location = buildRedirectionUrl();
       }
     };
