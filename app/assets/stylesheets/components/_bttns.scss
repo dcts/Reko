@@ -155,6 +155,7 @@
 
   .back-option{
   color:#5E5E5E;
+  font-family: 'Roboto', sans-serif;
   // border-bottom: 1px solid currentColor;
   text-decoration: underline;
   decoration:none !important;
@@ -167,5 +168,20 @@
   right: 55%;
   // right: -420px;
   // bottom: -191px;
+}
 
+
+#buttonBack {
+  color:#5E5E5E;
+  font-family: 'Roboto', sans-serif;
+  // border-bottom: 1px solid currentColor;
+  text-decoration: underline;
+  decoration:none !important;
+  position:relative;
+  -webkit-appearance: none;
+  background:transparent;
+  border:none !important;
+  font-size: 15px;
+  top: 45%;
+  right: 35%;
 }
