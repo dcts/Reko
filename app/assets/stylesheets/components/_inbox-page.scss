@@ -95,8 +95,12 @@
 }
 
 .js-copy {
-  margin-left: 25px;
+  margin-top: 40px;
   border: none;
+  width: 180px;
+  display: flex;
+  flex-wrap: no-wrap;
+  justify-content: space-between;
 }
 
 .js-copy-large {
@@ -113,4 +117,16 @@
 
 .hidden-link-button {
   visibility: hidden;
+}
+
+.visitor-link-in-button {
+  max-width: 85%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.copy-icon-in-button {
+  // width: 20%;
+  text-align: right;
 }
