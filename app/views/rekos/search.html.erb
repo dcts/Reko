@@ -1,0 +1,35 @@
+<!-- DO NOT CHANGE THE ID NAMING -->
+<!-- <div class="background-container dark-violet"> -->
+
+<!-- TRIGGER JavaScript -->
+<meta class="jsTrigger-search">
+<!-- ENCODE "auth-token", "rekoTickImgUrl" and "userSignedId" inside hidden fields -->
+<input id="rekoTickImgUrl" type="hidden" value="<%= asset_path 'white-check.svg' %>">
+<input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
+<input id="params_senderName" type="hidden" value="<%= @sender_name %>">
+<input id="params_token" type="hidden" value="<%= @token %>">
+<!-- END OF HIDDEN FIELDS -->
+
+<div class="background-container b-white">
+  <div class="master-container">
+    <div class="search-page-wrapper">
+      <div class="search-top-text">
+        <% if user_signed_in? %>
+          Hey <%= current_user.first_name %>, <br> add Rekos to your own list!
+        <% else %>
+          Recommendations from <%= @sender_name %> for <%= @user.first_name %>:
+        <% end %>
+
+        <form id="formInitialSearch" class="visible">
+          <div class="search-icon-wrapper">
+            <input autocomplete="off" id="inputKeyword" name="" type="text" class= "search-bar-big f-gray" placeholder="Search for Rekos...">
+            <img src="<%= asset_path 'search.svg'%>" alt="search">
+          </div>
+          <button id="buttonContinue" class= "submit-button "></button>
+        </form>
+        <p id="buttonBack">back</a>
+      </div>
+    </div>
+  </div>
+</div>
+

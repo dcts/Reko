@@ -25,7 +25,7 @@
       <td><%= user.last_name %></td>
       <td><%= user.email %></td>
       <td><%= user.rekos_received.size %></td>
-      <td><%= link_to (user.token), new_reko_path(token: user.token) %></td>
+      <td><%= link_to (user.token), rekos_new_onboarding_path(token: user.token) %></td>
       <td><%= user.role %></td>
       <td><%= user.created_at %></td>
       <td><%= user.updated_at %></td>

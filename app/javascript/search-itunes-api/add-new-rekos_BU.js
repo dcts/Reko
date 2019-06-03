@@ -1,24 +1,5 @@
 const addNewRekos = () => {
-  console.log("TRIGGERED : addNewRekos");
-
-  // DATA NEEDED FOR REDIRECTION URL
-  let senderName;
-  const movies = [];
-  const token = document.URL.split("token=")[1];
-
-  // get encoded data from view
-  const authenticityToken = document.getElementById("auth").value;
-  const rekoTickImgUrl = document.getElementById("rekoTickImgUrl").value;
-  const userSignedIn = document.getElementById("userSignedIn").value === "true";
-
-  // LOAD DOM ELEMENTS
-  const formSubmitName = document.getElementById("formSubmitName");
-  const formAjaxSearch = document.getElementById("formAjaxSearch");
-  const inputName = document.getElementById("inputName");
-  const inputKeyword = document.getElementById("inputKeyword");
-  const cardsContainer = document.getElementById("search-cards-container");
-  const sendRekosButton = document.getElementById("sendRekosButton");
-  const instructionText = document.getElementById("search-instruction-text");
+  console.log("---TRIGGERED : addNewRekos");
 
   // VARIABLES TO CONTROLL POST REQUESTS
   let count = 0;
@@ -172,9 +153,116 @@ const addNewRekos = () => {
     // console.log(toSend);
   };
 
+  const normalize = term => {
+    return term.replace(/ /g, '+');
+  };
 
+  // ITUNES API CALL FROM JS
+  const apiCall = (searchTerm) => {
+    // NEEDED TO PREVENT CORS FAILURE? -> do more research on it when time...
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const url = "https://itunes.apple.com/search?media=movie&term=" + normalize(searchTerm); //
+    fetch(proxyurl + url)
+    .then((response) => response.json())
+    .then((data) => {
+      let movies = [];
+      data.results.forEach((result) => { // loop over all results
+        if (result.kind === "feature-movie") {
+          const movie = buildMovie(result);
+          movies.push(movie);
+        }
+      });
+      deleteCardsIfNotSelected(); // reset cards
+      addCards(movies);
+      addSelectionListeners();
+    });
+  };
 
+  const buildMovie = (apiResultObject) => {
+    return {
+      "title": apiResultObject.trackName,
+      "artworkUrl": resizeImage(apiResultObject.artworkUrl100),
+      "itunesId": apiResultObject.trackId,
+      "primaryGenreName": apiResultObject.primaryGenreName,
+    }
+  };
 
+  const deleteCardsIfNotSelected = () => {
+    const cards = document.querySelectorAll(".search-card");
+    cards.forEach((card) => {
+      if (card.classList.contains("selected") != true) {
+        removeElement(card);
+      }
+    });
+  };
+
+  const removeElement = (el) => {
+    el.parentNode.removeChild(el);
+  };
+
+  const addCards = (movies) => {
+    movies.forEach((movie) => {
+      const card = buildCard(movie);
+      // addSelectionListener(card);
+      cardsContainer.insertAdjacentElement('beforeend', card);
+    });
+  };
+
+  const deleteChildren = (element) => {
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+  };
+
+  const addChild = (element, movie) => {
+    element.insertAdjacentHTML("beforeend", `<p>${movie.title}</p>`);
+  };
+
+  const buildCard = (movie) => {
+    // create div with class "search-card" // <div class="search-card">
+    const searchCardDiv = createElWithClasses("div", ["search-card"]);
+    // create div with class "green-layer" // <div class="green-layer">
+    const greenLayerDiv = createElWithClasses("div", ["green-layer"]);
+    // create img with src = ... and alt="tekoTickImg"
+      // <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+    searchCardDiv.style.background = `url("${movie.artworkUrl}")`;
+    searchCardDiv.style.backgroundSize = "cover";
+    // add reko tick image to card
+    greenLayerDiv.insertAdjacentElement('beforeend', createRekoTickImage());
+    searchCardDiv.insertAdjacentElement('beforeend', greenLayerDiv);
+    // insertElements(searchCardDiv, [rekoTickImg]);
+    // set dataset attributes (for ruby backend!)
+    searchCardDiv.dataset.title = movie.title;
+    searchCardDiv.dataset.image_url = movie.artworkUrl;
+    searchCardDiv.dataset.itunes_id = movie.itunesId;
+    searchCardDiv.dataset.genre = movie.primaryGenreName;
+    searchCardDiv.dataset.sender_name = senderName;
+    return searchCardDiv
+  };
+
+  const createElWithClasses = (tagname, classnameArr) => {
+    const el = document.createElement(tagname);
+    classnameArr.forEach((classname) => {
+      el.classList.add(`${classname}`);
+    });
+    return el
+  };
+
+  const createRekoTickImage = () => {
+    const img = document.createElement('img');
+    img.src = rekoTickImgUrl;
+    return img
+  };
+
+  // const insertElements = (parent, childsArr) => {
+  //   childsArr.forEach((child) => {
+  //     parent.insertAdjacentElement('beforeend', child);
+  //   });
+  // };
+
+  const resizeImage = (url) => {
+    return url.replace("100x100bb.jpg", "400x400bb.jpg");
+  };
 };
 
 export { addNewRekos };

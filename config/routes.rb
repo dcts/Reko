@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     put :mark_as_done
   end
   get '/rekos/new/onboarding', to: "rekos#onboarding"
+  get '/rekos/new/search', to: "rekos#search"
   get '/rekos/new/invalid_token', to: "rekos#invalid_token", as: "invalid_token"
 
   #  Users & User Preferences
