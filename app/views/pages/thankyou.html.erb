@@ -1,27 +1,35 @@
-<div class="master-container jsTrigger-feedbackModal">
-  <div class="paper-wrapper">
-    <h2 id="thankyou-text">Thank you <%= @sender_name %>! You just sent the following Rekos to <%= @receiver&.first_name %>:</h2>
-    <ul>
-      <% @movies.each do |movie| %>
-        <li><%= movie %></li>
-      <% end %>
-    </ul>
+<div class="background-container b-white">
+   <div class="master-container">
 
-    <div class="thankyou-page-bttn-margin">
-      <%= link_to "send more rekos", new_reko_path(sender_name: @sender_name, token: @token), class: "bttn bttn-small b-violet" %>
+
+    <div class="thankyou-container">
+      <div class="thankyou-logo-container">
+        <%= image_tag "logo", alt: "reko-logo", width: 200%>
+      </div>
+
+      <h2 class="thankyou-header">
+        <%= @receiver&.first_name %> says thanks!
+      </h2>
+
+      <div class="">
+        <%= link_to "Send more Rekos", new_reko_path(sender_name: @sender_name, token: @token), class: "bttn b-large b-violet send-more-rekos-bttn" %>
+      </div>
+
+
+      <div class="thankyou-feedback-container">
+        <div id="new-feedback-bttn" class="bttn b-small b-gray thankyou-feedback-bttn">Give Feedback!</div>
+      </div>
+
+      <div>
+        <%= link_to "Apply for Beta", new_beta_applicant_path, class: "apply-for-beta-link" %>
+      </div>
     </div>
 
-    <div class="thankyou-page-bttn-margin">
-      <%= link_to "sign up for beta", new_beta_applicant_path, class: "bttn bttn-small b-violet"  %>
-    </div>
 
-    <div class="thankyou-page-bttn-margin">
-      <button id="new-feedback-bttn" class="bttn b-violet">Leave Feedback!</button>
-    </div>
-
-
-  </div>
+   </div>
 </div>
+
+
 
 <!-- VARIABLES -->
 <!-- @sender_name, @receiver&.first_name, @movies -->

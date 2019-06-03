@@ -1,0 +1,38 @@
+.thankyou-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center
+}
+
+.thankyou-logo-container {
+  margin-top: 40px;
+}
+
+.thankyou-header {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.send-more-rekos-bttn {
+  font-size: 16px;
+  text-align: center;
+  width: 200px;
+  letter-spacing: 1px;
+}
+.thankyou-feedback-container {
+  margin-top: 20%;
+  margin-bottom: 10px;
+}
+
+.apply-for-beta-link {
+  color: #5E5E5E;
+  text-decoration: underline;
+}
+
+.thankyou-feedback-bttn {
+  height: 35px;
+  font-size: 13px;
+}
