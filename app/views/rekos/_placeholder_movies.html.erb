@@ -1,0 +1,7 @@
+<% Movie.all.map { |movie| movie.image_url }.each do |image_url| %>
+  <div class="search-card" style="background: url('<%= image_url %>'); background-size: cover;">
+    <div class="green-layer">
+      <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+    </div>
+  </div>
+<% end %>

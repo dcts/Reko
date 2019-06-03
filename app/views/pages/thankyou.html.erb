@@ -2,7 +2,7 @@
   <div class="paper-wrapper">
     <h2 id="thankyou-text">Thank you <%= @sender_name %>! You just sent the following Rekos to <%= @receiver&.first_name %>:</h2>
     <ul>
-      <% @movies.each do |movie| %>
+      <% @movies&.each do |movie| %>
         <li><%= movie %></li>
       <% end %>
     </ul>
