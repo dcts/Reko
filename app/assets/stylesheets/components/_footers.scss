@@ -2,9 +2,15 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin-top: 20px;
   border-top: .5px solid lightgrey;
   padding: 30px;
+  position: absolute;
+  height: 2.5rem;
+  bottom: 0;
+}
+
+.new-feedback-bttn {
+  border: none;
 }
 
 
