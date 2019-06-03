@@ -7,11 +7,10 @@ const addNewRekos = () => {
   let count = 0;
   let target;
   // selected itunes_id's selected
-  let selectedItunesIds = []
+  let selectedItunesIds = [];
   // load img tick
   const rekoTickImgUrl = document.getElementById("rekoTickImgUrl").value;
   const userSignedIn = document.getElementById("userSignedIn").value === "true";
-  console.log(`User signed in: ${userSignedIn}`);
   const authenticityToken = document.querySelector('[name="csrf-token"]').content;
   // get params (from url)
   let senderName = document.getElementById('params_senderName').value;;
@@ -40,8 +39,6 @@ const addNewRekos = () => {
   });
   const myFunction = (event) => {
     const card = event.currentTarget;
-    console.log(card);
-    console.log(event);
     card.classList.toggle("selected");
     setButtonState();
   };
@@ -62,18 +59,12 @@ const addNewRekos = () => {
 
   // ENABLE BUTTON IF ELEMENTS ARE SELECTED
   const setButtonState = () => {
-    console.log("inside setButtonState");
-    console.log(sendRekosButton);
     if (document.querySelectorAll(".selected").length > 0) {
-      console.log("at least one selected");
       sendRekosButton.classList.remove("invisible");
       sendRekosButton.classList.add("visible");
-      // sendRekosButton.style.visibility = "visible";
     } else {
-      console.log("none selected");
       sendRekosButton.classList.remove("visible");
       sendRekosButton.classList.add("invisible");
-      // sendRekosButton.style.visibility = "collapse";
     }
   };
   // ITUNES API CALL FROM JS
@@ -148,14 +139,12 @@ const addNewRekos = () => {
     const searchCardDiv = createElWithClasses("div", ["search-card"]);
     // create div with class "green-layer" // <div class="green-layer">
     const greenLayerDiv = createElWithClasses("div", ["green-layer"]);
-    // create img with src = ... and alt="tekoTickImg"
-      // <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+    // add background image url
     searchCardDiv.style.background = `url("${movie.artworkUrl}")`;
     searchCardDiv.style.backgroundSize = "cover";
     // add reko tick image to card
     greenLayerDiv.insertAdjacentElement('beforeend', createRekoTickImage());
     searchCardDiv.insertAdjacentElement('beforeend', greenLayerDiv);
-    // insertElements(searchCardDiv, [rekoTickImg]);
     // set dataset attributes (for ruby backend!)
     searchCardDiv.dataset.title = movie.title;
     searchCardDiv.dataset.image_url = movie.artworkUrl;
@@ -189,7 +178,6 @@ const addNewRekos = () => {
 
   formAjaxSearch.addEventListener("submit", (event) => {
     event.preventDefault();
-    // console.log("SUBMITT EVENT TRIGGERED");
     const movies = []; // save movie titles
     const cards = document.querySelectorAll(".selected");
     target = cards.length;
@@ -200,7 +188,6 @@ const addNewRekos = () => {
 
   // GET REDIRECTION URL
   const buildRedirectionUrl = (userSignedIn) => {
-    console.log(`USER SIGNED IN: ${userSignedIn}`);
     let redirectionUrl;
     if (userSignedIn) {
       redirectionUrl = "/rekos";
@@ -216,14 +203,8 @@ const addNewRekos = () => {
     // whenever the request gets a response the .onload() function gets triggered
     xhr.onload = function () {
       count += 1;
-      // console.log("Yay, we got an an answer from the server (request response):");
-      // console.log(this);
-      // console.log("check if this was the last post request to send?");
       if (count == target) {
-        console.log(`REDIRECTING: ${buildRedirectionUrl(userSignedIn)}`);
         window.location = buildRedirectionUrl();
-      } else {
-        console.log(`Nope.. count: ${count} target: ${target}`);
       }
     };
     // DATA TO SEND
@@ -242,16 +223,11 @@ const addNewRekos = () => {
     xhr.open("POST", "/rekos");
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(JSON.stringify(toSend));
-    // console.log("POST request send with data: ");
-    // console.log(toSend);
   };
 
   // -----------
   // MAIN SCRIPT
   // -----------
-  console.log("HIEHIEHIEHI");
-  console.log(inputKeyword);
-  console.log(searchTerm);
   inputKeyword.value = searchTerm;
   apiCall(inputKeyword.value);
 };
