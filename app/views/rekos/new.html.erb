@@ -7,7 +7,7 @@
     <div class="search-page-wrapper">
       <div class="search-top-text">
         <% if user_signed_in? %>
-          Hey <%= current_user.first_name %>, <br> add Rekos to your own list!
+          <div class="hey-user">Que up rekos in your list to check out later:</div>
         <% else %>
           <div class="user-is-looking"><%= @user.first_name.capitalize %> is looking for a good documentary or movie to watch.</div>
           <div class="visitor-search">
@@ -24,9 +24,9 @@
             <input id="rekoTickImgUrl" type="hidden" value="<%= asset_path 'white-check.svg' %>">
             <input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
             <!-- END OF HIDDEN FIELDS -->
-            <div class="search-icon-wrapper">
-              <input autocomplete="off" id="inputKeyword" name="" type="text" class= "search-bar-big f-gray" placeholder="Search for Rekos...">
-              <img src="<%= asset_path 'search.svg'%>" alt="search">
+            <div class="search-icon-wrapper ">
+              <input autocomplete="off" id="inputKeyword" name="" type="text" class= "search-bar-big f-gray" placeholder="Find rekos to add...">
+              <img src="<%= asset_path 'search-icon.svg'%>" alt="search">
             </div>
             <button id="sendRekosButton" class="invisible bttn-round-small"></button>
           </form>
