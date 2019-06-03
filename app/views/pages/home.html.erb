@@ -1,5 +1,5 @@
 
-  <div class="master-container fun-bg">
+  <div class="master-container fun-bg horz-center">
 
     <div class="landing-top-wrapper">
       <div class="logo-lockup">
@@ -7,7 +7,6 @@
         </div>
         <h2 class="tagline f-white">Home for all your <br>recommendations.</h2>
       </div>
-      <p class="invite-only f-white"> * Reko is currently invite only *</p>
 
       <% if @invited %>
         <div class="congrats animate-reveal animate-first">
@@ -17,19 +16,18 @@
     </div>
 
 
+        <div class="landing-bottom-btns">
+            <%= link_to "MEMBER LOG IN", new_user_session_path, class: "bttn b-medium b-yellow f-dark-yellow bottom-marg", id: "margin-bttn" %>
+        </div>
 
       <div class="flex-landing-wrapper">
         <div class="beta-bttn animate-reveal animate-second flex-landing-wrapper">
           <% if @invited %>
             <%= link_to "BETA ACCESS", new_user_registration_path, :class => "bttn b-large b-wide b-violet", :method => :get %>
           <% else  %>
-            <%= link_to "APPLY FOR BETA", new_beta_applicant_path, :class => "bttn b-large b-wide b-yellow f-dark-violet", :method => :get %>
+            <%= link_to "Request Beta Access", new_beta_applicant_path, :class => "request-beta", :method => :get %>
           <% end %>
 
-        </div>
-
-        <div class="landing-bottom-btns">
-            <%= link_to "MEMBER LOG IN", new_user_session_path, class: "bttn b-small b-dark-violet", id: "margin-bttn" %>
         </div>
       </div>
 
