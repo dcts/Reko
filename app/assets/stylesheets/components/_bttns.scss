@@ -146,11 +146,10 @@
   letter-spacing: 1px;
   position: center;
   border:black;
+  transition: ease .5s all;
+  opacity: 1;
   &:disabled {
-    display: none;
-  }
-  &:active{
-    opacity:1;
+    opacity: 0;
   }
 }
 
