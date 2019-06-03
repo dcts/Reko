@@ -30,10 +30,12 @@
                <%= f.button :submit, "Log in", id:"form-btn-login"%>
               </div>
         <% end %>
-         </div>
 
+         </div>
   </div>
-        <%#= render "devise/shared/links" %>
+        <div class="forgot-pw-style">
+        <%= render "devise/shared/password-link" %>
+        </div>
     </div>
   </div>
   </div>
