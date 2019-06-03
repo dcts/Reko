@@ -1,5 +1,5 @@
 const copyToClipboard = function(elementId) {
-  console.log("---TRIGGERED : copyToClipboard");
+  console.log("TRIGGERED : copyToClipboard");
 
   document.getElementById("bttnCopyVisitorLink").addEventListener("click", (event) => {
     var input = document.getElementById("visitorLink");
