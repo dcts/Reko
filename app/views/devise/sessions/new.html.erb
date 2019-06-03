@@ -3,35 +3,37 @@
   <div class="master-container-landing">
     <div class="paper-wrapper">
 
-        <h2 class="style-login-h2">Log in</h2>
+      <h2 class="style-login-h2">Log in</h2>
+      <div></div>
+  <div class="beta-form-wrapper">
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-wrapper">
-          <div class="form-log-in">
+          <div class="beta-form-new">
             <%= f.input :email,
-                        required: false,
+                        required: true,
+                        placeholder: "EMAIL",
+                        label: false,
                         autofocus: true,
-                        label:false,
-                        placeholder:"EMAIL",
-                        input_html: { autocomplete: "email" } %>
+                        input_html: { autocomplete: "email", class: "new-form-field-lg" }%>
             <%= f.input :password,
-                        required: false,
+                        required: true,
                         placeholder:"PASSWORD",
                         label:false,
-                        input_html: { autocomplete: "current-password" } %>
+                        input_html: { autocomplete: "current-password", class: "new-form-field-lg" } %>
             <div class="login-checkbox">
-            <%= f.input_field :remember_me,class: "no-border", as: :boolean if devise_mapping.rememberable? %>
+            <%= f.input_field :remember_me, as: :boolean if devise_mapping.rememberable? %>
             <%= f.label "Remember Me" %>
             </div>
-         </div>
 
               <div>
                <%= f.button :submit, "Log in", id:"form-btn-login"%>
               </div>
         <% end %>
+         </div>
 
   </div>
-        <%= render "devise/shared/links" %>
+        <%#= render "devise/shared/links" %>
     </div>
   </div>
   </div>
