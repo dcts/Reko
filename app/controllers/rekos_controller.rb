@@ -4,7 +4,7 @@ class RekosController < ApplicationController
   def index
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: current_user.id)
     @movies = sort_rekos(@user_movies.open, @user_movies.done)
-    @visitor_link = request.original_url.gsub("/rekos", "/rekos/new?token=#{current_user.token}")
+    @visitor_link = request.original_url.gsub("/rekos", "/rekos/new/onboarding?token=#{current_user.token}")
   end
 
   def onboarding
