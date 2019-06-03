@@ -1,10 +1,10 @@
 <div class="background-container b-violet">
   <div class="master-container-landing">
   <div class=space-top></div>
-    <div class="paper-wrapper-landing">
+    <div class="paper-wrapper">
 
 
-<h2>Forgot your password?</h2>
+<h2 class="style-login-h2-new"> Forgot your password?</h2>
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
@@ -15,11 +15,11 @@
                 autofocus: true,
                 label:false,
                 placeholder: 'EMAIL',
-                input_html: { autocomplete: "email" } %>
+                input_html: { autocomplete: "email" , class: "new-form-field-lg" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Reset password instructions" , id:"form-btn-pw"%>
+    <%= f.button :submit, "Reset Password" , id:"form-btn-pw"%>
   </div>
 <% end %>
 

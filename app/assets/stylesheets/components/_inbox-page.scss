@@ -1,10 +1,24 @@
 .inbox-title {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   color: white;
   font-size: 22px;
-  // width: 100vw;
-  min-height: 30px;
+  height: 0px;
+  padding-left: 19px;
+  padding-top: 41px;
+  img {
+    height: 30px;
+    padding-right: 11px
+  }
+}
+
+.link-copy {
+  letter-spacing: 1.1px;
+  margin-bottom: -24px;
+  position: relative;
+  z-index: 12;
+  font-weight: 500;
+  font-size: 11px;
 }
 
 .inbox-top-nav {
@@ -19,24 +33,21 @@
 
 .inbox-user {
   margin-left: 10px;
+  font-size: 26px;
 }
 
 .user-icon {
   margin-right: 15px;
 }
 
-.logout-icon {
-  color: lightgrey;
-  margin-bottom: 30px;
-  font-size: 2rem;
-}
 
 .copy-link-nav {
-  display: flex;
+  // display: flex;
   font-size: 10px;
-  justify-content: space-between;
-  flex-direction: column;
+  // justify-content: space-between;
+  // flex-direction: column;
   text-align: center;
+  margin-bottom: -13%;
 }
 
 .copy-link-nav p {
@@ -46,21 +57,41 @@
   }
 
 .empty-reko-list {
+  margin-top: -7%;
   height: 100%;
   text-align: center;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  // display: flex;
+  // align-items: center;
+  // flex-direction: column;
+  // justify-content: center;
+  img {
+    height: 77px;
+
+  }
 }
 
 .rekos-are-empty {
-  margin-bottom: unset;
-  font-size: 2rem;
+  margin-bottom: 6vh;
+  line-height: 120%;
+  font-size: 253%;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 200;
+  padding: 0 10vw;
+  margin-top: -1vh;
+  color: #bcbcbc;
+
 }
 
 .send-link {
-  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 100%;
+  font-weight: 400;
+  margin-top: 0px;
+  line-height: 18px;
+  margin-bottom: 33px;
+  color: #6966F6 !important;
+
+
 }
 
 .js-copy {
@@ -70,7 +101,7 @@
 
 .js-copy-large {
   align-self: center;
-  width: 248px;
+  width: 77vw;
   height: 80px;
   font-size: 1.5rem;
   text-align: center;

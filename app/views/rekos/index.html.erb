@@ -1,16 +1,16 @@
-<div class="jsTrigger-makeSwipe jsTrigger-copyToClipboard jsTrigger-feedbackModal b-gray">
-   <div class="master-container">
+<div class="jsTrigger-makeSwipe jsTrigger-copyToClipboard jsTrigger-feedbackModal b-dark-gray">
+  <div class="master-container">
+
     <div class="inbox-title">
-      <p class="inbox-user"> <i class="fas fa-user user-icon"></i><%= current_user.first_name %></p>
+      <img src="<%= asset_path 'avatar.png'%>"> </img> <%= current_user.first_name.capitalize %>
     </div>
 
     <div class="paper-wrapper">
       <%#= link_to "Add new reko", new_reko_path(token: current_user.token)  %>
-
       <div class="inbox-top-nav">
         <div class="copy-link-nav">
-          <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
-          <button id="<%= 'bttnCopyVisitorLink' if @movies.size > 0 %>" class="bttn js-copy reko-link b-violet <%= 'hidden-link-button' if @movies.size == 0 %>">
+          <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly="true" style="opacity:0; width:1px; height:1px;"/>
+          <button id="<%= 'bttnCopyVisitorLink' if @movies.size > 0 %>" type='button' class="bttn js-copy reko-link b-violet <%= 'hidden-link-button' if @movies.size == 0 %>">
             <%= @visitor_link %>
           </button>
         </div>
@@ -21,79 +21,84 @@
           <%= link_to "+", new_reko_path, class:"bttn-round" %>
       </div>
 
-
-
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- DONT TOUCH BELOW OR ASSUNTA WILL KILL ME -->
+<!-- DONT TOUCH BELOW OR ASSUNTA WILL KILL YOU -->
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
       <%if @movies.size > 0 %>
-        <div id="movie-list">
+        <div>
+          <div id="movie-list">
 
-          <% @movies.each do |reko| %>
+            <% @movies.each do |reko| %>
+              <div class="swiper-card-outer">
+                <div class="swiper-card" data-reko-id="<%= reko[:reko].id %>">
+                 <div class="swiper-container">
+                  <div class="swiper-wrapper">
 
-              <div class="swiper-card" data-reko-id="<%= reko[:reko].id %>">
-               <div class="swiper-container">
-                <div class="swiper-wrapper">
+                  <!-- MARK WATCHED -->
+                    <div class="swiper-slide mark-watched-slide">
+                      <%= link_to "", reko_mark_as_done_path(reko[:reko]), method: :put, remote: true, class: "fas fa-check", style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
+                    </div>
 
-                <!-- MARK WATCHED -->
-                  <div class="swiper-slide mark-watched-slide">
-                    <%= link_to "", reko_mark_as_done_path(reko[:reko]), method: :put, remote: true, class: "fas fa-check", style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
-                  </div>
+                  <!-- MAIN SLIDE  -->
+                    <div class="swiper-slide main-slide <%= 'light-grey-background' if reko[:reko].done? %> can-be-marked-done">
+                      <div class="reko-info">
+                        <div class="reko-title"><%= reko[:reko].recommendable.title %></div>
 
-                <!-- MAIN SLIDE  -->
-                  <div class="swiper-slide main-slide <%= 'light-grey-background' if reko[:reko].done? %> can-be-marked-done">
-                    <div class="reko-info">
-                      <div class="reko-title"><%= reko[:reko].recommendable.title %></div>
+                        <div class="sender-names">
+                          <i style="font-size: 29px" class="fas fa-user-circle in-card-avatar"></i>
 
-                      <div class="sender-names">
-                        <i style="font-size: 29px" class="fas fa-user-circle in-card-avatar"></i>
-
-                        <div>
-                          <%= reko[:sender_names].first.capitalize %>
-                          <% if reko[:sender_names].size > 1 %>
-                            +
-                          <%= pluralize((reko[:sender_names].size - 1), 'other') %>
-                          <% end %>
+                          <div>
+                            <%= reko[:sender_names].first.capitalize %>
+                            <% if reko[:sender_names].size > 1 %>
+                              +
+                            <%= pluralize((reko[:sender_names].size - 1), 'other') %>
+                            <% end %>
+                          </div>
                         </div>
+                      </div>
+
+                      <div class="reko-artwork" style="background-image: url(<%= reko[:reko].recommendable.image_url %>);">
+                        <!-- <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120"> -->
                       </div>
                     </div>
 
-                    <div class="reko-artwork" style="background-image: url(<%= reko[:reko].recommendable.image_url %>);">
-                      <!-- <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120"> -->
+                  <!-- DELETE REKO -->
+                    <div class="swiper-slide delete-slide" >
+                      <%= link_to "", reko_mark_as_rejected_path(reko[:reko]), method: :put, remote: true, class: "fas fa-trash-alt", style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
+                    </div>
+
                     </div>
                   </div>
-
-                <!-- DELETE REKO -->
-                  <div class="swiper-slide delete-slide" >
-                    <%= link_to "", reko_mark_as_rejected_path(reko[:reko]), method: :put, remote: true, class: "fas fa-trash-alt", style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
-                  </div>
-
                 </div>
               </div>
-            </div>
-          <% end %>
-        </div>
+            <% end %>
+          </div>
 
       <% else %>
         <div class="empty-reko-list">
           <h3 class="rekos-are-empty">
-            Your reko inbox is empty.
+            You haven't received any rekos yet...
           </h3>
-          <h4 class="rekos-are-empty send-link">
-            Send this link to your friends to get rekos:
-          </h4>
-
+          <div class="link-copy f-violet">YOUR REKO LINK:</div>
           <div class="copy-link-nav">
             <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
-            <button id="bttnCopyVisitorLink" class="bttn js-copy js-copy-large reko-link b-violet">
+            <button id="bttnCopyVisitorLink" readonly="true" class="bttn js-copy js-copy-large reko-link b-violet">
               <%= @visitor_link %>
             </button>
           </div>
+
+          <img src="<%= asset_path 'finger.png'%>" class="animate-reveal animate-first"> </img>
+          <h4 class="rekos-are-empty send-link f-violet animate-reveal animate-first">
+            * Text this link to your friends so<br> they can give you recommendations.
+          </h4>
+
+
+
         </div>
       <%end %>
-      <%= render 'feedbacks/footer' %>
     </div>
+    <%= render 'feedbacks/footer' %>
 
 
 
