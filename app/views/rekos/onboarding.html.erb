@@ -1,0 +1,15 @@
+<div class="background-container b-white">
+  <div class="master-container">
+    <div class="search-page-wrapper">
+      <div class="search-top-text">
+        <div class="user-is-looking"><%= @user.first_name.capitalize %> is looking for a good documentary or movie to watch.</div>
+        <div class="visitor-search">
+          <form id="formSubmitName" class = "search-div">
+            <input class= "visitor-form-field" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="Enter your name to continue..." value="<%= "#{@sender_name}" %>">
+            <button class= "submit-button"></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

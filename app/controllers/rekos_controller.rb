@@ -8,7 +8,11 @@ class RekosController < ApplicationController
   end
 
   def onboarding
-
+    token = params[:token] # get token from params
+    @user = User.find_by_token(params[:token]) # returns user instance or nil
+    if @user.nil?
+      redirect_to invalid_token_path
+    end
   end
 
   def new
