@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="24px" viewBox="0 0 16 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54 (76480) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="noun_Unlock_534748" transform="translate(-4.000000, 0.000000)" fill="#5A5766" fill-rule="nonzero">
+            <g id="Group" transform="translate(4.000000, 0.000000)">
+                <path d="M12.996,24 L3.003,24 C1.347,24 0,22.652 0,20.996 L0,11.998 C0,10.345 1.345,9 2.998,9 L13.002,9 C14.655,9 16,10.345 16,11.998 L16,20.996 C16,22.652 14.652,24 12.996,24 Z M2.998,11 C2.448,11 2,11.448 2,11.998 L2,20.996 C2,21.55 2.45,22 3.003,22 L12.996,22 C13.55,22 14,21.55 14,20.996 L14,11.998 C14,11.448 13.553,11 13.002,11 L2.998,11 Z" id="Combined-Shape"></path>
+                <path d="M4,11 C3.448,11 3,10.552 3,10 L3,5 C3,2.243 5.243,0 8,0 C10.757,0 13,2.243 13,5 L13,6 C13,6.552 12.553,7 12,7 C11.447,7 11,6.552 11,6 L11,5 C11,3.346 9.654,2 8,2 C6.346,2 5,3.346 5,5 L5,10 C5,10.552 4.552,11 4,11 Z" id="Path"></path>
+                <path d="M8,19 C7.448,19 7,18.553 7,18 L7,15 C7,14.447 7.448,14 8,14 C8.552,14 9,14.447 9,15 L9,18 C9,18.553 8.552,19 8,19 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>

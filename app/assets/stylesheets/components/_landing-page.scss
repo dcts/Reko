@@ -12,22 +12,28 @@
 
 
 .logo-landing {
-  background-image: url("logo-animate1.gif");
+  background-image: url("logo-light.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 15vh;
+  height: 10vh;
 }
 
 .tagline {
-  font-size: 18px;
-  margin-top: -7px;
+  font-size: 19px;
+  margin-top: 13px;
   margin-bottom: 42px;
-  // margin-bottom: 15vh;
 }
 
 .invite-only {
   margin-bottom: 37px;
+}
+
+.flex-landing-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .congrats {
