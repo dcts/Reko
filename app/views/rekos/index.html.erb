@@ -30,7 +30,7 @@
           <div id="movie-list">
 
             <% @movies.each do |reko| %>
-
+              <div class="swiper-card-outer">
                 <div class="swiper-card" data-reko-id="<%= reko[:reko].id %>">
                  <div class="swiper-container">
                   <div class="swiper-wrapper">
@@ -68,6 +68,7 @@
                       <%= link_to "", reko_mark_as_rejected_path(reko[:reko]), method: :put, remote: true, class: "fas fa-trash-alt", style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
                     </div>
 
+                    </div>
                   </div>
                 </div>
               </div>
