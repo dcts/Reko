@@ -8,6 +8,7 @@ const search = () => {
   // get params (from url)
   const senderName = document.getElementById('params_senderName').value;;
   const token = document.getElementById('params_token').value;
+  const userSignedIn = document.getElementById('userSignedIn').value === "true";
   // get DOM elements
   const formInitialSearch = document.getElementById("formInitialSearch");
   const inputKeyword = document.getElementById("inputKeyword");
@@ -22,7 +23,11 @@ const search = () => {
     window.location = `/rekos/new?token=${token}&sender_name=${senderName}&search_term=${inputKeyword.value}`;
   });
   buttonBack.addEventListener("click", (event) => {
-    window.location = `/rekos/new/onboarding?token=${token}&sender_name=${senderName}`;
+    if (userSignedIn) {
+      window.location = `/rekos`;
+    } else {
+      window.location = `/rekos/new/onboarding?token=${token}&sender_name=${senderName}`;
+    }
   });
   inputKeyword.addEventListener("keyup", (event) => {
     setButtonState(inputKeyword.value);

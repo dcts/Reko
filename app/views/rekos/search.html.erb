@@ -6,7 +6,7 @@
 <!-- ENCODE "auth-token", "rekoTickImgUrl" and "userSignedId" inside hidden fields -->
 <input id="rekoTickImgUrl" type="hidden" value="<%= asset_path 'white-check.svg' %>">
 <input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
-<input id="params_senderName" type="hidden" value="<%= @sender_name %>">
+<input id="params_senderName" type="hidden" value="<%= user_signed_in? ? "YOU" : @sender_name %>">
 <input id="params_token" type="hidden" value="<%= @token %>">
 <!-- END OF HIDDEN FIELDS -->
 

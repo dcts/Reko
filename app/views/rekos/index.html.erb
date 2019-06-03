@@ -18,7 +18,7 @@
           <p>SEND LINK TO FRIENDS:</p>
           <a class="js-copy bttn reko-link b-violet"><%= @visitor_link %></a>
         </div> -->
-          <%= link_to "+", new_reko_path, class:"bttn-round" %>
+          <%= link_to "+", rekos_new_search_path(token: current_user.token), class:"bttn-round" %>
       </div>
 
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->

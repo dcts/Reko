@@ -1,83 +1,62 @@
 const addNewRekos = () => {
   console.log("TRIGGERED : addNewRekos");
-
-  // DATA NEEDED FOR REDIRECTION URL
-  let senderName;
-  const movies = [];
-  const token = document.URL.split("token=")[1];
-
-  // get encoded data from view
-  const authenticityToken = document.getElementById("auth").value;
+  // -----------------------
+  // LOAD DATA + DOM OBJECTS
+  // -----------------------
+  // controll post requests
+  let count = 0;
+  let target;
+  // selected itunes_id's selected
+  let selectedItunesIds = []
+  // load img tick
   const rekoTickImgUrl = document.getElementById("rekoTickImgUrl").value;
   const userSignedIn = document.getElementById("userSignedIn").value === "true";
-
-  // LOAD DOM ELEMENTS
-  const formSubmitName = document.getElementById("formSubmitName");
+  console.log(`User signed in: ${userSignedIn}`);
+  const authenticityToken = document.querySelector('[name="csrf-token"]').content;
+  // get params (from url)
+  let senderName = document.getElementById('params_senderName').value;;
+  const token = document.getElementById('params_token').value;
+  const searchTerm = document.getElementById("params_searchTerm").value;
+  // get DOM elements
   const formAjaxSearch = document.getElementById("formAjaxSearch");
-  const inputName = document.getElementById("inputName");
   const inputKeyword = document.getElementById("inputKeyword");
   const cardsContainer = document.getElementById("search-cards-container");
   const sendRekosButton = document.getElementById("sendRekosButton");
-  const instructionText = document.getElementById("search-instruction-text");
 
-  // VARIABLES TO CONTROLL POST REQUESTS
-  let count = 0;
-  let target;
+  // ----------------------------
+  // LISTENERS + HELPER FUNCTIONS
+  // ----------------------------
+  // ADD EVENTLISTENER FOR AJAX CALL
+  inputKeyword.addEventListener("keyup", (event)=> {
+    apiCall(inputKeyword.value);
+  });
 
-  // ADD SELECTION EVENT LISTENERS
-
-  // SEND POST REQUESTS
-  formAjaxSearch.addEventListener("submit", (event) => {
-    event.preventDefault();
-    // console.log("SUBMITT EVENT TRIGGERED");
-    const movies = []; // save movie titles
+  sendRekosButton.addEventListener('click', () => {
     const cards = document.querySelectorAll(".selected");
     target = cards.length;
     cards.forEach((card) => {
       sendPostRequestToCreateReko(card);
     });
   });
-
-  // GET REDIRECTION URL
-  const buildRedirectionUrl = () => {
-    let redirectionUrl;
-    if (userSignedIn) {
-      redirectionUrl = "/rekos";
-    } else {
-      redirectionUrl = `/thankyou?token=${token}&name=${senderName}&movies=${normalize(movies.join("_and_"))}`;
-    }
-    return redirectionUrl
+  const myFunction = (event) => {
+    const card = event.currentTarget;
+    console.log(card);
+    console.log(event);
+    card.classList.toggle("selected");
+    setButtonState();
   };
-
-  // document.querySelector('body').addEventListener('click', (event) => {
-  //   console.log(event.target);
-  //   console.log(event.target.classList.contains("green-layer"));
-  //   console.log(event.target.id === "sendRekosButton");
-  //   // if (event.target.tagName.toLowerCase() === 'li') {
-  //   //   // do your action on your 'li' or whatever it is you're listening for
-  //   // }
-  // });
-
-  // ADD EVENTLISTENERS FOR SELECTION
-  // const addSelectionListener = (card) => {
-    // card.addEventListener("click", (event) => {
-    //   console.log("current event:");
-    //   console.log(event);
-    //   console.log(event.currentTarget);
-    //   event.currentTarget.classList.toggle("selected");
-    // });
-  // };
-  // ADD EVENTLISTENERS FOR CARDS
-  const addSelectionListeners = () => {
-    console.log(cardsContainer);
-    cardsContainer.childNodes.forEach((card) => {
-      card.addEventListener("click", (event) => {
-        console.log("current event:");
-        console.log(event);
-        console.log(event.currentTarget);
-        event.currentTarget.classList.toggle("selected");
-        setButtonState();
-      });
+  const getAllCards = () => {
+    const result = document.querySelectorAll(".search-card");
+    return result;
+  };
+  const addCardEventListeners = () => {
+    getAllCards().forEach((card) => {
+      card.addEventListener("click", myFunction);
+    });
+  };
+  const removeCardEventListeners = () => {
+    getAllCards().forEach((card) => {
+      card.removeEventListener("click", myFunction);
     });
   };
 
@@ -97,45 +76,139 @@ const addNewRekos = () => {
       // sendRekosButton.style.visibility = "collapse";
     }
   };
+  // ITUNES API CALL FROM JS
+  const apiCall = (searchTerm) => {
+    // NEEDED TO PREVENT CORS FAILURE? -> do more research on it when time...
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const url = "https://itunes.apple.com/search?media=movie&term=" + normalize(searchTerm); //
+    fetch(proxyurl + url)
+    .then((response) => response.json())
+    .then((data) => {
+      let movies = [];
+      data.results.forEach((result) => { // loop over all results
+        if (result.kind === "feature-movie") {
+          const movie = buildMovie(result);
+          movies.push(movie);
+        }
+      });
+      deleteCardsIfNotSelected(); // reset cards
+      // rdelete all event listeners from selected cards
+      addCards(movies);
+      removeCardEventListeners();
+      addCardEventListeners();
+    });
+  };
 
-  // ADD EVENTLISTENER FOR AJAX CALL
-  inputKeyword.addEventListener("keyup", (event)=> {
-    apiCall(inputKeyword.value);
-  });
+  const buildMovie = (apiResultObject) => {
+    return {
+      "title": apiResultObject.trackName,
+      "artworkUrl": resizeImage(apiResultObject.artworkUrl100),
+      "itunesId": apiResultObject.trackId,
+      "primaryGenreName": apiResultObject.primaryGenreName,
+    }
+  };
 
-  // If user is not signed in add event listener to post your name
-  if (userSignedIn == false) {
-    formSubmitName.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (inputName.value.length < 2) {
-        alert("your name has to few letters!");
+  const deleteCardsIfNotSelected = () => {
+    selectedItunesIds = [];
+    const cards = document.querySelectorAll(".search-card");
+    cards.forEach((card) => {
+      if (card.classList.contains("selected") != true) {
+        removeElement(card);
       } else {
-        senderName = inputName.value;
-        formSubmitName.classList.add("invisible");
+        selectedItunesIds.push(card.dataset.itunes_id);
       }
     });
-  }
+  };
 
-  // ADD EVENT LISTENER
-  formSubmitName.addEventListener("submit", (event) => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
-    removeElement(formSubmitName);
-    // instructionText.innerText = `Thanks ${senderName}`
-    formAjaxSearch.classList.remove("invisible");
-    formAjaxSearch.classList.add("visible");
+  const removeElement = (el) => {
+    el.parentNode.removeChild(el);
+  };
+
+  const addCards = (movies) => {
+    movies.forEach((movie) => {
+      const card = buildCard(movie);
+      if (selectedItunesIds.includes(card.dataset.itunes_id) == false) {
+        cardsContainer.insertAdjacentElement('beforeend', card);
+      }
+    });
+  };
+
+  const deleteChildren = (element) => {
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+  };
+
+  const addChild = (element, movie) => {
+    element.insertAdjacentHTML("beforeend", `<p>${movie.title}</p>`);
+  };
+
+  const buildCard = (movie) => {
+    // create div with class "search-card" // <div class="search-card">
+    const searchCardDiv = createElWithClasses("div", ["search-card"]);
+    // create div with class "green-layer" // <div class="green-layer">
+    const greenLayerDiv = createElWithClasses("div", ["green-layer"]);
+    // create img with src = ... and alt="tekoTickImg"
+      // <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+    searchCardDiv.style.background = `url("${movie.artworkUrl}")`;
+    searchCardDiv.style.backgroundSize = "cover";
+    // add reko tick image to card
+    greenLayerDiv.insertAdjacentElement('beforeend', createRekoTickImage());
+    searchCardDiv.insertAdjacentElement('beforeend', greenLayerDiv);
+    // insertElements(searchCardDiv, [rekoTickImg]);
+    // set dataset attributes (for ruby backend!)
+    searchCardDiv.dataset.title = movie.title;
+    searchCardDiv.dataset.image_url = movie.artworkUrl;
+    searchCardDiv.dataset.itunes_id = movie.itunesId;
+    searchCardDiv.dataset.genre = movie.primaryGenreName;
+    searchCardDiv.dataset.sender_name = senderName;
+    return searchCardDiv
+  };
+
+  const createElWithClasses = (tagname, classnameArr) => {
+    const el = document.createElement(tagname);
+    classnameArr.forEach((classname) => {
+      el.classList.add(`${classname}`);
+    });
+    return el
+  };
+
+  const createRekoTickImage = () => {
+    const img = document.createElement('img');
+    img.src = rekoTickImgUrl;
+    return img
+  };
+
+  const normalize = term => {
+    return term.replace(/ /g, '+');
+  };
+
+  const resizeImage = (url) => {
+    return url.replace("100x100bb.jpg", "400x400bb.jpg");
+  };
+
+  formAjaxSearch.addEventListener("submit", (event) => {
+    event.preventDefault();
+    // console.log("SUBMITT EVENT TRIGGERED");
+    const movies = []; // save movie titles
+    const cards = document.querySelectorAll(".selected");
+    target = cards.length;
+    cards.forEach((card) => {
+      sendPostRequestToCreateReko(card);
+    });
   });
-  // when name gets submitted
-  // -> wait for transition to end
-  // -> remove nameInputElement and make SearchInput visible
-  // "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd".split(" ").forEach((event) => {
-  //   if (userSignedIn == false) {
-  //     formSubmitName.addEventListener(event, () => { // webkitTransitionEnd oTransitionEnd MSTransitionEnd"
-  //       removeElement(formSubmitName);
-  //       // instructionText.innerText = `Thanks ${senderName}`
-  //       formAjaxSearch.classList.remove("invisible");
-  //       formAjaxSearch.classList.add("visible");
-  //     });
-  //   }
-  // });
+
+  // GET REDIRECTION URL
+  const buildRedirectionUrl = (userSignedIn) => {
+    console.log(`USER SIGNED IN: ${userSignedIn}`);
+    let redirectionUrl;
+    if (userSignedIn) {
+      redirectionUrl = "/rekos";
+    } else {
+      redirectionUrl = `/thankyou?token=${token}&name=${senderName}`; // &movies=${normalize(movies.join("_and_"))}
+    }
+    return redirectionUrl
+  };
 
   const sendPostRequestToCreateReko = (card) => {
     const xhr = new XMLHttpRequest();
@@ -147,9 +220,10 @@ const addNewRekos = () => {
       // console.log(this);
       // console.log("check if this was the last post request to send?");
       if (count == target) {
+        console.log(`REDIRECTING: ${buildRedirectionUrl(userSignedIn)}`);
         window.location = buildRedirectionUrl();
       } else {
-        // console.log(`Nope.. count: ${count} target: ${target}`);
+        console.log(`Nope.. count: ${count} target: ${target}`);
       }
     };
     // DATA TO SEND
@@ -172,9 +246,14 @@ const addNewRekos = () => {
     // console.log(toSend);
   };
 
-
-
-
+  // -----------
+  // MAIN SCRIPT
+  // -----------
+  console.log("HIEHIEHIEHI");
+  console.log(inputKeyword);
+  console.log(searchTerm);
+  inputKeyword.value = searchTerm;
+  apiCall(inputKeyword.value);
 };
 
 export { addNewRekos };

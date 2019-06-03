@@ -26,10 +26,10 @@ class RekosController < ApplicationController
   end
 
   def new
-    unless user_signed_in?
+    @search_term = params[:search_term] # grab sender_name from params
+    if user_signed_in? == false
       @token = params[:token] # get token from params
       @sender_name = params[:sender_name] # get sender name if provided
-      @search_term = params[:search_term] # grab sender_name from params
       user_id = User.token_hashmap[@token] # returns user instance or nil
       if user_id.nil? # User not existant -> token invalid
         # authenticate_user!
