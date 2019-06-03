@@ -13,7 +13,7 @@ class AdminsController < ApplicationController
 
   def user
     @user = User.find(params[:id])
-    @visitor_link = "#{request.original_url.split('/admins')[0]}/rekos/new?token=#{@user.token}"
+    @visitor_link = "#{request.original_url.split('/admins')[0]}/rekos/new/onboarding?token=#{@user.token}"
   end
 
   def rekos
