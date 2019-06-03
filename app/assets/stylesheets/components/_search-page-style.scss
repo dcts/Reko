@@ -20,6 +20,10 @@
   font-weight: 400;
   font-size: 200%;
   color: #5E5E5E;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .visitor-name {
@@ -95,15 +99,45 @@
   border-width: 0 !important;
   padding: 7px;
   margin: 9px;
-  text-align: center;
-  height: 33px;
-  width: 80vw;
-  font-size: 13px;
-  //  -webkit-box-shadow: 0px 0px 88px -7px rgba(0, 0, 0, 0.17)!important;
-  // box-shadow: 0px 0px 88px 7px rgba(0, 0, 0, 0.17) !important;
+  text-align:left;
+  padding-left: 47px;
+  height: 48px;
+  width: 70vw;
+  max-width: 450px;
+  font-size: 23px;
+  margin-top:55px;
+   -webkit-box-shadow: 0px 0px 88px -7px rgba(0, 0, 0, 0.17)!important;
+  box-shadow: 0px 0px 88px 7px rgba(0, 0, 0, 0.17) !important;
+
 }
-.search-bar-big::placeholder {
-  font-family: 'Roboto', sans-serif !important;
-  font-size: 20px !important;
-  color:#6966F6 !important;
+// .search-bar-big::placeholder {
+//   font-family: 'Roboto', sans-serif !important;
+//   font-size: 20px !important;
+//   color:#6966F6 !important;
+// }
+
+.search-icon-wrapper {
+  position: relative;
+  display:flex;
+  flex-direction: column;
+  img {
+    height: 20px;
+    position: absolute;
+    top: 76px;
+    left: 27px;
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
