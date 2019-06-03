@@ -15,14 +15,15 @@ const feedbackModal = () => {
       showCancelButton: true,
       cancelButtonColor: "#5A5766",
       cancelButtonText: "Back",
+      reverseButtons: true,
       inputValidator: (value) => {
           if (!value) {
             return "Please don't leave this empty! We need you!"
           }
         }
-    }).then(function(result) {
+    }).then((result) => {
 
-      if (result) {
+      if (result.value) {
         const authenticityToken = document.querySelector('[name="csrf-token"]').content;
         const xhr = new XMLHttpRequest();
         const toSend = {
