@@ -39,6 +39,8 @@
   // controll post requests
   let count = 0;
   let target;
+  // selected itunes_id's selected
+  let selectedItunesIds = []
   // load img tick
   const rekoTickImgUrl = document.getElementById("rekoTickImgUrl").value;
   const userSignedIn = document.getElementById("userSignedIn").value === "true";
@@ -62,19 +64,43 @@
     apiCall(inputKeyword.value);
   });
 
-  sendRekosButton.addEventListener("click", () => {
+  sendRekosButton.addEventListener('click', () => {
     const cards = document.querySelectorAll(".selected");
     target = cards.length;
     cards.forEach((card) => {
       sendPostRequestToCreateReko(card);
     });
   });
-  document.querySelector('body').addEventListener('click', (event) => {
-    const clickedCard = event.path[1]
-    console.log(clickedCard.classList.contains("search-card"));
-    clickedCard.classList.toggle("selected");
+  const myFunction = (event) => {
+    const card = event.currentTarget;
+    console.log(card);
+    console.log(event);
+    card.classList.toggle("selected");
     setButtonState();
-  });
+  };
+  const addCardEventListeners = () => {
+    allCards = document.querySelectorAll(".search-card");
+    allCards.forEach((card) => {
+      card.addEventListener("click", myFunction);
+    });
+  };
+  const removeCardEventListeners = () => {
+    allCards = document.querySelectorAll(".search-card");
+    allCards.forEach((card) => {
+      card.removeEventListener("click", myFunction);
+    });
+  };
+  // cardsContainer.children.forEach((card) => {
+  //   console.log(card);
+  // });
+  // document.querySelector('body').addEventListener('click', (event) => {
+  //   const clickedCard = event.target;
+  //   console.log("clickedCard");
+  //   console.log(clickedCard);
+  //   console.log(clickedCard.classList.contains("search-card"));
+  //   clickedCard.classList.toggle("selected");
+  //   setButtonState();
+  // });
 
   // ENABLE BUTTON IF ELEMENTS ARE SELECTED
   const setButtonState = () => {
@@ -108,7 +134,10 @@
         }
       });
       deleteCardsIfNotSelected(); // reset cards
+      // rdelete all event listeners from selected cards
       addCards(movies);
+      removeCardEventListeners();
+      addCardEventListeners();
     });
   };
 
@@ -122,10 +151,13 @@
   };
 
   const deleteCardsIfNotSelected = () => {
+    selectedItunesIds = [];
     const cards = document.querySelectorAll(".search-card");
     cards.forEach((card) => {
       if (card.classList.contains("selected") != true) {
         removeElement(card);
+      } else {
+        selectedItunesIds.push(card.dataset.itunes_id);
       }
     });
   };
@@ -137,7 +169,9 @@
   const addCards = (movies) => {
     movies.forEach((movie) => {
       const card = buildCard(movie);
-      cardsContainer.insertAdjacentElement('beforeend', card);
+      if (selectedItunesIds.includes(card.dataset.itunes_id) == false) {
+        cardsContainer.insertAdjacentElement('beforeend', card);
+      }
     });
   };
 
