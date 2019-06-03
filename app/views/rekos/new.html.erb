@@ -1,5 +1,11 @@
 <!-- DO NOT CHANGE THE ID NAMING -->
 <!-- <div class="background-container dark-violet"> -->
+
+<!-- ENCODE "auth-token", "rekoTickImgUrl" and "userSignedId" inside hidden fields -->
+<input id="rekoTickImgUrl" type="hidden" value="<%= asset_path 'white-check.svg' %>">
+<input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
+<!-- END OF HIDDEN FIELDS -->
+
 <div class="jsTrigger-addNewRekos jsTrigger-itunesApiCall background-container b-white">
   <div class="master-container">
     <div class="search-page-wrapper">
@@ -11,11 +17,6 @@
         <% end %>
 
         <form id="formAjaxSearch" class="visible">
-          <!-- ENCODE "auth-token", "rekoTickImgUrl" and "userSignedId" inside hidden fields -->
-          <input id="auth" type="hidden" value="<%= session[:_csrf_token] %>">
-          <input id="rekoTickImgUrl" type="hidden" value="<%= asset_path 'white-check.svg' %>">
-          <input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
-          <!-- END OF HIDDEN FIELDS -->
           <div class="search-icon-wrapper">
             <input autocomplete="off" id="inputKeyword" name="" type="text" class= "search-bar-big f-gray" placeholder="Search for Rekos...">
             <img src="<%= asset_path 'search.svg'%>" alt="search">

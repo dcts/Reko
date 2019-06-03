@@ -2,6 +2,7 @@ import "bootstrap";
 import swal from 'sweetalert2';
 import { makeSwipe } from "../components/swipe";
 import { addNewRekos } from "../search-itunes-api/add-new-rekos";
+import { onboarding } from "../components/onboarding";
 import { toggleButtons } from "../components/user-preference-choice";
 import { copyToClipboard } from "../components/copy-to-clipboard";
 import { feedbackModal } from "../components/feedback-modal";
@@ -37,6 +38,7 @@ triggerJsOnTarget(addNewRekos,     "jsTrigger-addNewRekos");
 triggerJsOnTarget(makeSwipe,       "jsTrigger-makeSwipe");
 triggerJsOnTarget(toggleButtons,   "jsTrigger-toggleButtons");
 triggerJsOnTarget(feedbackModal,   "jsTrigger-feedbackModal");
+triggerJsOnTarget(onboarding,      "jsTrigger-onboarding");
 
 
 

@@ -1,15 +1,23 @@
+<!-- ENCODE "auth-token", "rekoTickImgUrl" and "userSignedId" inside hidden fields -->
+<input id="params_senderName" type="hidden" value="<%= @sender_name %>">
+<input id="params_token" type="hidden" value="<%= @token %>">
+<input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
+<meta class="jsTrigger-onboarding">
+<!-- END OF HIDDEN FIELDS -->
+
 <div class="background-container b-white">
   <div class="master-container">
     <div class="search-page-wrapper">
       <div class="search-top-text">
-        <div class="user-is-looking"><%= @user.first_name.capitalize %> is looking for a good documentary or movie to watch.</div>
+        <div class="user-is-looking"><%= @user.first_name.capitalize %> needs a good documentary or movie to watch.</div>
         <div class="visitor-search">
           <form id="formSubmitName" class = "search-div">
             <input class= "visitor-form-field" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="Enter your name to continue..." value="<%= "#{@sender_name}" %>">
-            <button class= "submit-button"></button>
+            <button id="buttonContinue" class= "submit-button invisible"></button>
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+

@@ -147,10 +147,7 @@ const addNewRekos = () => {
       // console.log(this);
       // console.log("check if this was the last post request to send?");
       if (count == target) {
-        let redirectionUrl = buildRedirectionUrl();
-        // console.log("redirecting NOW");
-        // console.log(redirectionUrl);
-        window.location = redirectionUrl;
+        window.location = buildRedirectionUrl();
       } else {
         // console.log(`Nope.. count: ${count} target: ${target}`);
       }
