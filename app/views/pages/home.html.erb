@@ -8,27 +8,29 @@
         <h2 class="tagline f-white">Home for all your <br>recommendations.</h2>
       </div>
 
-      <% if @invited %>
-        <div class="congrats animate-reveal animate-first">
+
+    </div>
+
+
+
+      <div class="flex-landing-wrapper">
+         <% if @invited %>
+        <div class="congrats f-white animate-reveal animate-first">
           Congrats, you're in!
         </div>
       <% end %>
-    </div>
-
+        <div class="beta-bttn animate-reveal animate-second flex-landing-wrapper">
+          <% if @invited %>
+            <%= link_to "BETA ACCESS", new_user_registration_path, :class => "bttn b-large b-wide b-green f-dark-green bottom-marg", :method => :get %>
+          <% else  %>
+            <%= link_to "Request Beta Access", new_beta_applicant_path, :class => "request-beta", :method => :get %>
+          <% end %>
+        </div>
 
         <div class="landing-bottom-btns">
             <%= link_to "MEMBER LOG IN", new_user_session_path, class: "bttn b-medium b-yellow f-dark-yellow bottom-marg", id: "margin-bttn" %>
         </div>
 
-      <div class="flex-landing-wrapper">
-        <div class="beta-bttn animate-reveal animate-second flex-landing-wrapper">
-          <% if @invited %>
-            <%= link_to "BETA ACCESS", new_user_registration_path, :class => "bttn b-large b-wide b-violet", :method => :get %>
-          <% else  %>
-            <%= link_to "Request Beta Access", new_beta_applicant_path, :class => "request-beta", :method => :get %>
-          <% end %>
-
-        </div>
       </div>
 
   </div>
