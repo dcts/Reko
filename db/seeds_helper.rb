@@ -69,8 +69,7 @@ end
 # save recommendables (array) array to DB
 def save_recommendables(recommendables)
   recommendables.each do |recommendable|
-    recommendable.save!
-    puts "saving #{recommendable.title}"
+    puts recommendable.save ? "saving #{recommendable.title}" : "not saving, already in DB!"
   end
 end
 
