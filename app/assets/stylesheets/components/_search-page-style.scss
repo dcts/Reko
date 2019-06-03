@@ -5,32 +5,49 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  padding: 12px 12px;
+  background-color: #f5f5f5;
+}
+
+.user-is-looking {
+  margin-bottom: 44px;
+  padding: 0 7px;
 }
 
 .search-top-text {
-  margin: 7vh 0;
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  font-size: 150%;
+  font-size: 200%;
   color: #5E5E5E;
-  padding: 0 7%;
 }
 
+.visitor-name {
+  display:flex;
+  background-color: red;
+  height:100px;
+  // width: 100px;
+
+}
 .search-div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12vh;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // padding: 12vh;
 }
 
 .name-input-field {
-  height: 55px;
+  margin-bottom: 25px;
+  margin-top: 16px;
+  padding: 0 12px;
+  font-weight: 400;
+  font-size: 18spx;
+  color: #5E5E5E;
 }
 
 .search-top-wrapper {
   margin-top: 7vh;
-  width: 100vw;
+  // width: 100vw;
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
@@ -41,3 +58,52 @@
   margin-right: 22px;
 }
 
+.visitor-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // width:100vw;
+  justify-content: center;
+  // background-color: red;
+}
+
+.visitor-form-field {
+  color:#6966F6 !important;
+  background-color: #f5f5f5 !important;
+  width: 80vw !important;
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 22px !important;
+  min-height: 30px !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  margin-bottom: 55px;
+  letter-spacing: .5px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid #6966F6 !important;
+}
+.visitor-form-field::placeholder {
+  color:#6966F6 !important;
+}
+
+
+.search-bar-big {
+  -webkit-appearance: none;
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  border-radius: 55px;
+  border-width: 0 !important;
+  padding: 7px;
+  margin: 9px;
+  text-align: center;
+  height: 33px;
+  width: 80vw;
+  font-size: 13px;
+  //  -webkit-box-shadow: 0px 0px 88px -7px rgba(0, 0, 0, 0.17)!important;
+  // box-shadow: 0px 0px 88px 7px rgba(0, 0, 0, 0.17) !important;
+}
+.search-bar-big::placeholder {
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 20px !important;
+  color:#6966F6 !important;
+}
