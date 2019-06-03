@@ -1,16 +1,16 @@
 <div class="jsTrigger-makeSwipe jsTrigger-copyToClipboard jsTrigger-feedbackModal b-gray">
-   <div class="master-container">
+  <div class="master-container">
+
     <div class="inbox-title">
-      <p class="inbox-user"> <i class="fas fa-user user-icon"></i><%= current_user.first_name %></p>
+      <img src="<%= asset_path 'avatar.png'%>"> </img> <%= current_user.first_name.capitalize %>
     </div>
 
     <div class="paper-wrapper">
       <%#= link_to "Add new reko", new_reko_path(token: current_user.token)  %>
-
       <div class="inbox-top-nav">
         <div class="copy-link-nav">
-          <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
-          <button id="<%= 'bttnCopyVisitorLink' if @movies.size > 0 %>" class="bttn js-copy reko-link b-violet <%= 'hidden-link-button' if @movies.size == 0 %>">
+          <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly="true" style="opacity:0; width:1px; height:1px;"/>
+          <button id="<%= 'bttnCopyVisitorLink' if @movies.size > 0 %>" type='button' class="bttn js-copy reko-link b-violet <%= 'hidden-link-button' if @movies.size == 0 %>">
             <%= @visitor_link %>
           </button>
         </div>
@@ -21,10 +21,8 @@
           <%= link_to "+", new_reko_path, class:"bttn-round" %>
       </div>
 
-
-
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- DONT TOUCH BELOW OR ASSUNTA WILL KILL ME -->
+<!-- DONT TOUCH BELOW OR ASSUNTA WILL KILL YOU -->
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
       <%if @movies.size > 0 %>
@@ -79,18 +77,23 @@
       <% else %>
         <div class="empty-reko-list">
           <h3 class="rekos-are-empty">
-            Your reko inbox is empty.
+            You haven't received any rekos yet...
           </h3>
-          <h4 class="rekos-are-empty send-link">
-            Send this link to your friends to get rekos:
-          </h4>
-
+          <div class="link-copy">YOUR REKO LINK:</div>
           <div class="copy-link-nav">
             <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
-            <button id="bttnCopyVisitorLink" class="bttn js-copy js-copy-large reko-link b-violet">
+            <button id="bttnCopyVisitorLink" readonly="true" class="bttn js-copy js-copy-large reko-link b-violet">
               <%= @visitor_link %>
             </button>
           </div>
+
+          <img src="<%= asset_path 'finger.png'%>" class="animate-reveal animate-first"> </img>
+          <h4 class="rekos-are-empty send-link animate-reveal animate-first">
+            Sending this link to your friends <br>will let them populate your Reko inbox.   <bso they can give you rekos.
+          </h4>
+
+
+
         </div>
       <%end %>
     </div>
