@@ -6,6 +6,7 @@ import { toggleButtons } from "../components/user-preference-choice";
 import { copyToClipboard } from "../components/copy-to-clipboard";
 import { feedbackModal } from "../components/feedback-modal";
 
+
 /*
  * IMPORTANT
  * IF YOU USE JAVASCRIPT BE SURE THAT YOU FOLLOW THE FOLLOGIN PATTERN

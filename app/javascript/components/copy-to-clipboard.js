@@ -4,8 +4,9 @@ const copyToClipboard = function(elementId) {
   document.getElementById("bttnCopyVisitorLink").addEventListener("click", (event) => {
     var input = document.getElementById("visitorLink");
     var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
-
+    console.log(input)
     if (isiOSDevice) {
+      // input.classList.remove('d-none')
       var editable = input.contentEditable;
       var readOnly = input.readOnly;
 
@@ -20,15 +21,18 @@ const copyToClipboard = function(elementId) {
       selection.addRange(range);
 
       input.setSelectionRange(0, 999999);
+
       input.contentEditable = editable;
-      input.readOnly = readOnly;
+      input.readOnly = true;
     } else {
       input.select();
     }
 
     document.execCommand('copy');
+    input.blur()
+    // input.classList.add('d-none')
     const bttnCopyLink = document.getElementById("bttnCopyVisitorLink");
-    bttnCopyLink.innerText = "copied!";
+    bttnCopyLink.innerText = "Copied to Clipbard!";
     bttnCopyLink.classList.remove("b-violet");
     bttnCopyLink.classList.add("b-dark-green");
     bttnCopyLink.setAttribute("style", "transition: ease 0.5s;");
