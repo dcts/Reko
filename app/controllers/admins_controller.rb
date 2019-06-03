@@ -40,6 +40,7 @@ class AdminsController < ApplicationController
   end
 
   def search
+    @image_urls = Movie.all.map { |movie| movie.image_url }
   end
 
   def authenticate_admin

@@ -21,126 +21,13 @@
 
         <!-- CARDS STYLING -> _search-cards.scss -->
         <div id="search-cards-container">
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+          <% @image_urls.each do |image_url| %>
+            <div class="search-card" style="background: url('<%= image_url %>'); background-size: cover;">
+              <div class="green-layer">
+                <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+              </div>
             </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
-          <div class="search-card">
-            <div class="green-layer">
-              <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
-            </div>
-          </div>
+          <% end %>
         </div>
 
         <div id="sticky-footer-send">
