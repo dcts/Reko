@@ -24,7 +24,10 @@
             <input id="rekoTickImgUrl" type="hidden" value="<%= asset_path 'white-check.svg' %>">
             <input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
             <!-- END OF HIDDEN FIELDS -->
-            <input autocomplete="off" id="inputKeyword" name="" type="text" class= "search-bar-big" placeholder="&#xf0eb; Search for Rekos" style="font-family:Arial, FontAwesome">
+            <div class="search-icon-wrapper">
+              <input autocomplete="off" id="inputKeyword" name="" type="text" class= "search-bar-big f-gray" placeholder="Search for Rekos...">
+              <img src="<%= asset_path 'search.svg'%>" alt="search">
+            </div>
             <button id="sendRekosButton" class="invisible bttn-round-small"></button>
           </form>
 
