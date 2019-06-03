@@ -1,5 +1,5 @@
 class RekosController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :onboarding, :new, :invalid_token, :create ]
+  skip_before_action :authenticate_user!, only: [ :onboarding, :search, :new, :invalid_token, :create ]
 
   def index
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: current_user.id)
@@ -10,6 +10,16 @@ class RekosController < ApplicationController
   def onboarding
     @token = params[:token] # get token from params
     @sender_name = params[:sender_name] # grab sender_name from params
+    @user = User.find_by_token(params[:token]) # returns user instance or nil
+    if @user.nil?
+      redirect_to invalid_token_path
+    end
+  end
+
+  def search
+    @token = params[:token] # get token from params
+    @sender_name = params[:sender_name] # grab sender_name from params
+    @search_query = params[:search_query] # grab sender_name from params
     @user = User.find_by_token(params[:token]) # returns user instance or nil
     if @user.nil?
       redirect_to invalid_token_path

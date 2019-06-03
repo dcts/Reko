@@ -1,0 +1,139 @@
+<!-- DO NOT CHANGE THE ID NAMING -->
+<!-- <div class="background-container dark-violet"> -->
+
+<!-- <div class="jsTrigger-addNewRekos jsTrigger-itunesApiCall background-container b-white"> -->
+  <!-- <div class="master-container"> -->
+
+    <!-- <div class="search-page-wrapper"> -->
+      <!-- <div class="search-top-text"> -->
+      <div id="search-page-container">
+
+        <div id="header-content">
+          Recommendations from Allan for Assunta:
+        </div>
+        <div id="sticky-search-navbar">
+          <form id="formAjaxSearch" class="visible">
+            <!-- ENCODE "auth-token", "rekoTickImgUrl" and "userSignedId" inside hidden fields -->
+            <input id="auth" type="hidden" value="<%= session[:_csrf_token] %>">
+            <input id="rekoTickImgUrl" type="hidden" value="<%= asset_path 'white-check.svg' %>">
+            <input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
+            <!-- END OF HIDDEN FIELDS -->
+            <input autocomplete="off" id="inputKeyword" name="" type="text" class= "input-field-text-md" placeholder="search for movies">
+          </form>
+        </div>
+
+        <!-- CARDS STYLING -> _search-cards.scss -->
+        <div id="search-cards-container" class="invisible">
+          <% Movie.all.map {|movie| movie.image_url }.each do |image_url| %>
+            <div class="search-card" style="background: url('<%= image_url %>'); background-size: cover;">
+              <div class="green-layer">
+                <img src="<%= asset_path 'white-check.svg' %>" alt="rekoTickImg">
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div id="sticky-footer-placeholder" style="height:120px"></div>
+        <div id="sticky-footer-send">
+          <button id="sendRekosButton" class="bttn-round-small invisible"></button>
+        </div>
+
+      </div>
+
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+
+
+<style>
+body {
+  background: rgba(0,0,0);
+}
+#inputKeyword {
+  height: 19px;
+  border-radius: 50px;
+}
+.search-card {
+  background: url("https://fanart.tv/fanart/movies/605/movieposter/the-matrix-revolutions-524679650709a.jpg");
+  background-size: cover;
+}
+#search-page-container {
+  /*height: 800px;*/
+  position: relative;
+}
+#sticky-search-navbar {
+  /*background-color: #333;*/
+  width: 100%;
+  height: 60px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*background: transparent;*/
+  background: -webkit-gradient(
+    linear, left top, left bottom,
+    from(rgba(0,0,0,1)),
+    to(rgba(0,0,0,0))
+  );
+}
+#sticky-footer-send {
+  overflow: hidden;
+  /*background-color: #333;*/
+  width: 100%;
+  height: 60px;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*background: transparent;*/
+  background: -webkit-gradient(
+    linear, left bottom, left top,
+    from(rgba(0,0,0,1)),
+    to(rgba(0,0,0,0))
+  );
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:120px;
+}
+#sendRekosButton {
+  /*top: 90%;*/
+  /*left: 45%;*/
+  /*position: absolute;*/
+}
+</style>
+
+
+
+
+<script>
+  const sendRekosButton = document.getElementById("sendRekosButton");
+
+  const cards = document.querySelectorAll(".search-card");
+  console.log(cards);
+  cards.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      event.currentTarget.classList.toggle("selected");
+      setButtonState();
+    });
+  });
+
+  const setButtonState = () => {
+    if (document.querySelectorAll(".selected").length > 0) {
+      console.log("at least one selected");
+      sendRekosButton.classList.remove("invisible");
+      sendRekosButton.classList.add("visible");
+      // sendRekosButton.style.visibility = "visible";
+    } else {
+      console.log("none selected");
+      sendRekosButton.classList.remove("visible");
+      sendRekosButton.classList.add("invisible");
+      // sendRekosButton.style.visibility = "collapse";
+    }
+  };
+</script>
