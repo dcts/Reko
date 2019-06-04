@@ -21,9 +21,12 @@ const makeSwipe = () => {
           }
         },
         observerUpdate: function() {
-          this.update()
+          console.log('update!!!')
           if (this.el.classList.contains('no-swipe-left')) {
-            this.initialSlide = 0;
+            // this.initialSlide = 0;
+            console.log(this.el)
+            this.update();
+            this.slideTo(0);
           }
         }
       }
