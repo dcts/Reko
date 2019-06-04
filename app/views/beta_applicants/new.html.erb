@@ -2,12 +2,15 @@
   <div class=space-top>
   </div>
     <div class="still-testing">
-      <div class="f-white">Reko is currently only open to friends and family...</div>
+      <div id="inline-text" class="f-white">Reko is currently only open to friends and family...</div>
     </div>
     <div class="paper-wrapper-beta">
       <div class="beta-form-wrapper">
+        <div class="inline-back-button">
+        <button type="button" onclick="javascript:history.back()" id="backbutton-beta-for-f">BACK</button>
         <div class="beta-title">
           Leave us your email if you're interested:
+        </div>
         </div>
         <%= form_tag beta_applicants_path, :class => "beta-form-new" do %>
           <%= text_field_tag :email, nil, placeholder: 'Email', class: "new-form-field" %>
