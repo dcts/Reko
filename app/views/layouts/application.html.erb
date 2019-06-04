@@ -24,12 +24,17 @@
   </head>
 
   <body>
-    <%#= render 'shared/navbar' %>
-    <%#= render 'shared/flashes' %>
-    <%= yield %>
-
+    <!-- <div class="desktop-div"> -->
+      <%#= render 'shared/navbar' %>
+      <%#= render 'shared/flashes' %>
+      <%= yield %>
+    <!-- </div> -->
+    <div class="hider">
+      <h1 class="hidden-text">Sorry, Reko is mobile only.</h1>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+
   </body>
 
 </html>
