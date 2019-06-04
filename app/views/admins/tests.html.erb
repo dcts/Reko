@@ -6,11 +6,11 @@
   <h2>TEST AREA</h2>
   <a id="avatar-inbox-page" href="#" class="bttn">SEND POST</a>
 </div>
+<img id="newAvatar" src="" alt="">
 
 
 <script>
   console.log("Hi from Inline Script");
-
   // LOAD DATA
   const authenticityToken = document.getElementById("auth").value;
   // LOAD DOM ELEMENTS
@@ -27,6 +27,11 @@
     xhr.onload = function () {
       console.log("respponse here:");
       console.log(this.response);
+      const jsonResponse = JSON.parse(this.response);
+      console.log(jsonResponse.image_url);
+      // console.log(new_image_url);
+      const imagePlaceholder = document.getElementById("newAvatar");
+      imagePlaceholder.src = jsonResponse.image_url;
     };
     // DATA TO SEND
     const toSend = {
