@@ -7,6 +7,7 @@
     "jquery": "^3.4.1",
     "modernizr": "^3.7.1",
     "popper.js": "^1.15.0",
+    "siema": "^1.5.1",
     "sweetalert2": "^8.11.7",
     "swiper": "^4.5.0"
   },
