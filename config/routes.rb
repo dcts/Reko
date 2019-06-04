@@ -42,6 +42,6 @@ Rails.application.routes.draw do
   get '/admins/beta_applicants', to: "admins#beta_applicants"
   get '/admins/tests', to: "admins#tests"
   get '/admins/allan', to: "admins#allan"
-  get '/admins/search', to: "admins#search"
+  get '/admins/feedbacks', to: "admins#feedbacks"
 
 end

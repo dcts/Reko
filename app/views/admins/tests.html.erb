@@ -1,22 +1,6 @@
 <%= render partial: "overrider_style_admins" %>
-<meta class="jsTrigger-testJsErb jsTrigger-removeMediaQueries">
+<%= render partial: "navbar" %>
 
-<div class="jsTrigger-copyToClipboard background-container b-violet">
-  <div class="master-container">
-    <div class="paper-wrapper">
-      <h2>TESTING TMDb</h2>
-
-
-    </div>
-  </div>
+<div class="container-fluid jsTrigger-removeMediaQueries">
+  <h2>TEST AREA</h2>
 </div>
-
-<script>
-  const cards = document.querySelectorAll(".search-card");
-  console.log(cards);
-  cards.forEach((card) => {
-    card.addEventListener("click", (event) => {
-      event.currentTarget.classList.toggle("selected");
-    });
-  });
-</script>
