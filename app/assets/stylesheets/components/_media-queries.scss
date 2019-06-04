@@ -27,9 +27,14 @@ body {
     height: 100%;
   }
   .hidden-text {
-      margin-top: -20vh;
-      color: white;
-      visibility: visible;
+    // margin-top: -20vh;
+    color: white;
+    visibility: visible;
+  }
+  #sorry-text {
+    position: static;
+    margin-top: 66px;
+    font-size: 40px;
   }
 }
 
