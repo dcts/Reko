@@ -70,9 +70,14 @@ const addNewRekos = () => {
   // ITUNES API CALL FROM JS
   const apiCall = (searchTerm) => {
     // NEEDED TO PREVENT CORS FAILURE? -> do more research on it when time...
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxysurl = "https://cors-anywhere.herokuapp.com/";
     const url = "https://itunes.apple.com/search?media=movie&term=" + normalize(searchTerm); //
-    fetch(proxyurl + url)
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Origin": window.location.origin
+      }
+    })
     .then((response) => response.json())
     .then((data) => {
       let movies = [];
