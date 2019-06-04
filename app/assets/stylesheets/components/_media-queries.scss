@@ -8,13 +8,12 @@ body {
   background-color:  #6966F6;
 }
 
-.hidden-text {
-  visibility:hidden;
+#hidden-text {
+  visibility: collapse;
 }
 
-
 @media (min-width: 1000px) {
-  .hider {
+  #media-query-trigger {
     background-color: #6966F6;
     background-image: url(desktop.gif);
     background-size: 355px;
@@ -26,12 +25,9 @@ body {
     width: 100%;
     height: 100%;
   }
-  .hidden-text {
-    // margin-top: -20vh;
+  #hidden-text {
     color: white;
     visibility: visible;
-  }
-  #sorry-text {
     position: static;
     margin-top: 66px;
     font-size: 40px;

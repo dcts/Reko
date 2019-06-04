@@ -34,9 +34,7 @@
       <%#= render 'shared/flashes' %>
       <%= yield %>
     <!-- </div> -->
-    <div class="hider">
-      <h1 id="sorry-text" class="hidden-text">Sorry, Reko is mobile only.</h1>
-    </div>
+    <%= render partial: "shared/media_query_fallback" %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
 

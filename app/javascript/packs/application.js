@@ -7,6 +7,10 @@ import { addNewRekos } from "../search-itunes-api/add-new-rekos";
 import { toggleButtons } from "../components/user-preference-choice";
 import { copyToClipboard } from "../components/copy-to-clipboard";
 import { feedbackModal } from "../components/feedback-modal";
+import { removeMediaQueries } from "../components/remove-media-queries";
+
+// conditionally trigger your script (if the right page is loaded)
+// use the helper function `triggerJsOnTarget`
 
 
 /*
@@ -35,14 +39,14 @@ const triggerJsOnTarget = (initializeFunction, classname) => {
 
 // INITIALIZERS
 console.log("Hi from JS-initializer script!");
-triggerJsOnTarget(copyToClipboard, "jsTrigger-copyToClipboard");
-triggerJsOnTarget(addNewRekos,     "jsTrigger-addNewRekos");
-triggerJsOnTarget(makeSwipe,       "jsTrigger-makeSwipe");
-triggerJsOnTarget(toggleButtons,   "jsTrigger-toggleButtons");
-triggerJsOnTarget(feedbackModal,   "jsTrigger-feedbackModal");
-triggerJsOnTarget(onboarding,      "jsTrigger-onboarding");
-triggerJsOnTarget(search,          "jsTrigger-search");
-
+triggerJsOnTarget(copyToClipboard,    "jsTrigger-copyToClipboard");
+triggerJsOnTarget(addNewRekos,        "jsTrigger-addNewRekos");
+triggerJsOnTarget(makeSwipe,          "jsTrigger-makeSwipe");
+triggerJsOnTarget(toggleButtons,      "jsTrigger-toggleButtons");
+triggerJsOnTarget(feedbackModal,      "jsTrigger-feedbackModal");
+triggerJsOnTarget(onboarding,         "jsTrigger-onboarding");
+triggerJsOnTarget(search,             "jsTrigger-search");
+triggerJsOnTarget(removeMediaQueries, "jsTrigger-removeMediaQueries");
 
 
 

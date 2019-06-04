@@ -1,6 +1,7 @@
+<%= render partial: "overrider_style_admins" %>
 <%= render partial: "navbar" %>
 
-<div class="container">
+<div class="container jsTrigger-removeMediaQueries">
   <h2>User <%= "#{@user.first_name} #{@user.last_name}"%></h2>
   <%= render partial: "users/table_user", locals: { user: @user } %>
   <h3>Rekos Inbox</h3>

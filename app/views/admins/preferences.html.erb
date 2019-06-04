@@ -1,6 +1,7 @@
 <%= render partial: "navbar" %>
+<%= render partial: "overrider_style_admins" %>
 
-<div class="container">
+<div class="container jsTrigger-removeMediaQueries">
   <h2>Preferences</h2>
   <h4>(<%= @preferences.size %> Preferences)</h4>
   <%= render partial: "preferences/table_preferences", locals: { preferences: @preferences } %>

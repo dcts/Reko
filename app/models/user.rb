@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :token, uniqueness: true
 
   # RANDOMLY ASSIGN AVATAR
-  validate :assign_random_avatar,
+  validate :assign_random_avatar
 
   # Class method that returns a hash with key=token and value=user_id
   # -> needed to check if a link exists in the rekos controller

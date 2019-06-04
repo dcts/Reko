@@ -1,6 +1,7 @@
 <%= render partial: "navbar" %>
+<%= render partial: "overrider_style_admins" %>
 
-<div class="container">
+<div class="container jsTrigger-removeMediaQueries">
   <h2>Beta Applicants List</h2>
   <h4>(<%= @beta_applicants.size %> Beta Applicants)</h4>
   <%= render partial: "beta_applicants/table_beta_applicants", locals: { beta_applicants: @beta_applicants } %>
