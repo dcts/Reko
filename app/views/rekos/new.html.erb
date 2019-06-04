@@ -3,6 +3,8 @@
 <!-- ENCODE "auth-token", "rekoTickImgUrl" and "userSignedId" inside hidden fields -->
 <input id="rekoTickImgUrl" type="hidden" value="<%= asset_path 'white-check.svg' %>">
 <input id="userSignedIn" type="hidden" value="<%= user_signed_in? %>">
+<input id="base" type="hidden" value="<%= @base %>">
+<input id="classifier" type="hidden" value="<%= @classifier %>">
 <input id="params_senderName" type="hidden" value="<%= @sender_name %>">
 <input id="params_token" type="hidden" value="<%= @token %>">
 <input id="params_searchTerm" type="hidden" value="<%= @search_term %>">
@@ -24,9 +26,6 @@
     <button id="sendRekosButton" class="bttn-round-small invisible"></button>
   </div>
 </div>
-
-
-
 
 
 

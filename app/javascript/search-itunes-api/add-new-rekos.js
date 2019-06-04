@@ -1,17 +1,20 @@
 const addNewRekos = () => {
   console.log("TRIGGERED : addNewRekos");
+
   // -----------------------
   // LOAD DATA + DOM OBJECTS
   // -----------------------
   // controll post requests
   let count = 0;
   let target;
-  // selected itunes_id's selected
-  let selectedItunesIds = [];
-  // load img tick
+  // selected itunes_id's
+  let selectedItunesIds = []; // UPDATE: now they are TMDb Id's
+  // load assets
   const rekoTickImgUrl = document.getElementById("rekoTickImgUrl").value;
   const userSignedIn = document.getElementById("userSignedIn").value === "true";
   const authenticityToken = document.querySelector('[name="csrf-token"]').content;
+  const base = document.getElementById('base').value;
+  const classifier = document.getElementById('classifier').value;
   // get params (from url)
   let senderName = document.getElementById('params_senderName').value;;
   const token = document.getElementById('params_token').value;
@@ -27,9 +30,19 @@ const addNewRekos = () => {
   // ----------------------------
   // ADD EVENTLISTENER FOR AJAX CALL
   inputKeyword.addEventListener("keyup", (event)=> {
-    apiCall(inputKeyword.value);
+    deleteCardsIfNotSelected(); // reset cards
+    if (inputKeyword.value.length >= 3) { // min characters to trigger API call = 3
+      apiCall(inputKeyword.value);
+    }
   });
-
+  formAjaxSearch.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const cards = document.querySelectorAll(".selected");
+    target = cards.length;
+    cards.forEach((card) => {
+      sendPostRequestToCreateReko(card);
+    });
+  });
   sendRekosButton.addEventListener('click', () => {
     const cards = document.querySelectorAll(".selected");
     target = cards.length;
@@ -37,7 +50,7 @@ const addNewRekos = () => {
       sendPostRequestToCreateReko(card);
     });
   });
-  const myFunction = (event) => {
+  const toggleCard = (event) => {
     const card = event.currentTarget;
     card.classList.toggle("selected");
     setButtonState();
@@ -48,12 +61,12 @@ const addNewRekos = () => {
   };
   const addCardEventListeners = () => {
     getAllCards().forEach((card) => {
-      card.addEventListener("click", myFunction);
+      card.addEventListener("click", toggleCard);
     });
   };
   const removeCardEventListeners = () => {
     getAllCards().forEach((card) => {
-      card.removeEventListener("click", myFunction);
+      card.removeEventListener("click", toggleCard);
     });
   };
 
@@ -67,41 +80,70 @@ const addNewRekos = () => {
       sendRekosButton.classList.add("invisible");
     }
   };
-  // ITUNES API CALL FROM JS
+  // TMDb API CALL FROM JS
   const apiCall = (searchTerm) => {
-    // NEEDED TO PREVENT CORS FAILURE? -> do more research on it when time...
-    // const proxysurl = "https://cors-anywhere.herokuapp.com/";
-    const url = "https://itunes.apple.com/search?media=movie&term=" + normalize(searchTerm); //
-    fetch(url, {
-      method: "GET",
-      headers: {
-        "Origin": window.location.origin
-      }
-    })
+    const query = searchTerm;
+    const url = `${base}${classifier}&query=${query}`;
+    fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      let movies = [];
-      data.results.forEach((result) => { // loop over all results
-        if (result.kind === "feature-movie") {
-          const movie = buildMovie(result);
-          movies.push(movie);
+      let results = data.results;
+      const movies = []; // contains movies, series and documentaries!
+      results.forEach((result) => {
+        if (validResult(result)) {
+          if (result.media_type === "movie" && typeof result.title !== 'undefined') {
+            const movie = buildMovie(result);
+            movies.push(movie);
+            console.log(movie);
+          } else if (result.media_type === "tv" && typeof result.name !== 'undefined') {
+            const movie = buildSeries(result);
+            movies.push(movie);
+            console.log(movie);
+          }
         }
       });
-      deleteCardsIfNotSelected(); // reset cards
-      // rdelete all event listeners from selected cards
       addCards(movies);
       removeCardEventListeners();
       addCardEventListeners();
     });
   };
 
-  const buildMovie = (apiResultObject) => {
+  const buildMovie = (result) => {
     return {
-      "title": apiResultObject.trackName,
-      "artworkUrl": resizeImage(apiResultObject.artworkUrl100),
-      "itunesId": apiResultObject.trackId,
-      "primaryGenreName": apiResultObject.primaryGenreName,
+      "title": result.title,
+      "artworkUrl": buildImageUrl(result.poster_path),
+      "itunesId": result.id,
+      "primaryGenreName": `Movie${contentType(result.genre_ids[0])}`,
     }
+  };
+  const buildSeries = (result) => {
+    return {
+      "title": result.name,
+      "artworkUrl": buildImageUrl(result.poster_path),
+      "itunesId": result.id,
+      "primaryGenreName": `Series${contentType(result.genre_ids[0])}`,
+    }
+  };
+
+  // returns type of the movie or series (documentary or normal)
+  // genre ID taken from TMDb
+  const contentType = (genreId) => {
+    return (genreId === 99 ? " (doc)" : "");
+  }
+  // validate result
+  const validResult = (result) => {
+    // id needs to exist
+    if (typeof result.id === 'undefined') {
+      return false;
+    // genre_ids needs to exist
+    } else if (typeof result.genre_ids === 'undefined') {
+      return false;
+    // poster_path cant be null or undefined
+    } else if (typeof(result.poster_path) === 'undefined' || result.poster_path == null) {
+      return false;
+    }
+    // all validations passed!
+    return true;
   };
 
   const deleteCardsIfNotSelected = () => {
@@ -116,17 +158,9 @@ const addNewRekos = () => {
     });
   };
 
+  // JS DOM HELPER METHODS
   const removeElement = (el) => {
     el.parentNode.removeChild(el);
-  };
-
-  const addCards = (movies) => {
-    movies.forEach((movie) => {
-      const card = buildCard(movie);
-      if (selectedItunesIds.includes(card.dataset.itunes_id) == false) {
-        cardsContainer.insertAdjacentElement('beforeend', card);
-      }
-    });
   };
 
   const deleteChildren = (element) => {
@@ -137,6 +171,23 @@ const addNewRekos = () => {
 
   const addChild = (element, movie) => {
     element.insertAdjacentHTML("beforeend", `<p>${movie.title}</p>`);
+  };
+
+  const createElWithClasses = (tagname, classnameArr) => {
+    const el = document.createElement(tagname);
+    classnameArr.forEach((classname) => {
+      el.classList.add(`${classname}`);
+    });
+    return el
+  };
+
+  const addCards = (movies) => {
+    movies.forEach((movie) => {
+      const card = buildCard(movie);
+      if (selectedItunesIds.includes(card.dataset.itunes_id) == false) {
+        cardsContainer.insertAdjacentElement('beforeend', card);
+      }
+    });
   };
 
   const buildCard = (movie) => {
@@ -159,14 +210,6 @@ const addNewRekos = () => {
     return searchCardDiv
   };
 
-  const createElWithClasses = (tagname, classnameArr) => {
-    const el = document.createElement(tagname);
-    classnameArr.forEach((classname) => {
-      el.classList.add(`${classname}`);
-    });
-    return el
-  };
-
   const createRekoTickImage = () => {
     const img = document.createElement('img');
     img.src = rekoTickImgUrl;
@@ -177,19 +220,10 @@ const addNewRekos = () => {
     return term.replace(/ /g, '+');
   };
 
-  const resizeImage = (url) => {
-    return url.replace("100x100bb.jpg", "400x400bb.jpg");
+  // BUILD URLS
+  const buildImageUrl = (posterPath) => {
+    return `https://image.tmdb.org/t/p/w200${posterPath}`;
   };
-
-  formAjaxSearch.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const movies = []; // save movie titles
-    const cards = document.querySelectorAll(".selected");
-    target = cards.length;
-    cards.forEach((card) => {
-      sendPostRequestToCreateReko(card);
-    });
-  });
 
   // GET REDIRECTION URL
   const buildRedirectionUrl = () => {
@@ -204,14 +238,10 @@ const addNewRekos = () => {
 
   const sendPostRequestToCreateReko = (card) => {
     const xhr = new XMLHttpRequest();
-    // listener for server response
-    // whenever the request gets a response the .onload() function gets triggered
+    // .onload() function gets triggered when server response arrives
     xhr.onload = function () {
       count += 1;
       if (count == target) {
-        // console.log("REDIRECTING TO:");
-        // console.log(buildRedirectionUrl());
-        // console.log(userSignedIn);
         window.location = buildRedirectionUrl();
       }
     };
