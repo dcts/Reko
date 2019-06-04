@@ -31,10 +31,10 @@
 
 .beta-title {
   margin-bottom: 25px;
-  margin-top: 16px;
+  // margin-top: 16px;
   padding: 0 12px;
   font-weight: 400;
-  font-size: 18spx;
+  font-size: 25px;
   color: #5E5E5E;
 }
 
@@ -80,3 +80,9 @@
 
 }
 
+#inline-text{
+  font-size:25px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+}

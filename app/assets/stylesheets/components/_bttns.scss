@@ -222,3 +222,32 @@
   margin-top:20px;
   opacity:0.7;
 }
+
+#backbutton-beta-for-f{
+  background-color: transparent !important;
+  border-radius: 50%;
+  font-size: 17px;
+  width: 25px;
+  height: 25px;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  background-image: url(back-arrow.svg);
+  background-size: contain;
+  background-position: center;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  letter-spacing: 1px;
+  // position: relative;
+  border:black;
+  opacity: .5;
+  // top: 30%;
+  // left: -45%;
+  margin-top: 5px;
+  // margin-bottom: 20px;
+}
+
+.inline-back-button {
+  display:flex;
+  margin-top: 10px;
+
+}
