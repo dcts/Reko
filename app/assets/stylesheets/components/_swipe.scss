@@ -5,21 +5,33 @@ html, body {
 }
 
 .swiper-card {
-  width: 320px;
+  width: 100vw;
   height: 90px;
   overflow: hidden;
-  margin: 20px 0;
-  -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
-  box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
-  border-radius: 0 0 20px 20px;
+  margin: 0;
+  border-top: .5px solid gray;
+  // -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
+  // box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
+  // border-radius: 0 0 20px 20px;
+}
+
+#movie-list {
+  margin-top: 20px;
 }
 
 #movie-list:last-child {
   margin-bottom: 90px;
+  border-bottom: .5px solid gray;
 }
 
 .light-grey-background {
-  background-color: lightgrey;
+  background-color: white;
+  // background-image: url('seen');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: 100px;
+  opacity: 0.3;
+  // background-color: lightgrey;
 }
 
 .swiper-container {
@@ -48,14 +60,18 @@ html, body {
 .delete-slide {
   min-width: 100px;
   max-width: 320px;
-  background-color: #F35404;
+  background-color: #FF5C31;
+  background-image: url('naw-icon');
+  background-position: center;
+  background-size: 50px;
+  background-repeat: no-repeat;
   color: #fff;
-  border-radius: 0 0 20px 0;
+  // border-radius: 0 0 20px 0;
 }
 
 .main-slide {
   width: 100%;
-  border-radius: 3px 3px 3px 20px;
+  // border-radius: 3px 3px 3px 20px;
   display: flex;
   justify-content: space-between;
   font-size: 10px;
@@ -64,16 +80,20 @@ html, body {
 .mark-watched-slide {
   min-width: 100px;
   max-width: 320px;
-  background-color: #00CC66;
+  background-color: #61E786;
+  background-image: url(seen.png);
+  background-position: center;
+  background-size: 50px;
+  background-repeat: no-repeat;
   color: #fff;
-  border-radius: 0 0 0 20px;
+  // border-radius: 0 0 0 20px;
 
 }
 
 .reko-artwork {
   height: 90px;
   width: 90px;
-  border-radius: 0 3px 3px 0;
+  // border-radius: 0 3px 3px 0;
   background-size: cover;
   flex-shrink: 0;
 }
@@ -105,4 +125,18 @@ html, body {
 .in-card-avatar {
   margin-right: 5px;
 }
+
+// .no-swipe-left {
+//   margin-right: -20px;
+// }
+
+.seen {
+  position: relative;
+  right: 70px;
+  top: 55px;
+  font-size: 1.5rem;
+  color: #297A6A;
+  z-index: 2000;
+}
+
 

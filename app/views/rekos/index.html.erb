@@ -5,7 +5,7 @@
       <img src="<%= asset_path 'avatar.png'%>"> </img> <%= current_user.first_name.capitalize %>
     </div>
 
-    <div class="paper-wrapper">
+    <div class="paper-wrapper paper-wrapper-with-footer">
       <%#= link_to "Add new reko", new_reko_path(token: current_user.token)  %>
       <div class="inbox-top-nav">
         <div class="copy-link-nav">
@@ -19,10 +19,6 @@
             </div>
           </button>
         </div>
-        <!-- <div class="copy-link-nav">
-          <p>SEND LINK TO FRIENDS:</p>
-          <a class="js-copy bttn reko-link b-violet"><%= @visitor_link %></a>
-        </div> -->
           <%= link_to "+", rekos_new_search_path(token: current_user.token), class:"bttn-round" %>
       </div>
 
@@ -35,13 +31,12 @@
           <div id="movie-list">
 
             <% @movies.each do |reko| %>
-<!--               <div class="swiper-card-outer">
- -->            <div class="swiper-card" data-reko-id="<%= reko[:reko].id %>">
-                 <div class="swiper-container <%= 'no-swipe-left' if reko[:reko].done? %>">
+              <div class="swiper-card" data-reko-id="<%= reko[:reko].id %>">
+                <div class="swiper-container <%= 'no-swipe-left' if reko[:reko].done? %>">
                   <div class="swiper-wrapper">
                     <!-- MARK WATCHED -->
                     <div class="swiper-slide mark-watched-slide">
-                      <%= link_to "", reko_mark_as_done_path(reko[:reko]), method: :put, remote: true, class: "fas fa-check", style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
+                      <%= link_to "", reko_mark_as_done_path(reko[:reko]), method: :put, remote: true, style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"%>
                     </div>
 
                   <!-- MAIN SLIDE  -->
@@ -62,14 +57,20 @@
                         </div>
                       </div>
 
+
                       <div class="reko-artwork" style="background-image: url(<%= reko[:reko].recommendable.image_url %>);">
-                        <!-- <img src="<%= reko[:reko].recommendable.image_url %>" alt="" height="120"> -->
+
+                        <% if reko[:reko].done? %>
+                          <div class="seen">
+                            <%= image_tag "check-mark", alt: "alttext", width: 20 %>
+                          </div>
+                        <% end %>
                       </div>
                     </div>
 
                   <!-- DELETE REKO -->
                     <div class="swiper-slide delete-slide" >
-                      <%= link_to "", reko_mark_as_rejected_path(reko[:reko]), method: :put, remote: true, class: "fas fa-trash-alt", style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
+                      <%= link_to "", reko_mark_as_rejected_path(reko[:reko]), method: :put, remote: true, style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
                     </div>
 
                     </div>

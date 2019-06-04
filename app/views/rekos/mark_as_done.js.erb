@@ -16,11 +16,10 @@ function markAsDone() {
   // rekoDone.querySelector('.main-slide').classList.add('light-grey-background');
   rekoDone.querySelector('.can-be-marked-done').classList.add('light-grey-background');
 
-  rekoDoneBox.parentNode.appendChild(rekoDone);
-  rekoDone.querySelector(".swiper-container").classList.add('no-swipe-left')
+  rekoDoneBox.appendChild(rekoDone);
+  rekoDone.querySelector(".swiper-container").classList.add('no-swipe-left');
   rekoDone.querySelector('.mark-watched-slide').remove();
-  // markDoneSlide.remove();
-  // markDoneSlide.addEventListener
+
 
   // doneSwipers.forEach((node) => {
   //     node.previousElementSibling.remove();
