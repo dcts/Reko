@@ -13,6 +13,9 @@ class User < ApplicationRecord
   before_create :generate_tokens # url tokens
   validates :token, uniqueness: true
 
+  # RANDOMLY ASSIGN AVATAR
+  validate :assign_random_avatar,
+
   # Class method that returns a hash with key=token and value=user_id
   # -> needed to check if a link exists in the rekos controller
   def self.token_hashmap
@@ -41,6 +44,14 @@ class User < ApplicationRecord
   # returns role of the user as string
   def role
     admin ? "admin" : "user"
+  end
+
+  # assigns random avatar
+  # HARDCODED 9 random AVATARS
+  def assign_random_avatar
+    if self.image_url.nil?
+      self.image_url = "random_avatars/#{(rand * 9).ceil}.png"
+    end
   end
 
   protected
