@@ -60,11 +60,9 @@
 
                       <div class="reko-artwork" style="background-image: url(<%= reko[:reko].recommendable.image_url %>);">
 
-                        <% if reko[:reko].done? %>
-                          <div class="seen">
+                          <div class="seen" style="visibility: hidden">
                             <%= image_tag "check-mark", alt: "alttext", width: 20 %>
                           </div>
-                        <% end %>
                       </div>
                     </div>
 
