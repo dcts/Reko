@@ -4,15 +4,27 @@
 // rekoDone.remove;
 // rekoList.insertAdjacentElement('beforeend', rekoDone);
 
-var rekoDone = document.querySelector("[data-reko-id='<%= @reko.id %>']");
-var rekoDoneBox = rekoDone.parentNode;
-var markDoneSlide = document.querySelector('.mark-watched-slide')
+function markAsDone() {
+  const rekoDone = document.querySelector("[data-reko-id='<%= @reko.id %>']");
+  const rekoDoneBox = rekoDone.parentNode;
+  const markDoneSlide = document.querySelector('.mark-watched-slide');
+  const doneSwipers = document.querySelectorAll('.light-grey-background');
 
-// get main slide to add class
-// rekoDone.querySelector('.main-slide').classList.add('light-grey-background');
-rekoDone.querySelector('.can-be-marked-done').classList.add('light-grey-background');
+  // remove delete slide from done swipers
 
-rekoDoneBox.parentNode.appendChild(rekoDone);
+  // get main slide to add class
+  // rekoDone.querySelector('.main-slide').classList.add('light-grey-background');
+  rekoDone.querySelector('.can-be-marked-done').classList.add('light-grey-background');
 
-// markDoneSlide.addEventListener
+  rekoDoneBox.parentNode.appendChild(rekoDone);
+  rekoDone.querySelector(".swiper-container").classList.add('no-swipe-left')
+  rekoDone.querySelector('.mark-watched-slide').remove();
+  // markDoneSlide.remove();
+  // markDoneSlide.addEventListener
 
+  // doneSwipers.forEach((node) => {
+  //     node.previousElementSibling.remove();
+  // });
+}
+
+markAsDone()
