@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
+
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141320036-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141320036-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-141320036-1');
-  </script> -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-
+      gtag('config', 'UA-141320036-1');
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, user-scalable=no, user-scalable=0">
     <title>Reko</title>
     <meta description="Get recommendations for movies, shows and documentaries from your friends, because friends know best!">
+    <title>
+      <meta property="og:title" content="I need rekommendations" />
+      <meta property="og:type" content="logo-animate.gif" />
+      <meta property="og:url" content="http://www.sendrekos.com" />
+      <meta property="og:image" content="https://i.imgur.com/OlKaTu7.png" />
+    </title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
