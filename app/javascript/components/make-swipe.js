@@ -25,8 +25,11 @@ const makeSwipe = () => {
           if (this.el.classList.contains('no-swipe-left')) {
             // this.initialSlide = 0;
             console.log(this.el)
+            console.log(this.el.querySelector('.seen'));
+            this.el.querySelector('.seen').setAttribute("style", "visibility:visible;");
             this.update();
             this.slideTo(0);
+            // add class to add checkmark
           }
         }
       }
