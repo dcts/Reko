@@ -26,7 +26,7 @@
   justify-content: space-between;
   width: 100%;
   flex-direction: row;
-  margin-bottom: 25px;
+  // margin-bottom: 25px;
   margin-left: 11px;
   min-height: 50px;
 }
@@ -106,10 +106,9 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  margin-top: 30px;
-  margin-left: 10px;
+  margin-left: 2vw;
   border: none;
-  width: 180px;
+  width: 50vw;
   display: flex;
 }
 
