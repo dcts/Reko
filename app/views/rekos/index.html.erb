@@ -11,7 +11,12 @@
         <div class="copy-link-nav">
           <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly="true" style="opacity:0; width:1px; height:1px;"/>
           <button id="<%= 'bttnCopyVisitorLink' if @movies.size > 0 %>" type='button' class="bttn js-copy reko-link b-violet <%= 'hidden-link-button' if @movies.size == 0 %>">
-            <%= @visitor_link %>
+            <div class="visitor-link-in-button">
+              <%= @visitor_link %>
+            </div>
+            <div class="copy-icon-">
+              <%= image_tag "copy-icon", alt: "copy link icon" %>
+            </div>
           </button>
         </div>
         <!-- <div class="copy-link-nav">
