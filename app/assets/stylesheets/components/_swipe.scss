@@ -6,10 +6,11 @@ html, body {
 
 .swiper-card {
   width: 100vw;
-  height: 90px;
+  height: 100px;
   overflow: hidden;
   margin: 0;
-  border-top: .5px solid gray;
+  border-top: 1px solid #E4E6E8;
+  // padding: 5px;
   // -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
   // box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
   // border-radius: 0 0 20px 20px;
@@ -21,7 +22,7 @@ html, body {
 
 #movie-list:last-child {
   margin-bottom: 90px;
-  border-bottom: .5px solid gray;
+  border-bottom: 1px solid #E4E6E8;
 }
 
 .light-grey-background {
@@ -63,7 +64,7 @@ html, body {
   background-color: #FF5C31;
   background-image: url('naw-icon');
   background-position: center;
-  background-size: 50px;
+  background-size: 60px;
   background-repeat: no-repeat;
   color: #fff;
   // border-radius: 0 0 20px 0;
@@ -91,8 +92,8 @@ html, body {
 }
 
 .reko-artwork {
-  height: 90px;
-  width: 90px;
+  height: 100px;
+  width: 100px;
   // border-radius: 0 3px 3px 0;
   background-size: cover;
   flex-shrink: 0;
@@ -132,8 +133,8 @@ html, body {
 
 .seen {
   position: relative;
-  right: 70px;
-  top: 55px;
+  right: 80px;
+  top: 60px;
   font-size: 1.5rem;
   color: #297A6A;
   z-index: 2000;
