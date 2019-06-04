@@ -37,10 +37,9 @@
             <% @movies.each do |reko| %>
 <!--               <div class="swiper-card-outer">
  -->            <div class="swiper-card" data-reko-id="<%= reko[:reko].id %>">
-                 <div class="swiper-container">
+                 <div class="swiper-container <%= 'no-swipe-left' if reko[:reko].done? %>">
                   <div class="swiper-wrapper">
-
-                  <!-- MARK WATCHED -->
+                    <!-- MARK WATCHED -->
                     <div class="swiper-slide mark-watched-slide">
                       <%= link_to "", reko_mark_as_done_path(reko[:reko]), method: :put, remote: true, class: "fas fa-check", style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
                     </div>

@@ -4,40 +4,36 @@ const makeSwipe = () => {
   console.log("TRIGGERED : makeSwipe");
 
   // var menuButton = document.querySelector('.menu-button');
-    var openMenu = function () {
-      swiper.slidePrev();
-    };
-    var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 'auto',
-      initialSlide: 1,
-      resistanceRatio: 0,
-      slideToClickedSlide: true,
+  const openMenu = function () {
+    swiper.slidePrev();
+  };
 
-      on: {
+  const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 'auto',
+    initialSlide: 1,
+    resistanceRatio: 0,
+    slideToClickedSlide: true,
+    observer: true,
+    on: {
         click: function() {
-          this.slideTo(1)
+          if (!this.el.classList.contains('no-swipe-left')) {
+            this.slideTo(1)
+          }
+        },
+        observerUpdate: function() {
+          this.update()
+          if (this.el.classList.contains('no-swipe-left')) {
+            this.initialSlide = 0;
+          }
+        }
       }
-    }
-    //   on: {
-    //     slideChangeTransitionStart: function () {
-    //       var slider = this;
-    //       if (slider.activeIndex === 0) {
-    //         menuButton.classList.add('cross');
-    //         // required because of slideToClickedSlide
-    //         menuButton.removeEventListener('click', openMenu, true);
-    //       } else {
-    //         menuButton.classList.remove('cross');
-    //       }
-    //     }
-    //     , slideChangeTransitionEnd: function () {
-    //       var slider = this;
-    //       if (slider.activeIndex === 1) {
-    //         menuButton.addEventListener('click', openMenu, true);
-    //       }
-    //     },
-    //   }
-    //
+
   });
+  swiper.forEach((sw) => {
+    if (sw.el.classList.contains('no-swipe-left')) {
+      sw.removeSlide(0);
+    }
+  })
 }
 
 export { makeSwipe };
