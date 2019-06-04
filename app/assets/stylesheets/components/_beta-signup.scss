@@ -65,16 +65,18 @@
 #new-form-bttn {
   background-color: #6966F6;
   font-family: 'Roboto', sans-serif;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: 1px;
   color: white;
   margin-top: 29px;
   border: none;
-  width: 150px;
+  width: 200px;
   height: 60px;
   border-radius: 33px;
   text-decoration: none;
-  -webkit-appearance: none;
+  -webkit-appearance: button;
+  -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
+
 }
 

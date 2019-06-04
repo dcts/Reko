@@ -45,7 +45,7 @@
 }
 
 #margin-bttn {
-  margin-bottom: 22px;
+  margin-bottom: 152px;
 }
 
 .reko-link {
@@ -118,6 +118,7 @@
   background-image: url(airplane.png);
   background-size: contain;
   background-repeat: no-repeat;
+
   // IF WE WANT THE BUTTON TO BE REUSABLE THE POSITIONING
   // SHOULD NOT GO HERE I TINK (thomas)
   // top: 90%;
@@ -154,25 +155,30 @@
 }
 
   .back-option{
-  color:#5E5E5E;
+  background-color: transparent !important;
+  border-radius: 50%;
+  font-size: 17px;
+  width: 25px;
+  height: 25px;
   font-family: 'Roboto', sans-serif;
-  // border-bottom: 1px solid currentColor;
-  text-decoration: underline;
-  decoration:none !important;
-  position:relative;
-  -webkit-appearance: none;
-  background:white;
-  border:none !important;
-  font-size: 15px;
-  bottom: -40px;
-  right: 55%;
-  // right: -420px;
-  // bottom: -191px;
+  color: white;
+  background-image: url(back-arrow.svg);
+  background-size: contain;
+  background-position: center;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  letter-spacing: 1px;
+  position: relative;
+  border:black;
+  opacity: .5;
+  bottom: 30%;
+  left: -42%;
+  margin-top: 30px;
 }
 
 
 #buttonBack {
-  color:#5E5E5E;
+  color:#8d8c8c;
   font-family: 'Roboto', sans-serif;
   // border-bottom: 1px solid currentColor;
   text-decoration: underline;
@@ -182,6 +188,37 @@
   background:transparent;
   border:none !important;
   font-size: 15px;
-  top: 45%;
-  right: 35%;
+  // top: 45%;
+  // right: 35%;
+}
+
+
+#back-option {
+  color:#8d8c8c;
+  font-family: 'Roboto', sans-serif;
+  // border-bottom: 1px solid currentColor;
+  text-decoration: underline;
+  decoration:none !important;
+  position:relative;
+  -webkit-appearance: none;
+  background:white;
+  border:none !important;
+  font-size: 15px;
+  margin-top:40px;
+  opacity: .7;
+}
+
+#back-button-option {
+  color:#8d8c8c;
+  font-family: 'Roboto', sans-serif;
+  // border-bottom: 1px solid currentColor;
+  text-decoration: underline;
+  decoration:none !important;
+  position:relative;
+  -webkit-appearance: none;
+  background:white;
+  border:none !important;
+  font-size: 15px;
+  margin-top:20px;
+  opacity:0.7;
 }

@@ -4,10 +4,13 @@
   align-items: center;
   flex-direction: column;
 }
+
 .request-beta {
   text-decoration: underline;
   color:white;
+  margin-bottom: -39vh;
 }
+
 .bottom-marg {
   margin-bottom: 32px;
 }
@@ -19,7 +22,7 @@
   // margin-top: 25%;
   // margin-bottom: 1vh;
   text-align: center;
-  height: 45vh;
+  height: 25vh;
 }
 
 
@@ -28,7 +31,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 10vh;
+  height: 75px;
 }
 
 .tagline {

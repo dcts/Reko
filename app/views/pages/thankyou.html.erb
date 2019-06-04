@@ -3,11 +3,11 @@
    <div class="master-container">
     <div class="thankyou-container">
       <div class="thankyou-logo-container">
-        <%= image_tag "logo", alt: "reko-logo", width: 200%>
+        <%= image_tag "logo", alt: "reko-logo", width: 130%>
       </div>
 
       <h2 class="thankyou-header">
-        <%= @receiver&.first_name %> says thanks!
+        <%= @receiver&.first_name.capitalize %> says  <br />thanks!
       </h2>
 
       <div class="">
@@ -20,11 +20,9 @@
       </div>
 
       <div>
-        <%= link_to "Apply for Beta", new_beta_applicant_path, class: "apply-for-beta-link" %>
       </div>
+        <%= link_to "Apply for Beta", new_beta_applicant_path, class: "apply-for-beta-link" %>
     </div>
-
-
    </div>
 </div>
 
