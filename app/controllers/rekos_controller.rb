@@ -27,6 +27,8 @@ class RekosController < ApplicationController
 
   def new
     @search_term = params[:search_term] # grab sender_name from params
+    @base = ENV['BASE']
+    @classifier = ENV['CLASSIFIER']
     # if user_signed_in? == false
     @token = params[:token] # get token from params
     @sender_name = params[:sender_name] # get sender name if provided
