@@ -45,6 +45,7 @@ class AdminsController < ApplicationController
   end
 
   def tests
+    @authenticity_token = session[:_csrf_token]
   end
 
   def allan

@@ -1,6 +1,44 @@
 <%= render partial: "overrider_style_admins" %>
 <%= render partial: "navbar" %>
 
+<input id="auth" type="hidden" value="<%= @authenticity_token %>">
 <div class="container-fluid jsTrigger-removeMediaQueries">
   <h2>TEST AREA</h2>
+  <a id="avatar-inbox-page" href="#" class="bttn">SEND POST</a>
 </div>
+
+
+<script>
+  console.log("Hi from Inline Script");
+
+  // LOAD DATA
+  const authenticityToken = document.getElementById("auth").value;
+  // LOAD DOM ELEMENTS
+  const button = document.getElementById("avatar-inbox-page");
+  button.addEventListener("click", (event) => {
+    // console.log(event);
+    // console.log(event.currentTarget);
+    sendPostRequest();
+  });
+
+  // send custom Post Request
+  const sendPostRequest = () => {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      console.log("respponse here:");
+      console.log(this.response);
+    };
+    // DATA TO SEND
+    const toSend = {
+      authenticity_token: authenticityToken,
+      id: 24
+    };
+    xhr.open("POST", "/users/switch_random_avatar");
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(JSON.stringify(toSend));
+    console.log("POST request send with data: ");
+    console.log(toSend);
+    // REDIRECT USER AFTER POST REQUEST IF YOU NEED TO
+    // window.location = <REDIRECTION-URL>
+  };
+</script>

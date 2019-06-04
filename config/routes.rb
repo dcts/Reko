@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   get 'registrations/after_sign_up_path_for'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
-  # custom users listing page
-  get '/users', to: "users#index"
-  resources :users, only: [:show] # get '/users/:id', to: "users#show", as: "user"
-  # define landing page (at the moment the backend control panel)
+  post '/users/switch_random_avatar', to: "users#switch_random_avatar"
+  get '/users/:id/get_avatar', to: "users#get_avatar"
+
+  # landing page and thankyou page
   root to: 'pages#home'
   get 'thankyou', to: 'pages#thankyou'
 
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   get '/rekos/new/invalid_token', to: "rekos#invalid_token", as: "invalid_token"
 
   #  Users & User Preferences
-
   resources :users, only: [:show] do
     resources :user_preferences, only: [:new, :create]
   end
