@@ -16,18 +16,10 @@ class User < ApplicationRecord
   # RANDOMLY ASSIGN AVATAR
   validate :assign_random_avatar
 
-  # Class method that returns a hash with key=token and value=user_id
-  # -> needed to check if a link exists in the rekos controller
-  def self.token_hashmap
-    hashmap = {}
-    all.each { |user| hashmap[user.token] = user.id }
-    hashmap
-  end
-
   # FINDS USER BY TOKEN
   # if token exists, returns user instance, else returns nil
   def self.find_by_token(token)
-    User.token_valid?(token) ? User.token_hashmap[token] : nil
+    User.token_hashmap[token] ? User.token_hashmap[token] : nil
   end
 
   def self.token_valid?(token)
@@ -36,6 +28,14 @@ class User < ApplicationRecord
 
   def self.token_invalid?(token)
     !User.token_valid?(token)
+  end
+
+  # Class method that returns a hash with key=token and value=user
+  # -> needed to check if a link exists in the rekos controller
+  def self.token_hashmap
+    hashmap = {}
+    all.each { |user| hashmap[user.token] = user }
+    hashmap
   end
 
   # custom "to_string" method
