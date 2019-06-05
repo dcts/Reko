@@ -3,8 +3,13 @@ class UsersController < ApplicationController
 
   def switch_random_avatar
     @user = User.find(params[:id].to_i)
+    avatar_old = @user.image_url
     @user.update(image_url: nil)
     @user.save
+    while @user.image_url == avatar_old
+      @user.update(image_url: nil)
+      @user.save
+    end
     render json: {
       image_url: ActionController::Base.helpers.asset_path(@user.image_url)
     }

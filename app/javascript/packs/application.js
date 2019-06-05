@@ -8,6 +8,7 @@ import { toggleButtons } from "../components/user-preference-choice";
 import { copyToClipboard } from "../components/copy-to-clipboard";
 import { feedbackModal } from "../components/feedback-modal";
 import { removeMediaQueries } from "../components/remove-media-queries";
+import { switchRandomAvatar } from "../components/switch-random-avatar";
 
 // conditionally trigger your script (if the right page is loaded)
 // use the helper function `triggerJsOnTarget`
@@ -47,6 +48,7 @@ triggerJsOnTarget(feedbackModal,      "jsTrigger-feedbackModal");
 triggerJsOnTarget(onboarding,         "jsTrigger-onboarding");
 triggerJsOnTarget(search,             "jsTrigger-search");
 triggerJsOnTarget(removeMediaQueries, "jsTrigger-removeMediaQueries");
+triggerJsOnTarget(switchRandomAvatar, "jsTrigger-switchRandomAvatar");
 
 
 
