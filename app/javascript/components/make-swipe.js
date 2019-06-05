@@ -42,6 +42,7 @@ const makeSwipe = () => {
   };
   // CHECK HOW MANY SLIDERS ARE INITIALIZED
   // if only one is selected -> check
+  // TODO:REFACTOR
   if (typeof(swiper.length) === 'undefined') {
     console.log("only one swiper instance:");
     console.log(swiper);
