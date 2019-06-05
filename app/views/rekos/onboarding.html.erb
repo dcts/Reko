@@ -11,7 +11,7 @@
       <div class="search-top-text">
         <div class="user-is-looking">
           <img id="avatar-onboarding-page" src="<%= asset_path(@user.image_url) %>" alt="<%= @user.first_name %>">
-          Your friend <%= @user.first_name.capitalize %> needs some good
+          <%= @user.first_name.capitalize %> needs some good
           <% @user_preferences.each_with_index do |preference, index| %>
             <span><%= preference.downcase %></span>
             <%= ', ' if @user_preferences.size - 2 > index %>
@@ -21,8 +21,8 @@
         </div>
         <div class="visitor-search">
           <form id="formSubmitName" class = "search-div">
-            <input class= "visitor-form-field" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="Enter your name to continue..." value="<%= "#{@sender_name}" %>">
-            <button id="buttonContinue" class= "submit-button invisible"></button>
+            <input class= "visitor-form-field" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="What's your name?" value="<%= "#{@sender_name}" %>">
+            <button id="buttonContinue" class= "submit-button invisible margin-top-button"></button>
           </form>
         </div>
       </div>
