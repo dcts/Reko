@@ -2,12 +2,14 @@ class RekosController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :onboarding, :new, :invalid_token, :create ]
 
   def index
+    @current_bg = '#464646'
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: current_user.id)
     @movies = sort_rekos(@user_movies.open, @user_movies.done)
     @visitor_link = request.original_url.gsub("/rekos", "/rekos/new/onboarding?token=#{current_user.token}")
   end
 
   def onboarding
+    @current_bg = '#f5f5f5'
     validate_token_and_get_receiver
     # WHO IS SENDING?
     @sender_name = "" # default: empty sender_name
@@ -15,6 +17,7 @@ class RekosController < ApplicationController
   end
 
   def new
+    @current_bg = '#f5f5f5'
     # ----------------------------
     # IMPORTANT: whenever "new" route gets called from inbox, we need to pass:
     # - redirect_home: true
