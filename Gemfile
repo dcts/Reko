@@ -40,3 +40,7 @@ gem 'faker'
 # ADD JSON and OPEN-URI gem to make API requests (not needed?)
 # gem 'json'
 # gem 'open-uri'
+
+group :development do
+  gem 'rails_real_favicon'
+end

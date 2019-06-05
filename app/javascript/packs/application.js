@@ -9,10 +9,7 @@ import { copyToClipboard } from "../components/copy-to-clipboard";
 import { feedbackModal } from "../components/feedback-modal";
 import { removeMediaQueries } from "../components/remove-media-queries";
 import { switchRandomAvatar } from "../components/switch-random-avatar";
-
-// conditionally trigger your script (if the right page is loaded)
-// use the helper function `triggerJsOnTarget`
-
+import { onboardingSlider } from "../components/onboarding-slider";
 
 /*
  * IMPORTANT
@@ -49,11 +46,5 @@ triggerJsOnTarget(onboarding,         "jsTrigger-onboarding");
 triggerJsOnTarget(search,             "jsTrigger-search");
 triggerJsOnTarget(removeMediaQueries, "jsTrigger-removeMediaQueries");
 triggerJsOnTarget(switchRandomAvatar, "jsTrigger-switchRandomAvatar");
-
-
-
-
-
-
-
+triggerJsOnTarget(onboardingSlider,   "jsTrigger-onboardingSlider");
 
