@@ -25,9 +25,11 @@ const emptyInboxSlider = () => {
 
   function onChangeCallback() {
     console.log(`The index of current slide is: ${this.currentSlide}`);
+    const buttonLastSlide = document.querySelector('.bttn-round');
     if (this.currentSlide === 2) {
-        const buttonLastSlide = document.querySelector('.bttn-round');
-        buttonLastSlide.classList.add('plus-button-last-slide');
+      buttonLastSlide.classList.add('pulsing');
+    } else {
+      buttonLastSlide.classList.remove('pulsing');
     }
   }
 

@@ -56,11 +56,27 @@
   height: 44px;
 }
 
-.plus-button-last-slide {
-  -webkit-animation: swing 1s ease;
-  animation: swing 1s ease;
-  -webkit-animation-iteration-count: 1;
+#pulse-bttn-container {
+  position: relative;
+  top: -44px;
+  right: 33px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulsing {
+  -webkit-animation: pulse 1s ease;
+  animation: pulse 1s ease infinite;
+  /*-webkit-animation-iteration-count: 1;
   animation-iteration-count: 10;
-  transform: scale(1.5);
+  transform: scale(1.5);*/
+}
+
+@keyframes pulse {
+  from {width: 50px; height:50px;}
+  to {width: 70px; height:70px;}
 }
 
