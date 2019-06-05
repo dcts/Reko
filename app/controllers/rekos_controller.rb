@@ -12,16 +12,22 @@ class RekosController < ApplicationController
     # WHO IS SENDING?
     @sender_name = "" # default: empty sender_name
     @sender_name = params[:sender_name] if params[:sender_name] # if querystring exists
-    @sender_name = current_user.to_s if user_signed_in? # if user is logged in
   end
 
   def new
+    # ----------------------------
+    # IMPORTANT: whenever "new" route gets called from inbox, we need to pass:
+    # - redirect_home: true
+    # - sender_name: YOU
+    # ----------------------------
     validate_token_and_get_receiver
     # load sender_name!
     @sender_name = params[:sender_name]
     #load data from EVN variables
     @base = ENV['BASE']
     @classifier = ENV['CLASSIFIER']
+    # redirection path
+    @redirect_home = params[:redirect_home] == "true"
   end
 
   def create
@@ -84,6 +90,10 @@ class RekosController < ApplicationController
 
   private
 
+  # HELPER FUNCTION THAT LOADS THE FOLLOWING VARIABLES
+  # - @token (validates it first)
+  # - @user (who is the receiver of the rekos?)
+  # - @user_preferences (what are his preferences?)
   def validate_token_and_get_receiver
     # CHECK TOKEN VALIDITY
     @token = params[:token]
