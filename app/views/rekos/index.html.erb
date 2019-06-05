@@ -80,28 +80,7 @@
           </div>
 
       <% else %>
-        <div class="empty-reko-list">
-          <h3 class="rekos-are-empty">
-            Your reko inbox is empty...
-          </h3>
-          <div class="link-copy f-violet">SEND THIS LINK TO FRIENDS:</div>
-          <div class="copy-link-nav">
-            <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
-            <button id="<%= 'bttnCopyVisitorLink' if @movies.size == 0 %>" type='button' class="bttn js-copy reko-link b-violet large-link-bttn <%= 'hidden-link-button' if @movies.size > 0 %>">
-              <div class="visitor-link-in-button ">
-                <%= @visitor_link %>
-              </div>
-              <div class="copy-icon-in-button">
-                <%= image_tag "copy-icon", alt: "copy link icon" %>
-              </div>
-          </button>
-          </div>
-
-          <img id="hand-point" src="<%= asset_path 'finger.png'%>" class="animate-reveal animate-first"> </img>
-          <h4 class="rekos-are-empty send-link animate-reveal animate-first">
-            * Copy this to your clipboard and text it to your most trusted friends.
-          </h4>
-        </div>
+          <%= render 'empty_inbox_slider' %>
       <%end %>
     </div>
     <%= render 'feedbacks/footer' %>

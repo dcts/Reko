@@ -1,0 +1,57 @@
+<div class="empty-reko-list">
+  <div class="onboarding-slider jsTrigger-emptyInboxSlider">
+    <div class="siema">
+      <!-- SLIDE 1 -->
+      <div class="empty-list-slide">
+        <h3 class="rekos-are-empty">
+          Your Reko inbox is empty...
+        </h3>
+        <div>
+          <p>
+            Soon this will be the home for everything that your friends recommend to you.
+          </p>
+          <%#= image_tag "swipe-arrow", alt: "next-arrow", id: "next-arrow" %>
+        </div>
+        <%= image_tag "inbox-icon-smaller", alt: "inbox-icon" %>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="empty-list-slide">
+        <h3 class="rekos-are-empty">
+          Send your link to close friends
+        </h3>
+        <div>
+          <p>
+            Your friends will fill your list with great movies, documentaries and series.
+          </p>
+          <%#= image_tag "swipe-arrow", alt: "next-arrow", id: "next-arrow" %>
+        </div>
+        <div class="copy-link-nav">
+          <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
+          <button id="<%= 'bttnCopyVisitorLink' if @movies.size == 0 %>" type='button' class="bttn js-copy reko-link b-violet">
+            <div class="visitor-link-in-button ">
+              <%= @visitor_link %>
+            </div>
+            <div class="copy-icon-in-button">
+              <%= image_tag "copy-icon", alt: "copy link icon" %>
+            </div>
+          </button>
+        </div>
+        <%= image_tag "friends", alt: "friends", id: "friends-icon" %>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="empty-list-slide">
+        <h3 class="rekos-are-empty">
+          Or add your own Rekos
+        </h3>
+        <p>
+          Next time your friends mention something great to watch, save it here and never waste time browsing Netflix again.
+        </p>
+        <%= image_tag "high-five", alt: "high-five"%>
+      </div>
+    </div>
+    <!-- <button class="prev">Prev</button> -->
+  <!--   <button class="next">Next</button>
+   --></div>
+</div>

@@ -9,7 +9,7 @@ import { copyToClipboard } from "../components/copy-to-clipboard";
 import { feedbackModal } from "../components/feedback-modal";
 import { removeMediaQueries } from "../components/remove-media-queries";
 import { switchRandomAvatar } from "../components/switch-random-avatar";
-import { onboardingSlider } from "../components/onboarding-slider";
+import { emptyInboxSlider } from "../components/empty-inbox-slider";
 
 /*
  * IMPORTANT
@@ -46,5 +46,5 @@ triggerJsOnTarget(onboarding,         "jsTrigger-onboarding");
 triggerJsOnTarget(search,             "jsTrigger-search");
 triggerJsOnTarget(removeMediaQueries, "jsTrigger-removeMediaQueries");
 triggerJsOnTarget(switchRandomAvatar, "jsTrigger-switchRandomAvatar");
-triggerJsOnTarget(onboardingSlider,   "jsTrigger-onboardingSlider");
+triggerJsOnTarget(emptyInboxSlider,   "jsTrigger-emptyInboxSlider");
 

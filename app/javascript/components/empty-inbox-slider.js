@@ -1,6 +1,6 @@
 import Siema from 'siema';
 
-const onboardingSlider = () => {
+const emptyInboxSlider = () => {
   console.log("TRIGGERED : onboardingSlider");
 
 
@@ -25,19 +25,21 @@ const onboardingSlider = () => {
 
   function onChangeCallback() {
     console.log(`The index of current slide is: ${this.currentSlide}`);
+    if (this.currentSlide === 2) {
+        const buttonLastSlide = document.querySelector('.bttn-round');
+        buttonLastSlide.classList.add('plus-button-last-slide');
+    }
   }
 
   const mySiema = new Siema({
     onInit: onInitCallback,
-    onChange: onChangeCallback,
+    onChange: onChangeCallback
   });
 
-  const prev = document.querySelector('.prev');
-  const next = document.querySelector('.next');
+  // const next = document.querySelector('.next');
 
-  prev.addEventListener('click', () => mySiema.prev());
-  next.addEventListener('click', () => mySiema.next());
+  // next.addEventListener('click', () => mySiema.next());
 
 }
 
-export { onboardingSlider };
+export { emptyInboxSlider };
