@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
   post '/users/switch_random_avatar', to: "users#switch_random_avatar"
-  get '/users/:id/get_avatar', to: "users#get_avatar"
 
   # landing page and thankyou page
   root to: 'pages#home'
