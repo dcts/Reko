@@ -1,5 +1,5 @@
 class RekosController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :onboarding, :search, :new, :invalid_token, :create ]
+  skip_before_action :authenticate_user!, only: [ :onboarding, :new, :invalid_token, :create ]
 
   def index
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: current_user.id)
@@ -28,6 +28,11 @@ class RekosController < ApplicationController
   # end
 
   def new
+    # Check if token is valid?
+    # if not redirect to invalid tokens path
+    raise
+    User.token_valid?(params[:token])
+
     @search_term = params[:search_term] # grab sender_name from params
     @base = ENV['BASE']
     @classifier = ENV['CLASSIFIER']
