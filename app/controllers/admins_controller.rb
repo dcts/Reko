@@ -19,7 +19,7 @@ class AdminsController < ApplicationController
   end
 
   def users
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   def user

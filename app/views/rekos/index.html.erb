@@ -1,5 +1,5 @@
 <input id="userId" type="hidden" value="<%= current_user.id %>">
-<div class="jsTrigger-switchRandomAvatar jsTrigger-makeSwipe jsTrigger-copyToClipboard jsTrigger-feedbackModal b-dark-gray">
+<div class="jsTrigger-switchRandomAvatar jsTrigger-copyToClipboard jsTrigger-feedbackModal b-dark-gray">
   <div class="master-container">
 
     <div class="inbox-title">
@@ -33,7 +33,7 @@
 
             <% @movies.each do |reko| %>
               <div class="swiper-card" data-reko-id="<%= reko[:reko].id %>">
-                <div class="swiper-container <%= 'no-swipe-left' if reko[:reko].done? %>">
+                <div class="jsTrigger-makeSwipe swiper-container <%= 'no-swipe-left' if reko[:reko].done? %>">
                   <div class="swiper-wrapper">
                     <!-- MARK WATCHED -->
                     <div class="swiper-slide mark-watched-slide">
