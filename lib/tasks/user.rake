@@ -9,7 +9,15 @@ namespace :user do
   end
 
   desc "assigns random avatars if image_url is nil"
-  task :random_avatar => :environment do
+  task :fill_empty_avatars => :environment do
     User.all.each { |user| user.save! } # will run the validation for image_url!
+  end
+
+  desc "reassigns all random avatars for all users"
+  task :reassign_random_avatars => :environment do
+    User.all.each do |user|
+      user.update(image_url: nil)
+      user.save!
+    end
   end
 end
