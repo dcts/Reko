@@ -34,6 +34,10 @@ class User < ApplicationRecord
     User.token_hashmap[token] ? true : false
   end
 
+  def self.token_invalid?(token)
+    !User.token_valid?(token)
+  end
+
   # custom "to_string" method
   def to_s
     "#{first_name.capitalize} #{last_name.capitalize}"

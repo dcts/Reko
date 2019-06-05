@@ -30,22 +30,40 @@ class RekosController < ApplicationController
   def new
     # Check if token is valid?
     # if not redirect to invalid tokens path
-    raise
-    User.token_valid?(params[:token])
+    @token = params[:token]
+    redirect_to(invalid_token_path) && return if User.token_invalid?(@token)
 
-    @search_term = params[:search_term] # grab sender_name from params
-    @base = ENV['BASE']
-    @classifier = ENV['CLASSIFIER']
-    # if user_signed_in? == false
-    @token = params[:token] # get token from params
-    @sender_name = params[:sender_name] # get sender name if provided
-    user_id = User.token_hashmap[@token] # returns user instance or nil
-    if user_id.nil? # User not existant -> token invalid
-      # authenticate_user!
-      redirect_to invalid_token_path
+    # check if user is logged in?
+    if user_signed_in?
+
     else
-      @user = User.find(user_id)
+
     end
+    # YES
+      # OWN PAGE
+        # - ad rekos to your own list!
+      # DIFFERENT PAGE
+        # - fill in the name automatically
+
+    # NO
+      # normal workflow
+
+    # raise
+    # User.token_valid?(params[:token])
+
+    # @search_term = params[:search_term] # grab sender_name from params
+    # @base = ENV['BASE']
+    # @classifier = ENV['CLASSIFIER']
+    # # if user_signed_in? == false
+    # @token = params[:token] # get token from params
+    # @sender_name = params[:sender_name] # get sender name if provided
+    # user_id = User.token_hashmap[@token] # returns user instance or nil
+    # if user_id.nil? # User not existant -> token invalid
+    #   # authenticate_user!
+    #   redirect_to invalid_token_path
+    # else
+    #   @user = User.find(user_id)
+    # end
     # end
   end
 
