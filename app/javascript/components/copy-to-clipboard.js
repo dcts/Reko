@@ -32,7 +32,7 @@ const copyToClipboard = function(elementId) {
     input.blur()
     // input.classList.add('d-none')
     const bttnCopyLink = document.getElementById("bttnCopyVisitorLink");
-    bttnCopyLink.innerText = "Copied to Clipbard!";
+    bttnCopyLink.innerText = "Copied to Clipboard!";
     bttnCopyLink.classList.remove("b-violet");
     bttnCopyLink.classList.add("b-dark-green");
     bttnCopyLink.setAttribute("style", "transition: ease 0.5s;");
