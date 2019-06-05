@@ -20,7 +20,7 @@ create_user(admin: true, password: "123456", first_name: 'Thomas',  last_name: '
 # CREATE PREFERENCES
 Preference.create!(name: "Movies")
 Preference.create!(name: "Documentaries")
-# Preference.create!(name: "Series")
+Preference.create!(name: "Series")
 create_user_preferences # randomly assign user preferences for all users
 
 # POPULATE RECOMMENDABLE

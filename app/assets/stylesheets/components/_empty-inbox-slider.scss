@@ -1,0 +1,138 @@
+.demo-link-fontsize {
+  font-size: 20px;
+}
+
+.onboarding-slider {
+  width: 100vw;
+}
+.siema img {
+  width: 100%;
+}
+
+.empty-list-slide {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#next-arrow {
+  width: 15px;
+}
+
+#pointer-empty {
+  width: 15px;
+  float: right;
+}
+
+.empty-reko-list {
+  margin-top: -10vh;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: center;
+  p {
+    padding: 0 10vw;
+    margin: 3vh 0;
+    font-family: 'Roboto';
+    font-size: 1.05em;
+  }
+  button {
+    margin: -2vh auto 2vh auto;
+    height: 40px;
+  }
+}
+
+.rekos-are-empty {
+  // margin-top: 0;
+  margin-bottom: 0;
+  line-height: 95%;
+  font-size: 253%;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 200;
+  padding: 0 10vw;
+  color: #575757;
+}
+
+// .swipe-instruction {
+//   color: #5E5E5E;
+//   opacity: 0.4;
+//   margin: 0;
+//   font-size: 6px;
+// }
+
+#hand-point {
+  height: 44px;
+}
+
+#pulse-bttn-container {
+  position: relative;
+  top: -44px;
+  right: 33px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#inbox-icon {
+  max-width: 70vw;
+}
+
+
+
+// @keyframes pulse {
+//   from {width: 50px; height:50px;}
+//   to {width: 70px; height:70px;}
+// }
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.2, 1.2, 1.2);
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulsing {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  animation: pulse 1s ease 4;
+}
+
+// .pulsing {
+//   -webkit-animation: pulse 1s ease;
+//   /*-webkit-animation-iteration-count: 1;
+//   animation-iteration-count: 10;
+//   transform: scale(1.5);*/
+// }
