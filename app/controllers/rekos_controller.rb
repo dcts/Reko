@@ -1,5 +1,5 @@
 class RekosController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :onboarding, :search, :new, :invalid_token, :create ]
+  skip_before_action :authenticate_user!, only: [ :onboarding, :new, :invalid_token, :create ]
 
   def index
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: current_user.id)
@@ -8,40 +8,26 @@ class RekosController < ApplicationController
   end
 
   def onboarding
-    @token = params[:token] # get token from params
-    @sender_name = params[:sender_name] # grab sender_name from params
-    @user = User.find_by_token(params[:token]) # returns user instance or nil
-    if @user.nil?
-      redirect_to invalid_token_path
-    else
-      @user_preferences = @user.preferences.map { |preference| preference[:name] }
-    end
-  end
-
-  def search
-    @token = params[:token] # get token from params
-    @sender_name = params[:sender_name] # grab sender_name from params
-    @user = User.find_by_token(params[:token]) # returns user instance or nil
-    if @user.nil?
-      redirect_to invalid_token_path
-    end
+    validate_token_and_get_receiver
+    # WHO IS SENDING?
+    @sender_name = "" # default: empty sender_name
+    @sender_name = params[:sender_name] if params[:sender_name] # if querystring exists
   end
 
   def new
-    @search_term = params[:search_term] # grab sender_name from params
+    # ----------------------------
+    # IMPORTANT: whenever "new" route gets called from inbox, we need to pass:
+    # - redirect_home: true
+    # - sender_name: YOU
+    # ----------------------------
+    validate_token_and_get_receiver
+    # load sender_name!
+    @sender_name = params[:sender_name]
+    #load data from EVN variables
     @base = ENV['BASE']
     @classifier = ENV['CLASSIFIER']
-    # if user_signed_in? == false
-    @token = params[:token] # get token from params
-    @sender_name = params[:sender_name] # get sender name if provided
-    user_id = User.token_hashmap[@token] # returns user instance or nil
-    if user_id.nil? # User not existant -> token invalid
-      # authenticate_user!
-      redirect_to invalid_token_path
-    else
-      @user = User.find(user_id)
-    end
-    # end
+    # redirection path
+    @redirect_home = params[:redirect_home] == "true"
   end
 
   def create
@@ -103,6 +89,20 @@ class RekosController < ApplicationController
   end
 
   private
+
+  # HELPER FUNCTION THAT LOADS THE FOLLOWING VARIABLES
+  # - @token (validates it first)
+  # - @user (who is the receiver of the rekos?)
+  # - @user_preferences (what are his preferences?)
+  def validate_token_and_get_receiver
+    # CHECK TOKEN VALIDITY
+    @token = params[:token]
+    redirect_to(invalid_token_path) && return if User.token_invalid?(@token)
+    # WHO IS THE RECEIVER?
+    @user = User.find_by_token(@token) # returns user instance
+    # get preferences of user requesting the rekos
+    @user_preferences = @user.preferences.map { |preference| preference.name }
+  end
 
   def request_params
     params.require(:reko).permit(:sender_name, :token, :itunes_id, :title, :image_url, :genre)

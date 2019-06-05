@@ -38,7 +38,7 @@ const onboarding = () => {
   formSubmitName.addEventListener("submit", (event) => {
     event.preventDefault();
     // console.log(`/rekos/new?token=${token}&sender_name=${senderName}`);
-    window.location = `/rekos/new/search?token=${token}&sender_name=${inputName.value}`;
+    window.location = `/rekos/new?token=${token}&sender_name=${inputName.value}`;
   });
 
   // -----------------------------
