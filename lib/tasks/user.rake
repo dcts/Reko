@@ -7,4 +7,17 @@ namespace :user do
       reko.destroy!
     end
   end
+
+  desc "assigns random avatars if image_url is nil"
+  task :fill_empty_avatars => :environment do
+    User.all.each { |user| user.save! } # will run the validation for image_url!
+  end
+
+  desc "reassigns all random avatars for all users"
+  task :reassign_random_avatars => :environment do
+    User.all.each do |user|
+      user.update(image_url: nil)
+      user.save!
+    end
+  end
 end

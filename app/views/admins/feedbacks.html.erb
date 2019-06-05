@@ -1,0 +1,8 @@
+<%= render partial: "overrider_style_admins" %>
+<%= render partial: "navbar" %>
+
+<div class="container jsTrigger-removeMediaQueries">
+  <h2>Feedbacks</h2>
+  <h4>(<%= @feedbacks.size %> Feedbacks)</h4>
+  <%= render partial: "feedbacks/table_feedbacks", locals: { feedbacks: @feedbacks } %>
+</div>

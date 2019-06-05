@@ -1,8 +1,9 @@
-<div class="jsTrigger-makeSwipe jsTrigger-copyToClipboard jsTrigger-feedbackModal b-dark-gray">
+<input id="userId" type="hidden" value="<%= current_user.id %>">
+<div class="jsTrigger-switchRandomAvatar jsTrigger-makeSwipe jsTrigger-copyToClipboard jsTrigger-feedbackModal b-dark-gray">
   <div class="master-container">
 
     <div class="inbox-title">
-      <img src="<%= asset_path 'avatar.png'%>"> </img> <%= current_user.first_name.capitalize %>
+      <img id="avatar-inbox-page" src="<%= asset_path(current_user.image_url)%>"> </img> <%= current_user.first_name.capitalize %>
     </div>
 
     <div class="paper-wrapper paper-wrapper-with-footer">
@@ -107,3 +108,5 @@
 
   </div>
 </div>
+
+

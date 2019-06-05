@@ -7,8 +7,9 @@ import { addNewRekos } from "../search-itunes-api/add-new-rekos";
 import { toggleButtons } from "../components/user-preference-choice";
 import { copyToClipboard } from "../components/copy-to-clipboard";
 import { feedbackModal } from "../components/feedback-modal";
+import { removeMediaQueries } from "../components/remove-media-queries";
+import { switchRandomAvatar } from "../components/switch-random-avatar";
 import { onboardingSlider } from "../components/onboarding-slider";
-
 
 /*
  * IMPORTANT
@@ -36,21 +37,14 @@ const triggerJsOnTarget = (initializeFunction, classname) => {
 
 // INITIALIZERS
 console.log("Hi from JS-initializer script!");
-triggerJsOnTarget(copyToClipboard, "jsTrigger-copyToClipboard");
-triggerJsOnTarget(addNewRekos,     "jsTrigger-addNewRekos");
-triggerJsOnTarget(makeSwipe,       "jsTrigger-makeSwipe");
-triggerJsOnTarget(toggleButtons,   "jsTrigger-toggleButtons");
-triggerJsOnTarget(feedbackModal,   "jsTrigger-feedbackModal");
-triggerJsOnTarget(onboarding,      "jsTrigger-onboarding");
-triggerJsOnTarget(search,          "jsTrigger-search");
-triggerJsOnTarget(onboardingSlider,"jsTrigger-onboardingSlider");
-
-
-
-
-
-
-
-
-
+triggerJsOnTarget(copyToClipboard,    "jsTrigger-copyToClipboard");
+triggerJsOnTarget(addNewRekos,        "jsTrigger-addNewRekos");
+triggerJsOnTarget(makeSwipe,          "jsTrigger-makeSwipe");
+triggerJsOnTarget(toggleButtons,      "jsTrigger-toggleButtons");
+triggerJsOnTarget(feedbackModal,      "jsTrigger-feedbackModal");
+triggerJsOnTarget(onboarding,         "jsTrigger-onboarding");
+triggerJsOnTarget(search,             "jsTrigger-search");
+triggerJsOnTarget(removeMediaQueries, "jsTrigger-removeMediaQueries");
+triggerJsOnTarget(switchRandomAvatar, "jsTrigger-switchRandomAvatar");
+triggerJsOnTarget(onboardingSlider,   "jsTrigger-onboardingSlider");
 

@@ -31,6 +31,8 @@ rails g controller inbox
 rails g controller content
 rails g controller user_preferences
 
+rails g migration addImageUrlToUsers image_url:string
+
 ```
 
 

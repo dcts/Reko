@@ -1,5 +1,16 @@
 class AdminsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :users, :user, :rekos, :recommendables, :preferences, :beta_applicants, :tests, :allan, :search]
+  skip_before_action :authenticate_user!, only: [
+      :home,
+      :users,
+      :user,
+      :rekos,
+      :recommendables,
+      :preferences,
+      :beta_applicants,
+      :tests,
+      :feedbacks,
+      :allan,
+    ]
   # if you are an admin, you can see all tables
   # before_action :authenticate_admin
 
@@ -34,14 +45,18 @@ class AdminsController < ApplicationController
   end
 
   def tests
+    @authenticity_token = session[:_csrf_token]
   end
 
   def allan
   end
 
-  def search
-    @image_urls = Movie.all.map { |movie| movie.image_url }
+  def feedbacks
+    @feedbacks = Feedback.all
   end
+  # def search
+  #   @image_urls = Movie.all.map { |movie| movie.image_url }
+  # end
 
   def authenticate_admin
     unless current_user&.admin? # user is not admin

@@ -1,7 +1,9 @@
+<%= render partial: "overrider_style_admins" %>
 <%= render partial: "navbar" %>
 
-<div class="container">
-  <h2>User <%= "#{@user.first_name} #{@user.last_name}"%></h2>
+<div class="container jsTrigger-removeMediaQueries">
+  <h2><img src="<%= asset_path (@user.image_url) %>" alt="avatar", height=50, style="border-radius: 50%; vertical-align: middle;
+    margin-right: 20px;">User <%= "#{@user.first_name} #{@user.last_name}"%></h2>
   <%= render partial: "users/table_user", locals: { user: @user } %>
   <h3>Rekos Inbox</h3>
   <%= render partial: "rekos/table_rekos", locals: { rekos: @user.rekos_received, hide_receiver: true  } %>
