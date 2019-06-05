@@ -1,9 +1,9 @@
-<div id="index-footer" class="jsTrigger-feedbackModal b-gray">
+<div id="index-footer" class="jsTrigger-feedbackModal b-white">
+  <div>
+    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'bttn b-gray' %>
+  </div>
   <input id="auth" type="hidden" value="<%= session[:_csrf_token] %>">
   <div id="new-feedback-bttn" class="bttn b-violet">
     Give Feedback!
-  </div>
-  <div>
-    <%= link_to '', destroy_user_session_path, method: :delete, class: 'fas fa-door-open logout-icon' %>
   </div>
 </div>
