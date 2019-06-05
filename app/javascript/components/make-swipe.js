@@ -33,13 +33,27 @@ const makeSwipe = () => {
           }
         }
       }
-
   });
-  swiper.forEach((sw) => {
+
+  const removeSlideAbilityIfSeen = (sw) => {
     if (sw.el.classList.contains('no-swipe-left')) {
       sw.removeSlide(0);
     }
-  })
+  };
+  // CHECK HOW MANY SLIDERS ARE INITIALIZED
+  // if only one is selected -> check
+  // TODO:REFACTOR
+  if (typeof(swiper.length) === 'undefined') {
+    console.log("only one swiper instance:");
+    console.log(swiper);
+    removeSlideAbilityIfSeen(swiper);
+  } else {
+    console.log("multiple swipers:");
+    console.log(swiper);
+    swiper.forEach((sw) => {
+      removeSlideAbilityIfSeen(sw);
+    })
+  }
 }
 
 export { makeSwipe };
