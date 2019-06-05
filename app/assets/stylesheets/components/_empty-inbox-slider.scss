@@ -1,3 +1,7 @@
+.demo-link-fontsize {
+  font-size: 20px;
+}
+
 .onboarding-slider {
   width: 100vw;
 }
@@ -67,16 +71,56 @@
   justify-content: center;
 }
 
-.pulsing {
-  -webkit-animation: pulse 1s ease;
-  animation: pulse 1s ease infinite;
-  /*-webkit-animation-iteration-count: 1;
-  animation-iteration-count: 10;
-  transform: scale(1.5);*/
+
+
+// @keyframes pulse {
+//   from {width: 50px; height:50px;}
+//   to {width: 70px; height:70px;}
+// }
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
 }
 
 @keyframes pulse {
-  from {width: 50px; height:50px;}
-  to {width: 70px; height:70px;}
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.2, 1.2, 1.2);
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
 }
 
+.pulsing {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  animation: pulse 1s ease 4;
+}
+
+// .pulsing {
+//   -webkit-animation: pulse 1s ease;
+//   /*-webkit-animation-iteration-count: 1;
+//   animation-iteration-count: 10;
+//   transform: scale(1.5);*/
+// }

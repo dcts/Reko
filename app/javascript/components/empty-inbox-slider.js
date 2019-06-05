@@ -38,7 +38,7 @@ const emptyInboxSlider = () => {
     onChange: onChangeCallback,
   });
 
-  setInterval(() => mySiema.next(), 4000)
+  // setInterval(() => mySiema.next(), 4000)
 
   // const next = document.querySelector('.next');
 
