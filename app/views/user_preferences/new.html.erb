@@ -1,32 +1,27 @@
 <div class="jsTrigger-toggleButtons  background-container fun-bg">
-  <div class=space-top-user>
-  </div>
+  <div class=space-top-user></div>
   <div class="what-do-you">
-      <div class="f-white">What kind of recommendations do you need right now?</div>
-    </div>
+    <div class="f-white">What kind of recommendations do you need right now?</div>
+  </div>
   <div class="paper-wrapper-beta">
-            <div class="form-post">
-             <%= simple_form_for [@user, @user_preference] do |f| %>
-               <div class = "user_preference_choices">
-               <% Preference.all.each do |preference| %>
-                <input type="checkbox" value="<%= preference.id %>" name="user_preference[preference_ids][]" id="post_preference_ids_<%= preference.id %>" hidden>
-                  <label class="user_preference_choice bg-fun" for="post_preference_ids_<%= preference.id %>">
-                   <%= preference.name %>
-                    </label>
-                    <% end %>
-                    <div class="coming-soon">
-                    Audiobooks and Podcasts are coming soon.
-                    </div>
-                <div class="submit-bttn-div">
-                  <%= f.submit '', class: "submit-button", disabled: true %>
-                <% end %>
-                </div>
-                <!-- </div>
-              </div> -->
-          </div>
+    <div class="form-post">
+      <%= simple_form_for [@user, @user_preference] do |f| %>
+        <div class = "user_preference_choices">
+          <% Preference.all.each do |preference| %>
+            <input type="checkbox" value="<%= preference.id %>" name="[user_preferences][]" id="post_preference_ids_<%= preference.id %>" class="user_preference_choice_input" hidden>
+            <label class="user_preference_choice bg-fun" for="post_preference_ids_<%= preference.id %>">
+              <%= preference.name %>
+            </label>
+          <% end %>
+            <div class="coming-soon">
+            Audiobooks and Podcasts are coming soon.
+            </div>
+            <div class="submit-bttn-div">
+              <%= f.submit '', class: "submit-button", disabled: true %>
+            </div>
         </div>
-      </div>
-     <!--  <a href="https://www.google.com">BACK</a> -->
+      <% end %>
     </div>
   </div>
+     <!--  <a href="https://www.google.com">BACK</a> -->
 </div>

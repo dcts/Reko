@@ -10,7 +10,11 @@ class UserPreferencesController < ApplicationController
   end
 
   def create
-    if params[:user_preference]
+    #This returns an array of integers with selected preference ids!
+    x=params[:user_preferences].map(&:to_i)
+    raise
+
+    if params[:user_preferences]
       pref = UserPreference.where(user_id: current_user.id)
       pref.each do |p|
         p.destroy!
