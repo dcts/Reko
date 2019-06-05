@@ -87,17 +87,17 @@
 }
 
 .animate-first {
+  -webkit-animation-delay: 1500ms;
+     -moz-animation-delay: 1500ms;
+       -o-animation-delay: 1500ms;
+          animation-delay: 1500ms;
+}
+
+.animate-second {
   -webkit-animation-delay: 2000ms;
      -moz-animation-delay: 2000ms;
        -o-animation-delay: 2000ms;
           animation-delay: 2000ms;
-}
-
-.animate-second {
-  -webkit-animation-delay: 2500ms;
-     -moz-animation-delay: 2500ms;
-       -o-animation-delay: 2500ms;
-          animation-delay: 2500ms;
 }
 
 
