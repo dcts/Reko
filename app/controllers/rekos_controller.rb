@@ -13,6 +13,8 @@ class RekosController < ApplicationController
     @user = User.find_by_token(params[:token]) # returns user instance or nil
     if @user.nil?
       redirect_to invalid_token_path
+    else
+      @user_preferences = @user.preferences.map { |preference| preference[:name] }
     end
   end
 

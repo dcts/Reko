@@ -9,7 +9,15 @@
   <div class="master-container">
     <div class="search-page-wrapper">
       <div class="search-top-text">
-        <div class="user-is-looking"><%= @user.first_name.capitalize %> needs a good documentary or movie to watch.</div>
+        <div class="user-is-looking">
+          <%= @user.first_name.capitalize %> needs some good
+          <% @user_preferences.each_with_index do |preference, index| %>
+            <span><%= preference.downcase %></span>
+            <%= ', ' if @user_preferences.size - 2 > index %>
+            <%= ' and ' if @user_preferences.size - 2 == index %>
+            <%= ' to watch.' if @user_preferences.size - 1 == index %>
+          <% end %>
+        </div>
         <div class="visitor-search">
           <form id="formSubmitName" class = "search-div">
             <input class= "visitor-form-field" autocomplete="off" id="inputName" name="beta_applicant[name]" type="text" placeholder="Enter your name to continue..." value="<%= "#{@sender_name}" %>">
