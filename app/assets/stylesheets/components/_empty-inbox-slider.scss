@@ -1,0 +1,66 @@
+.onboarding-slider {
+  width: 100vw;
+}
+.siema img {
+  width: 100%;
+}
+
+.empty-list-slide {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#next-arrow {
+  width: 15px;
+}
+
+#pointer-empty {
+  width: 15px;
+  float: right;
+}
+
+.empty-reko-list {
+  margin-top: -10vh;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: center;
+  p {
+    padding: 0 10vw;
+    margin: 3vh 0;
+    font-family: 'Roboto';
+    font-size: 1.05em;
+  }
+  button {
+    margin: -2vh auto 2vh auto;
+    height: 40px;
+  }
+}
+
+.rekos-are-empty {
+  margin-bottom: 0;
+  line-height: 95%;
+  font-size: 253%;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 200;
+  padding: 0 10vw;
+  color: #575757;
+}
+
+#hand-point {
+  height: 44px;
+}
+
+.plus-button-last-slide {
+  -webkit-animation: swing 1s ease;
+  animation: swing 1s ease;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 10;
+  transform: scale(1.5);
+}
+
