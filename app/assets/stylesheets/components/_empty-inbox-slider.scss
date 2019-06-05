@@ -47,6 +47,7 @@
 }
 
 .rekos-are-empty {
+  // margin-top: 0;
   margin-bottom: 0;
   line-height: 95%;
   font-size: 253%;
@@ -55,6 +56,13 @@
   padding: 0 10vw;
   color: #575757;
 }
+
+// .swipe-instruction {
+//   color: #5E5E5E;
+//   opacity: 0.4;
+//   margin: 0;
+//   font-size: 6px;
+// }
 
 #hand-point {
   height: 44px;
@@ -69,6 +77,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#inbox-icon {
+  max-width: 70vw;
 }
 
 
