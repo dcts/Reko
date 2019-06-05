@@ -18,14 +18,14 @@ class RekosController < ApplicationController
     end
   end
 
-  def search
-    @token = params[:token] # get token from params
-    @sender_name = params[:sender_name] # grab sender_name from params
-    @user = User.find_by_token(params[:token]) # returns user instance or nil
-    if @user.nil?
-      redirect_to invalid_token_path
-    end
-  end
+  # def search
+  #   @token = params[:token] # get token from params
+  #   @sender_name = params[:sender_name] # grab sender_name from params
+  #   @user = User.find_by_token(params[:token]) # returns user instance or nil
+  #   if @user.nil?
+  #     redirect_to invalid_token_path
+  #   end
+  # end
 
   def new
     @search_term = params[:search_term] # grab sender_name from params
