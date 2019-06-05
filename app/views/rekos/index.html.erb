@@ -6,12 +6,12 @@
       <img id="avatar-inbox-page" src="<%= asset_path(current_user.image_url)%>"> </img> <%= current_user.first_name.capitalize %>
     </div>
 
-    <div class="paper-wrapper paper-wrapper-with-footer">
+    <div class="paper-wrapper paper-wrapper-with-footer <%= 'paper-wrapper-empty-list' if @movies.size == 0 %>">
       <%#= link_to "Add new reko", new_reko_path(token: current_user.token)  %>
       <div class="inbox-top-nav">
         <div class="copy-link-nav">
           <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly="true" style="opacity:0; width:1px; height:1px;"/>
-          <button id="<%= 'bttnCopyVisitorLink' if @movies.size > 0 %>" type='button' class="bttn js-copy reko-link b-violet <%= 'hidden-link-button' if @movies.size == 0 %>">
+          <button id="<%= 'bttnCopyVisitorLink' if @movies.size > 0 %>" type='button' class="bttn js-copy reko-link b-violet <%= 'hidden-link-button' if @movies.size == 0 %> demo-link-fontsize">
             <div class="visitor-link-in-button">
               <%= @visitor_link %>
             </div>

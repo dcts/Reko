@@ -3,24 +3,9 @@ import Siema from 'siema';
 const emptyInboxSlider = () => {
   console.log("TRIGGERED : onboardingSlider");
 
-
-  // const mysiema = new Siema({
-  //   selector: '.siema',
-  //   duration: 200,
-  //   easing: 'ease-out',
-  //   perPage: 1,
-  //   startIndex: 0,
-  //   draggable: true,
-  //   multipleDrag: true,
-  //   threshold: 20,
-  //   loop: false,
-  //   rtl: false,
-  //   onInit: () => {},
-  //   onChange: () => {},
-  // });
-
   function onInitCallback() {
     console.log('Siema initialised bro :)');
+    runInterval();
   }
 
   function onChangeCallback() {
@@ -38,7 +23,22 @@ const emptyInboxSlider = () => {
     onChange: onChangeCallback,
   });
 
-  setInterval(() => mySiema.next(), 4000)
+  function runInterval() {
+    // let iterations = 0;
+    let iterate = () => { setTimeout(() => mySiema.next(), 3000); }
+    iterate();
+    setTimeout(() => iterate(), 3000);
+    // const slide = document.querySelector('.onboarding-slider');
+    // slide.addEventListener('click', (event) => {
+    //   window.clearInterval;
+    // })
+    // console.log(iterations);
+    // if (iterations >= 1)
+    //   clearInterval(interval);
+
+    // iterations++;
+  }
+
 
   // const next = document.querySelector('.next');
 
