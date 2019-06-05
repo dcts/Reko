@@ -21,11 +21,11 @@ const makeSwipe = () => {
           }
         },
         observerUpdate: function() {
-          console.log('update!!!')
+          // console.log('update!!!')
           if (this.el.classList.contains('no-swipe-left')) {
             // this.initialSlide = 0;
-            console.log(this.el)
-            console.log(this.el.querySelector('.seen'));
+            // console.log(this.el)
+            // console.log(this.el.querySelector('.seen'));
             this.el.querySelector('.seen').setAttribute("style", "visibility:visible;");
             this.update();
             this.slideTo(0);
@@ -44,12 +44,12 @@ const makeSwipe = () => {
   // if only one is selected -> check
   // TODO:REFACTOR
   if (typeof(swiper.length) === 'undefined') {
-    console.log("only one swiper instance:");
-    console.log(swiper);
+    // console.log("only one swiper instance:");
+    // console.log(swiper);
     removeSlideAbilityIfSeen(swiper);
   } else {
-    console.log("multiple swipers:");
-    console.log(swiper);
+    // console.log("multiple swipers:");
+    // console.log(swiper);
     swiper.forEach((sw) => {
       removeSlideAbilityIfSeen(sw);
     })
