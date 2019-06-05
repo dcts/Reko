@@ -2,6 +2,24 @@
 <html>
 
   <head>
+    <title><%= meta_title %></title>
+      <meta name="description" content="<%= meta_description %>">
+
+      <!-- Facebook Open Graph data -->
+      <meta property="og:title" content="<%= meta_title %>" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="<%= request.original_url %>" />
+      <meta property="og:image" content="<%= meta_image %>" />
+      <meta property="og:description" content="<%= meta_description %>" />
+      <meta property="og:site_name" content="<%= meta_title %>" />
+
+      <!-- Twitter Card data -->
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+      <meta name="twitter:title" content="<%= meta_title %>">
+      <meta name="twitter:description" content="<%= meta_description %>">
+      <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+      <meta name="twitter:image:src" content="<%= meta_image %>">
     <%= render 'application/favicon' %>
     <link rel="shortcut icon" type="image/png" href="<%= asset_path 'favicon/apple-touch-icon-57x57' %>"/>
     <link rel="apple-touch-icon" sizes="57x57" href="<%= asset_path 'favicon/apple-touch-icon-57x57' %>">
@@ -18,13 +36,14 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, user-scalable=no, user-scalable=0">
-    <title>Reko</title>
+    <title>Reko. Home for all your recommendations.</title>
     <meta description="Get recommendations for movies, shows and documentaries from your friends, because friends know best!">
     <title>
-      <meta property="og:title" content="I need rekommendations" />
+      <meta property="og:title" content="Reko" />
+      <meta property="og:description" content="I need recommendations" />
       <meta property="og:type" content="logo-animate.gif" />
       <meta property="og:url" content="http://www.sendrekos.com" />
-      <meta property="og:image" content="https://i.imgur.com/OlKaTu7.png" />
+      <%= tag :meta, property: 'og:image', content: image_url('og-image.png') %>
     </title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
