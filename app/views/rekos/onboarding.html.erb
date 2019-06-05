@@ -10,6 +10,7 @@
     <div class="search-page-wrapper">
       <div class="search-top-text">
         <div class="user-is-looking">
+          <img id="avatar-onboarding-page" src="<%= asset_path(@user.image_url) %>" alt="<%= @user.first_name %>">
           <%= @user.first_name.capitalize %> needs some good
           <% @user_preferences.each_with_index do |preference, index| %>
             <span><%= preference.downcase %></span>
