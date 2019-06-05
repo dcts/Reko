@@ -31,11 +31,11 @@
 
       <%if @movies.size > 0 %>
         <div>
-          <div id="movie-list">
+          <div id="movie-list" class="jsTrigger-makeSwipe">
 
             <% @movies.each do |reko| %>
               <div class="swiper-card" data-reko-id="<%= reko[:reko].id %>">
-                <div class="jsTrigger-makeSwipe swiper-container <%= 'no-swipe-left' if reko[:reko].done? %>">
+                <div class=" swiper-container <%= 'no-swipe-left' if reko[:reko].done? %>">
                   <div class="swiper-wrapper">
                     <!-- MARK WATCHED -->
                     <div class="swiper-slide mark-watched-slide">
