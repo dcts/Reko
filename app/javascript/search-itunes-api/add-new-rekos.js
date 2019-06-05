@@ -94,11 +94,9 @@ const addNewRekos = () => {
           if (result.media_type === "movie" && typeof result.title !== 'undefined') {
             const movie = buildMovie(result);
             movies.push(movie);
-            console.log(movie);
           } else if (result.media_type === "tv" && typeof result.name !== 'undefined') {
             const movie = buildSeries(result);
             movies.push(movie);
-            console.log(movie);
           }
         }
       });
