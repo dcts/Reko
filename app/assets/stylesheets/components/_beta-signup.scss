@@ -31,15 +31,15 @@
 
 .beta-title {
   margin-bottom: 25px;
-  // margin-top: 16px;
+  margin-top: 8px;
   padding: 0 12px;
   font-weight: 400;
-  font-size: 25px;
+  font-size: 27px;
   color: #5E5E5E;
+  text-align:center;
 }
 
 .beta-form-wrapper {
-  // background-color: red;
   padding: 0 22px;
   display: flex;
   justify-content: center;
@@ -65,24 +65,28 @@
 #new-form-bttn {
   background-color: #6966F6;
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: 1px;
   color: white;
-  margin-top: 29px;
+  margin-top: 32px;
   border: none;
-  width: 200px;
-  height: 60px;
+  width: 220px;
+  height: 55px;
   border-radius: 33px;
   text-decoration: none;
   -webkit-appearance: button;
   -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
 
+
 }
 
 #inline-text{
-  font-size:25px;
+  font-size:32px;
   font-family: 'Roboto', sans-serif;
-  font-size: 25px;
   font-weight: 400;
+  text-align:center;
+  margin-left: 15px;
+  letter-spacing:1px;
+
 }
