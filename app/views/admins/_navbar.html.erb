@@ -1,11 +1,11 @@
 <ul class="navbar-ul">
-  <li class="admin-navbar-li"><a class="navbar-link" href="/admins">ADMIN CONTROL</a></li>
-  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/users">Users</a></li>
-  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/rekos">Rekos</a></li>
-  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/recommendables">Movies</a></li>
-  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/preferences">Preferences</a></li>
-  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/beta_applicants">Beta Applicants</a></li>
-  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/feedbacks">Feedbacks</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins?admin_token=<%= ENV['ADMIN_TOKEN'] %>">ADMIN CONTROL</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/users?admin_token=<%= ENV['ADMIN_TOKEN'] %>">Users</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/rekos?admin_token=<%= ENV['ADMIN_TOKEN'] %>">Rekos</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/recommendables?admin_token=<%= ENV['ADMIN_TOKEN'] %>">Movies</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/preferences?admin_token=<%= ENV['ADMIN_TOKEN'] %>">Preferences</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/beta_applicants?admin_token=<%= ENV['ADMIN_TOKEN'] %>">Beta Applicants</a></li>
+  <li class="admin-navbar-li"><a class="navbar-link" href="/admins/feedbacks?admin_token=<%= ENV['ADMIN_TOKEN'] %>">Feedbacks</a></li>
   <% if user_signed_in? %>
     <li class="admin-navbar-li" style="float:right"><a class="navbar-link" rel="nofollow" data-method="delete" href="/users/sign_out">LOGOUT</a></li>
     <li class="admin-navbar-li" style="float:right"><p style="margin:14px;" class="navbar-link">(<%= current_user.to_s %>)</p></li>
@@ -15,7 +15,7 @@
 </ul>
 
 <script>
-  const ending = document.URL.split("/admins")[1];
+  const ending = document.URL.split("/admins")[1].split("?")[0];
   navbarLinks = document.querySelectorAll(".navbar-link");
   navbarLinks.forEach((navbarLink) => {
     if (navbarLink.href === document.URL) {
