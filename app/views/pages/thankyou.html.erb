@@ -5,7 +5,7 @@
       <div class="search-top-text">
       <img id="avatar-onboarding-page" src="<%= asset_path(@user.image_url) %>" alt="<%= @user.first_name %>">
         <%= @receiver&.first_name.capitalize %><br> will be grateful.
-        <%= link_to "SEND MORE REKOS", rekos_new_onboarding_path(sender_name: @sender_name, token: @token), class: "bttn b-large b-violet send-more-rekos-bttn" %>
+        <%= link_to "SEND MORE REKOS", new_reko_path(sender_name: @sender_name, token: @token), class: "bttn b-large b-violet send-more-rekos-bttn" %>
         <div class="thankyou-logo-container">
         <%= image_tag "logo", alt: "reko-logo", :class => "thanks-logo", width: 110%>
       </div>
