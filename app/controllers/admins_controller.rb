@@ -13,6 +13,7 @@ class AdminsController < ApplicationController
     ]
   # if you are an admin, you can see all tables
   # before_action :authenticate_admin
+  before_action :set_color
 
   def home
     # @
@@ -62,5 +63,9 @@ class AdminsController < ApplicationController
     unless current_user&.admin? # user is not admin
       redirect_to root_path
     end
+  end
+
+  def set_color
+    @current_bg = 'white'
   end
 end
