@@ -23,7 +23,9 @@ const addNewRekos = () => {
   const inputKeyword = document.getElementById("inputKeyword");
   const cardsContainer = document.getElementById("search-cards-container");
   const sendRekosButton = document.getElementById("sendRekosButton");
-
+  const instructionsContainer = document.getElementById("instructionsContainer");
+  const instructionsParagraph = document.getElementById("instructionsParagraph");
+  const instructionsBackBttn = document.getElementById("instructionsBackBttn");
   // ----------------------------
   // LISTENERS + HELPER FUNCTIONS
   // ----------------------------
@@ -32,6 +34,8 @@ const addNewRekos = () => {
     deleteCardsIfNotSelected(); // reset cards
     if (inputKeyword.value.length >= 3) { // min characters to trigger API call = 3
       apiCall(inputKeyword.value);
+    } else {
+      setInstructionsState();
     }
   });
   formAjaxSearch.addEventListener("submit", (event) => {
@@ -79,6 +83,24 @@ const addNewRekos = () => {
       sendRekosButton.classList.add("invisible");
     }
   };
+  // ENABLE BUTTON IF ELEMENTS ARE SELECTED
+  const setInstructionsState = () => {
+    console.log("inside instructions state func...");
+    if (document.querySelectorAll(".search-card").length > 0) {
+      console.log("at least one card present!");
+      instructionsParagraph.style.visibility = "hidden";
+      instructionsBackBttn.style.visibility = "hidden";
+      // instructionsContainer.style.height = "0px";z.style.visibility = "collapse";
+      // instructionsContainer.style.height = "0px";
+    } else {
+      console.log("no cards present!");
+      instructionsParagraph.style.visibility = "visible";
+      instructionsBackBttn.style.visibility = "visible";
+      // instructionsContainer.style.visibility = "visible";
+      // instructionsContainer.style.height = "300px";
+    }
+  };
+
   // TMDb API CALL FROM JS
   const apiCall = (searchTerm) => {
     const query = searchTerm;
@@ -103,6 +125,7 @@ const addNewRekos = () => {
       addCards(movies);
       removeCardEventListeners();
       addCardEventListeners();
+      setInstructionsState();
     });
   };
 
@@ -127,7 +150,7 @@ const addNewRekos = () => {
   // genre ID taken from TMDb
   const contentType = (genreId) => {
     return (genreId === 99 ? " (doc)" : "");
-  }
+  };
   // validate result
   const validResult = (result) => {
     // id needs to exist

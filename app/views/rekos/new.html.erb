@@ -12,19 +12,23 @@
 <div id="search-page-container">
   <div id="sticky-search-navbar">
     <form id="formAjaxSearch" class="visible">
-      <input autocomplete="off" id="inputKeyword" name="" type="text" class= "input-field-text-md" placeholder="Search for rekos...">
+      <input autocomplete="off" id="inputKeyword" name="" type="text" class= "input-field-text-md" placeholder="type to search...">
     </form>
+    <p id="instructionsParagraph">
+      Search for movies, documentaries or series
+    </p>
+    <a id="instructionsBackBttn" class="request-beta" href="/rekos/new/onboarding?token=<%= @token %>&sender_name=<%= @sender_name %>">back</a>
   </div>
 
   <!-- CARDS STYLING -> _search-cards.scss -->
   <div id="search-cards-container">
     <%#= render partial: "placeholder_movies" %>
   </div>
-  <div id="sticky-footer-placeholder" style="height:120px"></div>
+
+  <div id="sticky-footer-placeholder" style="height:120px;"></div>
+
   <div id="sticky-footer-send">
     <button id="sendRekosButton" class="bttn-round-small invisible"></button>
   </div>
+
 </div>
-
-
-
