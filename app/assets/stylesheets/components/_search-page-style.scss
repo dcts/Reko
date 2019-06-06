@@ -151,7 +151,27 @@
 }
 
 
-
+// FADE IN OF INSTRUCTIONS
+#sticky-search-navbar {
+  flex-direction: column;
+  p {
+    font-family: 'Roboto';
+    font-size: 38px;
+    margin: 38px 18px;
+    color: white;
+    text-align: center;
+    animation: fadein 2s;
+  }
+  a {
+    display: block;
+    text-align: center;
+    animation: fadein 2s;
+  }
+}
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 
 
 
