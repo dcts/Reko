@@ -10,6 +10,7 @@
 #search-cards-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  padding-top: 70px;
 }
 .search-card {
   width: 115px;
