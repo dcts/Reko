@@ -6,10 +6,12 @@ Rails.application.routes.draw do
 
   # landing page and thankyou page
   root to: 'pages#home'
-  get 'thankyou', to: 'pages#thankyou'
+  get '/thankyou', to: 'pages#thankyou'
 
   # shorten link page
   get '/s/:token_short', to: "redirections#run"
+  # demoday signup link
+  get '/demoday', to: 'redirections#demoday'
 
   # get 'users/:id/rekos', to: 'rekos#index', as: "current_user"
   # beta applicants route

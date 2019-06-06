@@ -1,5 +1,5 @@
 class RedirectionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :run ]
+  skip_before_action :authenticate_user!, only: [ :run, :demoday   ]
 
   def run
     token_short = params[:token_short]
@@ -13,6 +13,10 @@ class RedirectionsController < ApplicationController
       redirect_to invalid_token_path
     # redirect_to
     end
+  end
+
+  def demoday
+    redirect_to root_path(invite: "DbKibQ6k6NGrkYjWgyY9rw")
   end
 end
 
