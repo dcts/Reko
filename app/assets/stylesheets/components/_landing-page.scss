@@ -27,28 +27,45 @@
 
 
 .logo-landing {
-  background-image: url("logo-light.png");
-  background-size: contain;
+  // position: absolute;
+  // top:60%;
+  background-image: url(logo-light.png);
+  background-size: 148px;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 75px;
+  height: 91px;
+  width: 163px;
 }
 
 .tagline {
-  font-size: 19px;
-  margin-top: 13px;
-  margin-bottom: 42px;
+  position: relative;
+  top:5px;
+  font-size: 17px;
+  margin-top: 5px;
+  letter-spacing: .5px;
 }
 
 .invite-only {
   margin-bottom: 37px;
 }
 
+.lock-icon {
+  background-image: url(lock-icon.svg);
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 44px;
+  width: 44px;
+}
+
+
+
 .flex-landing-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 12px;
 }
 
 .congrats {
@@ -64,18 +81,12 @@
 
 
 .landing-bottom-btns {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-around;
-  // margin-top: 1vh;
-  // height: 10vh;
+  position: absolute;
+  bottom: 7vh;
 }
 
 
-.beta-bttn {
-  position: relative;
-  // top: -37px;
-}
+
 
 
 .animate-reveal {
@@ -87,17 +98,17 @@
 }
 
 .animate-first {
-  -webkit-animation-delay: 1500ms;
-     -moz-animation-delay: 1500ms;
-       -o-animation-delay: 1500ms;
-          animation-delay: 1500ms;
+  -webkit-animation-delay: 900ms;
+     -moz-animation-delay: 900ms;
+       -o-animation-delay: 900ms;
+          animation-delay: 900ms;
 }
 
 .animate-second {
-  -webkit-animation-delay: 2000ms;
-     -moz-animation-delay: 2000ms;
-       -o-animation-delay: 2000ms;
-          animation-delay: 2000ms;
+  -webkit-animation-delay: 1400ms;
+     -moz-animation-delay: 1400ms;
+       -o-animation-delay: 1400ms;
+          animation-delay: 1400ms;
 }
 
 

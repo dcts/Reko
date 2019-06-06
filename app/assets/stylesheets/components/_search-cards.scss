@@ -35,6 +35,13 @@
   align-items: center;
   // transition: background-color 0.2s;
 }
+
+.search-card.selected {
+  // -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  background-filter: grayscale(100%);
+}
+
+
 .search-card > .green-layer > img {
   opacity: 0;
   width: 10px;
@@ -43,7 +50,7 @@
 }
 
 .search-card.selected > .green-layer {
-  background-color: rgba(105,102,246,.45);
+  background-color: rgba(253,208,52,.77) !important;
   width: 100%;
   height: 100%;
   display: flex;
@@ -56,7 +63,9 @@
   width: 30px;
   height: 30px;
   transition: opacity 0.2s, width 0.2s, height 0.2s;
+
 }
+
 
 
 // SEARCH CARD STRUCTURE LOOKS LIKE THIS:

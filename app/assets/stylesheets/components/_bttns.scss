@@ -82,7 +82,7 @@
 }
 
 .bttn-round:hover{
-  background: #297A6A;
+  background: #ffd751;
   transition: .4s;
 }
 
@@ -107,13 +107,13 @@
 
 .bttn-round-small{
   border: none;
-  background: #6966F6;
+  background: #ffc80a;
   width: 70px;
   height: 70px;
   border-radius: 70%;
   transition: .4s;
-  box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
-  background-image: url(airplane-white.svg);
+  box-shadow: 0px 0px 23px -10px rgba(0,0,0,.8);
+  background-image: url(airplane-white-3.svg);
   background-size: contain;
   // background-size: 44px
   background-repeat: no-repeat;
@@ -123,7 +123,7 @@
   // top: 90%;
   // left: 45%;
   // position: absolute;
-  background-size:25px;
+  background-size: 42px;
   background-position: center;
   // filter:contrast(125%);
 
@@ -178,6 +178,40 @@
   margin-top: 30px;
 }
 
+.log-in-bttn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 42px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  width: 82px;
+  height: 36px;
+  background-color: gray;
+  box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
+}
+
+.beta-bttn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 42px;
+  letter-spacing: 1px;
+  font-size: 21px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  width: 192px;
+  height: 53px;
+  background-color: gray;
+  box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
+
+}
 
 #buttonBack {
   color:#8d8c8c;
