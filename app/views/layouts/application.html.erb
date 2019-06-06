@@ -51,7 +51,7 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
 
-  <body>
+  <body style="background-color: <%= @current_bg ? @current_bg : 'pink' %> ">
     <!-- <div class="desktop-div"> -->
       <%#= render 'shared/navbar' %>
       <%#= render 'shared/flashes' %>

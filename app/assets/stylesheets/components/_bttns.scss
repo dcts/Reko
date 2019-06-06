@@ -67,8 +67,8 @@
 
   display: inline-block;
   text-decoration: none;
-  background: #61E786;
-  color: #297A6A;
+  background: #F7C212;
+  color: #997C19;
   font-size: 44px;
   width: 60px;
   height: 60px;
@@ -107,14 +107,15 @@
 
 .bttn-round-small{
   border: none;
-  background: #61E786;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  background: #6966F6;
+  width: 70px;
+  height: 70px;
+  border-radius: 70%;
   transition: .4s;
   box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
-  background-image: url(airplane.png);
+  background-image: url(airplane-white.svg);
   background-size: contain;
+  // background-size: 44px
   background-repeat: no-repeat;
 
   // IF WE WANT THE BUTTON TO BE REUSABLE THE POSITIONING
@@ -128,16 +129,19 @@
 
 }
 
+.margin-top-button {
+  margin-top: 44px;
+}
 
 .submit-button {
-  background-color:#61E786 !important;
+  background-color:#6966F6 !important;
   border-radius: 50%;
   font-size: 17px;
   width: 65px;
   height: 65px;
   font-family: 'Roboto', sans-serif;
   color: white;
-  background-image: url(check-mark.png);
+  background-image: url(check-mark-white.svg);
   background-size: contain;
   background-position: center;
   background-size: 25px;
