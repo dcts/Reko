@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_182027) do
+ActiveRecord::Schema.define(version: 2019_06_06_101048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,12 @@ ActiveRecord::Schema.define(version: 2019_06_04_182027) do
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_rekos_on_receiver_id"
     t.index ["recommendable_type", "recommendable_id"], name: "index_rekos_on_recommendable_type_and_recommendable_id"
+  end
+
+  create_table "shorten_links", force: :cascade do |t|
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_preferences", force: :cascade do |t|

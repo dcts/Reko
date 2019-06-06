@@ -40,5 +40,6 @@ Rails.application.routes.draw do
   get '/admins/tests', to: "admins#tests"
   get '/admins/allan', to: "admins#allan"
   get '/admins/feedbacks', to: "admins#feedbacks"
+  get '/s/:id', to: "shorten_links#show", as: :shorten_link
 
 end

@@ -5,7 +5,9 @@ class RekosController < ApplicationController
     @current_bg = '#464646'
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: current_user.id)
     @movies = sort_rekos(@user_movies.open, @user_movies.done)
-    @visitor_link = request.original_url.gsub("/rekos", "/rekos/new/onboarding?token=#{current_user.token}")
+    long_link = request.original_url.gsub("/rekos", "/rekos/new/onboarding?token=#{current_user.token}")
+    shorten_link = ShortenLink.create(link: long_link)
+    @visitor_link = request.original_url.gsub("/rekos", shorten_link_path(shorten_link))
   end
 
   def onboarding
