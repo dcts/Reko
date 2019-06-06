@@ -3,7 +3,7 @@
   <div class="master-container">
 
     <div class="inbox-title">
-      <img id="avatar-inbox-page" src="<%= asset_path(current_user.image_url)%>"> </img> <%= current_user.first_name.capitalize %>
+      <img id="avatar-inbox-page" src="<%= asset_path(current_user.image_url)%>"> </img> <span id="refresh"><%= current_user.first_name.capitalize %></span>
     </div>
 
     <div class="paper-wrapper paper-wrapper-with-footer <%= 'paper-wrapper-empty-list' if @movies.size == 0 %>">
@@ -91,3 +91,9 @@
   </div>
 </div>
 
+<script>
+  const refresh = document.getElementById("refresh");
+  refresh.addEventListener("click", ()=> {
+    window.location = ("/rekos");
+  });
+</script>

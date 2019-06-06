@@ -17,7 +17,7 @@
     <p id="instructionsParagraph">
       Search for movies, documentaries or series
     </p>
-    <a id="instructionsBackBttn" class="request-beta" href="/rekos/new/onboarding?token=<%= @token %>&sender_name=<%= @sender_name %>">back</a>
+    <a id="instructionsBackBttn" class="request-beta" href="<%= @redirect_home ? "/rekos" : "/rekos/new/onboarding?token=#{@token}&sender_name=#{@sender_name}" %>">back</a>
   </div>
 
   <!-- CARDS STYLING -> _search-cards.scss -->
