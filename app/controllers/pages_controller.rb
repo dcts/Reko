@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   def thankyou
     @current_bg = '#f5f5f5'
     @token = params[:token]
+    @user = User.find_by_token(@token)
     @receiver = User.find_by_token(@token)
     @sender_name = params[:name]
     if params[:movies]

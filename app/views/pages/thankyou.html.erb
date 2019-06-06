@@ -1,29 +1,20 @@
 
 <div class="background-container b-white jsTrigger-feedbackModal">
-   <div class="master-container">
-    <div class="thankyou-container">
-      <div class="thankyou-logo-container">
-        <%= image_tag "logo", alt: "reko-logo", width: 130%>
+  <div class="master-container">
+    <div class="search-page-wrapper">
+      <div class="search-top-text">
+      <img id="avatar-onboarding-page" src="<%= asset_path(@user.image_url) %>" alt="<%= @user.first_name %>">
+        <%= @receiver&.first_name.capitalize %><br> will be grateful.
+        <%= link_to "SEND MORE REKOS", rekos_new_onboarding_path(sender_name: @sender_name, token: @token), class: "bttn b-large b-violet send-more-rekos-bttn" %>
+        <div class="thankyou-logo-container">
+        <%= image_tag "logo", alt: "reko-logo", :class => "thanks-logo", width: 110%>
       </div>
-
-      <h2 class="thankyou-header">
-        <%= @receiver&.first_name.capitalize %> says  <br />thanks!
-      </h2>
-
-      <div class="">
-        <%= link_to "Send more Rekos", rekos_new_onboarding_path(sender_name: @sender_name, token: @token), class: "bttn b-large b-violet send-more-rekos-bttn" %>
-      </div>
-
-
       <div class="thankyou-feedback-container">
-        <div id="new-feedback-bttn" class="bttn b-small b-gray thankyou-feedback-bttn">Give Feedback!</div>
+        <div id="new-feedback-bttn" class="apply-for-beta-link f-violet">Leave Feedback</div>
       </div>
-
-      <div>
-      </div>
-        <%= link_to "Apply for Beta", new_beta_applicant_path, class: "apply-for-beta-link" %>
+      <%= link_to "Apply for Beta", new_beta_applicant_path, class: "apply-for-beta-link" %>
     </div>
-   </div>
+  </div>
 </div>
 
 

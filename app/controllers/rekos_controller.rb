@@ -17,7 +17,7 @@ class RekosController < ApplicationController
   end
 
   def new
-    @current_bg = '#f5f5f5'
+    @current_bg = '#1E1E1E'
     # ----------------------------
     # IMPORTANT: whenever "new" route gets called from inbox, we need to pass:
     # - redirect_home: true

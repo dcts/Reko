@@ -1,6 +1,6 @@
 
 #search-page-container {
-  // background-color: black;
+  background-color: #1E1E1E;
 }
 
 .search-page-wrapper {
@@ -11,6 +11,7 @@
 }
 
 .user-is-looking {
+  font-family: 'Quicksand', sans-serif;
   margin-bottom: 44px;
   padding: 0 25px;
   font-size: 86%;
@@ -74,23 +75,22 @@
 }
 
 .visitor-form-field {
-  color:#6966F6 !important;
+  color: #5F5E60 !important;
   background-color: #f5f5f5 !important;
   width: 60vw !important;
   font-family: 'Roboto', sans-serif !important;
   font-size: 22px !important;
   min-height: 30px !important;
-  // padding-left: 10vw !important;
-  // padding-right: 5px !important;
   display: block;
   margin: 0 auto;
   letter-spacing: .5px !important;
   border: 0 !important;
   border-radius: 0 !important;
-  border-bottom: 2px solid #6966F6 !important;
+  border-bottom: 2px solid #c5c5c5 !important;
 }
+
 .visitor-form-field::placeholder {
-  color:#6966F6 !important;
+  color:#5F5E60 !important;
 }
 
 
