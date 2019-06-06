@@ -38,6 +38,12 @@ class User < ApplicationRecord
     hashmap
   end
 
+  def self.token_hashmap_short
+    hashmap = {}
+    all.each { |user| hashmap[user.token_short] = user }
+    hashmap
+  end
+
   # custom "to_string" method
   def to_s
     "#{first_name.capitalize} #{last_name.capitalize}"
@@ -51,6 +57,10 @@ class User < ApplicationRecord
   # returns role of the user as string
   def role
     admin ? "admin" : "user"
+  end
+
+  def token_short
+    token[0..7] # only first 8 characters of your token
   end
 
   # assigns random avatar

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'thankyou', to: 'pages#thankyou'
 
+  # shorten link page
+  get '/s/:token_short', to: "redirections#run"
+
   # get 'users/:id/rekos', to: 'rekos#index', as: "current_user"
   # beta applicants route
   resources :beta_applicants, only: [:new, :create]
