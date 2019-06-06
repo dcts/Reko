@@ -14,24 +14,20 @@
     <form id="formAjaxSearch" class="visible">
       <input autocomplete="off" id="inputKeyword" name="" type="text" class= "input-field-text-md" placeholder="type to search...">
     </form>
-  </div>
-
-
-
-  <!-- CARDS STYLING -> _search-cards.scss -->
-  <div id="instructionsContainer">
     <p id="instructionsParagraph">
       Search for movies, documentaries or series
     </p>
-    <a id="instructionsBackBttn" class="request-beta" href="#">back</a>
+    <a id="instructionsBackBttn" class="request-beta" href="/rekos/new/onboarding?token=<%= @token %>&sender_name=<%= @sender_name %>">back</a>
   </div>
-  <div id="search-cards-container" style="border:3px solid red;">
+
+  <!-- CARDS STYLING -> _search-cards.scss -->
+  <div id="search-cards-container">
     <%#= render partial: "placeholder_movies" %>
   </div>
 
-  <div id="sticky-footer-placeholder" style="height:120px; border:3px solid green;"></div>
+  <div id="sticky-footer-placeholder" style="height:120px;"></div>
 
-  <div id="sticky-footer-send" style="border: 3px solid blue;">
+  <div id="sticky-footer-send">
     <button id="sendRekosButton" class="bttn-round-small invisible"></button>
   </div>
 
@@ -40,8 +36,6 @@
 <style>
   #instructionsContainer {
     height:300px;
-    border: 1px solid yellow;
-    transition: 1s visibility;
   }
   /*#instructionsContainer {
     height:300px;
@@ -49,16 +43,22 @@
     transition: 1s visibility;
   }
 */
-  #instructionsContainer > p {
+  #sticky-search-navbar > p {
     font-family: 'Roboto';
     font-size: 38px;
     margin: 38px 18px;
     color: white;
     text-align: center;
   }
-  #instructionsContainer > a {
+  #sticky-search-navbar > a {
     display: block;
     text-align: center;
+  }
+  #sticky-search-navbar {
+    flex-direction: column;
+  }
+  .transition-element {
+
   }
 </style>
 
@@ -147,17 +147,19 @@
   };
   // ENABLE BUTTON IF ELEMENTS ARE SELECTED
   const setInstructionsState = () => {
+    console.log("inside instructions state func...");
     if (document.querySelectorAll(".search-card").length > 0) {
       console.log("at least one card present!");
-      instructionsContainer.style.visibility = "collapse";
-      instructionsContainer.style.height = "0px";
-      instructionsContainer.classList.toggle("ease-in");
-
+      instructionsParagraph.style.visibility = "hidden";
+      instructionsBackBttn.style.visibility = "hidden";
+      // instructionsContainer.style.height = "0px";z.style.visibility = "collapse";
+      // instructionsContainer.style.height = "0px";
     } else {
       console.log("no cards present!");
-      instructionsContainer.style.visibility = "visible";
-      instructionsContainer.style.height = "300px";
-      instructionsContainer.classList.toggle("ease-in");
+      instructionsParagraph.style.visibility = "visible";
+      instructionsBackBttn.style.visibility = "visible";
+      // instructionsContainer.style.visibility = "visible";
+      // instructionsContainer.style.height = "300px";
     }
   };
 
