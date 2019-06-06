@@ -49,6 +49,7 @@
 .rekos-are-empty {
   // margin-top: 0;
   margin-bottom: 0;
+  margin-top: 3vh;
   line-height: 119%;
   font-size: 253%;
   font-family: 'Quicksand', sans-serif;
@@ -57,12 +58,12 @@
   color: #575757;
 }
 
-// .swipe-instruction {
-//   color: #5E5E5E;
-//   opacity: 0.4;
-//   margin: 0;
-//   font-size: 6px;
-// }
+.swipe-instruction {
+  color: #5E5E5E;
+  opacity: 0.4;
+  margin: 0;
+  font-size: 6px;
+}
 
 #hand-point {
   height: 44px;
@@ -81,7 +82,7 @@
 
 #inbox-icon {
   max-width: 42vw;
-  margin-top: 42px;
+  margin-top: 25px;
 }
 
 
@@ -127,7 +128,16 @@
 .pulsing {
   -webkit-animation-name: pulse;
   animation-name: pulse;
-  animation: pulse 1s ease 4;
+  animation: pulse 1s ease 3;
+}
+
+.fa-circle {
+  font-size: 10px;
+  color: lightgrey;
+}
+
+.dot-gray {
+  color: #5E5E5E;
 }
 
 // .pulsing {

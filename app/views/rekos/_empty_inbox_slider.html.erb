@@ -1,5 +1,6 @@
 <div class="empty-reko-list">
   <div class="onboarding-slider jsTrigger-emptyInboxSlider">
+    <i class="fas fa-circle circle-1 dot-gray"></i> <i class="fas fa-circle circle-2"></i> <i class="fas fa-circle circle-3"></i>
     <div class="siema">
       <!-- SLIDE 1 -->
       <div class="empty-list-slide">
@@ -28,7 +29,7 @@
         </div>
         <div class="copy-link-nav">
           <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
-          <button id="<%= 'bttnCopyVisitorLink' if @movies.size == 0 %>" type='button' class="bttn js-copy reko-link b-violet demo-link-fontsize">
+          <button id="<%= 'bttnCopyVisitorLink' if @movies.size == 0 %>" type='button' class="bttn js-copy reko-link b-violet demo-link-fontsize link-empty-inbox">
             <div class="visitor-link-in-button ">
               <%= @visitor_link %>
             </div>
