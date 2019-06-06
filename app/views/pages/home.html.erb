@@ -13,20 +13,23 @@
          <% if @invited %>
         <div class="lock-icon animate-reveal animate-second">
         </div>
-      <% end %>
-        <div class="beta-bttn animate-reveal animate-first flex-landing-wrapper">
-          <% if @invited %>
-            <%= link_to "BETA ACCESS", new_user_registration_path, :class => "beta-bttn b-yellow f-dark-violet", :method => :get %>
-<!--  ////// NOT INVITED  //////// -->
-          <% else  %>
-            <%= link_to "Request Beta Access", new_beta_applicant_path, :class => "request-beta", :method => :get %>
-          <% end %>
-        </div>
+        <div>
 
-      </div>
+        <%= link_to "BETA ACCESS", new_user_registration_path, :class => "beta-bttn b-yellow f-dark-violet animate-reveal animate-first", :method => :get %>
+        </div>
         <div class="landing-bottom-btns">
             <%= link_to "LOG IN", new_user_session_path, class: "log-in-bttn f-white b-dark-violet" %>
         </div>
+<!--  ////// NOT INVITED  //////// -->
+          <% else  %>
+            <%= link_to "Request Beta Access", new_beta_applicant_path, :class => "request-bttn b-yellow f-dark-violet", :method => :get %>
+          <% end %>
+        </div>
+        <div class="landing-bottom-btns">
+            <%= link_to "LOG IN", new_user_session_path, class: "log-in-bttn f-white b-dark-violet" %>
+        </div>
+      </div>
+
   </div>
 
 
