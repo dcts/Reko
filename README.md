@@ -1,72 +1,15 @@
+# Reko - Friends know best
 
-# SendRekos
+Reko is a mobile only webapp that allows you to store recommendations from your friends in one place. At the moment the app is in beta and only open to testusers. If you are interested in using reko please leave us your email here: https://www.sendrekos.com/beta_applicants/new
 
-- Friends know best
-- Backend Controlpanel
-- [Wiki page](https://github.com/dcts/reko/wiki)
+### Demo
+[](https://user-images.githubusercontent.com/44790691/59203223-6e1d0500-8b9e-11e9-8fb2-d6708e70905a.PNG)
+[](https://user-images.githubusercontent.com/44790691/59203230-7117f580-8b9e-11e9-933e-69fc69fd3ea1.PNG)
+[](https://user-images.githubusercontent.com/44790691/59203239-737a4f80-8b9e-11e9-9aab-cb7576832d4f.PNG)
 
+### Coming Soon
+- podcasts
+- audiobooks
 
-### Notes
-```bash
-rails new \
-  --database postgresql \
-  --webpack \
-  -m https://raw.githubusercontent.com/lewagon/rails-templates/master/devise.rb \
-  --skip-active-storage \
-  reko
-
-
-# genereate rest of the models
-rails g model movie title
-rails g model podcast title
-rails g model audiobook title
-rails g model serie title
-rails g model documentary title
-
-
-# generate controllers
-rails g controller users
-rails g controller rekos
-rails g controller inbox
-rails g controller content
-rails g controller user_preferences
-
-rails g migration addImageUrlToUsers image_url:string
-
-```
-
-
-ITUNES API
-```ruby
-# MOVIES / DOCUMENTARIES
-data["results"][0]["kind"] # => "feature-movie"
-data["results"][0]["wrapperType"] # => "track"
-
-if data["results"][0]["primaryGenreName"] == "Documentary"
-
-data["results"][0]["trackName"]              # title
-data["results"][0]["trackId"].to_i           # itunes_id
-data["results"][0]["artworkUrl100"]          # image_url
-data["results"][0]["releaseDate"][0..3].to_i # year
-
-# SERIES
-data["results"][0]["wrapperType"] # => "collection"
-data["results"][0]["collectionType"] # => "TV Season"
-
-data["results"][0]["artistName"] # title
-data["results"][0]["collectionName"] # grab the "Season X" out and put it in the title
-data["results"][0]["collectionId"] # itunes_id
-data["results"][0]["collectionId"] # itunes_id
-data["results"][0]["artworkUrl100"] # image_url
-data["results"][0]["releaseDate"][0..3].to_i # year
-
-
-
-# AUDIOBOOKS
-
-
-
-# PODCASTS
-
-
-```
+### Feedback
+At any time, feel free to write us some feedback and reach out here: thomas.stazynski@unibas.ch
