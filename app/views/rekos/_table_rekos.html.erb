@@ -25,7 +25,7 @@
       <%#= image_tag reko.recommendable.url(:large), :style => "border: 1px solid red" %>
       <td><%= reko.id %></td>
       <% unless hide_receiver %>
-        <td><%= link_to reko.receiver.id, user_path(reko.receiver) %></td>
+        <td><%= link_to reko.receiver.id, admins_user_path(reko.receiver, admin_token: ENV['ADMIN_TOKEN']) %></td>
         <td><%= reko.receiver.first_name %></td>
       <% end %>
       <td><%= reko.sender_name %></td>
