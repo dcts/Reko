@@ -15,7 +15,7 @@
     <tr>
       <td>✅</td>
       <td>I can list all users</td>
-      <td><%= link_to "all users", admins_users_path %></td>
+      <td><%= link_to "all users", admins_users_path(admin_token: ENV['ADMIN_TOKEN']) %></td>
     </tr>
     <tr>
       <td>✅</td>
