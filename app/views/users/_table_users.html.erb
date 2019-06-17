@@ -20,7 +20,7 @@
   <% users.each do |user| %>
     <tr>
       <td><img src="<%= asset_path (user.image_url) %>" alt="avatar", height=50, style="border-radius: 50%;"></td>
-      <td><%= link_to user.id, admins_user_path(user) %></td>
+      <td><%= link_to user.id, admins_user_path(user, admin_token: ENV['ADMIN_TOKEN']) %></td>
       <td><%= user.first_name %></td>
       <td><%= user.last_name %></td>
       <td><%= user.email %></td>
