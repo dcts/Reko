@@ -1,13 +1,10 @@
 class RekosController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :onboarding, :new, :invalid_token, :create ]
+  skip_before_action :authenticate_user!, only: [ :index, :onboarding, :new, :invalid_token, :create, :mark_as_rejected, :mark_as_done ]
 
   def index
     @current_bg = '#464646'
     # token authentication!
-    @owner_token = params[:owner_token]
-    redirect_to(root_path) && return if @owner_token.nil?
-    redirect_to(invalid_token_path) && return if User.owner_token_invalid?(@owner_token)
-    @current_user = User.find_by_owner_token(@owner_token) # analog to devise's current_user
+    token_authentication # adds @owner_token and @current_user or redirects if owner_token not existent!
     # get data for inbox
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: @current_user.id)
     @movies = sort_rekos(@user_movies.open, @user_movies.done)
@@ -117,6 +114,12 @@ class RekosController < ApplicationController
     params.require(:reko).permit(:sender_name, :token, :itunes_id, :title, :image_url, :genre)
   end
 
+  def token_authentication
+    @owner_token = params[:owner_token]
+    redirect_to(root_path) && return if @owner_token.nil?
+    redirect_to(invalid_token_path) && return if User.owner_token_invalid?(@owner_token)
+    @current_user = User.find_by_owner_token(@owner_token) # analog to devise's current_user
+  end
   # make new array of hashes with reko: reko object, sender_names: sender_names array
   # --> make iteration in the view easier
   # def reko_view_array

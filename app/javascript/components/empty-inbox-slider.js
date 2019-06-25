@@ -4,12 +4,12 @@ const emptyInboxSlider = () => {
   console.log("TRIGGERED : onboardingSlider");
 
   function onInitCallback() {
-    console.log('Siema initialised bro :)');
+    // console.log('Siema initialised bro :)');
     // runInterval();
   }
 
   function onChangeCallback() {
-    console.log(`The index of current slide is: ${this.currentSlide}`);
+    // console.log(`The index of current slide is: ${this.currentSlide}`);
     const buttonLastSlide = document.querySelector('.bttn-round');
     const linkSecondSlide = document.querySelector('.link-empty-inbox');
     if (this.currentSlide === 2) {
