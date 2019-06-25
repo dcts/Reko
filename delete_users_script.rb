@@ -42,3 +42,41 @@ user_ids.each { |user_id| User.find(user_id).delete }
 # 88  Allan Holmes  shit@shit.com 5 3ErA6syAsKBJQxU8MPkmBw  user  2019-06-07 16:25:38 UTC 2019-06-07 16:25:38 UTC
 # 89  Allan Holmes  allan@reko.com  6 y6N62Ig7QraZ0hRBpEvziw  user  2019-06-07 17:36:11 UTC 2019-06-07 17:36:11 UTC
 # 123 Thomas  DCTS  dcts@dcts.com 0 42L5P5kaipb3jENO4XpNUg  user  2019-06-12 17:16:51 UTC 2019-06-12 17:16:51 UTC
+
+
+# UPDATE ADMIN TOKEN TODO
+heroku run rails db:migrate
+heroku run rails console
+
+# check how many useres there are
+User.count
+
+# check if User has desired properties
+User.fist
+
+# check if all Users have nil value for owner token
+User.where(owner_token: nil).count
+User.where(owner_token: nil)
+
+# update Users owner_token
+User.where(owner_token: nil).each do |user|
+  user.owner_token = loop do
+    random_token = SecureRandom.urlsafe_base64(nil, false)
+    break random_token unless User.exists?(owner_token: random_token)
+  end
+  user.save!
+end
+
+# check if all Users have NOT a nil value for owner token (should be 0)
+User.where(owner_token: nil).count
+
+# display all owner_tokens
+User.all.each { |user| puts user.owner_token }
+
+# PHASE 1 SUCCESFULL! ---------------------------------------------------------
+# -> IF THIS WORKED try to signup with a new user and track if the owner token is created
+# create user
+User.last # worked?
+# if yes, delete that user
+User.last.delete
+

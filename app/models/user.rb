@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   before_create :generate_tokens # url tokens
   validates :token, uniqueness: true
+  validates :owner_token, uniqueness: true
 
   # RANDOMLY ASSIGN AVATAR
   validate :assign_random_avatar
@@ -76,6 +77,10 @@ class User < ApplicationRecord
     self.token = loop do
       random_token = SecureRandom.urlsafe_base64(nil, false)
       break random_token unless User.exists?(token: random_token)
+    end
+    self.owner_token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless User.exists?(owner_token: random_token)
     end
   end
 end
