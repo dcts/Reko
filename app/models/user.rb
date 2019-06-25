@@ -22,15 +22,12 @@ class User < ApplicationRecord
   def self.find_by_token(token)
     User.token_hashmap[token] ? User.token_hashmap[token] : nil
   end
-
   def self.token_valid?(token)
     User.token_hashmap[token] ? true : false
   end
-
   def self.token_invalid?(token)
     !User.token_valid?(token)
   end
-
   # Class method that returns a hash with key=token and value=user
   # -> needed to check if a link exists in the rekos controller
   def self.token_hashmap
@@ -38,12 +35,32 @@ class User < ApplicationRecord
     all.each { |user| hashmap[user.token] = user }
     hashmap
   end
-
+  # needed for link shortening!
   def self.token_hashmap_short
     hashmap = {}
     all.each { |user| hashmap[user.token_short] = user }
     hashmap
   end
+
+  # FINDS USER BY OWNER_TOKEN---------------------------------------------------
+  # if token exists, returns user instance, else returns nil
+  def self.find_by_owner_token(owner_token)
+    User.owner_token_hashmap[owner_token] ? User.owner_token_hashmap[owner_token] : nil
+  end
+  def self.owner_token_valid?(owner_token)
+    User.owner_token_hashmap[owner_token] ? true : false
+  end
+  def self.owner_token_invalid?(owner_token)
+    !User.owner_token_valid?(owner_token)
+  end
+  # Class method that returns a hash with key=owner_token and value=user
+  # -> needed to check if a link exists in the rekos controller
+  def self.owner_token_hashmap
+    hashmap = {}
+    all.each { |user| hashmap[user.owner_token] = user }
+    hashmap
+  end
+  # ----------------------------------------------------------------------------
 
   # custom "to_string" method
   def to_s

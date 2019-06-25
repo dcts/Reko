@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @current_bg = '#6966F6'
     @invited = params[:invite] == ENV['INVITATION_LINK_TOKEN_1']
     if current_user != nil # user is logged in
-      redirect_to rekos_path
+      redirect_to rekos_path(owner_token: current_user.owner_token)
     end
   end
 
@@ -21,5 +21,4 @@ class PagesController < ApplicationController
     # redirect if token is invalid
     redirect_to(root_path) if @receiver.nil?
   end
-
 end
