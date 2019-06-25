@@ -25,6 +25,7 @@ class RekosController < ApplicationController
     # IMPORTANT: whenever "new" route gets called from inbox, we need to pass:
     # - redirect_home: true
     # - sender_name: YOU
+    # - owner_token
     # ----------------------------
     validate_token_and_get_receiver
     # load sender_name!
@@ -103,6 +104,7 @@ class RekosController < ApplicationController
   def validate_token_and_get_receiver
     # CHECK TOKEN VALIDITY
     @token = params[:token]
+    @owner_token = params[:owner_token]
     redirect_to(invalid_token_path) && return if User.token_invalid?(@token)
     # WHO IS THE RECEIVER?
     @user = User.find_by_token(@token) # returns user instance

@@ -21,7 +21,7 @@
           </button>
         </div>
         <div id="pulse-bttn-container">
-          <%= link_to "+", new_reko_path(token: current_user.token, sender_name: "YOU", redirect_home: true), class:"bttn-round" %>
+          <%= link_to "+", new_reko_path(token: current_user.token, owner_token: current_user.owner_token, sender_name: "YOU", redirect_home: true), class:"bttn-round" %>
         </div>
       </div>
 

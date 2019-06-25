@@ -17,6 +17,7 @@ const addNewRekos = () => {
   // get params (from url)
   let senderName = document.getElementById('params_senderName').value;;
   const token = document.getElementById('params_token').value;
+  const ownerToken = document.getElementById('params_ownerToken').value;
   const redirectHome = document.getElementById("params_redirectHome").value === "true";
   // get DOM elements
   const formAjaxSearch = document.getElementById("formAjaxSearch");
@@ -248,7 +249,7 @@ const addNewRekos = () => {
 
   // GET REDIRECTION URL
   const buildRedirectionUrl = () => {
-    return redirectHome ? "/rekos" : `/thankyou?token=${token}&name=${senderName}`
+    return redirectHome ? `/rekos?owner_token=${ownerToken}` : `/thankyou?token=${token}&name=${senderName}`
   };
 
   const sendPostRequestToCreateReko = (card) => {
