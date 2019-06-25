@@ -1,11 +1,15 @@
 class RekosController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :onboarding, :new, :invalid_token, :create ]
+  skip_before_action :authenticate_user!, only: [ :index, :onboarding, :new, :invalid_token, :create, :mark_as_rejected, :mark_as_done ]
 
   def index
     @current_bg = '#464646'
-    @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: current_user.id)
+    # token authentication!
+    token_authentication # adds @owner_token and @current_user or redirects if owner_token not existent!
+    @owner_token = current_user.owner_token if user_signed_in?
+    # get data for inbox
+    @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: @current_user.id)
     @movies = sort_rekos(@user_movies.open, @user_movies.done)
-    @visitor_link = request.original_url.gsub("/rekos", "/s/#{current_user.token_short}")
+    @visitor_link = request.original_url.gsub("/rekos", "/s/#{@current_user.token_short}")
   end
 
   def onboarding
@@ -22,6 +26,7 @@ class RekosController < ApplicationController
     # IMPORTANT: whenever "new" route gets called from inbox, we need to pass:
     # - redirect_home: true
     # - sender_name: YOU
+    # - owner_token
     # ----------------------------
     validate_token_and_get_receiver
     # load sender_name!
@@ -52,7 +57,7 @@ class RekosController < ApplicationController
           genre: data[:genre]
         )
         movie.save
-        puts "----------------------------------MOVVIEE CREATED\n\n\n"
+        # puts "----------------------------------MOVVIEE CREATED\n\n\n"
       end
       # create reko
       Reko.create(
@@ -60,10 +65,10 @@ class RekosController < ApplicationController
         sender_name: data[:sender_name],
         recommendable: movie
       )
-      puts "creating #{Reko.last.to_s}"
-      puts "----------------------------------REKO CREATED\n\n\n"
+      # puts "creating #{Reko.last.to_s}"
+      # puts "----------------------------------REKO CREATED\n\n\n"
     else
-      puts "\n not a valid movie! Reko is not created!"
+      # puts "\n not a valid movie! Reko is not created!"
     end
   end
 
@@ -100,6 +105,7 @@ class RekosController < ApplicationController
   def validate_token_and_get_receiver
     # CHECK TOKEN VALIDITY
     @token = params[:token]
+    @owner_token = params[:owner_token]
     redirect_to(invalid_token_path) && return if User.token_invalid?(@token)
     # WHO IS THE RECEIVER?
     @user = User.find_by_token(@token) # returns user instance
@@ -111,6 +117,12 @@ class RekosController < ApplicationController
     params.require(:reko).permit(:sender_name, :token, :itunes_id, :title, :image_url, :genre)
   end
 
+  def token_authentication
+    @owner_token = params[:owner_token]
+    redirect_to(root_path) && return if @owner_token.nil?
+    redirect_to(invalid_token_path) && return if User.owner_token_invalid?(@owner_token)
+    @current_user = User.find_by_owner_token(@owner_token) # analog to devise's current_user
+  end
   # make new array of hashes with reko: reko object, sender_names: sender_names array
   # --> make iteration in the view easier
   # def reko_view_array
@@ -142,7 +154,6 @@ class RekosController < ApplicationController
 
     result
   end
-
 
   # Check if movie recommendable is already in reko list to avoid duplicates
   def recommendable_already_in_list(array, reko)
