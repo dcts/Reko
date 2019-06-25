@@ -5,6 +5,7 @@ class RekosController < ApplicationController
     @current_bg = '#464646'
     # token authentication!
     token_authentication # adds @owner_token and @current_user or redirects if owner_token not existent!
+    @owner_token = current_user.owner_token if user_signed_in?
     # get data for inbox
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: @current_user.id)
     @movies = sort_rekos(@user_movies.open, @user_movies.done)
