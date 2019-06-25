@@ -1,4 +1,5 @@
 <input id="userId" type="hidden" value="<%= current_user.id %>">
+<input id="owner_token" type="hidden" value="<%= current_user.owner_token %>">
 <div class="jsTrigger-switchRandomAvatar jsTrigger-copyToClipboard jsTrigger-feedbackModal b-dark-gray">
   <div class="master-container">
 
@@ -92,8 +93,9 @@
 </div>
 
 <script>
+  const ownerToken = document.getElementById("owner_token").value;
   const refresh = document.getElementById("refresh");
   refresh.addEventListener("click", ()=> {
-    window.location = ("/rekos");
+    window.location = (`/rekos?owner_token=${ownerToken}`);
   });
 </script>
