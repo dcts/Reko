@@ -9,7 +9,7 @@ class RekosController < ApplicationController
     # get data for inbox
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: @current_user.id)
     @movies = sort_rekos(@user_movies.open, @user_movies.done)
-    @visitor_link = request.original_url.gsub("/rekos", "/s/#{@current_user.token_short}")
+    @visitor_link = build_visitor_link
   end
 
   def onboarding
@@ -158,6 +158,10 @@ class RekosController < ApplicationController
   # Check if movie recommendable is already in reko list to avoid duplicates
   def recommendable_already_in_list(array, reko)
     array.select { |r| r[:reko].recommendable.id == reko.recommendable.id }.size.positive?
+  end
+
+  def build_visitor_link
+    request.original_url.split("/rekos")[0] + "/s/#{@current_user.token_short}"
   end
 end
 
