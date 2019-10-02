@@ -1,5 +1,7 @@
 # Reko - Friends know best
 
+REKO pivoted to liist, a colaborative list making app to organize, share and create place recommendations! Check it out here: https://liist.cc
+
 Reko is a mobile only webapp that allows you to store recommendations from your friends in one place. At the moment the app is in beta and only open to testusers. If you are interested in using reko please leave us your email here: https://www.sendrekos.com/beta_applicants/new
 
 ### Demo
