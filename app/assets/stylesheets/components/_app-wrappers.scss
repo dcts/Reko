@@ -34,4 +34,9 @@
   justify-content: center;
   // border: 1px solid red;
   height: 100vh;
+  // overflow: hidden;
+  // overflow-x: hidden;
+}
+.master-container-inbox::-webkit-scrollbar {
+    // display: none;
 }
