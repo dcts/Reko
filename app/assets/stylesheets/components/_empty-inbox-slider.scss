@@ -31,7 +31,7 @@
 }
 
 .empty-reko-list {
-  margin-top: -10vh;
+  margin-top: -52px;
   height: 100%;
   text-align: center;
   display: flex;
@@ -74,9 +74,9 @@
 }
 
 #pulse-bttn-container {
-  position: relative;
-  top: -44px;
-  right: 33px;
+  position: absolute;
+  top: -53px;
+  right: 0px;
   width: 80px;
   height: 80px;
   display: flex;

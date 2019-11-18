@@ -7,10 +7,7 @@
     <span id="refresh"><%= current_user.first_name.capitalize %></span>
   </div>
 
-  <% if true %>
-  <div class="full-height-wrapper">
   <div class="min-height paper-wrapper paper-wrapper-with-footer <%= 'paper-wrapper-empty-list' if @movies.size == 0 %>">
-    <!-- HEADER SECTION -->
     <div class="inbox-top-nav">
       <div class="copy-link-nav">
         <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly="true" style="opacity:0; width:1px; height:1px;"/>
@@ -38,8 +35,6 @@
     <!-- FOOTER -->
     <%= render partial: 'feedbacks/footer' %>
   </div>
-  </div>
-  <% end %>
 </div>
 
 <style>
