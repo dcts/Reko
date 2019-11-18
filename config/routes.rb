@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'registrations/after_sign_up_path_for'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
   post '/users/switch_random_avatar', to: "users#switch_random_avatar"
@@ -34,7 +33,7 @@ Rails.application.routes.draw do
   post '/feedbacks', to: 'feedbacks#create', as: 'new_feedback'
 
 
-  # ALL THE ADMIN ROUTES
+  # ALL THE ADMIN PANEL ROUTES
   get '/admins/', to: "admins#home"
   get '/admins/users', to: "admins#users"
   get '/admins/users/:id', to: "admins#user", as: "admins_user"

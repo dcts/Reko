@@ -18,23 +18,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // align-content: bottom;
-  // margin-top: 25%;
-  // margin-bottom: 1vh;
   text-align: center;
   height: 25vh;
 }
 
-
 .logo-landing {
-  // position: absolute;
-  // top:60%;
   background-image: url(logo-light.png);
   background-size: 148px;
   background-repeat: no-repeat;
   background-position: center center;
   height: 91px;
   width: 163px;
+  margin: 0 auto;
 }
 
 .tagline {
@@ -58,8 +53,6 @@
   width: 44px;
 }
 
-
-
 .flex-landing-wrapper {
   display: flex;
   justify-content: center;
@@ -73,23 +66,13 @@
   font-weight: 300;
   color: #6966F6;
   margin-bottom: 14px
-  // margin-top: 55px;
-  // padding-top: 55px;
-  // margin-bottom: 31px;
 }
-
-
 
 .landing-bottom-btns {
-  position: absolute;
-  bottom: 7vh;
-  justify-content: center;
-  align-item: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
-
-
-
-
 
 .animate-reveal {
   opacity: 0;
@@ -112,7 +95,6 @@
        -o-animation-delay: 1400ms;
           animation-delay: 1400ms;
 }
-
 
 @-webkit-keyframes reveal {
   0% {
@@ -181,26 +163,3 @@
             transform: translateY(0);
   }
 }
-
-
-// .congrats {
-//   font-size: 26px;
-//   color: #6966F6;
-//   padding-top: 55px;
-//   padding-bottom: 16px;
-//   animation: 1s fadeIn;
-//   animation-fill-mode: forwards;
-//   visibility: hidden;
-// }
-
-// @keyframes fadeIn {
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     visibility: visible;
-//     opacity: 1;
-//   }
-// }
-
-

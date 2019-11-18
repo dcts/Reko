@@ -1,4 +1,3 @@
-
 .sign-up-welcome {
   padding: 25px;
   font-size: 33px;
@@ -8,8 +7,8 @@
 }
 
 .new-form-field-lg {
-  color:#6966F6 !important;
-  width: 60vw !important;
+  color: $blue-almost-black !important;
+  max-width: 350px;
   font-family: 'Roboto', sans-serif !important;
   font-size: 17px !important;
   min-height: 30px !important;
@@ -26,7 +25,7 @@
   position: relative;
   justify-content: center;
   -webkit-appearance: none;
-  background-color:  #6966F6 !important;
+  background-color: $blue-almost-black !important;
   font-family: 'Roboto', sans-serif;
   letter-spacing:1px;
   font-weight: 500;
@@ -39,6 +38,7 @@
   height: 50px !important;
   border-radius: 33px !important;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #center-bttn {
@@ -60,7 +60,6 @@
   a {
     color:#5E5E5E;
     border-bottom: 1px solid currentColor;
-    // letter-spacing: 1px;
     font-family: 'Roboto', sans-serif;
   }
 }
@@ -71,6 +70,7 @@
 
 .sign-up-logo {
   width: 40vw;
-  margin-bottom: 1vh;
+  max-width: 220px;
+  margin-bottom: 20px;
 }
 

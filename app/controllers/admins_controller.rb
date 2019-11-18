@@ -17,7 +17,6 @@ class AdminsController < ApplicationController
   before_action :set_color
 
   def home
-    # @
   end
 
   def users
@@ -50,15 +49,9 @@ class AdminsController < ApplicationController
     @authenticity_token = session[:_csrf_token]
   end
 
-  def allan
-  end
-
   def feedbacks
     @feedbacks = Feedback.all
   end
-  # def search
-  #   @image_urls = Movie.all.map { |movie| movie.image_url }
-  # end
 
   def authenticate_admin
     if ENV['ADMIN_TOKEN'] != params[:admin_token]

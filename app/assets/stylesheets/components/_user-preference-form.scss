@@ -18,27 +18,26 @@
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-
 }
 
 .coming-soon {
-
   font-size: 13px;
   color: #5A5766;
 }
 .user_preference_choices {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 20px 0;
-    flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px 0;
+  flex-direction: column;
 }
 
 .user_preference_choice {
   background-color: #5A5766;
   width: 66vw;
+  max-width: 296px;
   color: white;
   font-size: 22px;
   border-radius: 42px;

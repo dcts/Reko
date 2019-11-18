@@ -1,43 +1,30 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <title><%= meta_title %></title>
-      <meta name="description" content="<%= meta_description %>">
-
-      <!-- Facebook Open Graph data -->
-      <meta property="og:title" content="<%= meta_title %>" />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="<%= request.original_url %>" />
-      <meta property="og:image" content="<%= meta_image %>" />
-      <meta property="og:description" content="<%= meta_description %>" />
-      <meta property="og:site_name" content="<%= meta_title %>" />
-
-      <!-- Twitter Card data -->
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
-      <meta name="twitter:title" content="<%= meta_title %>">
-      <meta name="twitter:description" content="<%= meta_description %>">
-      <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
-      <meta name="twitter:image:src" content="<%= meta_image %>">
+    <title>Reko - Home for all your recommendations</title>
+    <meta description="Store recommendations for movies, shows and documentaries">
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:title" content="<%= meta_title %>">
+    <meta name="twitter:description" content="<%= meta_description %>">
+    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:image:src" content="<%= meta_image %>">
+    <!-- favicons and add to home icons -->
     <%= render 'application/favicon' %>
     <link rel="shortcut icon" type="image/png" href="<%= asset_path 'favicon/apple-touch-icon-57x57' %>"/>
     <link rel="apple-touch-icon" sizes="57x57" href="<%= asset_path 'favicon/apple-touch-icon-57x57' %>">
     <link rel="apple-touch-icon" sizes="72x72" href="<%= asset_path 'favicon/apple-touch-icon-72x72' %>">
     <link rel="apple-touch-icon" sizes="144x144" href="<%= asset_path 'favicon/apple-touch-icon-144x144' %>">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141320036-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-141320036-1');
-    </script> -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, user-scalable=no, user-scalable=0">
-    <title>Reko. Home for all your recommendations.</title>
-    <meta description="Get recommendations for movies, shows and documentaries from your friends, because friends know best!">
     <title>
       <meta property="og:title" content="Reko" />
       <meta property="og:description" content="I need recommendations" />
@@ -48,20 +35,12 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
 
   <body style="background-color: <%= @current_bg ? @current_bg : '#f5f5f5' %> ">
-    <!-- <div class="desktop-div"> -->
-      <%#= render 'shared/navbar' %>
-      <%#= render 'shared/flashes' %>
-      <%= yield %>
-    <!-- </div> -->
-    <%= render partial: "shared/media_query_fallback" %>
+    <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-
   </body>
-
 </html>
 

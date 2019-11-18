@@ -3,7 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @current_bg = '#6966F6'
-    @invited = params[:invite] == ENV['INVITATION_LINK_TOKEN_1']
     if current_user != nil # user is logged in
       redirect_to rekos_path(owner_token: current_user.owner_token)
     end
