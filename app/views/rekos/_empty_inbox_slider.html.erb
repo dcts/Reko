@@ -2,30 +2,20 @@
   <div class="onboarding-slider jsTrigger-emptyInboxSlider">
     <i class="fas fa-circle circle-1 dot-gray"></i> <i class="fas fa-circle circle-2"></i> <i class="fas fa-circle circle-3"></i>
     <div class="siema">
-      <!-- SLIDE 1 -->
+      <!-- SLIDE 1: Inbox empty -->
       <div class="empty-list-slide">
-        <h3 class="rekos-are-empty">
-          Your Reko inbox <br>is empty
-        </h3>
+        <h3 class="rekos-are-empty">Your Reko inbox is empty</h3>
         <div>
-          <p>
-            Soon this will be the home for everything <br>that your friends recommend to you.
-          </p>
-          <%#= image_tag "swipe-arrow", alt: "next-arrow", id: "next-arrow" %>
+          <p>Soon this will be the home for everything that your friends recommend to you.</p>
         </div>
         <%= image_tag "inbox-icon-smaller", alt: "inbox-icon", id: "inbox-icon" %>
       </div>
 
-      <!-- SLIDE 2 -->
+      <!-- SLIDE 2: Ask Friends -->
       <div class="empty-list-slide">
-        <h3 class="rekos-are-empty">
-          Send your link <br>to close friends
-        </h3>
+        <h3 class="rekos-are-empty">Send your link to close friends</h3>
         <div>
-          <p>
-            Your friends will fill your list with great <br>movies, documentaries and series.
-          </p>
-          <%#= image_tag "swipe-arrow", alt: "next-arrow", id: "next-arrow" %>
+          <p>Your friends will fill your list with great movies, documentaries and series.</p>
         </div>
         <div class="copy-link-nav">
           <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly style="opacity:0; width:1px; height:1px;"/>
@@ -41,18 +31,12 @@
         <%= image_tag "friends", alt: "friends", id: "friends-icon" %>
       </div>
 
-      <!-- SLIDE 3 -->
+      <!-- SLIDE 3: Add your own rekos -->
       <div class="empty-list-slide">
-        <h3 class="rekos-are-empty">
-          Or add your <br>own Rekos
-        </h3>
-        <p>
-          Next time your friends mention something <br> great to watch, save it here and never <br>waste time browsing Netflix again.
-        </p>
+        <h3 class="rekos-are-empty">Or add your own Rekos</h3>
+        <p>Next time your friends mention something great to watch, save it here and never waste time browsing Netflix again.</p>
         <%= image_tag "high-five-white-bg", alt: "high-five"%>
       </div>
     </div>
-    <!-- <button class="prev">Prev</button> -->
-  <!--   <button class="next">Next</button>
-   --></div>
+  </div>
 </div>

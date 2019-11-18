@@ -4,9 +4,10 @@
 
 .onboarding-slider {
   width: 100vw;
+  margin-top: 20px;
 }
 .siema img {
-  width: 100%;
+  width: 46%;
 }
 
 .empty-list-slide {
@@ -15,6 +16,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  max-width: 445px;
+  margin: 0 auto;
 }
 
 #next-arrow {
@@ -35,7 +38,7 @@
   flex-direction: column;
   align-items: center;
   p {
-    padding: 0 10vw;
+    padding: 0 25px;
     margin: 3vh 0;
     font-family: 'Roboto';
     font-size: 1.05em;
@@ -47,14 +50,13 @@
 }
 
 .rekos-are-empty {
-  // margin-top: 0;
   margin-bottom: 0;
   margin-top: 3vh;
   line-height: 119%;
   font-size: 253%;
   font-family: 'Quicksand', sans-serif;
   font-weight: 200;
-  padding: 0 10vw;
+  padding: 0 25px;
   color: #575757;
 }
 
