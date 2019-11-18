@@ -16,6 +16,10 @@ body {
   margin: 0 auto;
   justify-content: center;
 }
+.master-container-landing {
+  max-width: 450px;
+  margin: 0 auto;
+}
 .paper-wrapper {
   min-height: 100vh;
   margin-top: 45px;
@@ -66,7 +70,7 @@ body {
   max-width: 750px;
   }
   .paper-wrapper {
-  max-width: 300px;
+  max-width: 450px;
   }
 }
 
