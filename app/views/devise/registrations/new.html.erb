@@ -1,46 +1,49 @@
 <div class="background-container fun-bg">
-  <div class=space-top></div>
-  <div class="sign-up-welcome">
-    <%= image_tag "logo-light", alt: "reko-logo", class: "sign-up-logo" %>
-  </div>
+  <div class="master-wrapper-register">
 
-  <div class="paper-wrapper-beta">
-    <div class="sign-in-title">Create an account:</div>
-    <div class="beta-form-wrapper">
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
-        <div class="beta-form-new">
-          <%= f.input :email,
-                      required: true,
-                      placeholder: "EMAIL",
-                      label: false,
-                      autofocus: true,
-                      input_html: { autocomplete: "email", class: "new-form-field-lg" }%>
-          <%= f.input :first_name,
-                      required: true,
-                      placeholder: "FIRST NAME",
-                      label: false,
-                      autofocus: true,
-                      input_html: { autocomplete: "first-name" , class: "new-form-field-lg"}%>
-          <%= f.input :last_name,
-                      required: true,
-                      placeholder: "LAST NAME",
-                      label: false,
-                      autofocus: true,
-                      input_html: { autocomplete: "last-name" , class: "new-form-field-lg"}%>
-          <%= f.input :password,
-                      placeholder: "PASSWORD",
-                      label: false,
-                      required: true,
-                      input_html: { autocomplete: "new-password" , class: "new-form-field-lg" } %>
-        </div>
-        <div class="form-actions center " id = "center-bttn">
-          <%= f.button :submit, "CREATE ACCOUNT", id:"form-btn-signin", class:"bg-fun"%>
-        </div>
-      <% end %>
-      <%#= render "devise/shared/links" %>
-      <%#= render "/views/pages/home" %>
-      <button type="button" onclick="javascript:history.back()" id="back-button-option">BACK</button>
+    <div class=space-top></div>
+    <div class="sign-up-welcome">
+      <%= image_tag "logo-light", alt: "reko-logo", class: "sign-up-logo" %>
+    </div>
+
+    <div class="paper-wrapper-beta">
+      <div class="sign-in-title">Create an account:</div>
+      <div class="beta-form-wrapper">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <div class="beta-form-new">
+            <%= f.input :first_name,
+                required: true,
+                placeholder: "FIRST NAME",
+                label: false,
+                autofocus: true,
+                input_html: { autocomplete: "off" , class: "new-form-field-lg"} %>
+            <%= f.input :last_name,
+                required: true,
+                placeholder: "LAST NAME",
+                label: false,
+                autofocus: true,
+                input_html: { autocomplete: "off" , class: "new-form-field-lg"} %>
+            <%= f.input :email,
+                required: true,
+                placeholder: "EMAIL",
+                label: false,
+                autofocus: true,
+                input_html: { autocomplete: "off", class: "new-form-field-lg" } %>
+            <%= f.input :password,
+                placeholder: "PASSWORD",
+                label: false,
+                required: true,
+                input_html: { autocomplete: "off" , class: "new-form-field-lg" } %>
+          </div>
+          <div class="form-actions center" id="center-bttn">
+            <%= f.button :submit, "CREATE ACCOUNT", id:"form-btn-signin", class:"bg-fun" %>
+          </div>
+        <% end %>
+        <%#= render "devise/shared/links" %>
+        <%#= render "/views/pages/home" %>
+        <button type="button" onclick="javascript:history.back()" id="back-button-option">BACK</button>
+      </div>
     </div>
   </div>
 </div>
