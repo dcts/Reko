@@ -8,7 +8,8 @@
   </div>
 
   <% if true %>
-  <div class="paper-wrapper paper-wrapper-with-footer <%= 'paper-wrapper-empty-list' if @movies.size == 0 %>">
+  <div class="full-height-wrapper">
+  <div class="min-height paper-wrapper paper-wrapper-with-footer <%= 'paper-wrapper-empty-list' if @movies.size == 0 %>">
     <!-- HEADER SECTION -->
     <div class="inbox-top-nav">
       <div class="copy-link-nav">
@@ -35,11 +36,17 @@
     <%end %>
 
     <!-- FOOTER -->
-    <%= render partial: 'feedbacks/footer' %>
+    <%#= render partial: 'feedbacks/footer' %>
+  </div>
   </div>
   <% end %>
 </div>
 
+<style>
+  .min-height {
+    min-height: 88vh;
+  }
+</style>
 <script>
   const ownerToken = document.getElementById("owner_token").value;
   const refresh = document.getElementById("refresh");
