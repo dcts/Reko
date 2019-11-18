@@ -65,7 +65,7 @@
   font-size: 44px;
   width: 60px;
   height: 60px;
-  line-height: 50px;
+  line-height: 60px;
   border-radius: 50%;
   text-align: center;
   transition: .4s;
@@ -135,9 +135,9 @@
   background-repeat: no-repeat;
   letter-spacing: 1px;
   position: relative;
-  border:black;
+  border: black;
   opacity: .3;
-  bottom: 30%;
+  bottom: -6px;
   left: -42%;
   margin-top: 30px;
 }
