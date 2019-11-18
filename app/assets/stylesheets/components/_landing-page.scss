@@ -27,14 +27,13 @@
 
 
 .logo-landing {
-  // position: absolute;
-  // top:60%;
   background-image: url(logo-light.png);
   background-size: 148px;
   background-repeat: no-repeat;
   background-position: center center;
   height: 91px;
   width: 163px;
+  margin: 0 auto;
 }
 
 .tagline {
@@ -73,18 +72,14 @@
   font-weight: 300;
   color: #6966F6;
   margin-bottom: 14px
-  // margin-top: 55px;
-  // padding-top: 55px;
-  // margin-bottom: 31px;
 }
 
 
 
 .landing-bottom-btns {
-  position: absolute;
-  bottom: 7vh;
-  justify-content: center;
-  align-item: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 

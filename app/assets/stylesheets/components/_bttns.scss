@@ -1,9 +1,3 @@
-
-
-//DO NOT TOUCH, please.
-//Select classes from here but please do not change. Use IDs on your divs to modify them further.
-
-
 .bttn {
   display: flex;
   align-items: center;
@@ -63,8 +57,7 @@
   transition: .4s;
 }
 
-.bttn-round{
-
+.bttn-round {
   display: inline-block;
   text-decoration: none;
   background: #F7C212;
@@ -86,25 +79,6 @@
   transition: .4s;
 }
 
-// .bttn-round-small{
-//   display: inline-block;
-//   border: none;
-//   text-decoration: none;
-//   background: #61E786;
-//   color: #297A6A;
-//   font-size: 22px;
-//   width: 50px;
-//   height: 50px;
-//   // line-height: 20px;
-//   border-radius: 50%;
-//   text-align: center;
-//   transition: .4s;
-//   box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
-//   font-family: 'Quicksand', sans-serif;
-//   font-weight: 400;
-// }
-
-
 .bttn-round-small{
   border: none;
   background: #ffc80a;
@@ -114,19 +88,9 @@
   transition: .4s;
   box-shadow: 0px 0px 23px -10px rgba(0,0,0,.8);
   background-image: url(airplane-white-3.svg);
-  background-size: contain;
-  // background-size: 44px
   background-repeat: no-repeat;
-
-  // IF WE WANT THE BUTTON TO BE REUSABLE THE POSITIONING
-  // SHOULD NOT GO HERE I TINK (thomas)
-  // top: 90%;
-  // left: 45%;
-  // position: absolute;
   background-size: 42px;
   background-position: center;
-  // filter:contrast(125%);
-
 }
 
 .margin-top-button {
@@ -156,7 +120,7 @@
   }
 }
 
-  .back-option{
+.back-option{
   background-color: transparent !important;
   border-radius: 50%;
   font-size: 17px;
@@ -178,23 +142,6 @@
   margin-top: 30px;
 }
 
-.log-in-bttn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 42px;
-  letter-spacing: 1px;
-  font-size: 13px;
-  color: white;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  width: 82px;
-  height: 36px;
-  background-color: gray;
-  box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
-  -webkit-box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
-}
-
 .request-bttn {
   display: flex;
   align-items: center;
@@ -205,7 +152,25 @@
   color: white;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  width: 180px;
+  width: 169px;
+  height: 36px;
+  background-color: gray;
+  box-shadow: 0px 0px 23px -10px rgba(0, 0, 0, 0.5);
+  margin: 13px;
+  margin-top: 40px;
+}
+
+.log-in-bttn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 42px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  width: 169px;
   height: 36px;
   background-color: gray;
   box-shadow: 0px 0px 23px -10px rgba(0,0,0,0.5);
@@ -233,7 +198,6 @@
 #buttonBack {
   color:#8d8c8c;
   font-family: 'Roboto', sans-serif;
-  // border-bottom: 1px solid currentColor;
   text-decoration: underline;
   decoration:none !important;
   position:relative;
@@ -241,15 +205,11 @@
   background:transparent;
   border:none !important;
   font-size: 15px;
-  // top: 45%;
-  // right: 35%;
 }
-
 
 #back-option {
   color:#8d8c8c;
   font-family: 'Roboto', sans-serif;
-  // border-bottom: 1px solid currentColor;
   text-decoration: underline;
   decoration:none !important;
   position:relative;
@@ -264,7 +224,6 @@
 #back-button-option {
   color:#8d8c8c;
   font-family: 'Roboto', sans-serif;
-  // border-bottom: 1px solid currentColor;
   text-decoration: underline;
   decoration:none !important;
   position:relative;
@@ -290,17 +249,12 @@
   background-size: 25px;
   background-repeat: no-repeat;
   letter-spacing: 1px;
-  // position: relative;
   border:black;
   opacity: .5;
-  // top: 30%;
-  // left: -45%;
   margin-top: 13px;
-  // margin-bottom: 20px;
 }
 
 .inline-back-button {
   display:flex;
   margin-top: 10px;
-
 }

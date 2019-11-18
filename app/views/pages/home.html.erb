@@ -1,35 +1,23 @@
 <%= render 'application/favicon' %>
-  <div class="master-container fun-bg horz-center">
-    <div class="landing-top-wrapper">
-      <div class="logo-lockup">
-        <div class="logo-landing">
-        </div>
-        <h2 class="tagline f-white">Friends know best.</h2>
-      </div>
+<div class="master-container fun-bg horz-center full-width">
+  <div class="landing-top-wrapper">
+    <div class="logo-lockup">
+      <div class="logo-landing"></div>
+      <h2 class="tagline f-white">Store your Recommendations</h2>
     </div>
-
-      <div class="flex-landing-wrapper">
-<!--  ////// INVITEED //////// -->
-         <% if @invited %>
-        <div class="lock-icon animate-reveal animate-second">
-        </div>
-        <div>
-
-        <%= link_to "BETA ACCESS", new_user_registration_path, :class => "beta-bttn b-yellow f-dark-violet animate-reveal animate-first", :method => :get %>
-        </div>
-        <div class="landing-bottom-btns">
-            <%= link_to "LOG IN", new_user_session_path, class: "log-in-bttn f-white b-dark-violet" %>
-        </div>
-<!--  ////// NOT INVITED  //////// -->
-          <% else  %>
-            <%= link_to "Request Beta Access", new_beta_applicant_path, :class => "request-bttn b-yellow f-dark-violet", :method => :get %>
-          <% end %>
-        </div>
-        <div class="landing-bottom-btns">
-            <%= link_to "LOG IN", new_user_session_path, class: "log-in-bttn f-white b-dark-violet" %>
-        </div>
-      </div>
-
   </div>
+
+  <div class="flex-landing-wrapper">
+    <div class="lock-icon animate-reveal animate-second"></div>
+    <%= link_to "SIGN UP", new_user_registration_path,
+      :class => "beta-bttn b-yellow f-dark-violet animate-reveal animate-first",
+      :method => :get
+    %>
+    <div class="landing-bottom-btns">
+      <%= link_to "Browse as Guest", new_user_session_path, class: "request-bttn b-yellow f-dark-violet" %>
+      <%= link_to "LOG IN", new_user_session_path, class: "log-in-bttn f-white b-dark-violet" %>
+    </div>
+  </div>
+</div>
 
 
