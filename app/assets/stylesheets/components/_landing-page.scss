@@ -18,13 +18,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // align-content: bottom;
-  // margin-top: 25%;
-  // margin-bottom: 1vh;
   text-align: center;
   height: 25vh;
 }
-
 
 .logo-landing {
   background-image: url(logo-light.png);
@@ -57,8 +53,6 @@
   width: 44px;
 }
 
-
-
 .flex-landing-wrapper {
   display: flex;
   justify-content: center;
@@ -74,17 +68,11 @@
   margin-bottom: 14px
 }
 
-
-
 .landing-bottom-btns {
   align-items: center;
   display: flex;
   flex-direction: column;
 }
-
-
-
-
 
 .animate-reveal {
   opacity: 0;
@@ -107,7 +95,6 @@
        -o-animation-delay: 1400ms;
           animation-delay: 1400ms;
 }
-
 
 @-webkit-keyframes reveal {
   0% {
@@ -176,26 +163,3 @@
             transform: translateY(0);
   }
 }
-
-
-// .congrats {
-//   font-size: 26px;
-//   color: #6966F6;
-//   padding-top: 55px;
-//   padding-bottom: 16px;
-//   animation: 1s fadeIn;
-//   animation-fill-mode: forwards;
-//   visibility: hidden;
-// }
-
-// @keyframes fadeIn {
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     visibility: visible;
-//     opacity: 1;
-//   }
-// }
-
-

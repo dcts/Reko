@@ -7,7 +7,6 @@ import { addNewRekos } from "../search-itunes-api/add-new-rekos";
 import { toggleButtons } from "../components/user-preference-choice";
 import { copyToClipboard } from "../components/copy-to-clipboard";
 import { feedbackModal } from "../components/feedback-modal";
-import { removeMediaQueries } from "../components/remove-media-queries";
 import { switchRandomAvatar } from "../components/switch-random-avatar";
 import { emptyInboxSlider } from "../components/empty-inbox-slider";
 
@@ -44,7 +43,6 @@ triggerJsOnTarget(toggleButtons,      "jsTrigger-toggleButtons");
 triggerJsOnTarget(feedbackModal,      "jsTrigger-feedbackModal");
 triggerJsOnTarget(onboarding,         "jsTrigger-onboarding");
 triggerJsOnTarget(search,             "jsTrigger-search");
-triggerJsOnTarget(removeMediaQueries, "jsTrigger-removeMediaQueries");
 triggerJsOnTarget(switchRandomAvatar, "jsTrigger-switchRandomAvatar");
 triggerJsOnTarget(emptyInboxSlider,   "jsTrigger-emptyInboxSlider");
 
