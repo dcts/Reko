@@ -1,49 +1,44 @@
 <div class="background-container-landing b-violet">
   <div class="space-top">
-  <div class="master-container-landing">
-    <div class="paper-wrapper">
-
-      <button type="button" onclick="javascript:history.back()" class="back-option pointer"></button>
-
-      <div class="sign-in-logo">
-        <%= image_tag "logo", alt: "reko-logo" %>
-      </div>
-
-      <div class="beta-form-wrapper">
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
-
+    <div class="master-container-landing">
+      <div class="paper-wrapper">
+        <!-- Back Button -->
+        <button type="button" onclick="javascript:history.back()" class="back-option pointer"></button>
+        <!-- Reko Logo -->
+        <div class="sign-in-logo">
+          <%= image_tag "logo", alt: "reko-logo" %>
+        </div>
+        <!-- Sign In Form -->
+        <div class="beta-form-wrapper">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
             <div class="beta-form-new">
               <%= f.input :email,
-                          required: true,
-                          placeholder: "EMAIL",
-                          label: false,
-                          autofocus: true,
-                          input_html: { autocomplete: "email", class: "new-form-field-lg" }%>
+                required: true,
+                placeholder: "EMAIL",
+                label: false,
+                autofocus: true,
+                input_html: { autocomplete: "email", class: "new-form-field-lg" }
+              %>
               <%= f.input :password,
-                          required: true,
-                          placeholder:"PASSWORD",
-                          label:false,
-                          input_html: { autocomplete: "current-password", class: "new-form-field-lg" } %>
-              <!-- <div class="login-checkbox">
-              <%= f.input_field :remember_me, as: :boolean if devise_mapping.rememberable? %>
-              <%= f.label "Remember Me" %>
+                required: true,
+                placeholder:"PASSWORD",
+                label:false,
+                input_html: { autocomplete: "current-password", class: "new-form-field-lg" }
+              %>
+              <div>
+                <%= f.button :submit, "Log in", id:"form-btn-login"%>
               </div>
-   -->
-                <div>
-                 <%= f.button :submit, "Log in", id:"form-btn-login"%>
-                </div>
-        <% end %>
+            </div>
+          <% end %>
+        </div>
 
+        <!-- forgot password section -->
+        <div class="forgot-pw-style">
+          <%= render "devise/shared/password-link" %>
         </div>
       </div>
-        <div class="forgot-pw-style">
-        <%= render "devise/shared/password-link" %>
-
-        </div>
-
     </div>
-  </div>
   </div>
 </div>
 
