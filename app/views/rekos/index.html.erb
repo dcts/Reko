@@ -1,97 +1,47 @@
 <input id="userId" type="hidden" value="<%= current_user.id %>">
 <input id="owner_token" type="hidden" value="<%= current_user.owner_token %>">
-<div class="jsTrigger-switchRandomAvatar jsTrigger-copyToClipboard jsTrigger-feedbackModal b-dark-gray">
-  <div class="master-container">
+<div class="jsTrigger-switchRandomAvatar jsTrigger-copyToClipboard b-dark-gray"></div>
+<div class="master-container-inbox">
+  <div class="inbox-title">
+    <img id="avatar-inbox-page" src="<%= asset_path(current_user.image_url)%>">
+    <span id="refresh"><%= current_user.first_name.capitalize %></span>
+  </div>
 
-    <div class="inbox-title">
-      <img id="avatar-inbox-page" src="<%= asset_path(current_user.image_url)%>"> </img> <span id="refresh"><%= current_user.first_name.capitalize %></span>
-    </div>
-
-    <div class="paper-wrapper paper-wrapper-with-footer <%= 'paper-wrapper-empty-list' if @movies.size == 0 %>">
-      <%#= link_to "Add new reko", new_reko_path(token: current_user.token)  %>
-      <div class="inbox-top-nav">
-        <div class="copy-link-nav">
-          <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly="true" style="opacity:0; width:1px; height:1px;"/>
-          <button id="<%= 'bttnCopyVisitorLink' if @movies.size > 0 %>" type='button' class="bttn js-copy reko-link b-violet <%= 'hidden-link-button' if @movies.size == 0 %> demo-link-fontsize">
-            <div class="visitor-link-in-button">
-              <%= @visitor_link %>
-            </div>
-            <div class="copy-icon-in-button">
-              <%= image_tag "copy-icon", alt: "copy link icon" %>
-            </div>
-          </button>
-        </div>
-        <div id="pulse-bttn-container">
-          <%= link_to "+", new_reko_path(token: current_user.token, owner_token: current_user.owner_token, sender_name: "YOU", redirect_home: true), class:"bttn-round" %>
-        </div>
-      </div>
-
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- DONT TOUCH BELOW OR ASSUNTA WILL KILL YOU -->
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
-      <%if @movies.size > 0 %>
-        <div>
-          <div id="movie-list" class="jsTrigger-makeSwipe">
-
-            <% @movies.each do |reko| %>
-              <div class="swiper-card" data-reko-id="<%= reko[:reko].id %>">
-                <div class=" swiper-container <%= 'no-swipe-left' if reko[:reko].done? %>">
-                  <div class="swiper-wrapper">
-                    <!-- MARK WATCHED -->
-                    <div class="swiper-slide mark-watched-slide">
-                      <%= link_to "", reko_mark_as_done_path(reko[:reko]), method: :put, remote: true, style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"%>
-                    </div>
-
-                  <!-- MAIN SLIDE  -->
-                    <div class="swiper-slide main-slide <%= 'light-grey-background' if reko[:reko].done? %> can-be-marked-done">
-                      <div class="reko-info">
-                        <div class="reko-title"><p><%= reko[:reko].recommendable.title %></p></div>
-
-                        <div class="sender-names">
-                          <!-- <i style="font-size: 29px" class="fas fa-user-circle in-card-avatar"></i> -->
-
-                          <div id="friends-names">
-                            <p>from <%= reko[:sender_names].join(", ") %></p>
-                            <%#= reko[:sender_names].first.capitalize %>
-                            <%# if reko[:sender_names].size >= 5 %>
-                              <!-- + -->
-                            <%#= pluralize((reko[:sender_names].size - 1), 'other') %>
-                            <%# end %>
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div class="reko-artwork" style="background-image: url(<%= reko[:reko].recommendable.image_url %>);">
-
-                          <div class="seen" style="visibility: hidden">
-                            <%= image_tag "check-mark", alt: "alttext", width: 20 %>
-                          </div>
-                      </div>
-                    </div>
-
-                  <!-- DELETE REKO -->
-                    <div class="swiper-slide delete-slide" >
-                      <%= link_to "", reko_mark_as_rejected_path(reko[:reko]), method: :put, remote: true, style: "color: white; height: 90px; width: 90px; display: flex; align-items: center; justify-content: center"  %>
-                    </div>
-
-                    </div>
-                  </div>
-                </div>
-<!--               </div>
- -->          <% end %>
+  <div class="min-height paper-wrapper paper-wrapper-with-footer <%= 'paper-wrapper-empty-list' if @movies.size == 0 %>">
+    <div class="inbox-top-nav">
+      <div class="copy-link-nav">
+        <input id="visitorLink" type="text" value="<%= @visitor_link %>" readonly="true" style="opacity:0; width:1px; height:1px;"/>
+        <button id="<%= 'bttnCopyVisitorLink' if @movies.size > 0 %>" type='button' class="bttn js-copy reko-link b-violet <%= 'hidden-link-button' if @movies.size == 0 %> demo-link-fontsize">
+          <div class="visitor-link-in-button">
+            <%= @visitor_link %>
           </div>
-
-      <% else %>
-          <%= render 'empty_inbox_slider' %>
-      <%end %>
+          <div class="copy-icon-in-button">
+            <%= image_tag "copy-icon", alt: "copy link icon" %>
+          </div>
+        </button>
+      </div>
+      <div id="pulse-bttn-container">
+        <%= link_to "+", new_reko_path(token: current_user.token, owner_token: current_user.owner_token, sender_name: "YOU", redirect_home: true), class:"bttn-round" %>
+      </div>
     </div>
-    <%= render 'feedbacks/footer' %>
 
+    <!-- CONTENT -->
+    <%if @movies.size > 0 %>
+      <%= render partial: "rekos/movie-items", locals: {movies: @movies} %>
+    <% else %>
+      <%= render partial: 'empty_inbox_slider' %>
+    <%end %>
+
+    <!-- FOOTER -->
+    <%= render partial: 'feedbacks/footer' %>
   </div>
 </div>
 
+<style>
+  .min-height {
+    min-height: 88vh;
+  }
+</style>
 <script>
   const ownerToken = document.getElementById("owner_token").value;
   const refresh = document.getElementById("refresh");
