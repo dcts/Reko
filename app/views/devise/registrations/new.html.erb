@@ -5,13 +5,12 @@
     <div class="sign-up-welcome">
       <%= image_tag "logo-light", alt: "reko-logo", class: "sign-up-logo" %>
     </div>
-
+    </style>
     <div class="paper-wrapper-beta">
-      <div class="sign-in-title">Create an account:</div>
       <div class="beta-form-wrapper">
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
-          <div class="beta-form-new">
+          <div class="beta-form-new" style="margin-top: 30px;">
             <%= f.input :first_name,
                 required: true,
                 placeholder: "FIRST NAME",
