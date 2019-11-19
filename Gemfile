@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.3'
+ruby '2.6.3'
 
 gem 'bootsnap', require: false
 gem 'devise', ">= 4.7.1"
@@ -18,6 +18,8 @@ gem 'webpacker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'rails_real_favicon'
+
 end
 
 group :development, :test do
@@ -27,20 +29,10 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem 'faker' # ADD FAKER for fake seed data
 end
 
 # ADD RENAME GEM (to rename rails application properly)
 # why? -> it wont let you create a model with the same name
 # as your apps name. And we need "reko" as model
 gem 'rename'
-
-# ADD FAKER for fake seed data
-gem 'faker'
-
-# ADD JSON and OPEN-URI gem to make API requests (not needed?)
-# gem 'json'
-# gem 'open-uri'
-
-group :development do
-  gem 'rails_real_favicon'
-end
