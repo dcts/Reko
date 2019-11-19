@@ -35,3 +35,6 @@ end
 # why? -> it wont let you create a model with the same name
 # as your apps name. And we need "reko" as model
 gem 'rename'
+
+# for scheduling a CRONJOB that resets the testaccount every day in the night
+gem 'rufus-scheduler', '~> 3.2'
