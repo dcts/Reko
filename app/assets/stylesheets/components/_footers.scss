@@ -5,15 +5,16 @@
   width: 100%;
   background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9710259103641457) 80%, rgba(246,246,246,1) 100%);
   padding: 25px 0;
-  position: sticky;
   height: 50px;
-  bottom: 0;
+  position: absolute;
+  bottom: -20px;
   max-width: 450px;
   margin: 0 auto;
 }
 
-.new-feedback-bttn {
+#new-feedback-bttn {
   border: none !important;
+  cursor: pointer;
 }
 
 .logout-icon {
@@ -21,7 +22,9 @@
   margin-bottom: 30px;
   font-size: 2.5em;
 }
-
+#refresh {
+  cursor: pointer;
+}
 
 
 
