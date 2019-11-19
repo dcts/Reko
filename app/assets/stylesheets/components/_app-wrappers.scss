@@ -38,5 +38,9 @@
   // overflow-x: hidden;
 }
 .master-container-inbox::-webkit-scrollbar {
-    // display: none;
+  // display: none;
+}
+
+.min-height {
+  min-height: 70vh;
 }

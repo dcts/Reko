@@ -6,14 +6,9 @@ html, body {
 
 .swiper-card {
   width: 100vw;
-  height: 100px;
+  height: 101px;
   overflow: hidden;
   margin: 0;
-  border-top: 1px solid #E4E6E8;
-  // padding: 5px;
-  // -webkit-box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
-  // box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.17);
-  // border-radius: 0 0 20px 20px;
   .swiper-container {
     overflow-x: hidden;
   }
@@ -23,19 +18,9 @@ html, body {
   margin-top: 2vh;
 }
 
-#movie-list:last-child {
-  // margin-bottom: 90px;
-  border-bottom: 1px solid #E4E6E8;
-}
-
 .light-grey-background {
   background-color: white;
-  // background-image: url('seen');
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: 100px;
   opacity: 0.3;
-  // background-color: lightgrey;
 }
 
 .swiper-container {
@@ -53,14 +38,14 @@ html, body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  // background: #fff;
-  // box-shadow: 0 0 40px;
-
-  /* Center slide text vertically */
-
+  border-top: 1px solid #E4E6E8;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: grab;
+}
+.swiper-slide:active {
+  cursor: grabbing;
 }
 
 .delete-slide {
@@ -72,12 +57,10 @@ html, body {
   background-size: 60px;
   background-repeat: no-repeat;
   color: #fff;
-  // border-radius: 0 0 20px 0;
 }
 
 .main-slide {
   width: 100%;
-  // border-radius: 3px 3px 3px 20px;
   display: flex;
   justify-content: space-between;
   font-size: 10px;
@@ -92,14 +75,11 @@ html, body {
   background-size: 50px;
   background-repeat: no-repeat;
   color: #fff;
-  // border-radius: 0 0 0 20px;
-
 }
 
 .reko-artwork {
   height: 100px;
   width: 100px;
-  // border-radius: 0 3px 3px 0;
   background-size: cover;
   flex-shrink: 0;
 }
@@ -131,10 +111,6 @@ html, body {
 .in-card-avatar {
   margin-right: 5px;
 }
-
-// .no-swipe-left {
-//   margin-right: -20px;
-// }
 
 .seen {
   position: relative;
