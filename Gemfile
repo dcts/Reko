@@ -6,7 +6,7 @@ gem 'devise', ">= 4.7.1"
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
-gem 'rails', '5.2.3'
+gem 'rails', '~> 6.0.0'
 gem 'redis'
 
 gem 'autoprefixer-rails'
@@ -19,7 +19,6 @@ gem 'webpacker'
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'rails_real_favicon'
-
 end
 
 group :development, :test do
