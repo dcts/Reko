@@ -60,6 +60,10 @@ class User < ApplicationRecord
     all.each { |user| hashmap[user.owner_token] = user }
     hashmap
   end
+  # return testuser John Doe
+  def self.testuser
+    User.find_by(first_name: "John",  last_name: "Doe", email: "admin@admin.com")
+  end
   # ----------------------------------------------------------------------------
 
   # custom "to_string" method

@@ -6,17 +6,11 @@ class RedirectionsController < ApplicationController
     token_hashmap_short = User.token_hashmap_short
 
     target_user = token_hashmap_short[token_short]
-    # raise
     if target_user
       redirect_to rekos_new_onboarding_path(token: target_user.token)
     else
       redirect_to invalid_token_path
-    # redirect_to
     end
-  end
-
-  def demoday
-    redirect_to root_path(invite: "DbKibQ6k6NGrkYjWgyY9rw")
   end
 end
 

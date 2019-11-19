@@ -1,4 +1,3 @@
-<%= render 'application/favicon' %>
 <div class="master-container fun-bg horz-center full-width">
   <div class="landing-top-wrapper">
     <div class="logo-lockup">
@@ -14,7 +13,7 @@
       :method => :get
     %>
     <div class="landing-bottom-btns">
-      <%= link_to "Browse as Guest", new_user_session_path, class: "request-bttn b-yellow f-dark-violet" %>
+      <%= link_to "Browse as Guest", demo_path, class: "request-bttn b-yellow f-dark-violet" %>
       <%= link_to "LOG IN", new_user_session_path, class: "log-in-bttn f-white b-dark-violet" %>
     </div>
   </div>

@@ -1,5 +1,5 @@
 class RekosController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :onboarding, :new, :invalid_token, :create, :mark_as_rejected, :mark_as_done ]
+  skip_before_action :authenticate_user!, only: [ :demo, :index, :onboarding, :new, :invalid_token, :create, :mark_as_rejected, :mark_as_done ]
 
   def index
     @current_bg = '#464646'
@@ -10,6 +10,16 @@ class RekosController < ApplicationController
     @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: @current_user.id)
     @movies = sort_rekos(@user_movies.open, @user_movies.done)
     @visitor_link = build_visitor_link
+  end
+
+  def demo # demoaccount showcase John Doe
+    @current_bg = '#464646'
+    @current_user = User.testuser
+    @owner_token =  @current_user.token
+    @user_movies = Reko.left_outer_joins(:movie).where(receiver_id: @current_user.id)
+    @movies = sort_rekos(@user_movies.open, @user_movies.done)
+    @visitor_link = build_visitor_link
+    render "rekos/index"
   end
 
   def onboarding
@@ -164,13 +174,3 @@ class RekosController < ApplicationController
     request.original_url.split("/rekos")[0] + "/s/#{@current_user.token_short}"
   end
 end
-
-# HELPFUL: ONLY COUNT SENDER NAMES
-
-# def count_rekos
-#   Reko.includes(:movie).where(movies: { title: "Percy Jackson: Sea of Monsters" }).order('movies.title').count
-# end
-
-# def find_documentaries_for_user
-#   Reko.includes(:movie).where(receiver_id: current_user.id).where(movies: { genre: "Documentary" }).order('movies.title')
-# end

@@ -6,11 +6,10 @@ Rails.application.routes.draw do
   # landing page and thankyou page
   root to: 'pages#home'
   get '/thankyou', to: 'pages#thankyou'
-
   # shorten link page
   get '/s/:token_short', to: "redirections#run"
-  # demoday signup link
-  get '/demoday', to: 'redirections#demoday'
+  # demo account John Doe
+  get '/demo', to: 'rekos#demo'
 
   # get 'users/:id/rekos', to: 'rekos#index', as: "current_user"
   # beta applicants route
@@ -32,8 +31,7 @@ Rails.application.routes.draw do
   #  Feedback
   post '/feedbacks', to: 'feedbacks#create', as: 'new_feedback'
 
-
-  # ALL THE ADMIN PANEL ROUTES
+  # ADMIN PANEL (need password passed as param "admin_token")
   get '/admins/', to: "admins#home"
   get '/admins/users', to: "admins#users"
   get '/admins/users/:id', to: "admins#user", as: "admins_user"
@@ -44,5 +42,4 @@ Rails.application.routes.draw do
   get '/admins/tests', to: "admins#tests"
   get '/admins/allan', to: "admins#allan"
   get '/admins/feedbacks', to: "admins#feedbacks"
-
 end
