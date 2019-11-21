@@ -10,10 +10,7 @@ Rails.application.routes.draw do
   get '/s/:token_short', to: "redirections#run"
   # demo account John Doe
   get '/demo', to: 'rekos#demo'
-
-  # get 'users/:id/rekos', to: 'rekos#index', as: "current_user"
-  # beta applicants route
-  resources :beta_applicants, only: [:new, :create]
+  get '/demoday', to: 'pages#home' # old route presented at demoday
 
   # rekos_routes
   resources :rekos, only: [:index, :new, :create] do
