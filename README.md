@@ -18,4 +18,4 @@ The app is designed as a progressive web app (PWA), which allows you to install 
 - Audiobooks
 
 ### Feedback
-At any time, feel free to write us some feedback or just reach out: thomas.stazynski@unibas.ch
+At any time, feel free to write us some feedback or just reach out: thomas@liist.cc
