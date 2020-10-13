@@ -1,6 +1,6 @@
 # Reko - Store your recommendations
 
-REKO pivoted to **liist**, a colaborative list making app to organize, share and create place recommendations! Check it out here: https://www.liist.cc
+REKO pivoted to **liist**, a colaborative list making app to organize, share and create place recommendations! Check it out here: https://www.liist.com
 
 **REKO** is a mobile first webapp that allows you to store **movie**, **documentaries** and **series** recommendations from your friends in one place. Its recommended using it on mobile, but the desktop version is fully functional as well. Feel free to sign up or use the open guestaccount to browse the app: https://sendrekos.herokuapp.com
 
