@@ -113,7 +113,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
-    mimemagic (0.3.3)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.13.0)
@@ -263,7 +265,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.7.1p83
 
 BUNDLED WITH
-   2.0.2
+   2.1.4
