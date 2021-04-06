@@ -38,3 +38,6 @@ gem 'rename'
 
 # for scheduling a CRONJOB that resets the testaccount every day in the night
 gem 'rufus-scheduler', '~> 3.2'
+
+# for testing
+gem 'httparty'
