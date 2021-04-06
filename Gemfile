@@ -39,5 +39,5 @@ gem 'rename'
 # for scheduling a CRONJOB that resets the testaccount every day in the night
 gem 'rufus-scheduler', '~> 3.2'
 
-# for testing
+# for testing (upgraded stack also to 20, before it was 18)
 gem 'httparty'
